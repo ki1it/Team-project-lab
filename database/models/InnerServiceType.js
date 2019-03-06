@@ -1,6 +1,6 @@
 const sequelize = require('../lib/pgbaseConnector');
 const Sequelize = require('sequelize');
-const ServiceType = sequelize.define('InnerServiceType', {
+const InnerServiceType = sequelize.define('InnerServiceType', {
   Name: {
     type: Sequelize.STRING(300),
   }

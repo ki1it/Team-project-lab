@@ -12,6 +12,9 @@ const  Car = sequelize.define('Car', {
   },
   OwnerFK:{
     type: Sequelize.INTEGER,
+  },
+  OwnerUrFK:{
+    type: Sequelize.INTEGER,
   }
 });
 

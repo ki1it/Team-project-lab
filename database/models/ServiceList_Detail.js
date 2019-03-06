@@ -7,7 +7,7 @@ const Servicelist_Detail = sequelize.define('Servicelist_Detail', {
   ServiceListFK:{
     type: Sequelize.INTEGER,
   },
-  NameOfGoodFK:{
+  DetailFK:{
     type: Sequelize.INTEGER,
   }
 });
