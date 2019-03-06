@@ -1,16 +1,10 @@
 const sequelize = require('../lib/pgbaseConnector');
 const Sequelize = require('sequelize');
-const NameOfGood = sequelize.define('NameOfGood', {
+const Detail = sequelize.define('Detail', {
   Name: {
     type: Sequelize.STRING(500)
   },
   Amount: {
-    type: Sequelize.INTEGER
-  },
-  Type: {
-    type: Sequelize.INTEGER
-  },
-  Status: {
     type: Sequelize.INTEGER
   },
   Price:{
@@ -21,4 +15,4 @@ const NameOfGood = sequelize.define('NameOfGood', {
   }
 });
 
-module.exports = NameOfGood;
+module.exports = Detail;

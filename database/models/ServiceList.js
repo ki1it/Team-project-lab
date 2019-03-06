@@ -14,6 +14,9 @@ const ServiceList = sequelize.define('ServiceList', {
   Status: {
     type: Sequelize.INTEGER,
   },
+  InnerStatus: {
+    type: Sequelize.INTEGER,
+  },
   ClientFK: {
     type: Sequelize.INTEGER,
     allowNull: true
@@ -27,6 +30,12 @@ const ServiceList = sequelize.define('ServiceList', {
   },
   CarFK: {
     type: Sequelize.INTEGER,
+  },
+  OpenDate:{
+    type: Sequelize.DATE
+  },
+  CloseDate:{
+    type: Sequelize.DATE
   },
 });
 

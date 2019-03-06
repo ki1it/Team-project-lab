@@ -2,8 +2,6 @@
 
 var express = require('express')
 var router = express.Router()
-const TaskWorker = require('../database/models/TaskWorker')
-const Task = require('../database/models/Task')
 const ServiceList = require('../database/models/ServiceList')
 const Wagon = require('../database/models/Car')
 const Sequelize = require('sequelize')

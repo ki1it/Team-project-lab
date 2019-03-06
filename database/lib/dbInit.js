@@ -1,29 +1,24 @@
 const Breakdown = require('../models/Breakdown')
 const BreakdownType = require('../models/BreakdownType')
 const Client = require('../models/Client')
-const NameOfGood = require('../models/NameOfGood')
-const NameStatus = require('../models/NameStatus')
-const NameType = require('../models/NameType')
 const Position = require('../models/Position')
 const Service = require('../models/Service')
 const ServiceList = require('../models/ServiceList')
+const ServiceList_
 const ServiceList_Service = require('../models/ServiceList_Service')
 const ServiceListBreakdown = require('../models/ServiceListBreakdown')
 const ServiceType = require('../models/ServiceType')
-const StatusOfServiceList = require('../models/StatusOfServiceList')
-const Task = require('../models/Task')
-const TaskWorker = require('../models/TaskWorker')
-const TaskStatus = require('../models/TaskStatus')
+const StatusOfServiceList = require('../models/ServiceList_Status')
 const Car = require('../models/Car')
 const Worker = require('../models/Worker')
-const WorkOrderName = require('../models/WorkOrderName')
 const User = require('../models/User')
 const SprCar = require('../models/SprCar')
 const Model = require('../models/Model')
 const Brand = require('../models/Brand')
-const EdIzmer = require('../models/EdIzmer')
 const TypeOfPayment = require('../models/TypeOfPayment')
 const UrClient = require('../models/UrClient')
+const InnerServiceType = require('../models/InnerServiceType')
+const ServiceList_Worker = require('../models/ServiceList_Worker')
 
 BreakdownType.hasMany(Breakdown, { foreignKey: 'Type', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
 Breakdown.belongsTo(BreakdownType, { foreignKey: 'Type', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
@@ -45,33 +40,11 @@ ServiceList.hasMany(ServiceList_Service, { foreignKey: 'ServiceListFK', sourceKe
 ServiceList_Service.belongsTo(ServiceList, { foreignKey: 'ServiceListFK', targetKey: 'id', onDelete: 'cascade', onUpdate: 'restrict' })
 
 
-NameType.hasMany(NameOfGood, { foreignKey: 'Type', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
-NameOfGood.belongsTo(NameType, { foreignKey: 'Type', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
-
-NameStatus.hasMany(NameOfGood, { foreignKey: 'Status', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
-NameOfGood.belongsTo(NameStatus, { foreignKey: 'Status', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
-
-NameOfGood.hasMany(WorkOrderName, { foreignKey: 'NameOfGoodFK', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
-WorkOrderName.belongsTo(NameOfGood, { foreignKey: 'NameOfGoodFK', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
-
-ServiceList.hasMany(WorkOrderName, { foreignKey: 'ServiceListFK', sourceKey: 'id', onDelete: 'cascade', onUpdate: 'restrict'})
-WorkOrderName.belongsTo(ServiceList, { foreignKey: 'ServiceListFK', targetKey: 'id', onDelete: 'cascade', onUpdate: 'restrict' })
-
-
 Position.hasMany(Worker, { foreignKey: 'PositionFK', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
 Worker.belongsTo(Position, { foreignKey: 'PositionFK', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
 
-Worker.hasMany(TaskWorker, { foreignKey: 'WorkerFK', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
-TaskWorker.belongsTo(Worker, { foreignKey: 'WorkerFK', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
-
-Task.hasMany(TaskWorker, { foreignKey: 'TaskFK', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
-TaskWorker.belongsTo(Task, { foreignKey: 'TaskFK', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
-
-TaskStatus.hasMany(Task, { foreignKey: 'Status', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
-Task.belongsTo(TaskStatus, { foreignKey: 'Status', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
-
-ServiceList.hasMany(Task, { foreignKey: 'ServiceListFK', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
-Task.belongsTo(ServiceList, { foreignKey: 'ServiceListFK', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
+Worker.hasMany(ServiceList_Worker, { foreignKey: 'WorkerFK', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
+ServiceList_Worker.belongsTo(Worker, { foreignKey: 'WorkerFK', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
 
 StatusOfServiceList.hasMany(ServiceList, { foreignKey: 'Status', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
 ServiceList.belongsTo(StatusOfServiceList, { foreignKey: 'Status', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
@@ -94,8 +67,6 @@ SprCar.belongsTo(Model, { foreignKey: 'ModelFK', targetKey: 'id', onDelete: 'res
 Brand.hasMany(SprCar, { foreignKey: 'BrandFK', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
 SprCar.belongsTo(Brand, { foreignKey: 'BrandFK', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
 
-EdIzmer.hasMany(NameOfGood, { foreignKey: 'EdIzmerFK', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
-NameOfGood.belongsTo(EdIzmer, { foreignKey: 'EdIzmerFK', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
 
 TypeOfPayment.hasMany(ServiceList, { foreignKey: 'TypeOfPaymentFK', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
 ServiceList.belongsTo(TypeOfPayment, { foreignKey: 'TypeOfPaymentFK', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })

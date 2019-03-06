@@ -10,6 +10,9 @@ const  Car = sequelize.define('Car', {
   Year: {
     type: Sequelize.INTEGER,
   },
+  OwnerFK:{
+    type: Sequelize.INTEGER,
+  }
 });
 
 module.exports = Car;

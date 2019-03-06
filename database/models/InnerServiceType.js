@@ -1,9 +1,9 @@
 const sequelize = require('../lib/pgbaseConnector');
 const Sequelize = require('sequelize');
-const TaskStatus = sequelize.define('TaskStatus', {
+const ServiceType = sequelize.define('InnerServiceType', {
   Name: {
     type: Sequelize.STRING(300),
-  },
+  }
 });
 
-module.exports = TaskStatus;
+module.exports = InnerServiceType;
