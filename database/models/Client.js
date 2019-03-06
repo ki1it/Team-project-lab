@@ -17,6 +17,12 @@ const Client = sequelize.define('Client', {
   PhoneNumber: {
     type: Sequelize.STRING(12),
   },
+  DLNumber:{
+    type: Sequelize.INTEGER,
+  },
+  Adress:{
+    type: Sequelize.TEXT,
+  },
 });
 
 module.exports = Client;

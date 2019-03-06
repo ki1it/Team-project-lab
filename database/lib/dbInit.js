@@ -14,10 +14,16 @@ const StatusOfServiceList = require('../models/StatusOfServiceList')
 const Task = require('../models/Task')
 const TaskWorker = require('../models/TaskWorker')
 const TaskStatus = require('../models/TaskStatus')
-const Wagon = require('../models/Wagon')
+const Car = require('../models/Car')
 const Worker = require('../models/Worker')
 const WorkOrderName = require('../models/WorkOrderName')
 const User = require('../models/User')
+const SprCar = require('../models/SprCar')
+const Model = require('../models/Model')
+const Brand = require('../models/Brand')
+const EdIzmer = require('../models/EdIzmer')
+const TypeOfPayment = require('../models/TypeOfPayment')
+const UrClient = require('../models/UrClient')
 
 BreakdownType.hasMany(Breakdown, { foreignKey: 'Type', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
 Breakdown.belongsTo(BreakdownType, { foreignKey: 'Type', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
@@ -72,8 +78,27 @@ ServiceList.belongsTo(StatusOfServiceList, { foreignKey: 'Status', targetKey: 'i
 
 Client.hasMany(ServiceList, { foreignKey: 'ClientFK', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
 ServiceList.belongsTo(Client, { foreignKey: 'ClientFK', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
-Wagon.hasMany(ServiceList, { foreignKey: 'WagonFK', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
-ServiceList.belongsTo(Wagon, { foreignKey: 'WagonFK', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
+
+UrClient.hasMany(ServiceList, { foreignKey: 'UrClientFK', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
+ServiceList.belongsTo(UrClient, { foreignKey: 'UrClientFK', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
+
+Car.hasMany(ServiceList, { foreignKey: 'CarFK', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
+ServiceList.belongsTo(Car, { foreignKey: 'CarFK', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
+
+SprCar.hasMany(Car, { foreignKey: 'SprCarFK', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
+Car.belongsTo(SprCar, { foreignKey: 'SprCarFK', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
+
+Model.hasMany(SprCar, { foreignKey: 'ModelFK', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
+SprCar.belongsTo(Model, { foreignKey: 'ModelFK', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
+
+Brand.hasMany(SprCar, { foreignKey: 'BrandFK', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
+SprCar.belongsTo(Brand, { foreignKey: 'BrandFK', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
+
+EdIzmer.hasMany(NameOfGood, { foreignKey: 'EdIzmerFK', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
+NameOfGood.belongsTo(EdIzmer, { foreignKey: 'EdIzmerFK', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
+
+TypeOfPayment.hasMany(ServiceList, { foreignKey: 'TypeOfPaymentFK', sourceKey: 'id', onDelete: 'restrict', onUpdate: 'restrict'})
+ServiceList.belongsTo(TypeOfPayment, { foreignKey: 'TypeOfPaymentFK', targetKey: 'id', onDelete: 'restrict', onUpdate: 'restrict' })
 
 User.belongsTo(Worker, { foreignKey: 'worker_id', targetKey: 'id'})
 // User.hasMany(UserInGroup, { foreignKey: 'id_us', sourceKey: 'id' })
@@ -81,9 +106,14 @@ User.belongsTo(Worker, { foreignKey: 'worker_id', targetKey: 'id'})
 // UserInGroup.belongsTo(User, { foreignKey: 'id_us', targetKey: 'id' })
 async function init () {
   // await Worker.sync({force:true});
-  // await Wagon.sync({force:true})
+  // await EdIzmer.sync({force:true})
+  // await Model.sync({force:true})
+  // await Brand.sync({force:true})
+  // await SprCar.sync({force:true})
+  // await Car.sync({force:true})
   // await Client.sync({force:true})
   // await StatusOfServiceList.sync({force:true})
+  // await TypeOfPayment.sync({force:true})
   // await ServiceList.sync({force:true})
   //
   //
@@ -91,9 +121,10 @@ async function init () {
   // await Breakdown.sync({force:true})
   //   await ServiceListBreakdown.sync({force:true})
   //
-  // await ServiceList_Service.sync({force:true})
+  //
   // await ServiceType.sync({force:true})
   // await Service.sync({force:true})
+  // await ServiceList_Service.sync({force:true})
   //
   // await NameStatus.sync({force:true})
   // await NameType.sync({force:true})
@@ -107,12 +138,18 @@ async function init () {
   // await Worker.sync({force:true})
   // await TaskWorker.sync({force:true})
   //
+  //  await User.sync({force:true})
 
-   //await User.sync({force:true})
 
-  await Wagon.sync()
+  await EdIzmer.sync()
+  await Model.sync()
+  await Brand.sync()
+  await SprCar.sync()
+  await Car.sync()
+  await UrClient.sync()
   await Client.sync()
   await StatusOfServiceList.sync()
+  await TypeOfPayment.sync()
   await ServiceList.sync()
 
 

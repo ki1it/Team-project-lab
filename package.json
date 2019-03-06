@@ -1,16 +1,23 @@
 {
-  "name": "kom-raz",
+  "name": "vrz-bd",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "bcrypt": "^3.0.3",
+    "body-parser": "latest",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
+    "dotenv": "^6.2.0",
     "express": "~4.16.0",
+    "express-session": "^1.15.6",
     "http-errors": "~1.6.2",
+    "localtunnel": "^1.9.1",
     "morgan": "~1.9.0",
-    "pug": "2.0.0-beta11"
+    "pg": "^7.7.1",
+    "pug": "^2.0.3",
+    "sequelize": "^4.42.0"
   }
 }

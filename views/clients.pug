@@ -1,0 +1,241 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        link(rel='apple-touch-icon', sizes='76x76', href='assets/img/apple-icon.png')
+        link(rel='icon', type='image/png', href='assets/img/favicon.png')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+        title
+            | Клиенты ВРЗ
+        meta(content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no', name='viewport')
+        // Fonts and icons
+        link(rel='stylesheet', type='text/css', href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons')
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css')
+        // CSS Files
+        link(href='assets/css/material-dashboard.css?v=2.1.0', rel='stylesheet')
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+        // CSS Just for demo purpose, don't include it in your project
+        link(href='assets/demo/demo.css', rel='stylesheet')
+
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+        #myModal.modal.fade(role='dialog')
+            .modal-dialog.modal-lg
+                .modal-content
+                    .modal-header
+                        h4.modal-title Добавление данных
+                        button.close(type='button', data-dismiss='modal') ×
+                    .modal-body
+                        div
+                            form(action="/addClient", method="post" class="form" id='addClient' enctype="application/json")
+                                div
+                                    input(type="text" name="secondName" placeholder="Фамилия" class="form__input" required)
+                                    br
+                                    input(type="text" name='firstName' placeholder="Имя" class="form__input" required)
+                                    br
+                                    input(type="text" name='patronymic' placeholder="Отчество" class="form__input" required)
+                                    br
+                                    br
+                                    p Введите дату рождения
+                                    input(type='date' name='calendar' value="2003-12-23" required)
+                                    br
+                                    br
+                                    p Введите телефон без пробелов, скобок и тире
+                                    input(type="phone" name="phone" pattern="+7[0-9]{10}" placeholder="+7XXXXXXXXXX" required)
+                                    br
+                                    br
+
+                                div
+                                    input.btn.btn-default(type="submit" href="/clients" class="uk-button uk-button-primary top-margin" value="Отправить")
+
+                    .modal-footer
+                        button.btn.btn-default(type='button', data-dismiss='modal') Close
+        - var i=0;
+            mixin rowsTable(id, date, desc, status, wagon, client)
+                tr
+
+                    td #{id}
+                    td #{date}
+                    td #{desc}
+                    td #{status}
+                    td #{wagon}
+                    td #{client}
+                    td
+                        a#navbarDropdownMenuLink.nav-link(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                            i.material-icons menu
+                            p.d-lg-none.d-md-block
+                                | Some Actions
+                        .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownMenuLink')
+                            a.dropdown-item(href='#' onclick="$.ajax({type: 'POST', url: '/deleteClient', data: 'id=" + id + "', })") Удалить
+                            a.dropdown-item(href='#' onclick="$.ajax({type: 'POST', url: '/edit_client', data: 'id=" + id + "', })" ) Изменить
+                    //td #a#navbarDropdownMenuLink.nav-link(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')] i.material-icons menu  p.d-lg-none.d-md-block | Some Actions .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownMenuLink') a.dropdown-item(href='#')] Забанить a.dropdown-item(href='#') Продвинуть a.dropdown-item(href='#') Вывод средств
+
+    body.dark-edition
+        .wrapper
+            .sidebar(data-color='purple', data-background-color='black', data-image='assets/img/sidebar-4.jpg')
+                //
+                  Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+                  Tip 2: you can also add an image using data-image tag
+                .logo
+                    a.simple-text.logo-normal(href='https://wintex.pro')
+                        | ( ВРЗ ) Клиенты
+                .sidebar-wrapper
+                    ul.nav
+                        li.nav-item
+                            a.nav-link(href='/workOrderList')
+                                i.material-icons dashboard
+                                p Заказ-наряды
+                        li.nav-item.active
+                            a.nav-link(href='/clients')
+                                i.material-icons person
+                                p Клиенты
+                        li.nav-item
+                            a.nav-link(href='/sklad')
+                                i.material-icons content_paste
+                                p Склад
+                        li.nav-item
+                            a.nav-link(href='/workers')
+                                i.material-icons bubble_chart
+                                p Работники
+                        li.nav-item
+                            a.nav-link(href='/wagonList')
+                                i.material-icons train
+                                p Вагоны
+                        li.nav-item
+                            a.nav-link(href='/logout')
+                                i.material-icons exit_to_app
+                                p Выйти
+                        //li.nav-item
+                        //    a.nav-link(href='/offers')
+                        //        i.material-icons bubble_chart
+                        //        p Сделки
+            .main-panel
+                // Navbar
+                nav#navigation-example.navbar.navbar-expand-lg.navbar-transparent.navbar-absolute.fixed-top
+                    .container-fluid
+                        button.navbar-toggler(type='button', data-toggle='collapse', aria-controls='navigation-index', aria-expanded='false', aria-label='Toggle navigation', data-target='#navigation-example')
+                            span.sr-only Toggle navigation
+                            span.navbar-toggler-icon.icon-bar
+                            span.navbar-toggler-icon.icon-bar
+                            span.navbar-toggler-icon.icon-bar
+                        .collapse.navbar-collapse.justify-content-end
+                            //
+                              <form class="navbar-form">
+                              <div class="input-group no-border">
+                              <input type="text" value="" class="form-control" placeholder="Search...">
+                              <button type="submit" class="btn btn-default btn-round btn-just-icon">
+                              <i class="material-icons">search</i>
+                              <div class="ripple-container"></div>
+                              </button>
+                              </div>
+                              </form>
+                            ul.navbar-nav
+                                //
+                                  <li class="nav-item dropdown">
+                                  <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="material-icons">notifications</i>
+                                  <span class="notification">5</span>
+                                  <p class="d-lg-none d-md-block">
+                                  Some Actions
+                                  </p>
+                                  </a>
+                                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                  <a class="dropdown-item" href="#">Mike John responded to your email</a>
+                                  <a class="dropdown-item" href="#">You have 5 new tasks</a>
+                                  <a class="dropdown-item" href="#">You're now friend with Andrew</a>
+                                  <a class="dropdown-item" href="#">Another Notification</a>
+                                  <a class="dropdown-item" href="#">Another One</a>
+                                  </div>
+                                  </li>
+                                li.nav-item
+                                    a.nav-link(href='#')
+                                        i.material-icons person
+                                        p.d-lg-none.d-md-block
+                                            | Account
+                // End Navbar
+                .content
+                    .container-fluid
+                        .row
+                            .col-md-12
+                                .card
+                                    .card-header.card-header-primary
+                                        h4.card-title Клиенты
+                                    .card-body
+                                        button.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#myModal') Добавить товар
+                                        .table-responsive
+                                            table.table
+                                                thead.text-primary
+                                                    tr
+                                                        th
+                                                            | ID
+                                                        th
+                                                            | Фамилия
+                                                        th
+                                                            | Имя
+                                                        th
+                                                            | Отчество
+                                                        th
+                                                            | День рождения
+                                                        th
+                                                            | Телефон
+                                                        th
+                                                            | Меню
+                                                tbody
+                                                    -for (let i = 0; i < clients.length; i++)
+                                                        +rowsTable(clients[i].dataValues.id,
+                                                        clients[i].dataValues.SecondName,
+                                                        clients[i].dataValues.FirstName,
+                                                        clients[i].dataValues.Patronymic,
+                                                        clients[i].dataValues.Birthday,
+                                                        clients[i].dataValues.PhoneNumber
+
+
+                                                        )
+
+                                        .nav-tabs-wrapper
+                                            ul.nav.nav-tabs(data-tabs='tabs')
+                                                li.nav-item
+                                                    a.nav-link.active.show(href='#profile', data-toggle='tab')
+                                                        | 1
+                                                        .ripple-container
+                                                        .ripple-container
+                                                li.nav-item
+                                                    a.nav-link(href='#messages', data-toggle='tab')
+                                                        | 2
+                                                        .ripple-container
+                                                        .ripple-container
+                                                li.nav-item
+                                                    a.nav-link(href='#settings', data-toggle='tab')
+                                                        | 3
+                                                        .ripple-container
+                                                        .ripple-container
+                footer.footer
+                    .container-fluid
+                        #date.copyright.float-right
+                            | , made with
+                            i.material-icons favorite
+                            |  by
+                            a(href='https://wintex.pro', target='_blank') WinteX
+                            |  for a better web.
+                script.
+                  const x = new Date().getFullYear();
+                  let date = document.getElementById('date');
+                  date.innerHTML = '&copy; ' + x + date.innerHTML;
+        // Core JS Files
+        script(src='assets/js/core/jquery.min.js')
+        script(src='assets/js/core/popper.min.js')
+        script(src='assets/js/core/bootstrap-material-design.min.js')
+        script(src='https://unpkg.com/default-passive-events')
+        script(src='assets/js/plugins/perfect-scrollbar.jquery.min.js')
+        // Place this tag in your head or just before your close body tag.
+        script(async='', defer='', src='https://buttons.github.io/buttons.js')
+        // Google Maps Plugin
+        script(src='https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE')
+        // Chartist JS
+        script(src='assets/js/plugins/chartist.min.js')
+        // Notifications Plugin
+        script(src='assets/js/plugins/bootstrap-notify.js')
+        // Control Center for Material Dashboard: parallax effects, scripts for the example pages etc
+        script(src='assets/js/material-dashboard.js?v=2.1.0')
+        // Material Dashboard DEMO methods, don't include it in your project!
+        script(src='assets/demo/demo.js')

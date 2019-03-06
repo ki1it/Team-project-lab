@@ -15,7 +15,10 @@ const NameOfGood = sequelize.define('NameOfGood', {
   },
   Price:{
   type: Sequelize.INTEGER,
-}
+},
+  EdIzmerFK:{
+    type: Sequelize.INTEGER,
+  }
 });
 
 module.exports = NameOfGood;
