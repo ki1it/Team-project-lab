@@ -65,19 +65,7 @@ var sessionChecker = (req, res, next) => {
 //end of auth part
 
 
-const Breakdown  =  require('./database/models/Breakdown')
-async function a (){
-  await new Promise(done => setTimeout(done, 1000))
-  let res = await Breakdown.findAll({
-    where:{
-      FrequencyMarker: true
 
-    },
-    limit:10
-  })
-  console.log(res)
-}
-a()
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -132,10 +120,8 @@ app.route('/login')
         req.session.user = user.dataValues;
         if(user.dataValues.role === 'admin')
           {res.redirect('/signup')}
-        if(user.dataValues.role === 'storekeeper')
-          {res.redirect('/sklad')}
         if(user.dataValues.role === 'administrator')
-          {res.redirect('/wagon')}
+          {res.redirect('/servicelist')}
         if(user.dataValues.role === 'worker')
           {
             res.redirect('/zadForWorker?id=' + user.dataValues.worker_id)}
@@ -166,7 +152,7 @@ app.get('/logout', (req, res) => {
 app.use('/index', indexRouter)
 app.use('/users', usersRouter)
 app.use('/wagon', wagonRouter)
-app.use('/sevicelist', servicelistRouter)
+app.use('/servicelist', servicelistRouter)
 app.use('/curwagon', curwagonRouter)
 app.use('/client', clientRouter)
 app.use('/uslugi', usluguRouter)
