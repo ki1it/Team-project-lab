@@ -81,9 +81,15 @@ head
 
 
           li.nav-item
-            a.nav-link(href='add-new-post.html')
+            a.nav-link.dropdown-toggle(href='servicelist'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
               i.material-icons note_add
-              span Справочники
+                span Справочники
+              .dropdown-menu(aria-labelledby='dropdownMenuLink')
+                a.dropdown-item(href='#') Клиенты
+                a.dropdown-item(href='#') Автомобили
+                a.dropdown-item(href='#') Поломки
+                a.dropdown-item(href='#') Услуги
+                a.dropdown-item(href='#') Запчасти
           li.nav-item
             a.nav-link(href='form-components.html')
               i.material-icons view_module
