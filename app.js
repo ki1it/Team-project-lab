@@ -8,9 +8,9 @@ require('dotenv').config()
 require('./database/lib/dbInit')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var wagonRouter = require('./routes/wagon')
+var addServiceListRouter = require('./routes/addServiceList')
 var servicelistRouter = require('./routes/servicelist')
-var curwagonRouter = require('./routes/curwagon')
+var curwagonRouter = require('./routes/addServiceList')
 var clientRouter = require('./routes/client')
 var usluguRouter = require('./routes/uslugi')
 var clientsRouter = require('./routes/clients')
@@ -151,7 +151,7 @@ app.get('/logout', (req, res) => {
 });
 app.use('/index', indexRouter)
 app.use('/users', usersRouter)
-app.use('/wagon', wagonRouter)
+app.use('/addservicelist', addServiceListRouter)
 app.use('/servicelist', servicelistRouter)
 app.use('/curwagon', curwagonRouter)
 app.use('/client', clientRouter)

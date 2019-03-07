@@ -71,9 +71,15 @@ head
               i.material-icons edit
               span Главная
           li.nav-item
-            a.nav-link(href='servicelist')
-              i.material-icons vertical_split
-              span Заказ-наряды
+              a.nav-link.dropdown-toggle(href='servicelist'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                i.material-icons vertical_split
+                  span Заказ-наряды
+                .dropdown-menu(aria-labelledby='dropdownMenuLink')
+                  a.dropdown-item(href='#') Посмотреть
+                  a.dropdown-item(href='#') Создать
+                  a.dropdown-item(href='#') Что-то еще
+
+
           li.nav-item
             a.nav-link(href='add-new-post.html')
               i.material-icons note_add

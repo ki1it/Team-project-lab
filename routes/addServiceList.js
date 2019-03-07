@@ -11,7 +11,7 @@ router.get('/', async function (req, res, next) {
     .catch((err) => {
       console.log(err)
     })
-  res.render('curwagon', {
+  res.render('addServiceList', {
     wagon:wagon
   })
 })
