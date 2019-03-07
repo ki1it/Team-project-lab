@@ -6,15 +6,15 @@ const BreakdownType = require('../database/models/BreakdownType')
 const Sequelize = require('sequelize')
 /* GET users listing. */
 router.get('/', async function (req, res, next) {
-  let polomka = await ServiceListBreakdown.findAll({
-    where:{ServiceListFK:req.query.id},
-    include: [{ model: Breakdown, include: { model: BreakdownType, as: 'BreakdownType' },  as: 'Breakdown' }]
-  })
-    .catch((err) => {
-      console.log(err)
-    })
-  res.render('polomki', {
-    usluga:polomka
+  // let polomka = await ServiceListBreakdown.findAll({
+  //   where:{ServiceListFK:req.query.id},
+  //   include: [{ model: Breakdown, include: { model: BreakdownType, as: 'BreakdownType' },  as: 'Breakdown' }]
+  // })
+  //   .catch((err) => {
+  //     console.log(err)
+  //   })
+  res.render('servicelist', {
+
   })
 })
 

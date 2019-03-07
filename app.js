@@ -9,11 +9,10 @@ require('./database/lib/dbInit')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var wagonRouter = require('./routes/wagon')
-var wagonListRouter = require('./routes/wagonList')
+var servicelistRouter = require('./routes/servicelist')
 var curwagonRouter = require('./routes/curwagon')
 var clientRouter = require('./routes/client')
 var usluguRouter = require('./routes/uslugi')
-var polomkiRouter = require('./routes/polomki')
 var clientsRouter = require('./routes/clients')
 var zadachiRouter = require('./routes/zadachi')
 var workersRouter = require('./routes/workers')
@@ -90,7 +89,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', sessionChecker, (req, res) => {
-  res.redirect('/login');
+  res.redirect('/index');
 })
 // route for user signup
 app.route('/signup')
@@ -164,9 +163,10 @@ app.get('/logout', (req, res) => {
     res.redirect('/login');
   }
 });
+app.use('/index', indexRouter)
 app.use('/users', usersRouter)
 app.use('/wagon', wagonRouter)
-app.use('/wagonList', wagonListRouter)
+app.use('/sevicelist', servicelistRouter)
 app.use('/curwagon', curwagonRouter)
 app.use('/client', clientRouter)
 app.use('/uslugi', usluguRouter)
