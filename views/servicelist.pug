@@ -11,6 +11,7 @@ head
     link#main-stylesheet(rel='stylesheet' data-version='1.1.0' href='styles/shards-dashboards.1.1.0.min.css')
     link(rel='stylesheet' href='styles/extras.1.1.0.min.css')
     script(async='' defer='' src='https://buttons.github.io/buttons.js')
+    script(async='' defer='' src='https://www.kryogenix.org/code/browser/sorttable/sorttable.js')
     - var i=0;
         mixin rowsTable(id, date, status)
             tr
@@ -180,7 +181,7 @@ head
                             .card-header.border-bottom
                                 h6.m-0 Заказ-наряд
                             .card-body.p-0.pb-3.text-center
-                                table.table.mb-0
+                                table.table.mb-0.sortable
                                     thead.bg-light.text-primary
                                         tr
                                             th.border-0(scope='col') #
