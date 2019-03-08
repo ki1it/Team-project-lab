@@ -32,11 +32,11 @@ head
         .nav-wrapper
             ul.nav.flex-column
                 li.nav-item
-                    a.nav-link.active(href='index')
+                    a.nav-link.dropdown-toggle(href='index')
                         i.material-icons edit
                         span Главная
                 li.nav-item
-                    a.nav-link.dropdown-toggle(href='servicelist'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                    a.nav-link.active(href='servicelist'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
                         i.material-icons vertical_split
                             span Заказ-наряд
                         .dropdown-menu(aria-labelledby='dropdownMenuLink')
@@ -77,7 +77,7 @@ head
                 // Main Navbar
                 nav.navbar.align-items-stretch.navbar-light.flex-md-nowrap.p-0
                     form.main-navbar__search.w-100.d-none.d-md-flex.d-lg-flex(action='#')
-                        .input-group.input-group-seamless.ml-3
+                        //.input-group.input-group-seamless.ml-3
                             .input-group-prepend
                                 .input-group-text
                                     i.fas.fa-search
@@ -115,16 +115,16 @@ head
                                 img.user-avatar.rounded-circle.mr-2(src='images/avatars/0.jpg' alt='User Avatar')
                                 span.d-none.d-md-inline-block Sierra Brooks
                             .dropdown-menu.dropdown-menu-small
-                                a.dropdown-item(href='user-profile-lite.html')
+                                //a.dropdown-item(href='user-profile-lite.html')
                                     i.material-icons &#xE7FD;
                                     |  Profile
-                                a.dropdown-item(href='components-blog-posts.html')
+                                //a.dropdown-item(href='components-blog-posts.html')
                                     i.material-icons vertical_split
                                     |  Blog Posts
-                                a.dropdown-item(href='add-new-post.html')
+                                //a.dropdown-item(href='add-new-post.html')
                                     i.material-icons note_add
                                     |  Add New Post
-                                .dropdown-divider
+                                //.dropdown-divider
                                 a.dropdown-item.text-danger(href='#')
                                     i.material-icons.text-danger &#xE879;
                                     |  Logout
@@ -200,7 +200,12 @@ head
                             .col
                                 .card.card-small.mb-4
                                     .card-header.border-bottom
-                                        h6.m-0 Услуги
+                                        .row
+                                            .col-sm-12.col-md-11
+                                                h6.m-0 Услуги
+                                            .col-sm-12.col-md-1
+                                                button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
+                                        .card-body.p-0.pb-3.text-center
                                     .card-body.p-0.pb-3.text-center
                                         table.table.mb-0
                                             thead.bg-light.text-primary
@@ -214,7 +219,12 @@ head
                             .col
                                 .card.card-small.mb-4
                                     .card-header.border-bottom
-                                        h6.m-0 Поломки
+                                        .row
+                                            .col-sm-12.col-md-11
+                                                h6.m-0 Поломки
+                                            .col-sm-12.col-md-1
+                                                button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
+                                        .card-body.p-0.pb-3.text-center
                                     .card-body.p-0.pb-3.text-center
                                         table.table.mb-0
                                             thead.bg-light.text-primary
@@ -228,7 +238,11 @@ head
                             .col
                                 .card.card-small.mb-4
                                     .card-header.border-bottom
-                                        h6.m-0 Детали
+                                        .row
+                                            .col-sm-12.col-md-11
+                                                h6.m-0 Детали
+                                            .col-sm-12.col-md-1
+                                                button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
                                     .card-body.p-0.pb-3.text-center
                                         table.table.mb-0
                                             thead.bg-light.text-primary
@@ -244,7 +258,7 @@ head
 
                         // / Input & Button Groups
             footer.main-footer.d-flex.p-2.px-3.bg-white.border-top
-                ul.nav
+                //ul.nav
                     li.nav-item
                         a.nav-link(href='#') Home
                     li.nav-item
@@ -256,8 +270,7 @@ head
                     li.nav-item
                         a.nav-link(href='#') Blog
                 span.copyright.ml-auto.my-auto.mr-2
-                    | Copyright &copy; 2018
-                    a(href='https://designrevision.com' rel='nofollow') DesignRevision
+                    | Copyright &copy; 2019 ma-daria&ki1it
 
 script(src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous')
