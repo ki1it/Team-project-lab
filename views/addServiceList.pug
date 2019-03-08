@@ -11,91 +11,68 @@ head
     link#main-stylesheet(rel='stylesheet' data-version='1.1.0' href='styles/shards-dashboards.1.1.0.min.css')
     link(rel='stylesheet' href='styles/extras.1.1.0.min.css')
     script(async='' defer='' src='https://buttons.github.io/buttons.js')
-.color-switcher.animated
-    h5 Accent Color
-    ul.accent-colors
-        li.accent-primary.active(data-color='primary')
-            i.material-icons check
-        li.accent-secondary(data-color='secondary')
-            i.material-icons check
-        li.accent-success(data-color='success')
-            i.material-icons check
-        li.accent-info(data-color='info')
-            i.material-icons check
-        li.accent-warning(data-color='warning')
-            i.material-icons check
-        li.accent-danger(data-color='danger')
-            i.material-icons check
-    .actions.mb-4
-        a.mb-2.btn.btn-sm.btn-primary.w-100.d-table.mx-auto.extra-action(href='https://designrevision.com/downloads/shards-dashboard-lite/')
-            i.material-icons cloud
-            |  Download
-        a.mb-2.btn.btn-sm.btn-white.w-100.d-table.mx-auto.extra-action(href='https://designrevision.com/docs/shards-dashboard-lite')
-            i.material-icons book
-            |  Documentation
-    .social-wrapper
-        .social-actions
-            h5.my-2 Help us Grow
-            .inner-wrapper
-                a.github-button(href='https://github.com/DesignRevision/shards-dashboard' data-icon='octicon-star' data-show-count='true' aria-label='Star DesignRevision/shards-dashboard on GitHub') Star
-                // <iframe style="width: 91px; height: 21px;"src="https://yvoschaap.com/producthunt/counter.html#href=https%3A%2F%2Fwww.producthunt.com%2Fr%2Fp%2F112998&layout=wide" width="56" height="65" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-        #social-share(data-url='https://designrevision.com/downloads/shards-dashboard-lite/' data-text='🔥 Check out Shards Dashboard Lite, a free and beautiful Bootstrap 4 admin dashboard template!' data-title='share')
-        .loading-overlay
-            .spinner
-    .close
-        i.material-icons close
-.color-switcher-toggle.animated.pulse.infinite
-    i.material-icons settings
 .container-fluid
     .row
-        // Main Sidebar
-        aside.main-sidebar.col-12.col-md-3.col-lg-2.px-0
-            .main-navbar
-                nav.navbar.align-items-stretch.navbar-light.bg-white.flex-md-nowrap.border-bottom.p-0
-                    a.navbar-brand.w-100.mr-0(href='#' style='line-height: 25px;')
-                        .d-table.m-auto
-                            img#main-logo.d-inline-block.align-top.mr-1(style='max-width: 25px;' src='images/shards-dashboards-logo.svg' alt='Shards Dashboard')
-                            span.d-none.d-md-inline.ml-1 Shards Dashboard
-                    a.toggle-sidebar.d-sm-inline.d-md-none.d-lg-none
-                        i.material-icons &#xE5C4;
-            form.main-sidebar__search.w-100.border-right.d-sm-flex.d-md-none.d-lg-none(action='#')
-                .input-group.input-group-seamless.ml-3
-                    .input-group-prepend
-                        .input-group-text
-                            i.fas.fa-search
-                    input.navbar-search.form-control(type='text' placeholder='Search for something...' aria-label='Search')
-            .nav-wrapper
-                ul.nav.flex-column
-                    li.nav-item
-                        a.nav-link(href='index.html')
-                            i.material-icons edit
-                            span Blog Dashboard
-                    li.nav-item
-                        a.nav-link(href='components-blog-posts.html')
-                            i.material-icons vertical_split
-                            span Blog Posts
-                    li.nav-item
-                        a.nav-link(href='add-new-post.html')
-                            i.material-icons note_add
-                            span Add New Post
-                    li.nav-item
-                        a.nav-link.active(href='form-components.html')
-                            i.material-icons view_module
-                            span Forms &amp; Components
-                    li.nav-item
-                        a.nav-link(href='tables.html')
-                            i.material-icons table_chart
-                            span Tables
-                    li.nav-item
-                        a.nav-link(href='user-profile-lite.html')
-                            i.material-icons person
-                            span User Profile
-                    li.nav-item
-                        a.nav-link(href='errors.html')
-                            i.material-icons error
-                            span Errors
-        // End Main Sidebar
-        main.main-content.col-lg-10.col-md-9.col-sm-12.p-0.offset-lg-2.offset-md-3
+    // Main Sidebar
+    aside.main-sidebar.col-12.col-md-3.col-lg-2.px-0
+        .main-navbar
+            nav.navbar.align-items-stretch.navbar-light.bg-white.flex-md-nowrap.border-bottom.p-0
+                a.navbar-brand.w-100.mr-0(href='#' style='line-height: 25px;')
+                    .d-table.m-auto
+                        img#main-logo.d-inline-block.align-top.mr-1(style='max-width: 25px;' src='images/shards-dashboards-logo.svg' alt='Shards Dashboard')
+                        span.d-none.d-md-inline.ml-1 АРМ Администратор
+                a.toggle-sidebar.d-sm-inline.d-md-none.d-lg-none
+                    i.material-icons &#xE5C4;
+        form.main-sidebar__search.w-100.border-right.d-sm-flex.d-md-none.d-lg-none(action='#')
+            .input-group.input-group-seamless.ml-3
+                .input-group-prepend
+                    .input-group-text
+                        i.fas.fa-search
+                input.navbar-search.form-control(type='text' placeholder='Search for something...' aria-label='Поиск')
+        .nav-wrapper
+            ul.nav.flex-column
+                li.nav-item
+                    a.nav-link.active(href='index')
+                        i.material-icons edit
+                        span Главная
+                li.nav-item
+                    a.nav-link.dropdown-toggle(href='servicelist'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                        i.material-icons vertical_split
+                            span Заказ-наряд
+                        .dropdown-menu(aria-labelledby='dropdownMenuLink')
+                            a.dropdown-item(href='servicelist') Посмотреть
+                            a.dropdown-item(href='addservicelist') Создать
+                            a.dropdown-item(href='#') Что-то еще
+
+
+                li.nav-item
+                    a.nav-link.dropdown-toggle(href='servicelist'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                        i.material-icons note_add
+                            span Справочники
+                        .dropdown-menu(aria-labelledby='dropdownMenuLink')
+                            a.dropdown-item(href='clients') Клиенты
+                            a.dropdown-item(href='cars') Автомобили
+                            a.dropdown-item(href='breakdowns') Поломки
+                            a.dropdown-item(href='services') Услуги
+                            a.dropdown-item(href='details') Запчасти
+                li.nav-item
+                    a.nav-link(href='form-components.html')
+                        i.material-icons view_module
+                        span Формы
+                li.nav-item
+                    a.nav-link(href='tables.html')
+                        i.material-icons table_chart
+                        span О сайте
+                //li.nav-item
+                //  a.nav-link(href='user-profile-lite.html')
+                //    i.material-icons person
+                //    span User Profile
+                //li.nav-item
+                //  a.nav-link(href='errors.html')
+                //    i.material-icons error
+                //    span Errors
+    // End Main Sidebar
+    main.main-content.col-lg-10.col-md-9.col-sm-12.p-0.offset-lg-2.offset-md-3
             .main-navbar.sticky-top.bg-white
                 // Main Navbar
                 nav.navbar.align-items-stretch.navbar-light.flex-md-nowrap.p-0
@@ -155,39 +132,15 @@ head
                         a.nav-link.nav-link-icon.toggle-sidebar.d-md-inline.d-lg-none.text-center.border-left(href='#' data-toggle='collapse' data-target='.header-navbar' aria-expanded='false' aria-controls='header-navbar')
                             i.material-icons &#xE5D2;
             // / .main-navbar
-            .alert.alert-accent.alert-dismissible.fade.show.mb-0(role='alert')
-                button.close(type='button' data-dismiss='alert' aria-label='Close')
-                    span(aria-hidden='true') &times;
-                i.fa.fa-info.mx-2
-                strong How you doin&apos;?
-                |  I&apos;m just a friendly, good-looking notification message and I come in all the colors you can see below. Pretty cool, huh?
             .main-content-container.container-fluid.px-4
                 // Page Header
                 .page-header.row.no-gutters.py-4.mb-3.border-bottom
                     .col-12.col-sm-4.text-center.text-sm-left.mb-0
-                        span.text-uppercase.page-subtitle Overview
-                        h3.page-title Forms &amp; Components
+                        h3.page-title Добавление заказ-наряда
                 // End Page Header
-                .row.mb-2
-                    .col-12
-                        span.d-block.mb-2.text-muted(style='font-size: 16px;')
-                            strong Colors
-                    .col.mb-4
-                        .bg-primary.rounded.text-white.text-center.p-3(style='box-shadow: inset 0 0 5px rgba(0,0,0,.2);') Primary
-                    .col.mb-4
-                        .bg-secondary.rounded.text-white.text-center.p-3(style='box-shadow: inset 0 0 5px rgba(0,0,0,.2);') Secondary
-                    .col.mb-4
-                        .bg-success.rounded.text-white.text-center.p-3(style='box-shadow: inset 0 0 5px rgba(0,0,0,.2);') Success
-                    .col.mb-4
-                        .bg-info.rounded.text-white.text-center.p-3(style='box-shadow: inset 0 0 5px rgba(0,0,0,.2);') Info
-                    .col.mb-4
-                        .bg-warning.rounded.text-white.text-center.p-3(style='box-shadow: inset 0 0 5px rgba(0,0,0,.2);') Warning
-                    .col.mb-4
-                        .bg-danger.rounded.text-white.text-center.p-3(style='box-shadow: inset 0 0 5px rgba(0,0,0,.2);') Danger
-                    .col.mb-4
-                        .bg-dark.rounded.text-white.text-center.p-3(style='box-shadow: inset 0 0 5px rgba(0,0,0,.2);') Dark
+
                 .row
-                    .col-lg-8.mb-4
+                    .col-lg-12.mb-4
                         .card.card-small.mb-4
                             .card-header.border-bottom
                                 h6.m-0 Form Inputs
@@ -338,107 +291,48 @@ head
                                                         option(selected='') Choose...
                                                         option ...
                                                     .invalid-feedback Please select your state.
-                    .col-lg-4.mb-4
-                        // Sliders & Progress Bars
-                        .card.card-small.mb-4
-                            .card-header.border-bottom
-                                h6.m-0 Sliders &amp; Progress Bars
-                            ul.list-group.list-group-flush
-                                li.list-group-item.px-3
-                                    // Progress Bars
-                                    .mb-2
-                                        strong.text-muted.d-block.mb-3 Progress Bars
-                                        .progress.progress-sm.mb-3
-                                            #progress-bar-example-1.progress-bar(role='progressbar' style='width: 20%' aria-valuenow='20' aria-valuemin='0' aria-valuemax='100')
-                                        .progress.progress-sm.mb-3
-                                            #progress-bar-example-2.progress-bar.bg-info(role='progressbar' style='width: 40%' aria-valuenow='40' aria-valuemin='0' aria-valuemax='100')
-                                        .progress.progress-sm.mb-3
-                                            #progress-bar-example-3.progress-bar.bg-danger(role='progressbar' style='width: 60%' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100')
-                                        .progress.progress-sm
-                                            #progress-bar-example-4.progress-bar.bg-warning(role='progressbar' style='width: 80%' aria-valuenow='80' aria-valuemin='0' aria-valuemax='100')
-                                    // / Progress Bars
-                                li.list-group-item.px-3
-                                    // Sliders
-                                    .mb-2
-                                        strong.text-muted.d-block Custom Sliders
-                                        #slider-example-1.slider-success.my-4
-                                            input.custom-slider-input(type='hidden')
-                                            input.custom-slider-input(type='hidden')
-                                        #slider-example-2.slider-info.my-4
-                                            input.custom-slider-input(type='hidden')
-                                            input.custom-slider-input(type='hidden')
-                                        #slider-example-3.mt-4
-                                            input.custom-slider-input(type='hidden')
-                                            input.custom-slider-input(type='hidden')
-                                    // / Sliders
-                        // / Sliders & Progress Bars
-                        // Input & Button Groups
-                        .card.card-small.mb-4
-                            .card-header.border-bottom
-                                h6.m-0 Groups
-                            ul.list-group.list-group-flush
-                                li.list-group-item.px-3
-                                    form
-                                        // Button Groups
-                                        strong.text-muted.d-block.mb-2 Button Groups
-                                        .btn-group.btn-group-toggle.mb-3(data-toggle='buttons')
-                                            label.btn.btn-white.active
-                                                input#option1(type='radio' name='options' autocomplete='off' checked='')
-                                                |  Fizz
-                                            label.btn.btn-white
-                                                input#option2(type='radio' name='options' autocomplete='off')
-                                                |  Buzz
-                                            label.btn.btn-white
-                                                input#option3(type='radio' name='options' autocomplete='off')
-                                                |  Foo
-                                            label.btn.btn-white
-                                                input#option4(type='radio' name='options' autocomplete='off')
-                                                |  Bar
-                                        // / Button Groups
-                                        // Input Groups
-                                        strong.text-muted.d-block.mb-2 Input Groups
-                                        .input-group.mb-3
-                                            .input-group-prepend
-                                                span.input-group-text @
-                                            input.form-control(type='text' placeholder='Username' aria-label='Username' aria-describedby='basic-addon1')
-                                        .input-group.mb-3
-                                            input.form-control(type='text' placeholder='' aria-label='' aria-describedby='basic-addon2' value='contact')
-                                            .input-group-append
-                                                span.input-group-text @designrevision.com
-                                        .input-group.mb-3
-                                            .input-group-prepend
-                                                span.input-group-text $
-                                            input.form-control(type='text' aria-label='Amount (to the nearest dollar)' value='1000')
-                                            .input-group-append
-                                                span.input-group-text .00
-                                        // Input Groups
-                                        // Seamless Input Groups
-                                        strong.text-muted.d-block.mb-2 Seamless Input Groups
-                                        .input-group.mb-3
-                                            .input-group.input-group-seamless
-                                                span.input-group-prepend
-                                                    span.input-group-text
-                                                        i.material-icons person
-                                                input#form1-username.form-control(type='text' placeholder='Username' value='design.revision')
-                                        .input-group.mb-3
-                                            .input-group.input-group-seamless
-                                                input#form2-password.form-control(type='password' placeholder='Password' value='mySuperSecretPa$$word')
-                                                span.input-group-append
-                                                    span.input-group-text
-                                                        i.material-icons lock
-                                        // / Seamless Input Groups
-                                        // Input/Button Group
-                                        .input-group.mb-3
-                                            input.form-control(type='text' placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby='basic-addon2')
-                                            .input-group-append
-                                                button.btn.btn-white(type='button') Button
-                                        // / Input/Button Group
-                                        // Input/Button Group
-                                        .input-group.mb-3
-                                            .input-group-prepend
-                                                button.btn.btn-white(type='button') Button
-                                            input.form-control(type='text' placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby='basic-addon2')
-                                        // / Input/Button Group
+                    .col-lg-12.mb-4
+                        .row
+                            .col
+                                .card.card-small.mb-4
+                                    .card-header.border-bottom
+                                        h6.m-0 Услуги
+                                    .card-body.p-0.pb-3.text-center
+                                        table.table.mb-0
+                                            thead.bg-light.text-primary
+                                                tr
+                                                    th.border-0(scope='col') #
+                                                    th.border-0(scope='col') Название
+                                                    th.border-0(scope='col') Тип
+                                                    th.border-0(scope='col') Стоимость
+                    .col-lg-12.mb-4
+                        .row
+                            .col
+                                .card.card-small.mb-4
+                                    .card-header.border-bottom
+                                        h6.m-0 Поломки
+                                    .card-body.p-0.pb-3.text-center
+                                        table.table.mb-0
+                                            thead.bg-light.text-primary
+                                                tr
+                                                    th.border-0(scope='col') #
+                                                    th.border-0(scope='col') Название
+                                                    th.border-0(scope='col') Тип
+                                                    th.border-0(scope='col') Стоимость
+                    .col-lg-12.mb-4
+                        .row
+                            .col
+                                .card.card-small.mb-4
+                                    .card-header.border-bottom
+                                        h6.m-0 Детали
+                                    .card-body.p-0.pb-3.text-center
+                                        table.table.mb-0
+                                            thead.bg-light.text-primary
+                                                tr
+                                                    th.border-0(scope='col') #
+                                                    th.border-0(scope='col') Название
+                                                    th.border-0(scope='col') количество
+                                                    th.border-0(scope='col') Стоимость
                         // / Input & Button Groups
             footer.main-footer.d-flex.p-2.px-3.bg-white.border-top
                 ul.nav
@@ -455,19 +349,7 @@ head
                 span.copyright.ml-auto.my-auto.mr-2
                     | Copyright &copy; 2018
                     a(href='https://designrevision.com' rel='nofollow') DesignRevision
-.promo-popup.animated
-    a.pp-cta.extra-action(href='http://bit.ly/shards-dashboard-pro')
-        img(src='https://dgc2qnsehk7ta.cloudfront.net/uploads/sd-blog-promo-2.jpg')
-    .pp-intro-bar
-        | Need More Templates?
-        span.close
-            i.material-icons close
-        span.up
-            i.material-icons keyboard_arrow_up
-    .pp-inner-content
-        h2 Shards Dashboard Pro
-        p A premium &amp; modern Bootstrap 4 admin dashboard template pack.
-        a.pp-cta.extra-action(href='http://bit.ly/shards-dashboard-pro') Download
+
 script(src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous')
 script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous')
