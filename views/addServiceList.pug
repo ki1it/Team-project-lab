@@ -143,154 +143,58 @@ head
                     .col-lg-12.mb-4
                         .card.card-small.mb-4
                             .card-header.border-bottom
-                                h6.m-0 Form Inputs
+                                h6.m-0 Основные поля
+
                             ul.list-group.list-group-flush
-                                li.list-group-item.p-0.px-3.pt-3
-                                    .row
-                                        .col-sm-12.col-md-4.mb-3
-                                            // Checkboxes
-                                            strong.text-muted.d-block.mb-2 Checkboxes
-                                            fieldset
-                                                .custom-control.custom-checkbox.mb-1
-                                                    input#formsCheckboxDefault.custom-control-input(type='checkbox')
-                                                    label.custom-control-label(for='formsCheckboxDefault') Default
-                                                .custom-control.custom-checkbox.mb-1
-                                                    input#formsCheckboxChecked.custom-control-input(type='checkbox' checked='')
-                                                    label.custom-control-label(for='formsCheckboxChecked') Checked
-                                                .custom-control.custom-checkbox.mb-1
-                                                    input#formsCheckboxDisabled.custom-control-input(type='checkbox' disabled='')
-                                                    label.custom-control-label(for='formsCheckboxDisabled') Disabled
-                                                .custom-control.custom-checkbox.mb-1
-                                                    input#formsCheckboxDisabledChecked.custom-control-input(type='checkbox' disabled='' checked='')
-                                                    label.custom-control-label(for='formsCheckboxDisabledChecked') Disabled Checked
-                                            // / Checkboxes
-                                        .col-sm-12.col-md-4.mb-3
-                                            // Radios
-                                            strong.text-muted.d-block.mb-2 Radio Buttons
-                                            fieldset
-                                                .custom-control.custom-radio.mb-1
-                                                    input#formsRadioDefault.custom-control-input(type='radio' name='formsRadioDefault')
-                                                    label.custom-control-label(for='formsRadioDefault') Default
-                                                .custom-control.custom-radio.mb-1
-                                                    input#formsRadioChecked.custom-control-input(type='radio' name='formsRadioChecked' checked='')
-                                                    label.custom-control-label(for='formsRadioChecked') Checked
-                                                .custom-control.custom-radio.mb-1
-                                                    input#formsRadioDisabled.custom-control-input(type='radio' name='formsRadioDisabled' disabled='')
-                                                    label.custom-control-label(for='formsRadioDisabled') Disabled
-                                                .custom-control.custom-radio.mb-1
-                                                    input#formsRadioDisabledChecked.custom-control-input(type='radio' name='formsRadioDisabledChecked' disabled='' checked='')
-                                                    label.custom-control-label(for='formsRadioDisabledChecked') Disabled Checked
-                                            // / Radios
-                                        .col-sm-12.col-md-4.mb-3
-                                            // Toggles
-                                            fieldset
-                                                strong.text-muted.d-block.mb-2 Toggle Switches
-                                                .custom-control.custom-toggle.custom-toggle-sm.mb-1
-                                                    input#customToggle1.custom-control-input(type='checkbox' name='customToggle1')
-                                                    label.custom-control-label(for='customToggle1') Default
-                                                .custom-control.custom-toggle.custom-toggle-sm.mb-1
-                                                    input#customToggle2.custom-control-input(type='checkbox' name='customToggle2' checked='checked')
-                                                    label.custom-control-label(for='customToggle2') Checked
-                                                .custom-control.custom-toggle.custom-toggle-sm.mb-1
-                                                    input#customToggle3.custom-control-input(type='checkbox' name='customToggle3' disabled='disabled')
-                                                    label.custom-control-label(for='customToggle3') Disabled
-                                                .custom-control.custom-toggle.custom-toggle-sm.mb-1
-                                                    input#customToggle4.custom-control-input(type='checkbox' name='customToggle4' checked='checked' disabled='disabled')
-                                                    label.custom-control-label(for='customToggle4') Disabled Checked
-                                            // / Toggles
-                                li.list-group-item.p-3
-                                    // Small Buttons
-                                    strong.text-muted.d-block.my-2 Small Buttons
-                                    .row.mb-3
-                                        .col
-                                            button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') Primary
-                                            button.mb-2.btn.btn-sm.btn-secondary.mr-1(type='button') Secondary
-                                            button.mb-2.btn.btn-sm.btn-success.mr-1(type='button') Success
-                                            button.mb-2.btn.btn-sm.btn-danger.mr-1(type='button') Danger
-                                            button.mb-2.btn.btn-sm.btn-warning.mr-1(type='button') Warning
-                                            button.mb-2.btn.btn-sm.btn-info.mr-1(type='button') Info
-                                            button.mb-2.btn.btn-sm.btn-dark.mr-1(type='button') Dark
-                                            button.mb-2.btn.btn-sm.btn-white.mr-1(type='button') White
-                                    // / Small Buttons
-                                    // Small Outline Buttons
-                                    strong.text-muted.d-block.mb-2 Small Outline Buttons
-                                    .row
-                                        .col
-                                            button.mb-2.btn.btn-sm.btn-outline-primary.mr-1(type='button') Primary
-                                            button.mb-2.btn.btn-sm.btn-outline-secondary.mr-1(type='button') Secondary
-                                            button.mb-2.btn.btn-sm.btn-outline-success.mr-1(type='button') Success
-                                            button.mb-2.btn.btn-sm.btn-outline-danger.mr-1(type='button') Danger
-                                            button.mb-2.btn.btn-sm.btn-outline-warning.mr-1(type='button') Warning
-                                            button.mb-2.btn.btn-sm.btn-outline-info.mr-1(type='button') Info
-                                            button.mb-2.btn.btn-sm.btn-outline-dark.mr-1(type='button') Dark
-                                            button.mb-2.btn.btn-sm.btn-outline-light.mr-1(type='button') Light
-                                    // / Small Outline Buttons
-                                li.list-group-item.p-3
-                                    // Normal Buttons
-                                    strong.text-muted.d-block.my-2 Normal Buttons
-                                    .row.mb-3
-                                        .col
-                                            button.mb-2.btn.btn-primary.mr-2(type='button') Primary
-                                            button.mb-2.btn.btn-secondary.mr-2(type='button') Secondary
-                                            button.mb-2.btn.btn-success.mr-2(type='button') Success
-                                            button.mb-2.btn.btn-danger.mr-2(type='button') Danger
-                                            button.mb-2.btn.btn-warning.mr-2(type='button') Warning
-                                            button.mb-2.btn.btn-info.mr-2(type='button') Info
-                                            button.mb-2.btn.btn-dark.mr-2(type='button') Dark
-                                            button.mb-2.btn.btn-white.mr-2(type='button') White
-                                    // / Normal Buttons
-                                    // Normal Outline Buttons
-                                    strong.text-muted.d-block.mb-2 Normal Outline Buttons
-                                    .row
-                                        .col
-                                            button.mb-2.btn.btn-outline-primary.mr-2(type='button') Primary
-                                            button.mb-2.btn.btn-outline-secondary.mr-2(type='button') Secondary
-                                            button.mb-2.btn.btn-outline-success.mr-2(type='button') Success
-                                            button.mb-2.btn.btn-outline-danger.mr-2(type='button') Danger
-                                            button.mb-2.btn.btn-outline-warning.mr-2(type='button') Warning
-                                            button.mb-2.btn.btn-outline-info.mr-2(type='button') Info
-                                            button.mb-2.btn.btn-outline-dark.mr-2(type='button') Dark
-                                            button.mb-2.btn.btn-outline-light.mr-2(type='button') Light
-                                    // / Normal Outline Buttons
+
                                 li.list-group-item.p-3
                                     .row
-                                        .col-sm-12.col-md-6
-                                            strong.text-muted.d-block.mb-2 Forms
+                                        .col-sm-12.col-md-4
+                                            strong.text-muted.d-block.mb-2 Дата открытия
                                             form
                                                 .form-group
-                                                    .input-group.mb-3
-                                                        .input-group-prepend
-                                                            span#basic-addon1.input-group-text @
-                                                        input.form-control(type='text' placeholder='Username' aria-label='Username' aria-describedby='basic-addon1')
-                                                .form-group
-                                                    input#inputPassword4.form-control(type='password' placeholder='Password' value='myCoolPassword')
-                                                .form-group
-                                                    input#inputAddress.form-control(type='text' placeholder='1234 Main St' value='7898 Kensington Junction, New York, USA')
-                                                .form-row
-                                                    .form-group.col-md-7
-                                                        input#inputCity.form-control(type='text' value='New York')
-                                                    .form-group.col-md-5
-                                                        select#inputState.form-control
-                                                            option(selected='') Choose...
-                                                            option ...
-                                        .col-sm-12.col-md-6
-                                            strong.text-muted.d-block.mb-2 Form Validation
+                                                    input#inputDataOpen.form-control(type='text')
+                                        .col-sm-12.col-md-4
+                                            strong.text-muted.d-block.mb-2 Дата закрытия
                                             form
-                                                .form-row
-                                                    .form-group.col-md-6
-                                                        input#validationServer01.form-control.is-valid(type='text' placeholder='First name' value='Catalin' required='')
-                                                        .valid-feedback The first name looks good!
-                                                    .form-group.col-md-6
-                                                        input#validationServer02.form-control.is-valid(type='text' placeholder='Last name' value='Vasile' required='')
-                                                        .valid-feedback The last name looks good!
                                                 .form-group
-                                                    input#validationServer03.form-control.is-invalid(type='text' placeholder='Username' value='catalin.vasile' required='')
-                                                    .invalid-feedback This username is taken.
+                                                    input#inputDataClose.form-control(type='text')
+                                        .col-sm-12.col-md-4
+                                            strong.text-muted.d-block.mb-2 Статус
+                                            form
                                                 .form-group
-                                                    select.form-control.is-invalid
-                                                        option(selected='') Choose...
+                                                    select#inputStatus.form-control
+                                                        option(selected='') Статус...
                                                         option ...
-                                                    .invalid-feedback Please select your state.
+                                li.list-group-item.p-3
+                                    .row
+                                        .col-sm-12
+                                            strong.text-muted.d-block.mb-2 Клиент
+                                                form
+                                                    .form-group
+                                                        select#inputClient.form-control
+                                                            option(selected='') Клиент...
+                                                            option ...
+                                        .col-sm-12
+                                            strong.text-muted.d-block.mb-2 Машина
+                                                form
+                                                    .form-group
+                                                        select#inputCar.form-control
+                                                            option(selected='') Машиана...
+                                                            option ...
+                                li.list-group-item.p-3
+                                    .row
+                                        .col-sm-12
+                                            strong.text-muted.d-block.mb-2 Описание
+                                                form
+                                                    .form-group
+                                                        textarea#inputDescription.form-control(cols='103%')
+                                        .col-sm-12
+                                            strong.text-muted.d-block.mb-2 Заметки
+                                                form
+                                                    .form-group
+                                                        textarea#inputMarkup.form-control(cols='103%')
+
                     .col-lg-12.mb-4
                         .row
                             .col
