@@ -12,6 +12,9 @@ const Detail = sequelize.define('Detail', {
 },
   EdIzmerFK:{
     type: Sequelize.INTEGER,
+  },
+  Price:{
+    type: Sequelize.INTEGER,
   }
 });
 
