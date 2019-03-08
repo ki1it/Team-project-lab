@@ -37,6 +37,10 @@ const ServiceList = sequelize.define('ServiceList', {
   CloseDate:{
     type: Sequelize.DATE
   },
+  Price:{
+    type: Sequelize.INTEGER,
+  }
+
 });
 
 module.exports = ServiceList;

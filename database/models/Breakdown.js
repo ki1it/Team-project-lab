@@ -9,6 +9,9 @@ const Breakdown = sequelize.define('Breakdown', {
   },
   Type:{
     type: Sequelize.INTEGER,
+  },
+  Price:{
+    type: Sequelize.INTEGER,
   }
 });
 
