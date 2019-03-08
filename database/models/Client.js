@@ -19,6 +19,7 @@ const Client = sequelize.define('Client', {
   },
   DLNumber:{
     type: Sequelize.INTEGER,
+    unique: true
   },
   Adress:{
     type: Sequelize.TEXT,
