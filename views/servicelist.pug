@@ -11,6 +11,13 @@ head
     link#main-stylesheet(rel='stylesheet' data-version='1.1.0' href='styles/shards-dashboards.1.1.0.min.css')
     link(rel='stylesheet' href='styles/extras.1.1.0.min.css')
     script(async='' defer='' src='https://buttons.github.io/buttons.js')
+    - var i=0;
+        mixin rowsTable(id, date, status)
+            tr
+
+                td #{id}
+                td #{date}
+                td #{status}
 .color-switcher.animated
     h5 Accent Color
     ul.accent-colors
@@ -67,33 +74,37 @@ head
             .nav-wrapper
                 ul.nav.flex-column
                     li.nav-item
-                        a.nav-link(href='index.html')
+                        a.nav-link(href='index')
                             i.material-icons edit
-                            span Blog Dashboard
+                            span Главная
                     li.nav-item
-                        a.nav-link(href='components-blog-posts.html')
+                        a.nav-link.active.dropdown-toggle(href='servicelist'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
                             i.material-icons vertical_split
-                            span Blog Posts
+                                span Заказ-наряд
+                            .dropdown-menu(aria-labelledby='dropdownMenuLink')
+                                a.dropdown-item(href='servicelist') Посмотреть
+                                a.dropdown-item(href='addservicelist') Создать
+                                a.dropdown-item(href='#') Что-то еще
+
+
                     li.nav-item
-                        a.nav-link(href='add-new-post.html')
+                        a.nav-link.dropdown-toggle(href='servicelist'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
                             i.material-icons note_add
-                            span Add New Post
+                                span Справочники
+                            .dropdown-menu(aria-labelledby='dropdownMenuLink')
+                                a.dropdown-item(href='clients') Клиенты
+                                a.dropdown-item(href='cars') Автомобили
+                                a.dropdown-item(href='breakdowns') Поломки
+                                a.dropdown-item(href='services') Услуги
+                                a.dropdown-item(href='details') Запчасти
                     li.nav-item
                         a.nav-link(href='form-components.html')
                             i.material-icons view_module
-                            span Forms &amp; Components
+                            span Формы
                     li.nav-item
-                        a.nav-link.active(href='tables.html')
+                        a.nav-link(href='tables.html')
                             i.material-icons table_chart
-                            span Tables
-                    li.nav-item
-                        a.nav-link(href='user-profile-lite.html')
-                            i.material-icons person
-                            span User Profile
-                    li.nav-item
-                        a.nav-link(href='errors.html')
-                            i.material-icons error
-                            span Errors
+                            span О сайте
         // End Main Sidebar
         main.main-content.col-lg-10.col-md-9.col-sm-12.p-0.offset-lg-2.offset-md-3
             .main-navbar.sticky-top.bg-white
@@ -167,10 +178,10 @@ head
                     .col
                         .card.card-small.mb-4
                             .card-header.border-bottom
-                                h6.m-0 Active Users
+                                h6.m-0 Заказ-наряд
                             .card-body.p-0.pb-3.text-center
                                 table.table.mb-0
-                                    thead.bg-light
+                                    thead.bg-light.text-primary
                                         tr
                                             th.border-0(scope='col') #
                                             th.border-0(scope='col') First Name
@@ -179,81 +190,55 @@ head
                                             th.border-0(scope='col') City
                                             th.border-0(scope='col') Phone
                                     tbody
-                                        tr
-                                            td 1
-                                            td Ali
-                                            td Kerry
-                                            td Russian Federation
-                                            td Gda&nacute;sk
-                                            td 107-0339
-                                        tr
-                                            td 2
-                                            td Clark
-                                            td Angela
-                                            td Estonia
-                                            td Borghetto di Vara
-                                            td 1-660-850-1647
-                                        tr
-                                            td 3
-                                            td Jerry
-                                            td Nathan
-                                            td Cyprus
-                                            td Braunau am Inn
-                                            td 214-4225
-                                        tr
-                                            td 4
-                                            td Colt
-                                            td Angela
-                                            td Liberia
-                                            td Bad Hersfeld
-                                            td 1-848-473-7416
-                // End Default Light Table
-                // Default Dark Table
-                .row
-                    .col
-                        .card.card-small.overflow-hidden.mb-4
-                            .card-header.bg-dark
-                                h6.m-0.text-white Inactive Users
-                            .card-body.p-0.pb-3.bg-dark.text-center
-                                table.table.table-dark.mb-0
-                                    thead.thead-dark
-                                        tr
-                                            th.border-bottom-0(scope='col') #
-                                            th.border-bottom-0(scope='col') First Name
-                                            th.border-bottom-0(scope='col') Last Name
-                                            th.border-bottom-0(scope='col') Country
-                                            th.border-bottom-0(scope='col') City
-                                            th.border-bottom-0(scope='col') Phone
-                                    tbody
-                                        tr
-                                            td 1
-                                            td Graham
-                                            td Brent
-                                            td Benin
-                                            td Ripabottoni
-                                            td 1-512-760-9094
-                                        tr
-                                            td 2
-                                            td Clark
-                                            td Angela
-                                            td Estonia
-                                            td Borghetto di Vara
-                                            td 1-660-850-1647
-                                        tr
-                                            td 3
-                                            td Wylie
-                                            td Joseph
-                                            td Korea, North
-                                            td Guelph
-                                            td 325-4351
-                                        tr
-                                            td 4
-                                            td Garth
-                                            td Clementine
-                                            td Indonesia
-                                            td Narcao
-                                            td 722-8264
-                // End Default Dark Table
+                                        -for (let i = 0; i < servicelist.length; i++)
+                                            +rowsTable(servicelist[i].dataValues.id)
+                //// End Default Light Table
+                //// Default Dark Table
+                //.row
+                //    .col
+                //        .card.card-small.overflow-hidden.mb-4
+                //            .card-header.bg-dark
+                //                h6.m-0.text-white Inactive Users
+                //            .card-body.p-0.pb-3.bg-dark.text-center
+                //                table.table.table-dark.mb-0
+                //                    thead.thead-dark
+                //                        tr
+                //                            th.border-bottom-0(scope='col') #
+                //                            th.border-bottom-0(scope='col') First Name
+                //                            th.border-bottom-0(scope='col') Last Name
+                //                            th.border-bottom-0(scope='col') Country
+                //                            th.border-bottom-0(scope='col') City
+                //                            th.border-bottom-0(scope='col') Phone
+                //                    tbody
+                //                        tr
+                //                            td 1
+                //                            td Graham
+                //                            td Brent
+                //                            td Benin
+                //                            td Ripabottoni
+                //                            td 1-512-760-9094
+                //                        tr
+                //                            td 2
+                //                            td Clark
+                //                            td Angela
+                //                            td Estonia
+                //                            td Borghetto di Vara
+                //                            td 1-660-850-1647
+                //                        tr
+                //                            td 3
+                //                            td Wylie
+                //                            td Joseph
+                //                            td Korea, North
+                //                            td Guelph
+                //                            td 325-4351
+                //                        tr
+                //                            td 4
+                //                            td Garth
+                //                            td Clementine
+                //                            td Indonesia
+                //                            td Narcao
+                //                            td 722-8264
+                //// End Default Dark Table
             footer.main-footer.d-flex.p-2.px-3.bg-white.border-top
                 ul.nav
                     li.nav-item

@@ -67,17 +67,17 @@ head
       .nav-wrapper
         ul.nav.flex-column
           li.nav-item
-            a.nav-link.active(href='index.html')
+            a.nav-link.active(href='index')
               i.material-icons edit
               span Главная
           li.nav-item
-              a.nav-link.dropdown-toggle(href='servicelist'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-                i.material-icons vertical_split
-                  span Заказ-наряды
-                .dropdown-menu(aria-labelledby='dropdownMenuLink')
-                  a.dropdown-item(href='#') Посмотреть
-                  a.dropdown-item(href='#') Создать
-                  a.dropdown-item(href='#') Что-то еще
+            a.nav-link.dropdown-toggle(href='servicelist'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              i.material-icons vertical_split
+                span Заказ-наряд
+              .dropdown-menu(aria-labelledby='dropdownMenuLink')
+                a.dropdown-item(href='servicelist') Посмотреть
+                a.dropdown-item(href='addservicelist') Создать
+                a.dropdown-item(href='#') Что-то еще
 
 
           li.nav-item
@@ -85,11 +85,11 @@ head
               i.material-icons note_add
                 span Справочники
               .dropdown-menu(aria-labelledby='dropdownMenuLink')
-                a.dropdown-item(href='#') Клиенты
-                a.dropdown-item(href='#') Автомобили
-                a.dropdown-item(href='#') Поломки
-                a.dropdown-item(href='#') Услуги
-                a.dropdown-item(href='#') Запчасти
+                a.dropdown-item(href='clients') Клиенты
+                a.dropdown-item(href='cars') Автомобили
+                a.dropdown-item(href='breakdowns') Поломки
+                a.dropdown-item(href='services') Услуги
+                a.dropdown-item(href='details') Запчасти
           li.nav-item
             a.nav-link(href='form-components.html')
               i.material-icons view_module
