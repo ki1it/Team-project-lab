@@ -207,13 +207,13 @@ app.use('/minsklad',async function (req, res) {
 })
 
 app.use('/addClient', async function (req, res) {
-  await Client.create({
-    FirstName: req.body.firstName,
-    SecondName: req.body.secondName,
-    Patronymic: req.body.patronymic,
-    PhoneNumber: req.body.phone,
-    Birthday: moment(req.body.calendar, 'YYYY-MM-DD').startOf('day')
-  })
+  // await Client.create({
+  //   FirstName: req.body.firstName,
+  //   SecondName: req.body.secondName,
+  //   Patronymic: req.body.patronymic,
+  //   PhoneNumber: req.body.phone,
+  //   Birthday: moment(req.body.calendar, 'YYYY-MM-DD').startOf('day')
+  // })
   res.redirect(req.headers.referer)
 })
 
