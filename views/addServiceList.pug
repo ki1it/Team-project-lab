@@ -44,7 +44,6 @@ head
                             a.dropdown-item(href='addservicelist') Создать
                             a.dropdown-item(href='#') Что-то еще
 
-
                 li.nav-item
                     a.nav-link.dropdown-toggle(href='servicelist'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
                         i.material-icons note_add
@@ -168,20 +167,26 @@ head
                                                             option ...
                                     li.list-group-item.p-3
                                         .row
-                                            .col-sm-12
+                                            .col-sm-12.col
                                                 strong.text-muted.d-block.mb-2 Клиент
-
-                                                        .form-group
-                                                            select.form-control(name="inputClient")
-                                                                option(selected='') Клиент...
-                                                                option ...
+                                                    .row
+                                                        .col-sm-12.col-md-11
+                                                            .form-group
+                                                                select.form-control(name="inputClient")
+                                                                    option(selected='') Клиент...
+                                                                    option ...
+                                                        .col-sm-12.col-md-1
+                                                            button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
                                             .col-sm-12
                                                 strong.text-muted.d-block.mb-2 Машина
-
-                                                        .form-group
-                                                            select.form-control(name="inputCar")
-                                                                option(selected='') Машиана...
-                                                                option ...
+                                                    .row
+                                                        .col-sm-12.col-md-11
+                                                            .form-group
+                                                                select.form-control(name="inputCar")
+                                                                    option(selected='') Машиана...
+                                                                    option ...
+                                                        .col-sm-12.col-md-1
+                                                            button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
                                     li.list-group-item.p-3
                                         .row
                                             .col-sm-12
@@ -194,67 +199,66 @@ head
 
                                                     .form-group
                                                         textarea#inputMarkup.form-control(cols='103%')
-
-                                    .col-lg-12.mb-4
+                                    li.list-group-item.p-3
                                         .row
-                                            .col
-                                                .card.card-small.mb-4
-                                                    .card-header.border-bottom
-                                                        .row
-                                                            .col-sm-12.col-md-11
-                                                                h6.m-0 Услуги
-                                                            .col-sm-12.col-md-1
-                                                                button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
-                                                        .card-body.p-0.pb-3.text-center
-                                                    .card-body.p-0.pb-3.text-center
-                                                        table.table.mb-0
-                                                            thead.bg-light.text-primary
-                                                                tr
-                                                                    th.border-0(scope='col') #
-                                                                    th.border-0(scope='col') Название
-                                                                    th.border-0(scope='col') Тип
-                                                                    th.border-0(scope='col') Стоимость
-                                    .col-lg-12.mb-4
-                                        .row
-                                            .col
-                                                .card.card-small.mb-4
-                                                    .card-header.border-bottom
-                                                        .row
-                                                            .col-sm-12.col-md-11
-                                                                h6.m-0 Поломки
-                                                            .col-sm-12.col-md-1
-                                                                button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
-                                                        .card-body.p-0.pb-3.text-center
-                                                    .card-body.p-0.pb-3.text-center
-                                                        table.table.mb-0
-                                                            thead.bg-light.text-primary
-                                                                tr
-                                                                    th.border-0(scope='col') #
-                                                                    th.border-0(scope='col') Название
-                                                                    th.border-0(scope='col') Тип
-                                                                    th.border-0(scope='col') Стоимость
-                                    .col-lg-12.mb-4
-                                        .row
-                                            .col
-                                                .card.card-small.mb-4
-                                                    .card-header.border-bottom
-                                                        .row
-                                                            .col-sm-12.col-md-11
-                                                                h6.m-0 Детали
-                                                            .col-sm-12.col-md-1
-                                                                button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
-                                                    .card-body.p-0.pb-3.text-center
-                                                        table.table.mb-0
-                                                            thead.bg-light.text-primary
-                                                                tr
-                                                                    th.border-0(scope='col') #
-                                                                    th.border-0(scope='col') Название
-                                                                    th.border-0(scope='col') количество
-                                                                    th.border-0(scope='col') Стоимость
-                                    .col-lg-12.mb-4
-                                        .row
-                                            .col
-                                                button.btn.btn-primary.btn-lg.btn-block(type="submit" href="/addservicelist" ) Добавить
+                                            .col-lg-12.mb-4
+                                                .row
+                                                    .col
+                                                        .card.card-small.mb-4
+                                                            .card-header.border-bottom
+                                                                .row
+                                                                    .col-sm-12.col-md-11
+                                                                        h6.m-0 Услуги
+                                                                    .col-sm-12.col-md-1
+                                                                        button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
+                                                            .card-body.p-0.pb-3.text-center
+                                                                table.table.mb-0
+                                                                    thead.bg-light.text-primary
+                                                                        tr
+                                                                            th.border-0(scope='col') #
+                                                                            th.border-0(scope='col') Название
+                                                                            th.border-0(scope='col') Тип
+                                                                            th.border-0(scope='col') Стоимость
+                                            .col-lg-12.mb-4
+                                                .row
+                                                    .col
+                                                        .card.card-small.mb-4
+                                                            .card-header.border-bottom
+                                                                .row
+                                                                    .col-sm-12.col-md-11
+                                                                        h6.m-0 Поломки
+                                                                    .col-sm-12.col-md-1
+                                                                        button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
+                                                            .card-body.p-0.pb-3.text-center
+                                                                table.table.mb-0
+                                                                    thead.bg-light.text-primary
+                                                                        tr
+                                                                            th.border-0(scope='col') #
+                                                                            th.border-0(scope='col') Название
+                                                                            th.border-0(scope='col') Тип
+                                                                            th.border-0(scope='col') Стоимость
+                                            .col-lg-12.mb-4
+                                                .row
+                                                    .col
+                                                        .card.card-small.mb-4
+                                                            .card-header.border-bottom
+                                                                .row
+                                                                    .col-sm-12.col-md-11
+                                                                        h6.m-0 Детали
+                                                                    .col-sm-12.col-md-1
+                                                                        button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
+                                                            .card-body.p-0.pb-3.text-center
+                                                                table.table.mb-0
+                                                                    thead.bg-light.text-primary
+                                                                        tr
+                                                                            th.border-0(scope='col') #
+                                                                            th.border-0(scope='col') Название
+                                                                            th.border-0(scope='col') количество
+                                                                            th.border-0(scope='col') Стоимость
+                                            .col-lg-12.mb-4
+                                                .row
+                                                    .col
+                                                        button.btn.btn-primary.btn-lg.btn-block(type="submit" href="/addservicelist" ) Добавить
 
                         // / Input & Button Groups
             footer.main-footer.d-flex.p-2.px-3.bg-white.border-top

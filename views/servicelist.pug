@@ -31,7 +31,7 @@ head
                         a.dropdown-item(href='#' onclick="$.ajax({type: 'POST', url: '/', data: 'id=" + id + "', })") Удалить
                         a.dropdown-item(href='#' onclick="$.ajax({type: 'POST', url: '/', data: 'id="+id+"', })" ) Изменить
 
-.color-switcher.animated
+//.color-switcher.animated
     h5 Accent Color
     ul.accent-colors
         li.accent-primary.active(data-color='primary')
@@ -64,7 +64,7 @@ head
             .spinner
     .close
         i.material-icons close
-.color-switcher-toggle.animated.pulse.infinite
+//.color-switcher-toggle.animated.pulse.infinite
     i.material-icons settings
 .container-fluid
     .row
@@ -173,16 +173,25 @@ head
                 // Page Header
                 .page-header.row.no-gutters.py-4
                     .col-12.col-sm-4.text-center.text-sm-left.mb-0
-                        span.text-uppercase.page-subtitle Overview
-                        h3.page-title Data Tables
+                        //span.text-uppercase.page-subtitle Overview
+                        h3.page-title Заказ-наряд
                 // End Page Header
                 // Default Light Table
                 .row
                     .col
                         .card.card-small.mb-4
                             .card-header.border-bottom
-                                h6.m-0 Заказ-наряд
-                            .input-group.input-group-seamless.ml-3
+                                //h6.m-0 Заказ-наряд
+                                .row
+                                    //.col-sm-12.col-md-12
+                                        h6.m-0 Заказ-наряд
+                                    .col-sm-12.col-md-12
+                                        .input-group.input-group-seamless
+                                            .input-group-prepend
+                                                .input-group-text
+                                                    i.fas.fa-search
+                                            input.navbar-search.form-control(type='text' placeholder='поиск' aria-label='Search')
+                            //.input-group.input-group-seamless.ml-3
                                 .input-group-prepend
                                     .input-group-text
                                         i.fas.fa-search
@@ -262,7 +271,7 @@ head
                         a.nav-link(href='#') Blog
                 span.copyright.ml-auto.my-auto.mr-2
                     Copyright &copy; 2019 ki1it&ma-daria
-.promo-popup.animated
+//.promo-popup.animated
     a.pp-cta.extra-action(href='http://bit.ly/shards-dashboard-pro')
         img(src='https://dgc2qnsehk7ta.cloudfront.net/uploads/sd-blog-promo-2.jpg')
     .pp-intro-bar
