@@ -18,6 +18,7 @@ var zadachiRouter = require('./routes/zadachi')
 var workersRouter = require('./routes/workers')
 var zadRouter = require('./routes/zadForWorker')
 var workOrderListRouter = require('./routes/workOrderList')
+var addCarRouter = require('./routes/addCar')
 var app = express();
 //auth part
 var bodyParser = require('body-parser');
@@ -161,6 +162,7 @@ app.use('/zadachi', zadachiRouter)
 app.use('/workers', workersRouter)
 app.use('/zadForWorker', zadRouter)
 app.use('/workOrderList', workOrderListRouter)
+app.use('/addCar', addCarRouter)
 
 
 const Client = require('./database/models/Client')
