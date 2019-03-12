@@ -1,18 +1,22 @@
 var express = require('express')
 var router = express.Router()
-const Wagon = require('../database/models/Car')
-
+const Car = require('../database/models/Car')
+const Client = require('../database/models/Client')
 const Sequelize = require('sequelize')
 /* GET users listing. */
 router.get('/', async function (req, res, next) {
-  let wagon = await Wagon.findOne({
-    where:{id:req.query.id}
+  let clients = await Client.findAll({
+
   })
     .catch((err) => {
       console.log(err)
     })
+  let clientlist = []
+  for (let i = 0; i<clients.length;i++) {
+    clientlist.push(clients[i].dataValues.FirstName + ' ' + clients[i].dataValues.SecondName + ' ' + clients[i].dataValues.DLNumber)
+  }
   res.render('addServiceList', {
-    wagon:wagon
+    clientlist:clientlist
   })
 })
 

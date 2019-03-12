@@ -11,6 +11,8 @@ head
     link#main-stylesheet(rel='stylesheet' data-version='1.1.0' href='styles/shards-dashboards.1.1.0.min.css')
     link(rel='stylesheet' href='styles/extras.1.1.0.min.css')
     script(async='' defer='' src='https://buttons.github.io/buttons.js')
+    script(async='' defer='' src='scripts/search.js')
+    link(rel='stylesheet' href='stylesheets/style.css')
 .container-fluid
     .row
     // Main Sidebar
@@ -182,9 +184,14 @@ head
                                                     .row
                                                         .col-sm-12.col-md-11
                                                             .form-group
-                                                                select.form-control(name="inputCar")
-                                                                    option(selected='') Машиана...
-                                                                    option ...
+                                                                form(autocomplete='off' action='/action_page.php')
+                                                                    .autocomplete(style='width:300px;')
+                                                                        input#myInput(type='text' name='myCountry' placeholder='Country')
+                                                                    input(type='submit')
+
+                                                                //select.form-control(name="inputCar")
+                                                                //    option(selected='') Машиана...
+                                                                //    option ...
                                                         .col-sm-12.col-md-1
                                                             a.nav-link(href='addCar')
                                                                 button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
@@ -286,3 +293,5 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.
 script(src='scripts/extras.1.1.0.min.js')
 script(src='scripts/shards-dashboards.1.1.0.min.js')
 script(src='scripts/app/app-components-overview.1.1.0.js')
+script.
+    autocomplete(document.getElementById("myInput"), "#{clientlist}");
