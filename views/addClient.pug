@@ -132,56 +132,92 @@ head
                     a.nav-link.nav-link-icon.toggle-sidebar.d-md-inline.d-lg-none.text-center.border-left(href='#' data-toggle='collapse' data-target='.header-navbar' aria-expanded='false' aria-controls='header-navbar')
                         i.material-icons &#xE5D2;
         // / .main-navbar
+
         .main-content-container.container-fluid.px-4
             // Page Header
 
-            //.page-header.row.no-gutters.py-4.mb-3.border-bottom
+            .page-header.row.no-gutters.py-4.mb-3.border-bottom
                 .col-12.col-sm-4.text-center.text-sm-left.mb-0
-                    h3.page-title Добавление автомобиля
+                    .form-group
+                        .custom-control.custom-toggle.custom-toggle-sm.mb-1
+                            input#showClient.custom-control-input(type='checkbox' name='customToggle1')
+                            label.custom-control-label(for='showClient') Юридическое лицо
             // End Page Header
             .row
-                .col-lg-12.mb-4
+                #client.col-lg-12.mb-4
                     .card.card-small.mb-4
                         .card-header.border-bottom
-                            h6.m-0 Добавление автомобиля
-
+                            h6.m-0 Добавление клиента
                         ul.list-group.list-group-flush
-                            form(action="/addCar", method="post" class="form" id='addClient' enctype="application/json")
+                            form(action="/addClient", method="post" class="form" id='addClient' enctype="application/json")
                                 li.list-group-item.p-3
                                     .row
                                         .col-sm-12
-                                            strong.text-muted.d-block.mb-2 Автомобиль
-                                                .form-group
-                                                    select.form-control(name="inputCar")
-                                                        option(selected='') Авто...
-                                                        option ...
-                                        .col-sm-12
-                                            strong.text-muted.d-block.mb-2 VIN номер
-                                                .form-group
-                                                    input.form-control(type='text' name="inputVIN")
-                                        .col-sm-12
-                                            strong.text-muted.d-block.mb-2 Владелец
+                                            strong.text-muted.d-block.mb-2
                                                 .row
-                                                    .col-sm-12.col-md-3
-                                                        .form-group
-                                                            .custom-control.custom-toggle.custom-toggle-sm.mb-1
-                                                                input#customToggle1.custom-control-input(type='checkbox' name='customToggle1')
-                                                                label.custom-control-label(for='customToggle1') Юридическое лицо
-                                                    .col-sm-12.col-md-9
-                                                        .form-group
-                                                            select.form-control(name="inputClient")
-                                                                option(selected='') Клиент...
-                                                                option ...
+                                                    .col-sm-12.col-md-4
+                                                        strong.text-muted.d-block.mb-2 Имя
+                                                            .form-group
+                                                                input.form-control(type='text' name="inputName")
+                                                    .col-sm-12.col-md-4
+                                                        strong.text-muted.d-block.mb-2 Фамилия
+                                                            .form-group
+                                                                input.form-control(type='text' name="inputSecondName")
+                                                    .col-sm-12.col-md-4
+                                                        strong.text-muted.d-block.mb-2 Отчество
+                                                            .form-group
+                                                                input.form-control(type='text' name="inputPatronymic")
                                         .col-sm-12
-                                            strong.text-muted.d-block.mb-2 Год производства
+                                            strong.text-muted.d-block.mb-2 DLN номер
                                                 .form-group
-                                                    input.form-control(type='text' name="inputYear")
+                                                    input.form-control(type='text' name="inputDLN")
+                                        .col-sm-12
+                                            strong.text-muted.d-block.mb-2 Номер телефона
+                                                .form-group
+                                                    input.form-control(type='text' name="inputPhoneNumber")
+                                        .col-sm-12
+                                            strong.text-muted.d-block.mb-2 Дата раждения
+                                                .form-group
+                                                    input.form-control(type='text' name="inputBD")
+                                        .col-sm-12
+                                            strong.text-muted.d-block.mb-2 Адресс
+                                                .form-group
+                                                    input.form-control(type='text' name="inputAdress")
                                         .col-lg-12.mb-4
                                             .row
                                                 .col
                                                     a.nav-link(href='addServiceList')
                                                         button.btn.btn-primary.btn-lg.btn-block(type="button") Добавить
+                #URclient.col-lg-12.mb-4
+                    .card.card-small.mb-4
+                        .card-header.border-bottom
+                            h6.m-0 Добавление юридического клиента
+                        ul.list-group.list-group-flush
+                            form(action="/addUrClient", method="post" class="form" id='addUrClient' enctype="application/json")
+                                li.list-group-item.p-3
+                                    .row
+                                        .col-sm-12
+                                            strong.text-muted.d-block.mb-2 Название
+                                                .form-group
+                                                    input.form-control(type='text' name="inputName")
+                                        .col-sm-12
+                                            strong.text-muted.d-block.mb-2 ИНН
+                                                .form-group
+                                                    input.form-control(type='text' name="inputINN")
+                                        .col-sm-12
+                                            strong.text-muted.d-block.mb-2 Номер телефона
+                                                .form-group
+                                                    input.form-control(type='text' name="inputPhoneNumber")
 
+                                        .col-sm-12
+                                            strong.text-muted.d-block.mb-2 Адресс
+                                                .form-group
+                                                    input.form-control(type='text' name="inputAdress")
+                                        .col-lg-12.mb-4
+                                            .row
+                                                .col
+                                                    a.nav-link(href='addServiceList')
+                                                        button.btn.btn-primary.btn-lg.btn-block(type="button") Добавить
 
                     // / Input & Button Groups
         footer.main-footer.d-flex.p-2.px-3.bg-white.border-top
@@ -208,3 +244,4 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.
 script(src='scripts/extras.1.1.0.min.js')
 script(src='scripts/shards-dashboards.1.1.0.min.js')
 script(src='scripts/app/app-components-overview.1.1.0.js')
+script( src='scripts/showClient.js')
