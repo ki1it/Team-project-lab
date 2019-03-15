@@ -248,6 +248,14 @@ app.use('/deleteWagon', async function (req, res) {
   })
   res.redirect(req.headers.referer)
 })
+app.use('/delclient', async function (req, res) {
+  await Client.destroy({
+    where: {
+      id: req.body.id
+    }
+  })
+  res.redirect(req.headers.referer)
+})
 
 app.use('/addServiceList', async function (req, res) {
   await ServiceList.create({

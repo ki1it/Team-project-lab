@@ -7,8 +7,8 @@ const Client = require('../database/models/Client')
 const Sequelize = require('sequelize')
 /* GET users listing. */
 router.get('/', async function (req, res, next) {
-  let client = await Client.findOne({
-    where:{id:req.query.id}
+  let client = await Client.findAll({
+
   })
     .catch((err) => {
       console.log(err)
