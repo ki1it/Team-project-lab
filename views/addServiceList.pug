@@ -2,7 +2,7 @@ doctype html
 head
     meta(charset='utf-8')
     meta(http-equiv='x-ua-compatible' content='ie=edge')
-    title СТО
+    title Shards Dashboard Lite - Free Bootstrap Admin Template &ndash; DesignRevision
     meta(name='description' content='A high-quality & free Bootstrap admin dashboard template pack that comes with lots of templates and components.')
     meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
     link(href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet')
@@ -11,8 +11,6 @@ head
     link#main-stylesheet(rel='stylesheet' data-version='1.1.0' href='styles/shards-dashboards.1.1.0.min.css')
     link(rel='stylesheet' href='styles/extras.1.1.0.min.css')
     script(async='' defer='' src='https://buttons.github.io/buttons.js')
-    script(async='' defer='' src='scripts/search.js')
-    link(rel='stylesheet' href='stylesheets/style.css')
 .container-fluid
     .row
     // Main Sidebar
@@ -178,20 +176,16 @@ head
                                                                     option(selected='') Клиент...
                                                                     option ...
                                                         .col-sm-12.col-md-1
-                                                            button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
+                                                            a.nav-link(href='addClient')
+                                                                button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
                                             .col-sm-12
                                                 strong.text-muted.d-block.mb-2 Машина
                                                     .row
                                                         .col-sm-12.col-md-11
                                                             .form-group
-                                                                form(autocomplete='off' action='/action_page.php')
-                                                                    .autocomplete(style='width:300px;')
-                                                                        input#myInput(type='text' name='myCountry' placeholder='Country')
-                                                                    input(type='submit')
-
-                                                                //select.form-control(name="inputCar")
-                                                                //    option(selected='') Машиана...
-                                                                //    option ...
+                                                                select.form-control(name="inputCar")
+                                                                    option(selected='') Машиана...
+                                                                    option ...
                                                         .col-sm-12.col-md-1
                                                             a.nav-link(href='addCar')
                                                                 button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
@@ -293,5 +287,3 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.
 script(src='scripts/extras.1.1.0.min.js')
 script(src='scripts/shards-dashboards.1.1.0.min.js')
 script(src='scripts/app/app-components-overview.1.1.0.js')
-script.
-    autocomplete(document.getElementById("myInput"), "#{clientlist}");
