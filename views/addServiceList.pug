@@ -11,8 +11,14 @@ head
     link#main-stylesheet(rel='stylesheet' data-version='1.1.0' href='styles/shards-dashboards.1.1.0.min.css')
     link(rel='stylesheet' href='styles/extras.1.1.0.min.css')
     link(rel='stylesheet' href='styles/Modal.css')
+    link(href='/dist/css/datepicker.min.css', rel='stylesheet')
+    script(src='/dist/js/datepicker.min.js')
     script(async='' defer='' src='https://buttons.github.io/buttons.js')
 
+
+
+
+.container-fluid
     #myModal.modal.fade(role='dialog')
         .modal-dialog.modal-lg
             .modal-content
@@ -81,7 +87,8 @@ head
                                                 .col-sm-12
                                                     strong.text-muted.d-block.mb-2 Дата раждения
                                                         .form-group
-                                                            input.form-control(type='text' name="inputBD")
+                                                            //input.form-control(type='text' name="inputBD")
+                                                            input.form-control(name="inputBD" type="text",  class="datepicker-here")
                                                 .col-sm-12
                                                     strong.text-muted.d-block.mb-2 Адресс
                                                         .form-group
@@ -184,8 +191,6 @@ head
                                                     button.btn.btn-primary.btn-lg.btn-block(type="button") Добавить
                                     //.modal-footer
                                         button.btn.btn-default(type='button', data-dismiss='modal') Close
-
-.container-fluid
     .row
     // Main Sidebar
     aside.main-sidebar.col-12.col-md-3.col-lg-2.px-0
@@ -324,14 +329,14 @@ head
                                         .row
                                             .col-sm-12.col-md-4
                                                 strong.text-muted.d-block.mb-2 Дата открытия
-
                                                     .form-group
-                                                        input.form-control(type='text' name="inputDataOpen")
+                                                        //input.form-control(type='text' name="inputDataOpen")
+                                                        input.form-control(class="uk-input" name="inputDataOpen" type="text",  class="datepicker-here")
                                             .col-sm-12.col-md-4
                                                 strong.text-muted.d-block.mb-2 Дата закрытия
-
                                                     .form-group
-                                                        input.form-control(type='text' name="inputDataClose")
+                                                        //input.form-control(type='text' name="inputDataClose")
+                                                        input.form-control(class="uk-input" name="inputDataClose" type="text",  class="datepicker-here")
                                             .col-sm-12.col-md-4
                                                 strong.text-muted.d-block.mb-2 Статус
 
@@ -385,8 +390,10 @@ head
                                                         .card.card-small.mb-4
                                                             .card-header.border-bottom
                                                                 .row
-                                                                    .col-sm-12.col-md-11
+                                                                    .col-sm-12.col-md-8
                                                                         h6.m-0 Услуги
+                                                                    .col-sm-12.col-md-3
+                                                                        input.form-control(type='text' name="inputDataClose")
                                                                     .col-sm-12.col-md-1
                                                                         button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
                                                             .card-body.p-0.pb-3.text-center
@@ -403,8 +410,10 @@ head
                                                         .card.card-small.mb-4
                                                             .card-header.border-bottom
                                                                 .row
-                                                                    .col-sm-12.col-md-11
+                                                                    .col-sm-12.col-md-8
                                                                         h6.m-0 Поломки
+                                                                    .col-sm-12.col-md-3
+                                                                        input.form-control(type='text' name="inputDataClose")
                                                                     .col-sm-12.col-md-1
                                                                         button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
                                                             .card-body.p-0.pb-3.text-center
@@ -421,8 +430,10 @@ head
                                                         .card.card-small.mb-4
                                                             .card-header.border-bottom
                                                                 .row
-                                                                    .col-sm-12.col-md-11
+                                                                    .col-sm-12.col-md-8
                                                                         h6.m-0 Детали
+                                                                    .col-sm-12.col-md-3
+                                                                        input.form-control(type='text' name="inputDataClose")
                                                                     .col-sm-12.col-md-1
                                                                         button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
                                                             .card-body.p-0.pb-3.text-center
@@ -464,3 +475,5 @@ script(src='scripts/extras.1.1.0.min.js')
 script(src='scripts/shards-dashboards.1.1.0.min.js')
 script(src='scripts/app/app-components-overview.1.1.0.js')
 script( src='scripts/showClient.js')
+link(href='/dist/css/datepicker.min.css', rel='stylesheet')
+script(src='/dist/js/datepicker.min.js')
