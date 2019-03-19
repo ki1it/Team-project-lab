@@ -1,4 +1,5 @@
 doctype html
+
 head
     meta(charset='utf-8')
     meta(http-equiv='x-ua-compatible' content='ie=edge')
@@ -11,9 +12,8 @@ head
     link#main-stylesheet(rel='stylesheet' data-version='1.1.0' href='styles/shards-dashboards.1.1.0.min.css')
     link(rel='stylesheet' href='styles/extras.1.1.0.min.css')
     link(rel='stylesheet' href='styles/Modal.css')
-    link(href='/dist/css/datepicker.min.css', rel='stylesheet')
-    script(src='/dist/js/datepicker.min.js')
     script(async='' defer='' src='https://buttons.github.io/buttons.js')
+    link(href='/dist/css/datepicker.min.css', rel='stylesheet')
 
 
 
@@ -85,10 +85,11 @@ head
                                                         .form-group
                                                             input.form-control(type='text' name="inputPhoneNumber")
                                                 .col-sm-12
+
                                                     strong.text-muted.d-block.mb-2 Дата раждения
                                                         .form-group
                                                             //input.form-control(type='text' name="inputBD")
-                                                            input.form-control(name="inputBD" type="text",  class="datepicker-here")
+                                                            input.form-control.datepicker-here(name="inputBD" type="text")
                                                 .col-sm-12
                                                     strong.text-muted.d-block.mb-2 Адресс
                                                         .form-group
@@ -475,5 +476,4 @@ script(src='scripts/extras.1.1.0.min.js')
 script(src='scripts/shards-dashboards.1.1.0.min.js')
 script(src='scripts/app/app-components-overview.1.1.0.js')
 script( src='scripts/showClient.js')
-link(href='/dist/css/datepicker.min.css', rel='stylesheet')
 script(src='/dist/js/datepicker.min.js')
