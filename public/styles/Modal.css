@@ -1,0 +1,5 @@
+.modal.fade{
+    position: fixed;
+    overflow: auto;
+    left: 10%;
+}
