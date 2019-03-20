@@ -160,6 +160,7 @@ app.use('/car', carRouter )
 
 
 const Client = require('./database/models/Client')
+const Car = require('./database/models/Car')
 const ServiceList = require('./database/models/ServiceList')
 
 
@@ -188,11 +189,22 @@ app.use('/deleteClient', async function (req, res) {
     res.redirect(req.headers.referer)
 })
 
-
 app.use('/delclient', async function (req, res) {
     await Client.destroy({
         where: {
             DLNumber: req.body.DLN
+        }
+    })  .catch((err) => {
+        console.log(err)
+    })
+    res.redirect(req.headers.referer)
+})
+
+
+app.use('/delcar', async function (req, res) {
+    await Car.destroy({
+        where: {
+            VIN: req.body.VIN
         }
     })  .catch((err) => {
         console.log(err)

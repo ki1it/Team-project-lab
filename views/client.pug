@@ -388,10 +388,11 @@ head
                                             th.border-0(scope='col') Адрес
                                     tbody
                                         -for (let i = 0; i < client.length; i++)
-                                            +rowsTable(client[i].dataValues.FirstName+' '+
-                                            client[i].dataValues.SecondName+' '+ client[i].dataValues.Patronymic,
-                                            client[i].dataValues.Birthday, client[i].dataValues.PhoneNumber,
-                                            client[i].dataValues.DLNumber, client[i].dataValues.Adress)
+                                            +rowsTable(client[i].dataValues.FirstName+' '+ client[i].dataValues.SecondName+' '+ client[i].dataValues.Patronymic,
+                                            client[i].dataValues.Birthday,
+                                            client[i].dataValues.PhoneNumber,
+                                            client[i].dataValues.DLNumber,
+                                            client[i].dataValues.Adress)
                 //// End Default Light Table
                 //// Default Dark Table
                 //.row
