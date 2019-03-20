@@ -189,7 +189,6 @@ app.use('/deleteClient', async function (req, res) {
 })
 
 
-
 app.use('/delclient', async function (req, res) {
     await Client.destroy({
         where: {

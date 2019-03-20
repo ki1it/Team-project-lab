@@ -29,7 +29,66 @@ head
                     .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownMenuLink')
                         a.dropdown-item(href='#' onclick="$.ajax({type: 'POST', url: '/', data: 'id=" + id + "', })") Удалить
                         a.dropdown-item(href='#' onclick="$.ajax({type: 'POST', url: '/', data: 'id="+id+"', })" ) Изменить
+    #myModal2.modal.fade(role='dialog')
+        .modal-dialog.modal-lg
+            .modal-content
+                .modal-header
+                    h4.modal-title Добавление автомобиля
+                    button.close(type='button', data-dismiss='modal') ×
+                .modal-body
+                    //div
+                        form(action="/addSklad", method="post" class="form" id='addSklad' enctype="application/json")
+                            div
+                                input(type="text" name="name" placeholder="Название" class="form__input" required)
+                                br
+                                select( name='type' required=true)
+                                    option(value=''   hidden ) Выберите тип
+                                br
+                                input(type="text" name='col' placeholder="Количество" class="form__input" required)
+                                br
+                                input(type="text" name='price' placeholder="Цена" class="form__input" required)
 
+
+                            div
+                                input.btn.btn-default(type="submit" href="/sklad" class="uk-button uk-button-primary top-margin" value="Отправить")
+                    ul.list-group.list-group-flush
+                        form(action="/addCar", method="post" class="form" id='addCar' enctype="application/json")
+                            li.list-group-item.p-3
+                                .row
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2 Автомобиль
+                                            .form-group
+                                                select.form-control(name="inputCar")
+                                                    option(selected='') Авто...
+                                                    option ...
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2 VIN номер
+                                            .form-group
+                                                input.form-control(type='text' name="inputVIN")
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2 Владелец
+                                            .row
+                                                .col-sm-12.col-md-3
+                                                    .form-group
+                                                        .custom-control.custom-toggle.custom-toggle-sm.mb-1
+                                                            input#customToggle12.custom-control-input(type='checkbox' name='customToggle1')
+                                                            label.custom-control-label(for='customToggle12') Юридическое лицо
+                                                .col-sm-12.col-md-9
+                                                    .form-group
+                                                        select.form-control(name="inputClient")
+                                                            option(selected='') Клиент...
+                                                            option ...
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2 Год производства
+                                            .form-group
+                                                input.form-control(type='text' name="inputYear")
+                                    .col-lg-12.mb-4
+                                        .row
+                                            .col
+                                                a.nav-link(href='addServiceList')
+                                                    button.btn.btn-primary.btn-lg.btn-block(type="button") Добавить
+                                    //.modal-footer
+                                        button.btn.btn-default(type='button', data-dismiss='modal') Close
 //.color-switcher.animated
     h5 Accent Color
     ul.accent-colors
@@ -174,6 +233,7 @@ head
                     .col-12.col-sm-4.text-center.text-sm-left.mb-0
                         //span.text-uppercase.page-subtitle Overview
                         h3.page-title Автомобили
+
                 // End Page Header
                 // Default Light Table
                 .row
@@ -182,9 +242,17 @@ head
                             .card-header.border-bottom
                                 //h6.m-0 Заказ-наряд
                                 .row
+                                    form.form-inline.col-sm-12.col-md-12(action="/car")
+                                        .col-sm-12.col-md-11
+                                            input.form-control(type='text' name='VIN')
+                                            button.btn.btn-primary(href='' type='submit') Search
+                                        //.col-sm-12.col-md-1
+                                            button.btn.btn-primary(href='' type='submit') Search
+                                        .col-sm-12.col-md-1
+                                            button.btn.btn-primary(type='button', data-toggle='modal', data-target='#myModal2') +
                                     //.col-sm-12.col-md-12
                                         h6.m-0 Заказ-наряд
-                                    .col-sm-12.col-md-12
+                                    //.col-sm-12.col-md-12
                                         .input-group.input-group-seamless
                                             .input-group-prepend
                                                 .input-group-text
