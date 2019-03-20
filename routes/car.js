@@ -5,7 +5,7 @@ const Brand = require('../database/models/Brand')
 const Model = require('../database/models/Model')
 const SprCar = require('../database/models/SprCar')
 router.get('/', async function (req, res, next) {
-  let car = await car.findAll({
+  let car = await Car.findAll({
     // where:{ServiceListFK:req.query.id},
     // include: [{ model: Breakdown, include: { model: BreakdownType, as: 'BreakdownType' },  as: 'Breakdown' }]
   })
