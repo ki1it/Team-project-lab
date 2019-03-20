@@ -160,7 +160,6 @@ app.use('/car', carRouter )
 
 
 const Client = require('./database/models/Client')
-const Wagon = require('./database/models/Car')
 const ServiceList = require('./database/models/ServiceList')
 
 app.use('/addsklad', async function (req, res) {
