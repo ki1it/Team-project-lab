@@ -12,7 +12,7 @@ router.get('/', async function (req, res, next) {
       console.log(err)
     })
   res.render('clients', {
-    clients:clients
+    client:clients
   })
 })
 

@@ -247,19 +247,19 @@ head
                             .card-header.border-bottom
                                 //h6.m-0 Заказ-наряд
                                 .row
-                                    //.col-sm-12.col-md-12
-                                        h6.m-0 Заказ-наряд
-                                    .col-sm-12.col-md-12
-                                        .input-group.input-group-seamless
-                                            .input-group-prepend
-                                                .input-group-text
-                                                    i.fas.fa-search
-                                            input.navbar-search.form-control(type='text' placeholder='поиск' aria-label='Search')
-                            //.input-group.input-group-seamless.ml-3
-                                .input-group-prepend
-                                    .input-group-text
-                                        i.fas.fa-search
-                                input.navbar-search.form-control(type='text' placeholder='поиск' aria-label='Search')
+                                    //    //.col-sm-12.col-md-12
+                                    //        h6.m-0 Заказ-наряд
+                                    //    .col-sm-12.col-md-12
+                                    //        .input-group.input-group-seamless
+                                    //            .input-group-prepend
+                                    //                .input-group-text
+                                    //                    i.fas.fa-search
+                                    //            input.navbar-search.form-control(type='text' placeholder='поиск' aria-label='Search')
+                                    form.form-inline.col-sm-12.col-md-12(action="/client")
+                                        input.form-control(type='text' name='DLN')
+                                        button.btn(href='' type='submit') Search
+
+
                             .card-body.p-0.pb-3.text-center
                                 table.table.mb-0.sortable
                                     thead.bg-light.text-primary
