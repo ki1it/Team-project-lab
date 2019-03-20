@@ -207,7 +207,20 @@ head
                                             th.border-0(scope='col') Действия
                                     tbody
                                         -for (let i = 0; i < car.length; i++)
-                                            +rowsTable(car[i].dataValues.VIN, car[i].dataValues.Model, car[i].dataValues.Year, car[i].dataValues.Owner )
+                                            if(car[i].UrClient===null)
+                                                +rowsTable(car[i].dataValues.VIN,
+                                                car[i].SprCar.Brand.dataValues.Brand,
+                                                car[i].dataValues.Year,
+                                                car[i].SprCar.Model.dataValues.Model,
+                                                car[i].Client.dataValues.DLNumber)
+                                            else
+                                                +rowsTable(car[i].dataValues.VIN,
+                                                car[i].SprCar.Brand.dataValues.Brand,
+                                                car[i].dataValues.Year,
+                                                car[i].SprCar.Model.dataValues.Model,
+                                                car[i].UrClient.dataValues.INN )
+
+
                 //// End Default Light Table
                 //// Default Dark Table
                 //.row
