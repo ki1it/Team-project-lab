@@ -13,14 +13,16 @@ head
     script(async='' defer='' src='https://buttons.github.io/buttons.js')
     script(async='' defer='' src='https://www.kryogenix.org/code/browser/sorttable/sorttable.js')
     - var i=0;
-        mixin rowsTable( VIN, Model, Year, Owner)
+        mixin rowsTable( VIN, Brand,  Year, Model, Owner, OwnerId)
             tr
 
                 //td #{id}
                 td #{VIN}
+                td #{Brand}
                 td #{Model}
                 td #{Year}
-                td #{Owner}
+                //td #{Owner}
+                td #[a(href="client?DLN=" + OwnerId) #{Owner}]
                 td
                     a#navbarDropdownMenuLink.nav-link(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
                         i.material-icons menu
@@ -269,6 +271,7 @@ head
                                         tr
                                             //th.border-0(scope='col') №
                                             th.border-0(scope='col') VIN
+                                            th.border-0(scope='col') Марка
                                             th.border-0(scope='col') Модель
                                             th.border-0(scope='col') Год
                                             th.border-0(scope='col') Владелец
@@ -280,13 +283,14 @@ head
                                                 car[i].SprCar.Brand.dataValues.Brand,
                                                 car[i].dataValues.Year,
                                                 car[i].SprCar.Model.dataValues.Model,
+                                                car[i].Client.dataValues.SecondName,
                                                 car[i].Client.dataValues.DLNumber)
                                             else
                                                 +rowsTable(car[i].dataValues.VIN,
                                                 car[i].SprCar.Brand.dataValues.Brand,
                                                 car[i].dataValues.Year,
                                                 car[i].SprCar.Model.dataValues.Model,
-                                                car[i].UrClient.dataValues.INN )
+                                                car[i].UrClient.dataValues.Name )
 
 
                 //// End Default Light Table
