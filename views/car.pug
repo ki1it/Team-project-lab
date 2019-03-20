@@ -13,10 +13,10 @@ head
     script(async='' defer='' src='https://buttons.github.io/buttons.js')
     script(async='' defer='' src='https://www.kryogenix.org/code/browser/sorttable/sorttable.js')
     - var i=0;
-        mixin rowsTable(id, odate, cdate, client, car, status)
+        mixin rowsTable( VIN, Model, Year, Owner)
             tr
 
-                td #{id}
+                //td #{id}
                 td #{VIN}
                 td #{Model}
                 td #{Year}
@@ -199,7 +199,7 @@ head
                                 table.table.mb-0.sortable
                                     thead.bg-light.text-primary
                                         tr
-                                            th.border-0(scope='col') №
+                                            //th.border-0(scope='col') №
                                             th.border-0(scope='col') VIN
                                             th.border-0(scope='col') Модель
                                             th.border-0(scope='col') Год
@@ -207,7 +207,7 @@ head
                                             th.border-0(scope='col') Действия
                                     tbody
                                         -for (let i = 0; i < car.length; i++)
-                                            +rowsTable(car[i].dataValues.id, )
+                                            +rowsTable(car[i].dataValues.VIN, car[i].dataValues.Model, car[i].dataValues.Year, car[i].dataValues.Owner )
                 //// End Default Light Table
                 //// Default Dark Table
                 //.row

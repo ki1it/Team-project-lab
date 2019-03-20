@@ -15,6 +15,7 @@ var clientsRouter = require('./routes/clients')
 var workersRouter = require('./routes/workers')
 var workOrderListRouter = require('./routes/workOrderList')
 var aboutRouter = require('./routes/about')
+var carRouter = require('./routes/car')
 var app = express();
 //auth part
 var bodyParser = require('body-parser');
@@ -155,6 +156,7 @@ app.use('/clients', clientsRouter)
 app.use('/workers', workersRouter)
 app.use('/workOrderList', workOrderListRouter)
 app.use('/about', aboutRouter)
+app.use('/car', carRouter )
 
 
 const Client = require('./database/models/Client')
