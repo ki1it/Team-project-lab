@@ -162,53 +162,18 @@ app.use('/car', carRouter )
 const Client = require('./database/models/Client')
 const ServiceList = require('./database/models/ServiceList')
 
-app.use('/addsklad', async function (req, res) {
-    let type = await NameType.findOne({
-        where: {Name: req.body.type}
-    })
-    await NameOfGood.create({
-            Name: req.body.name,
-            Amount: parseInt(req.body.col),
-            Type: type.dataValues.id,
-            Status: 1,
-            Price: parseInt(req.body.price)
-        }
-    )
-    res.redirect(req.headers.referer)
-})
 
-app.use('/updsklad', async function (req, res) {
-    let num = await NameOfGood.findOne({
-        where: {id: req.body.id}
-    })
-    await NameOfGood.update({
-            Amount: parseInt(req.body.col) + num.dataValues.Amount,
-
-        }, {where: {id: req.body.id}}
-    )
-    res.redirect(req.headers.referer)
-})
-
-app.use('/minsklad', async function (req, res) {
-    let num = await NameOfGood.findOne({
-        where: {id: req.body.id}
-    })
-    await NameOfGood.update({
-            Amount: num.dataValues.Amount - parseInt(req.body.col),
-
-        }, {where: {id: req.body.id}}
-    )
-    res.redirect(req.headers.referer)
-})
 
 app.use('/addClient', async function (req, res) {
-    // await Client.create({
-    //   FirstName: req.body.firstName,
-    //   SecondName: req.body.secondName,
-    //   Patronymic: req.body.patronymic,
-    //   PhoneNumber: req.body.phone,
-    //   Birthday: moment(req.body.calendar, 'YYYY-MM-DD').startOf('day')
-    // })
+    await Client.create({
+      FirstName: req.body.inputName,
+      SecondName: req.body.inputSecondName,
+      Patronymic: req.body.inputPatronymic,
+      PhoneNumber: req.body.inputPhoneNumber,
+        Adress:req.body.inputAdress,
+        DLNumber: req.body.inputDLN,
+      Birthday: moment(req.body.inputBD, 'DD.MM.YYYY').startOf('day')
+    })
     res.redirect(req.headers.referer)
 })
 
@@ -217,35 +182,21 @@ app.use('/deleteClient', async function (req, res) {
         where: {
             id: req.body.id
         }
+    })  .catch((err) => {
+        console.log(err)
     })
     res.redirect(req.headers.referer)
 })
 
-app.use('/addWagon', async function (req, res) {
-    await Wagon.create({
-        Brand: req.body.brand,
-        Model: req.body.model,
-        Capacity: req.body.capacity,
-        Type: req.body.type,
-        Weight: req.body.weight,
-        Year: req.body.year
-    })
-    res.redirect(req.headers.referer)
-})
 
-app.use('/deleteWagon', async function (req, res) {
-    await Wagon.destroy({
-        where: {
-            id: req.body.id
-        }
-    })
-    res.redirect(req.headers.referer)
-})
+
 app.use('/delclient', async function (req, res) {
     await Client.destroy({
         where: {
-            id: req.body.id
+            DLNumber: req.body.DLN
         }
+    })  .catch((err) => {
+        console.log(err)
     })
     res.redirect(req.headers.referer)
 })
@@ -257,11 +208,12 @@ app.use('/addServiceList', async function (req, res) {
         ClientFK: req.body.client,
         WagonFK: req.body.wagon
     })
+        .catch((err) => {
+            console.log(err)
+        })
     res.redirect(req.headers.referer)
 })
-app.use('/telegram', async function (req, res) {
 
-})
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
