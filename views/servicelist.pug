@@ -13,13 +13,14 @@ head
     script(async='' defer='' src='https://buttons.github.io/buttons.js')
     script(async='' defer='' src='https://www.kryogenix.org/code/browser/sorttable/sorttable.js')
     - var i=0;
-        mixin rowsTable(id, odate, cdate, client, car, status)
+        mixin rowsTable(id, client, odate, cdate,  car, status, clientID)
             tr
 
                 td #{id}
+                //td #{client}
+                td #[a(href="client?DLN=" + clientID) #{client}]
                 td #{odate}
                 td #{cdate}
-                td #{client}
                 td #{car}
                 td #{status}
                 td
@@ -210,7 +211,23 @@ head
                                             th.border-0(scope='col') Действия
                                     tbody
                                         -for (let i = 0; i < servicelist.length; i++)
-                                            +rowsTable(servicelist[i].dataValues.id)
+                                            if(servicelist[i].UrClient===null)
+                                                +rowsTable(servicelist[i].dataValues.id,
+                                                servicelist[i].Client.dataValues.FirstName + ' '+servicelist[i].Client.dataValues.SecondName,
+                                                servicelist[i].dataValues.OpenDate,
+                                                servicelist[i].dataValues.CloseDate,
+                                                servicelist[i].Car.dataValues.VIN,
+                                                servicelist[i].dataValues.Status,
+                                                servicelist[i].Client.dataValues.DLNumber)
+                                            else
+                                                +rowsTable(servicelist[i].dataValues.id,
+                                                servicelist[i].UrClient.dataValues.Name,
+                                                servicelist[i].dataValues.OpenDate,
+                                                servicelist[i].dataValues.CloseDate,
+                                                servicelist[i].Car.dataValues.VIN,
+                                                servicelist[i].dataValues.Status)
+
+
                 //// End Default Light Table
                 //// Default Dark Table
                 //.row

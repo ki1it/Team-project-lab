@@ -11,11 +11,9 @@ router.get('/', async function (req, res, next) {
   if (req.query.VIN === undefined) {
       car = await Car.findAll({
           // where:{ServiceListFK:req.query.id},
-          include: [{
-              model: SprCar,
-              include: [{model: Brand, as: 'Brand'}, {model: Model, as: 'Model'}],
-              as: 'SprCar'
-          }, {model: Client, as: 'Client'}, {model: UrClient, as: 'UrClient'}]
+          include: [{ model: SprCar, include: [{model: Brand, as: 'Brand'}, {model: Model, as: 'Model'}], as: 'SprCar'},
+              {model: Client, as: 'Client'},
+              {model: UrClient, as: 'UrClient'}]
       })
           .catch((err) => {
               console.log(err)
@@ -24,11 +22,9 @@ router.get('/', async function (req, res, next) {
   else{
       car = await Car.findAll({
           // where:{ServiceListFK:req.query.id},
-          include: [{
-              model: SprCar,
-              include: [{model: Brand, as: 'Brand'}, {model: Model, as: 'Model'}],
-              as: 'SprCar'
-          }, {model: Client, as: 'Client'}, {model: UrClient, as: 'UrClient'}],
+          include: [{ model: SprCar, include: [{model: Brand, as: 'Brand'}, {model: Model, as: 'Model'}], as: 'SprCar'},
+              {model: Client, as: 'Client'},
+              {model: UrClient, as: 'UrClient'}],
           where:{VIN :req.query.VIN}
       })
           .catch((err) => {
