@@ -153,7 +153,6 @@ app.use('/servicelist', servicelistRouter)
 app.use('/client', clientRouter)
 app.use('/clients', clientsRouter)
 app.use('/workers', workersRouter)
-app.use('/workOrderList', workOrderListRouter)
 app.use('/about', aboutRouter)
 app.use('/car', carRouter )
 
