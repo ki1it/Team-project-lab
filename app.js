@@ -176,16 +176,6 @@ app.use('/addClient', async function (req, res) {
     res.redirect(req.headers.referer)
 })
 
-app.use('/deleteClient', async function (req, res) {
-    await Client.destroy({
-        where: {
-            id: req.body.id
-        }
-    })  .catch((err) => {
-        console.log(err)
-    })
-    res.redirect(req.headers.referer)
-})
 
 app.use('/delclient', async function (req, res) {
     await Client.destroy({

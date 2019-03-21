@@ -191,7 +191,10 @@ head
 
                 //td #{id}
                 td #{Name}
-                td #{Birthday}
+                if(cdate !== null)
+                    td #{Birthday.toLocaleDateString()}
+                else
+                    td #{Birthday}
                 td #{Tel}
                 td #{DLN}
                 td #{Adress}
