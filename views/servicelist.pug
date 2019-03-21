@@ -214,16 +214,16 @@ head
                                             if(servicelist[i].UrClient===null)
                                                 +rowsTable(servicelist[i].dataValues.id,
                                                 servicelist[i].Client.dataValues.FirstName + ' '+servicelist[i].Client.dataValues.SecondName,
-                                                servicelist[i].dataValues.OpenDate,
-                                                servicelist[i].dataValues.CloseDate,
+                                                servicelist[i].dataValues.OpenDate.toLocaleDateString(),
+                                                servicelist[i].dataValues.CloseDate.toLocaleDateString(),
                                                 servicelist[i].Car.dataValues.VIN,
                                                 servicelist[i].dataValues.Status,
                                                 servicelist[i].Client.dataValues.DLNumber)
                                             else
                                                 +rowsTable(servicelist[i].dataValues.id,
                                                 servicelist[i].UrClient.dataValues.Name,
-                                                servicelist[i].dataValues.OpenDate,
-                                                servicelist[i].dataValues.CloseDate,
+                                                servicelist[i].dataValues.OpenDate.toLocaleDateString(),
+                                                servicelist[i].dataValues.CloseDate.toLocaleDateString(),
                                                 servicelist[i].Car.dataValues.VIN,
                                                 servicelist[i].dataValues.Status)
 

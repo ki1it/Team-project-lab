@@ -13,7 +13,6 @@ var servicelistRouter = require('./routes/servicelist')
 var clientRouter = require('./routes/client')
 var clientsRouter = require('./routes/clients')
 var workersRouter = require('./routes/workers')
-var workOrderListRouter = require('./routes/workOrderList')
 var aboutRouter = require('./routes/about')
 var carRouter = require('./routes/car')
 var app = express();
