@@ -15,6 +15,7 @@ var clientsRouter = require('./routes/clients')
 var workersRouter = require('./routes/workers')
 var aboutRouter = require('./routes/about')
 var carRouter = require('./routes/car')
+var editClientRouter = require('./routes/editClient')
 var app = express();
 //auth part
 var bodyParser = require('body-parser');
@@ -155,12 +156,42 @@ app.use('/clients', clientsRouter)
 app.use('/workers', workersRouter)
 app.use('/about', aboutRouter)
 app.use('/car', carRouter )
+app.use('/editClient', editClientRouter )
 
 
 const Client = require('./database/models/Client')
 const Car = require('./database/models/Car')
 const ServiceList = require('./database/models/ServiceList')
 
+
+app.use('/updateClient', async function (req, res) {
+    await Client.update({
+        FirstName: req.body.inputName,
+        SecondName: req.body.inputSecondName,
+        Patronymic: req.body.inputPatronymic,
+        PhoneNumber: req.body.inputPhoneNumber,
+        Adress:req.body.inputAdress,
+        DLNumber: req.body.inputDLN,
+        Birthday: moment(req.body.inputBD, 'DD.MM.YYYY').startOf('day')
+    },{where:{DLNumber: req.query.OldDLN}}
+    )
+        .catch((err) => {
+            console.log(err)
+        })
+    res.redirect('/client')
+})
+
+app.use('/closeSL', async function (req, res) {
+    await ServiceList.update({
+        Status: 2,
+        CloseDate: moment().format()
+        },{where:{id: req.body.id}}
+    )
+        .catch((err) => {
+            console.log(err)
+        })
+    res.redirect('/servicelist')
+})
 
 
 app.use('/addClient', async function (req, res) {
@@ -173,6 +204,9 @@ app.use('/addClient', async function (req, res) {
         DLNumber: req.body.inputDLN,
       Birthday: moment(req.body.inputBD, 'DD.MM.YYYY').startOf('day')
     })
+        .catch((err) => {
+            console.log(err)
+        })
     res.redirect(req.headers.referer)
 })
 

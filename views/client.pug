@@ -186,12 +186,12 @@ head
     script(async='' defer='' src='https://buttons.github.io/buttons.js')
     script(async='' defer='' src='https://www.kryogenix.org/code/browser/sorttable/sorttable.js')
     - var i=0;
-        mixin rowsTable( Name, Birthday, tel, DLN, Adress)
+        mixin rowsTable(id, Name, Birthday, Tel, DLN, Adress)
             tr
 
                 //td #{id}
                 td #{Name}
-                if(cdate !== null)
+                if(Birthday !== null)
                     td #{Birthday.toLocaleDateString()}
                 else
                     td #{Birthday}
@@ -205,8 +205,9 @@ head
                             | Some Actions
                     .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownMenuLink')
                         a.dropdown-item(href='/client' onclick="$.ajax({type: 'POST', url: '/delclient', data: 'DLN=" + DLN + "', })") Удалить
-                        a.edit(href='#editEmployeeModal' data-toggle='modal')
-                            i.material-icons(data-toggle='tooltip' title='Edit') &#xE254;
+                        a.dropdown-item(href='/editClient?DLN='+DLN ) Изменить
+                        //a.edit(href='#editEmployeeModal' data-toggle='modal')
+                        //    i.material-icons(data-toggle='tooltip' title='Edit') Изменить &#xE254;
 
 
 //.color-switcher.animated
@@ -391,8 +392,9 @@ head
                                             th.border-0(scope='col') Адрес
                                     tbody
                                         -for (let i = 0; i < client.length; i++)
-                                            +rowsTable(client[i].dataValues.FirstName+' '+ client[i].dataValues.SecondName+' '+ client[i].dataValues.Patronymic,
-                                            client[i].dataValues.Birthday.toLocaleDateString(),
+                                            +rowsTable(client[i].dataValues.id,
+                                            client[i].dataValues.FirstName+' '+ client[i].dataValues.SecondName+' '+ client[i].dataValues.Patronymic,
+                                            client[i].dataValues.Birthday,
                                             client[i].dataValues.PhoneNumber,
                                             client[i].dataValues.DLNumber,
                                             client[i].dataValues.Adress)

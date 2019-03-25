@@ -2,6 +2,8 @@ var express = require('express')
 var router = express.Router()
 const Car = require('../database/models/Car')
 const Client = require('../database/models/Client')
+const Service = require('../database/models/Service')
+const ServiceType = require('../database/models/ServiceType')
 const Sequelize = require('sequelize')
 /* GET users listing. */
 router.get('/', async function (req, res, next) {
