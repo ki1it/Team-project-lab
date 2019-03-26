@@ -18,6 +18,7 @@ var carRouter = require('./routes/car')
 var editClientRouter = require('./routes/editClient')
 var editUrClientRouter = require('./routes/editUrClient')
 var urClientRouter = require('./routes/urClient')
+var breakdownRoutre = require('./routes/breakdown')
 var app = express();
 //auth part
 var bodyParser = require('body-parser');
@@ -161,6 +162,7 @@ app.use('/car', carRouter )
 app.use('/editClient', editClientRouter )
 app.use('/editUrClient', editUrClientRouter )
 app.use('/urclient', urClientRouter)
+app.use('/breakdown', breakdownRoutre)
 
 
 const Client = require('./database/models/Client')
@@ -170,6 +172,7 @@ const Brand = require('./database/models/Brand')
 const Model = require('./database/models/Model')
 const ServiceList = require('./database/models/ServiceList')
 const UrClient = require('./database/models/UrClient')
+const Breakdown = require('./database/models/Breakdown')
 
 app.use('/updateClient', async function (req, res) {
     await Client.update({
@@ -312,6 +315,17 @@ app.use('/delcar', async function (req, res) {
     await Car.destroy({
         where: {
             VIN: req.body.VIN
+        }
+    }).catch((err) => {
+        console.log(err)
+    })
+    res.redirect(req.headers.referer)
+})
+
+app.use('/delbreakdown', async function (req, res) {
+    await Breakdown.destroy({
+        where: {
+            id: req.body.id
         }
     }).catch((err) => {
         console.log(err)

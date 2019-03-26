@@ -50,7 +50,7 @@ head
         .modal-dialog.modal-lg
             .modal-content
                 .modal-header
-                    h4.modal-title Добавление физического клиента
+                    h4.modal-title Добавление поломки
                     //.col-12.col-sm-4.text-center.text-sm-left.mb-0
                         .form-group
                             .custom-control.custom-toggle.custom-toggle-sm.mb-1
@@ -90,42 +90,24 @@ head
                             li.list-group-item.p-3
                                 .row
                                     .col-sm-12
-                                        strong.text-muted.d-block.mb-2
-                                            .row
-                                                .col-sm-12.col-md-4
-                                                    strong.text-muted.d-block.mb-2 Имя
-                                                        .form-group
-                                                            input.form-control(type='text' name="inputName")
-                                                .col-sm-12.col-md-4
-                                                    strong.text-muted.d-block.mb-2 Фамилия
-                                                        .form-group
-                                                            input.form-control(type='text' name="inputSecondName")
-                                                .col-sm-12.col-md-4
-                                                    strong.text-muted.d-block.mb-2 Отчество
-                                                        .form-group
-                                                            input.form-control(type='text' name="inputPatronymic")
-                                    .col-sm-12
-                                        strong.text-muted.d-block.mb-2 DLN номер
+                                        strong.text-muted.d-block.mb-2 Название
                                             .form-group
-                                                input.form-control(type='text' name="inputDLN")
+                                                input.form-control(type='text' name="inputName")
                                     .col-sm-12
-                                        strong.text-muted.d-block.mb-2 Номер телефона
+                                        strong.text-muted.d-block.mb-2 Цена
                                             .form-group
-                                                input.form-control(type='text' name="inputPhoneNumber")
+                                                input.form-control(type='text' name="inputPrice")
                                     .col-sm-12
+                                        strong.text-muted.d-block.mb-2 Тип
 
-                                        strong.text-muted.d-block.mb-2 Дата рождения
                                             .form-group
-                                                //input.form-control(type='text' name="inputBD")
-                                                input.form-control.datepicker-here(name="inputBD" type="text" )
-                                    .col-sm-12
-                                        strong.text-muted.d-block.mb-2 Адресс
-                                            .form-group
-                                                input.form-control(type='text' name="inputAdress")
+                                                select.form-control(name="inputType")
+                                                    option(selected='') Тип...
+                                                    option ...
                                     .col-lg-12.mb-4
                                         .row
                                             .col
-                                                a.nav-link(href='client')
+                                                a.nav-link(href='breakdown')
                                                     button.btn.btn-primary.btn-lg.btn-block(type="submit") Добавить
                         //#URclient.col-lg-12.mb-4
                             .card.card-small.mb-4
@@ -187,26 +169,21 @@ head
     script(async='' defer='' src='https://buttons.github.io/buttons.js')
     script(async='' defer='' src='https://www.kryogenix.org/code/browser/sorttable/sorttable.js')
     - var i=0;
-        mixin rowsTable(id, Name, Birthday, Tel, DLN, Adress)
+        mixin rowsTable(id, Name, Price, Type)
             tr
 
                 //td #{id}
                 td #{Name}
-                if(Birthday !== null)
-                    td #{Birthday.toLocaleDateString('en-GB')}
-                else
-                    td #{Birthday}
-                td #{Tel}
-                td #{DLN}
-                td #{Adress}
+                td #{Price}
+                td #{Type}
                 td
                     a#navbarDropdownMenuLink.nav-link(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
                         i.material-icons menu
                         p.d-lg-none.d-md-block
                             | Some Actions
                     .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownMenuLink')
-                        a.dropdown-item(href='/client' onclick="$.ajax({type: 'POST', url: '/delclient', data: 'DLN=" + DLN + "', })") Удалить
-                        a.dropdown-item(href='/editClient?DLN='+DLN ) Изменить
+                        a.dropdown-item(href='/breakdown' onclick="$.ajax({type: 'POST', url: '/delbreakdown', data: 'id=" + id + "', })") Удалить
+                        //a.dropdown-item(href='/editClient?DLN='+DLN ) Изменить
                         //a.edit(href='#editEmployeeModal' data-toggle='modal')
                         //    i.material-icons(data-toggle='tooltip' title='Edit') Изменить &#xE254;
 
@@ -355,7 +332,7 @@ head
                 .page-header.row.no-gutters.py-4
                     .col-12.col-sm-4.text-center.text-sm-left.mb-0
                         //span.text-uppercase.page-subtitle Overview
-                        h3.page-title Клиенты
+                        h3.page-title Поломки
                 // End Page Header
                 // Default Light Table
                 .row
@@ -372,10 +349,10 @@ head
                                     //                .input-group-text
                                     //                    i.fas.fa-search
                                     //            input.navbar-search.form-control(type='text' placeholder='поиск' aria-label='Search')
-                                    form.form-inline.col-sm-12.col-md-12(action="/client")
+                                    form.form-inline.col-sm-12.col-md-12()
                                         .col-sm-12.col-md-11
-                                            input.form-control(type='text' name='DLN')
-                                            button.btn.btn-primary(href='' type='submit') Найти
+                                            //input.form-control(type='text' name='DLN')
+                                            //button.btn.btn-primary(href='' type='submit') Найти
                                         //.col-sm-12.col-md-1
                                             button.btn.btn-primary(href='' type='submit') Найти
                                         .col-sm-12.col-md-1
@@ -387,20 +364,16 @@ head
                                     thead.bg-light.text-primary
                                         tr
                                             //th.border-0(scope='col') №
-                                            th.border-0(scope='col') ФИО
-                                            th.border-0(scope='col') Дата рождения
-                                            th.border-0(scope='col') Телефон
-                                            th.border-0(scope='col') Номер ВУ
-                                            th.border-0(scope='col') Адрес
-                                            th.border-0(scope='col') Действие
+                                            th.border-0(scope='col') Название
+                                            th.border-0(scope='col') Цена
+                                            th.border-0(scope='col') Тип
+                                            th.border-0(scope='col') Десйствие
                                     tbody
-                                        -for (let i = 0; i < client.length; i++)
-                                            +rowsTable(client[i].dataValues.id,
-                                            client[i].dataValues.FirstName+' '+ client[i].dataValues.SecondName+' '+ client[i].dataValues.Patronymic,
-                                            client[i].dataValues.Birthday,
-                                            client[i].dataValues.PhoneNumber,
-                                            client[i].dataValues.DLNumber,
-                                            client[i].dataValues.Adress)
+                                        -for (let i = 0; i < breakdown.length; i++)
+                                            +rowsTable(breakdown[i].dataValues.id,
+                                            breakdown[i].dataValues.Name,
+                                            breakdown[i].dataValues.Price,
+                                            breakdown[i].BreakdownType.dataValues.Name)
                 //// End Default Light Table
                 //// Default Dark Table
                 //.row
