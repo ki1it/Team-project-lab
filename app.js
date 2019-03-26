@@ -16,6 +16,7 @@ var workersRouter = require('./routes/workers')
 var aboutRouter = require('./routes/about')
 var carRouter = require('./routes/car')
 var editClientRouter = require('./routes/editClient')
+var editUrClientRouter = require('./routes/editUrClient')
 var urClientRouter = require('./routes/urClient')
 var app = express();
 //auth part
@@ -156,8 +157,9 @@ app.use('/client', clientRouter)
 app.use('/clients', clientsRouter)
 app.use('/workers', workersRouter)
 app.use('/about', aboutRouter)
-app.use('/car', carRouter)
-app.use('/editClient', editClientRouter)
+app.use('/car', carRouter )
+app.use('/editClient', editClientRouter )
+app.use('/editUrClient', editUrClientRouter )
 app.use('/urclient', urClientRouter)
 
 
@@ -184,6 +186,20 @@ app.use('/updateClient', async function (req, res) {
             console.log(err)
         })
     res.redirect('/client')
+})
+
+app.use('/updateUrClient', async function (req, res) {
+    await UrClient.update({
+            Name: req.body.inputName,
+            INN: req.body.inputINN,
+            PhoneNumber: req.body.inputPhoneNumber,
+            Adress:req.body.inputAdress
+        },{where:{INN: req.query.OldINN}}
+    )
+        .catch((err) => {
+            console.log(err)
+        })
+    res.redirect('/urclient')
 })
 
 
