@@ -167,8 +167,13 @@ head
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Бренд
                                             .form-group
-                                                input#ajax(type='text' list='json-datalist' placeholder='e.g. datalist')
-                                                datalist#json-datalist
+                                                input#ajax1(type='text' list='json-datalist1' placeholder='e.g. datalist')
+                                                datalist#json-datalist1
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2 Модель
+                                            .form-group
+                                                input#ajax2(type='text' list='json-datalist2' placeholder='e.g. datalist' onclick='getModels()')
+                                                datalist#json-datalist2
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 VIN номер
                                             .form-group
