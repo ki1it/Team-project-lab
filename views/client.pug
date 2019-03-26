@@ -50,7 +50,7 @@ head
         .modal-dialog.modal-lg
             .modal-content
                 .modal-header
-                    h4.modal-title Добавление клиента
+                    h4.modal-title Добавление физического клиента
                     //.col-12.col-sm-4.text-center.text-sm-left.mb-0
                         .form-group
                             .custom-control.custom-toggle.custom-toggle-sm.mb-1
@@ -59,7 +59,8 @@ head
                     button.close(type='button', data-dismiss='modal') ×
 
                 .modal-body
-                    .col-12.col-sm-4.text-center.text-sm-left.mb-0
+                    //.col-12.col-sm-4.text-center.text-sm-left.mb-0
+                    //.col-12.col-sm-4.text-center.text-sm-left.mb-0
                         .form-group
                             .custom-control.custom-toggle.custom-toggle-sm.mb-1
                                 input#showClient.custom-control-input(type='checkbox' name='customToggle1')
@@ -79,54 +80,54 @@ head
 
                             div
                                 input.btn.btn-default(type="submit" href="/sklad" class="uk-button uk-button-primary top-margin" value="Отправить")
-                    .row
+                    //.row
                         #client.col-lg-12.mb-4
                             .card.card-small.mb-4
                                 .card-header.border-bottom
                                     h6.m-0 Добавление физического клиента
-                                ul.list-group.list-group-flush
-                                    form(action="/addClient", method="post" class="form" id='addClient' enctype="application/json")
-                                        li.list-group-item.p-3
+                    ul.list-group.list-group-flush
+                        form(action="/addClient", method="post" class="form" id='addClient' enctype="application/json")
+                            li.list-group-item.p-3
+                                .row
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2
                                             .row
-                                                .col-sm-12
-                                                    strong.text-muted.d-block.mb-2
-                                                        .row
-                                                            .col-sm-12.col-md-4
-                                                                strong.text-muted.d-block.mb-2 Имя
-                                                                    .form-group
-                                                                        input.form-control(type='text' name="inputName")
-                                                            .col-sm-12.col-md-4
-                                                                strong.text-muted.d-block.mb-2 Фамилия
-                                                                    .form-group
-                                                                        input.form-control(type='text' name="inputSecondName")
-                                                            .col-sm-12.col-md-4
-                                                                strong.text-muted.d-block.mb-2 Отчество
-                                                                    .form-group
-                                                                        input.form-control(type='text' name="inputPatronymic")
-                                                .col-sm-12
-                                                    strong.text-muted.d-block.mb-2 DLN номер
+                                                .col-sm-12.col-md-4
+                                                    strong.text-muted.d-block.mb-2 Имя
                                                         .form-group
-                                                            input.form-control(type='text' name="inputDLN")
-                                                .col-sm-12
-                                                    strong.text-muted.d-block.mb-2 Номер телефона
+                                                            input.form-control(type='text' name="inputName")
+                                                .col-sm-12.col-md-4
+                                                    strong.text-muted.d-block.mb-2 Фамилия
                                                         .form-group
-                                                            input.form-control(type='text' name="inputPhoneNumber")
-                                                .col-sm-12
+                                                            input.form-control(type='text' name="inputSecondName")
+                                                .col-sm-12.col-md-4
+                                                    strong.text-muted.d-block.mb-2 Отчество
+                                                        .form-group
+                                                            input.form-control(type='text' name="inputPatronymic")
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2 DLN номер
+                                            .form-group
+                                                input.form-control(type='text' name="inputDLN")
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2 Номер телефона
+                                            .form-group
+                                                input.form-control(type='text' name="inputPhoneNumber")
+                                    .col-sm-12
 
-                                                    strong.text-muted.d-block.mb-2 Дата рождения
-                                                        .form-group
-                                                            //input.form-control(type='text' name="inputBD")
-                                                            input.form-control.datepicker-here(name="inputBD" type="text" )
-                                                .col-sm-12
-                                                    strong.text-muted.d-block.mb-2 Адресс
-                                                        .form-group
-                                                            input.form-control(type='text' name="inputAdress")
-                                                .col-lg-12.mb-4
-                                                    .row
-                                                        .col
-                                                            a.nav-link(href='client')
-                                                                button.btn.btn-primary.btn-lg.btn-block(type="submit") Добавить
-                        #URclient.col-lg-12.mb-4
+                                        strong.text-muted.d-block.mb-2 Дата рождения
+                                            .form-group
+                                                //input.form-control(type='text' name="inputBD")
+                                                input.form-control.datepicker-here(name="inputBD" type="text" )
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2 Адресс
+                                            .form-group
+                                                input.form-control(type='text' name="inputAdress")
+                                    .col-lg-12.mb-4
+                                        .row
+                                            .col
+                                                a.nav-link(href='client')
+                                                    button.btn.btn-primary.btn-lg.btn-block(type="submit") Добавить
+                        //#URclient.col-lg-12.mb-4
                             .card.card-small.mb-4
                                 .card-header.border-bottom
                                     h6.m-0 Добавление юридического клиента
@@ -278,7 +279,8 @@ head
                             i.material-icons note_add
                                 span Справочники
                             .dropdown-menu(aria-labelledby='dropdownMenuLink')
-                                a.dropdown-item(href='client') Клиенты
+                                a.dropdown-item(href='client') Физические клиенты
+                                a.dropdown-item(href='urclient') Юридические клиенты
                                 a.dropdown-item(href='car') Автомобили
                                 a.dropdown-item(href='breakdown') Поломки
                                 a.dropdown-item(href='service') Услуги
@@ -373,9 +375,9 @@ head
                                     form.form-inline.col-sm-12.col-md-12(action="/client")
                                         .col-sm-12.col-md-11
                                             input.form-control(type='text' name='DLN')
-                                            button.btn.btn-primary(href='' type='submit') Search
+                                            button.btn.btn-primary(href='' type='submit') Найти
                                         //.col-sm-12.col-md-1
-                                            button.btn.btn-primary(href='' type='submit') Search
+                                            button.btn.btn-primary(href='' type='submit') Найти
                                         .col-sm-12.col-md-1
                                             button.btn.btn-primary(type='button', data-toggle='modal', data-target='#myModal') +
 

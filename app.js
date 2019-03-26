@@ -16,6 +16,7 @@ var workersRouter = require('./routes/workers')
 var aboutRouter = require('./routes/about')
 var carRouter = require('./routes/car')
 var editClientRouter = require('./routes/editClient')
+var urClientRouter = require('./routes/urClient')
 var app = express();
 //auth part
 var bodyParser = require('body-parser');
@@ -157,12 +158,13 @@ app.use('/workers', workersRouter)
 app.use('/about', aboutRouter)
 app.use('/car', carRouter )
 app.use('/editClient', editClientRouter )
+app.use('/urclient', urClientRouter)
 
 
 const Client = require('./database/models/Client')
 const Car = require('./database/models/Car')
 const ServiceList = require('./database/models/ServiceList')
-
+const UrClient = require('./database/models/UrClient')
 
 app.use('/updateClient', async function (req, res) {
     await Client.update({
@@ -230,10 +232,36 @@ app.use('/addClient', async function (req, res) {
 })
 
 
+app.use('/addUrClient', async function (req, res) {
+    await UrClient.create({
+        Name: req.body.inputName,
+        INN: req.body.inputINN,
+        PhoneNumber: req.body.inputPhoneNumber,
+        Adress:req.body.inputAdress
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+    res.redirect(req.headers.referer)
+})
+
+
 app.use('/delclient', async function (req, res) {
     await Client.destroy({
         where: {
             DLNumber: req.body.DLN
+        }
+    })  .catch((err) => {
+        console.log(err)
+    })
+    res.redirect(req.headers.referer)
+})
+
+
+app.use('/delurclient', async function (req, res) {
+    await UrClient.destroy({
+        where: {
+            INN: req.body.INN
         }
     })  .catch((err) => {
         console.log(err)
