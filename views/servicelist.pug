@@ -19,9 +19,9 @@ head
                 td #{id}
                 //td #{client}
                 td #[a(href="client?DLN=" + clientID) #{client}]
-                td #{odate.toLocaleDateString()}
+                td #{odate.toLocaleDateString('en-GB')}
                 if(cdate !== null)
-                    td #{cdate.toLocaleDateString()}
+                    td #{cdate.toLocaleDateString('en-GB')}
                 else
                     td #{cdate}
                 td #{car}

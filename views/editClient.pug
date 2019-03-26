@@ -178,7 +178,7 @@ head
                                                 .form-group
                                                     //input.form-control(type='text' name="inputBD")
                                                     if(client[0].dataValues.Birthday !== null)
-                                                        input.form-control.datepicker-here(name="inputBD" type="text" value=client[0].dataValues.Birthday.toLocaleDateString())
+                                                        input.form-control.datepicker-here(name="inputBD" type="text" value=client[0].dataValues.Birthday.toLocaleDateString('en-GB'))
                                                     else
                                                         input.form-control.datepicker-here(name="inputBD" type="text")
                                         .col-sm-12
