@@ -163,6 +163,9 @@ app.use('/urclient', urClientRouter)
 
 const Client = require('./database/models/Client')
 const Car = require('./database/models/Car')
+const SprCar = require('./database/models/SprCar')
+const Brand = require('./database/models/Brand')
+const Model = require('./database/models/Model')
 const ServiceList = require('./database/models/ServiceList')
 const UrClient = require('./database/models/UrClient')
 
@@ -196,8 +199,36 @@ app.use('/closeSL', async function (req, res) {
         })
     res.redirect('/servicelist')
 })
+app.use('/checkClient', async function (req, res) {
+    let cl = await Client.findOne({
+       where:{DLNumber:req.query.DLN}
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+    let result
+    if(cl === null || cl == undefined)
+        result = 'Клиент не найден'
+    else
+        result = 'Клиент найден, '+cl.dataValues.FirstName
+    res.end(result)
+})
 
-
+app.use('/checkCar', async function (req, res) {
+    let car = await Car.findOne({
+        where:{VIN:req.query.VIN},
+        include: [{ model: SprCar, include: [{model: Brand, as: 'Brand'}, {model: Model, as: 'Model'}], as: 'SprCar'}]
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+    let result
+    if(car === null || car === undefined)
+        result = 'Автомобиль не найден'
+    else
+        result = 'Автомобиль найден, '+car.SprCar.Brand.dataValues.Brand + ' ' + car.SprCar.Model.dataValues.Model
+    res.end(result)
+})
 app.use('/addClient', async function (req, res) {
     await Client.create({
       FirstName: req.body.inputName,

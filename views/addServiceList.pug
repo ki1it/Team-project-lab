@@ -353,10 +353,13 @@ head
                                                     .row
                                                         .col-sm-12.col-md-11
                                                             .form-group
-                                                                select.form-control(name="inputClient")
-                                                                    option(selected='') Клиент...
-                                                                    option ...
+                                                                //select.form-control(name="inputClient")
+                                                                //    option(selected='') Клиент...
+                                                                //    option ...
+                                                                #clientText
+                                                                input.form-control(class="uk-input" id='inputClient' name="inputClient" type="text"  )
                                                         .col-sm-12.col-md-1
+                                                            #checkCL.button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button' onclick='checkClient()') Проверить
                                                             button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button', data-toggle='modal', data-target='#myModal') +
                                                             //a.nav-link(href='addClient')
                                                                 button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
@@ -365,10 +368,13 @@ head
                                                     .row
                                                         .col-sm-12.col-md-11
                                                             .form-group
-                                                                select.form-control(name="inputCar")
-                                                                    option(selected='') Машиана...
-                                                                    option ...
+                                                                //select.form-control(name="inputCar")
+                                                                //    option(selected='') Машиана...
+                                                                //    option ...
+                                                                #carText
+                                                                input.form-control(class="uk-input" id='inputCar' name="inputCar" type="text"  )
                                                         .col-sm-12.col-md-1
+                                                            #checkCar.button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button' onclick='checkCar()') Проверить
                                                             button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button', data-toggle='modal', data-target='#myModal2') +
                                                             //a.nav-link(href='addCar')
                                                                 button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button', data-toggle='modal', data-target='#myModal') +
@@ -478,3 +484,4 @@ script(src='scripts/shards-dashboards.1.1.0.min.js')
 script(src='scripts/app/app-components-overview.1.1.0.js')
 script( src='scripts/showClient.js')
 script(src='/dist/js/datepicker.min.js')
+script(src='scripts/checkCl&Car.js')
