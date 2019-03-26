@@ -95,7 +95,10 @@ function getModels() {
             if (request.status === 200) {
                 // Parse the JSON
                 var jsonOptions = JSON.parse(request.responseText)
-                dataList.options.length = 0;
+                // dataList.options.length = 0;
+                while (dataList.firstChild){
+                    dataList.removeChild(dataList.firstChild)
+                }
                 // Loop over the JSON array.
                 jsonOptions.forEach(function (item) {
 
