@@ -219,7 +219,7 @@ head
                                             th.border-0(scope='col') Действия
                                     tbody
                                         -for (let i = 0; i < servicelist.length; i++)
-                                            -console.log(i)
+
                                             if(servicelist[i].UrClient===null)
                                                 +rowsTable(servicelist[i].dataValues.id,
                                                 servicelist[i].Client.dataValues.FirstName + ' '+servicelist[i].Client.dataValues.SecondName,
@@ -230,6 +230,7 @@ head
                                                 servicelist[i].Client.dataValues.DLNumber,
                                                 servicelist[i].UrClient)
                                             else
+                                                -console.log(i)
                                                 +rowsTable(servicelist[i].dataValues.id,
                                                 servicelist[i].UrClient.dataValues.Name,
                                                 servicelist[i].dataValues.OpenDate,

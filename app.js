@@ -238,6 +238,23 @@ app.use('/getBrand', async function (req, res) {
     res.end(JSON.stringify(brand))
 })
 
+app.use('/getModel', async function (req, res) {
+    let brand = await Brand.findOne({where: {Brand: req.query.Brand}})
+        .catch((err) => {
+            console.log(err)
+        })
+    let model = await SprCar.findAll(
+        {
+    where:{BrandFK:brand.dataValues.id},
+            include: [{model: Model, as: 'Model'}]
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+
+    res.end(JSON.stringify(model))
+})
+
 app.use('/checkCar', async function (req, res) {
     let car = await Car.findOne({
         where: {VIN: req.query.VIN},
