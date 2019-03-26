@@ -340,6 +340,7 @@ head
                                             th.border-0(scope='col') ИНН
                                             th.border-0(scope='col') Телефон
                                             th.border-0(scope='col') Адрес
+                                            th.border-0(scope='col') Действие
                                     tbody
                                         -for (let i = 0; i < client.length; i++)
                                             +rowsTable(client[i].dataValues.id,
