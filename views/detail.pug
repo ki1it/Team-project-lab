@@ -1,0 +1,465 @@
+head
+    script(type='text/javascript').
+        $(document).ready(function (e) {
+            $.ajax({
+                //Your ajax here...
+                success: function (response) {
+                    //Your code of showing inserted data in table....
+                    //get the inserted userid from response and set update button's ONCLICK attribute as mentioned below
+                    var userid = getuseridfromresponse;
+                    $("#updatebuttonid").attr("onclick", "updaterecord(" + userid + ")");
+                }
+            });
+        });
+        function updaterecord(userid) {
+            $.ajax({
+                //your ajax here you
+                //send all the details from php code using JSON or whatever you are using.
+                success: function (response) {
+                    //store all the data into js variables.
+                    var userid = response.userid;
+                    var fullname = response.fullname;
+                    // and so on..
+                    $("#fullname").val(fullname); //this will set the textbox value to fullname
+                    //and so on..
+                    $("#userid").val(userid); //this is a hidden input in inser form. by default it will be zero. you will need it while updating.
+                    $("#actionname").val("update"); //this is also hidden input in insert form. default value would be "insert"
+                    // you just need to check in php that which actionname you are getting.
+                    //if you will get actionname = insert Do insert code
+                    //if you will get actionname = update Do update code.
+                }
+            });
+        }
+
+    meta(charset='utf-8')
+    meta(http-equiv='x-ua-compatible' content='ie=edge')
+    title Shards Dashboard Lite - Free Bootstrap Admin Template &ndash; DesignRevision
+    meta(name='description' content='A high-quality & free Bootstrap admin dashboard template pack that comes with lots of templates and components.')
+    meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    link(href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet')
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet')
+    link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous')
+    link#main-stylesheet(rel='stylesheet' data-version='1.1.0' href='styles/shards-dashboards.1.1.0.min.css')
+
+
+
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+
+    #myModal.modal.fade(role='dialog')
+        .modal-dialog.modal-lg
+            .modal-content
+                .modal-header
+                    h4.modal-title Добавление запчасти
+                    //.col-12.col-sm-4.text-center.text-sm-left.mb-0
+                        .form-group
+                            .custom-control.custom-toggle.custom-toggle-sm.mb-1
+                                input#showClient.custom-control-input(type='checkbox' name='customToggle1')
+                                label.custom-control-label(for='showClient') Юридическое лицо
+                    button.close(type='button', data-dismiss='modal') ×
+
+                .modal-body
+                    //.col-12.col-sm-4.text-center.text-sm-left.mb-0
+                    //.col-12.col-sm-4.text-center.text-sm-left.mb-0
+                        .form-group
+                            .custom-control.custom-toggle.custom-toggle-sm.mb-1
+                                input#showClient.custom-control-input(type='checkbox' name='customToggle1')
+                                label.custom-control-label(for='showClient') Юридическое лицо
+                    //div
+                        form(action="/addSklad", method="post" class="form" id='addSklad' enctype="application/json")
+                            div
+                                input(type="text" name="name" placeholder="Название" class="form__input" required)
+                                br
+                                select( name='type' required=true)
+                                    option(value=''   hidden ) Выберите тип
+                                br
+                                input(type="text" name='col' placeholder="Количество" class="form__input" required)
+                                br
+                                input(type="text" name='price' placeholder="Цена" class="form__input" required)
+
+
+                            div
+                                input.btn.btn-default(type="submit" href="/sklad" class="uk-button uk-button-primary top-margin" value="Отправить")
+                    //.row
+                        #client.col-lg-12.mb-4
+                            .card.card-small.mb-4
+                                .card-header.border-bottom
+                                    h6.m-0 Добавление физического клиента
+                    ul.list-group.list-group-flush
+                        form(action="/addDetail", method="post" class="form" id='addClient' enctype="application/json")
+                            li.list-group-item.p-3
+                                .row
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2 Название
+                                            .form-group
+                                                input.form-control(type='text' name="inputName")
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2 Цена
+                                            .form-group
+                                                input.form-control(type='text' name="inputPrice")
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2 Количество
+                                            .form-group
+                                                input.form-control(type='text' name="inputPrice")
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2 Единица измерения
+                                            .form-group
+                                                select.form-control(name="inputEdIz")
+                                                    option(selected='') ед из...
+                                                    option ...
+                                    .col-lg-12.mb-4
+                                        .row
+                                            .col
+                                                a.nav-link(href='detail')
+                                                    button.btn.btn-primary.btn-lg.btn-block(type="submit") Добавить
+                        //#URclient.col-lg-12.mb-4
+                            .card.card-small.mb-4
+                                .card-header.border-bottom
+                                    h6.m-0 Добавление юридического клиента
+                                ul.list-group.list-group-flush
+                                    form(action="/addUrClient", method="post" class="form" id='addUrClient' enctype="application/json")
+                                        li.list-group-item.p-3
+                                            .row
+                                                .col-sm-12
+                                                    strong.text-muted.d-block.mb-2 Название
+                                                        .form-group
+                                                            input.form-control(type='text' name="inputName")
+                                                .col-sm-12
+                                                    strong.text-muted.d-block.mb-2 ИНН
+                                                        .form-group
+                                                            input.form-control(type='text' name="inputINN")
+                                                .col-sm-12
+                                                    strong.text-muted.d-block.mb-2 Номер телефона
+                                                        .form-group
+                                                            input.form-control(type='text' name="inputPhoneNumber")
+
+                                                .col-sm-12
+                                                    strong.text-muted.d-block.mb-2 Адресс
+                                                        .form-group
+                                                            input.form-control(type='text' name="inputAdress")
+                                                .col-lg-12.mb-4
+                                                    .row
+                                                        .col
+                                                            a.nav-link(href='client')
+                                                                button.btn.btn-primary.btn-lg.btn-block(type="submit") Добавить
+    #editEmployeeModal.modal.fade
+        .modal-dialog
+            .modal-content
+                form
+                    .modal-header
+                        h4.modal-title Edit Employee
+                        button.close(type='button' data-dismiss='modal' aria-hidden='true') &times;
+                    .modal-body
+                        .form-group
+                            label Name
+                            input.form-control(type='text' required='')
+                        .form-group
+                            label Email
+                            input.form-control(type='email' required='')
+                        .form-group
+                            label Address
+                            textarea.form-control(required='')
+                        .form-group
+                            label Phone
+                            input.form-control(type='text' required='')
+                    .modal-footer
+                        input.btn.btn-default(type='button' data-dismiss='modal' value='Cancel')
+                        input.btn.btn-info(type='submit' value='Save')
+
+
+
+    link(rel='stylesheet' href='styles/extras.1.1.0.min.css')
+    script(async='' defer='' src='https://buttons.github.io/buttons.js')
+    script(async='' defer='' src='https://www.kryogenix.org/code/browser/sorttable/sorttable.js')
+    - var i=0;
+        mixin rowsTable(id, Name, Price, Amount, EdIz)
+            tr
+
+                //td #{id}
+                td #{Name}
+                td #{Price}
+                td #{Amount}
+                td #{EdIz}
+                td
+                    a#navbarDropdownMenuLink.nav-link(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                        i.material-icons menu
+                        p.d-lg-none.d-md-block
+                            | Some Actions
+                    .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownMenuLink')
+                        a.dropdown-item(href='/detail' onclick="$.ajax({type: 'POST', url: '/deldetail', data: 'id=" + id + "', })") Удалить
+                        //a.dropdown-item(href='/editClient?DLN='+DLN ) Изменить
+                        //a.edit(href='#editEmployeeModal' data-toggle='modal')
+                        //    i.material-icons(data-toggle='tooltip' title='Edit') Изменить &#xE254;
+
+
+//.color-switcher.animated
+    h5 Accent Color
+    ul.accent-colors
+        li.accent-primary.active(data-color='primary')
+            i.material-icons check
+        li.accent-secondary(data-color='secondary')
+            i.material-icons check
+        li.accent-success(data-color='success')
+            i.material-icons check
+        li.accent-info(data-color='info')
+            i.material-icons check
+        li.accent-warning(data-color='warning')
+            i.material-icons check
+        li.accent-danger(data-color='danger')
+            i.material-icons check
+    .actions.mb-4
+        a.mb-2.btn.btn-sm.btn-primary.w-100.d-table.mx-auto.extra-action(href='https://designrevision.com/downloads/shards-dashboard-lite/')
+            i.material-icons cloud
+            |  Download
+        a.mb-2.btn.btn-sm.btn-white.w-100.d-table.mx-auto.extra-action(href='https://designrevision.com/docs/shards-dashboard-lite')
+            i.material-icons book
+            |  Documentation
+    .social-wrapper
+        .social-actions
+            h5.my-2 Help us Grow
+            .inner-wrapper
+                a.github-button(href='https://github.com/DesignRevision/shards-dashboard' data-icon='octicon-star' data-show-count='true' aria-label='Star DesignRevision/shards-dashboard on GitHub') Star
+                // <iframe style="width: 91px; height: 21px;"src="https://yvoschaap.com/producthunt/counter.html#href=https%3A%2F%2Fwww.producthunt.com%2Fr%2Fp%2F112998&layout=wide" width="56" height="65" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+        #social-share(data-url='https://designrevision.com/downloads/shards-dashboard-lite/' data-text='🔥 Check out Shards Dashboard Lite, a free and beautiful Bootstrap 4 admin dashboard template!' data-title='share')
+        .loading-overlay
+            .spinner
+    .close
+        i.material-icons close
+//.color-switcher-toggle.animated.pulse.infinite
+    i.material-icons settings
+.container-fluid
+    .row
+        // Main Sidebar
+        aside.main-sidebar.col-12.col-md-3.col-lg-2.px-0
+            .main-navbar
+                nav.navbar.align-items-stretch.navbar-light.bg-white.flex-md-nowrap.border-bottom.p-0
+                    a.navbar-brand.w-100.mr-0(href='#' style='line-height: 25px;')
+                        .d-table.m-auto
+                            img#main-logo.d-inline-block.align-top.mr-1(style='max-width: 25px;' src='images/shards-dashboards-logo.svg' alt='Shards Dashboard')
+                            span.d-none.d-md-inline.ml-1 АРМ Администратор
+                    a.toggle-sidebar.d-sm-inline.d-md-none.d-lg-none
+                        i.material-icons &#xE5C4;
+            .nav-wrapper
+                ul.nav.flex-column
+                    li.nav-item
+                        a.nav-link(href='index')
+                            i.material-icons edit
+                            span Главная
+                    li.nav-item
+                        a.nav-link.dropdown-toggle(href='servicelist'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                            i.material-icons vertical_split
+                                span Заказ-наряд
+                            .dropdown-menu(aria-labelledby='dropdownMenuLink')
+                                a.dropdown-item(href='servicelist') Посмотреть
+                                a.dropdown-item(href='addservicelist') Создать
+                                a.dropdown-item(href='#') Что-то еще
+
+
+                    li.nav-item
+                        a.nav-link.active.dropdown-toggle(href='servicelist'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                            i.material-icons note_add
+                                span Справочники
+                            .dropdown-menu(aria-labelledby='dropdownMenuLink')
+                                a.dropdown-item(href='client') Физические клиенты
+                                a.dropdown-item(href='urclient') Юридические клиенты
+                                a.dropdown-item(href='car') Автомобили
+                                a.dropdown-item(href='breakdown') Поломки
+                                a.dropdown-item(href='service') Услуги
+                                a.dropdown-item(href='detail') Запчасти
+                    li.nav-item
+                        a.nav-link(href='forms')
+                            i.material-icons view_module
+                            span Формы
+                    li.nav-item
+                        a.nav-link(href='about')
+                            i.material-icons table_chart
+                            span О сайте
+        // End Main Sidebar
+        main.main-content.col-lg-10.col-md-9.col-sm-12.p-0.offset-lg-2.offset-md-3
+            .main-navbar.sticky-top.bg-white
+                // Main Navbar
+                nav.navbar.align-items-stretch.navbar-light.flex-md-nowrap.p-0
+                    form.main-navbar__search.w-100.d-none.d-md-flex.d-lg-flex(action='#')
+
+                    ul.navbar-nav.border-left.flex-row
+                        li.nav-item.border-right.dropdown.notifications
+                            a#dropdownMenuLink.nav-link.nav-link-icon.text-center(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                                .nav-link-icon__wrapper
+                                    i.material-icons &#xE7F4;
+                                    span.badge.badge-pill.badge-danger 2
+                            .dropdown-menu.dropdown-menu-small(aria-labelledby='dropdownMenuLink')
+                                a.dropdown-item(href='#')
+                                    .notification__icon-wrapper
+                                        .notification__icon
+                                            i.material-icons &#xE6E1;
+                                    .notification__content
+                                        span.notification__category Analytics
+                                        p
+                                            | Your website&rsquo;s active users count increased by
+                                            span.text-success.text-semibold 28%
+                                            |  in the last week. Great job!
+                                a.dropdown-item(href='#')
+                                    .notification__icon-wrapper
+                                        .notification__icon
+                                            i.material-icons &#xE8D1;
+                                    .notification__content
+                                        span.notification__category Sales
+                                        p
+                                            | Last week your store&rsquo;s sales count decreased by
+                                            span.text-danger.text-semibold 5.52%
+                                            | . It could have been worse!
+                                a.dropdown-item.notification__all.text-center(href='#')  View all Notifications
+                        li.nav-item.dropdown
+                            a.nav-link.dropdown-toggle.text-nowrap.px-3(data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false')
+                                img.user-avatar.rounded-circle.mr-2(src='images/avatars/0.jpg' alt='User Avatar')
+                                span.d-none.d-md-inline-block Sierra Brooks
+                            .dropdown-menu.dropdown-menu-small
+                                //a.dropdown-item(href='user-profile-lite.html')
+                                    i.material-icons &#xE7FD;
+                                    |  Profile
+                                //a.dropdown-item(href='components-blog-posts.html')
+                                    i.material-icons vertical_split
+                                    |  Blog Posts
+                                //a.dropdown-item(href='add-new-post.html')
+                                    i.material-icons note_add
+                                    |  Add New Post
+                                .dropdown-divider
+                                a.dropdown-item.text-danger(href='#')
+                                    i.material-icons.text-danger &#xE879;
+                                    |  Logout
+                    nav.nav
+                        a.nav-link.nav-link-icon.toggle-sidebar.d-md-inline.d-lg-none.text-center.border-left(href='#' data-toggle='collapse' data-target='.header-navbar' aria-expanded='false' aria-controls='header-navbar')
+                            i.material-icons &#xE5D2;
+            // / .main-navbar
+            .main-content-container.container-fluid.px-4
+                // Page Header
+                .page-header.row.no-gutters.py-4
+                    .col-12.col-sm-4.text-center.text-sm-left.mb-0
+                        //span.text-uppercase.page-subtitle Overview
+                        h3.page-title Запчасти
+                // End Page Header
+                // Default Light Table
+                .row
+                    .col
+                        .card.card-small.mb-4
+                            .card-header.border-bottom
+                                //h6.m-0 Заказ-наряд
+                                .row
+                                    //    //.col-sm-12.col-md-12
+                                    //        h6.m-0 Заказ-наряд
+                                    //    .col-sm-12.col-md-12
+                                    //        .input-group.input-group-seamless
+                                    //            .input-group-prepend
+                                    //                .input-group-text
+                                    //                    i.fas.fa-search
+                                    //            input.navbar-search.form-control(type='text' placeholder='поиск' aria-label='Search')
+                                    form.form-inline.col-sm-12.col-md-12()
+                                        .col-sm-12.col-md-11
+                                            //input.form-control(type='text' name='DLN')
+                                            //button.btn.btn-primary(href='' type='submit') Найти
+                                        //.col-sm-12.col-md-1
+                                            button.btn.btn-primary(href='' type='submit') Найти
+                                        .col-sm-12.col-md-1
+                                            button.btn.btn-primary(type='button', data-toggle='modal', data-target='#myModal') +
+
+
+                            .card-body.p-0.pb-3.text-center
+                                table.table.mb-0.sortable
+                                    thead.bg-light.text-primary
+                                        tr
+                                            //th.border-0(scope='col') №
+                                            th.border-0(scope='col') Название
+                                            th.border-0(scope='col') Цена
+                                            th.border-0(scope='col') Количество
+                                            th.border-0(scope='col') Едиинца измерения
+                                            th.border-0(scope='col') Действие
+                                    tbody
+                                        -for (let i = 0; i < detail.length; i++)
+                                            +rowsTable(detail[i].dataValues.id,
+                                            detail[i].dataValues.Name,
+                                            detail[i].dataValues.Price,
+                                            detail[i].dataValues.Amount,
+                                            detail[i].EdIzmer.dataValues.Name)
+                //// End Default Light Table
+                //// Default Dark Table
+                //.row
+                //    .col
+                //        .card.card-small.overflow-hidden.mb-4
+                //            .card-header.bg-dark
+                //                h6.m-0.text-white Inactive Users
+                //            .card-body.p-0.pb-3.bg-dark.text-center
+                //                table.table.table-dark.mb-0
+                //                    thead.thead-dark
+                //                        tr
+                //                            th.border-bottom-0(scope='col') #
+                //                            th.border-bottom-0(scope='col') First Name
+                //                            th.border-bottom-0(scope='col') Last Name
+                //                            th.border-bottom-0(scope='col') Country
+                //                            th.border-bottom-0(scope='col') City
+                //                            th.border-bottom-0(scope='col') Phone
+                //                    tbody
+                //                        tr
+                //                            td 1
+                //                            td Graham
+                //                            td Brent
+                //                            td Benin
+                //                            td Ripabottoni
+                //                            td 1-512-760-9094
+                //                        tr
+                //                            td 2
+                //                            td Clark
+                //                            td Angela
+                //                            td Estonia
+                //                            td Borghetto di Vara
+                //                            td 1-660-850-1647
+                //                        tr
+                //                            td 3
+                //                            td Wylie
+                //                            td Joseph
+                //                            td Korea, North
+                //                            td Guelph
+                //                            td 325-4351
+                //                        tr
+                //                            td 4
+                //                            td Garth
+                //                            td Clementine
+                //                            td Indonesia
+                //                            td Narcao
+                //                            td 722-8264
+                //// End Default Dark Table
+            footer.main-footer.d-flex.p-2.px-3.bg-white.border-top
+                //ul.nav
+                    li.nav-item
+                        a.nav-link(href='#') Home
+                    li.nav-item
+                        a.nav-link(href='#') Services
+                    li.nav-item
+                        a.nav-link(href='#') About
+                    li.nav-item
+                        a.nav-link(href='#') Products
+                    li.nav-item
+                        a.nav-link(href='#') Blog
+                span.copyright.ml-auto.my-auto.mr-2
+                    Copyright &copy; 2019 ki1it&ma-daria
+//.promo-popup.animated
+    a.pp-cta.extra-action(href='http://bit.ly/shards-dashboard-pro')
+        img(src='https://dgc2qnsehk7ta.cloudfront.net/uploads/sd-blog-promo-2.jpg')
+    .pp-intro-bar
+        | Need More Templates?
+        span.close
+            i.material-icons close
+        span.up
+            i.material-icons keyboard_arrow_up
+    .pp-inner-content
+        h2 Shards Dashboard Pro
+        p A premium &amp; modern Bootstrap 4 admin dashboard template pack.
+        a.pp-cta.extra-action(href='http://bit.ly/shards-dashboard-pro') Download
+script(src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js')
+script(src='https://unpkg.com/shards-ui@latest/dist/js/shards.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js')
+script(src='scripts/extras.1.1.0.min.js')
+script(src='scripts/shards-dashboards.1.1.0.min.js')
+script( src='scripts/showClient.js')
