@@ -179,6 +179,7 @@ const UrClient = require('./database/models/UrClient')
 const Breakdown = require('./database/models/Breakdown')
 const BreakdownType = require('./database/models/BreakdownType')
 const Service = require('./database/models/Service')
+const ServiceType = require('./database/models/ServiceType')
 const Detail = require('./database/models/Detail')
 
 app.use('/updateClient', async function (req, res) {
@@ -330,6 +331,35 @@ app.use('/addBreakdown', async function (req, res) {
 
 app.use('/delBreakdown', async function (req, res) {
     await Breakdown.destroy({
+        where: {
+            id: req.body.id
+        }
+    }).catch((err) => {
+        console.log(err)
+    })
+    res.redirect(req.headers.referer)
+})
+
+app.use('/addService', async function (req, res) {
+    let type = await ServiceType.findOne({
+        where:{Name:req.body.inputType}
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+    await Service.create({
+        Name: req.body.inputName,
+        Type: type.dataValues.id,
+        Price: req.body.inputPrice
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+    res.redirect(req.headers.referer)
+})
+
+app.use('/delService', async function (req, res) {
+    await Service.destroy({
         where: {
             id: req.body.id
         }

@@ -1,5 +1,3 @@
-
-
 var express = require('express')
 var router = express.Router()
 
@@ -8,14 +6,19 @@ const ServiceType = require('../database/models/ServiceType')
 const Sequelize = require('sequelize')
 /* GET users listing. */
 router.get('/', async function (req, res, next) {
-    let service= await Service.findAll({
+    let servicetype = await ServiceType.findAll({})
+        .catch((err) => {
+            console.log(err)
+        })
+    let service = await Service.findAll({
         include: [{model: ServiceType, as: 'ServiceType'}]
     })
         .catch((err) => {
             console.log(err)
         })
     res.render('service', {
-        service:service
+        service: service,
+        servicetype: servicetype
     })
 })
 

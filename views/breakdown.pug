@@ -59,32 +59,7 @@ head
                     button.close(type='button', data-dismiss='modal') ×
 
                 .modal-body
-                    //.col-12.col-sm-4.text-center.text-sm-left.mb-0
-                    //.col-12.col-sm-4.text-center.text-sm-left.mb-0
-                        .form-group
-                            .custom-control.custom-toggle.custom-toggle-sm.mb-1
-                                input#showClient.custom-control-input(type='checkbox' name='customToggle1')
-                                label.custom-control-label(for='showClient') Юридическое лицо
-                    //div
-                        form(action="/addSklad", method="post" class="form" id='addSklad' enctype="application/json")
-                            div
-                                input(type="text" name="name" placeholder="Название" class="form__input" required)
-                                br
-                                select( name='type' required=true)
-                                    option(value=''   hidden ) Выберите тип
-                                br
-                                input(type="text" name='col' placeholder="Количество" class="form__input" required)
-                                br
-                                input(type="text" name='price' placeholder="Цена" class="form__input" required)
 
-
-                            div
-                                input.btn.btn-default(type="submit" href="/sklad" class="uk-button uk-button-primary top-margin" value="Отправить")
-                    //.row
-                        #client.col-lg-12.mb-4
-                            .card.card-small.mb-4
-                                .card-header.border-bottom
-                                    h6.m-0 Добавление физического клиента
                     ul.list-group.list-group-flush
                         form(action="/addBreakdown", method="post" class="form" id='addClient' enctype="application/json")
                             li.list-group-item.p-3
@@ -111,60 +86,6 @@ head
                                             .col
                                                 a.nav-link(href='/breakdown')
                                                     button.btn.btn-primary.btn-lg.btn-block(type="submit") Добавить
-                        //#URclient.col-lg-12.mb-4
-                            .card.card-small.mb-4
-                                .card-header.border-bottom
-                                    h6.m-0 Добавление юридического клиента
-                                ul.list-group.list-group-flush
-                                    form(action="/addUrClient", method="post" class="form" id='addUrClient' enctype="application/json")
-                                        li.list-group-item.p-3
-                                            .row
-                                                .col-sm-12
-                                                    strong.text-muted.d-block.mb-2 Название
-                                                        .form-group
-                                                            input.form-control(type='text' name="inputName")
-                                                .col-sm-12
-                                                    strong.text-muted.d-block.mb-2 ИНН
-                                                        .form-group
-                                                            input.form-control(type='text' name="inputINN")
-                                                .col-sm-12
-                                                    strong.text-muted.d-block.mb-2 Номер телефона
-                                                        .form-group
-                                                            input.form-control(type='text' name="inputPhoneNumber")
-
-                                                .col-sm-12
-                                                    strong.text-muted.d-block.mb-2 Адресс
-                                                        .form-group
-                                                            input.form-control(type='text' name="inputAdress")
-                                                .col-lg-12.mb-4
-                                                    .row
-                                                        .col
-                                                            a.nav-link(href='client')
-                                                                button.btn.btn-primary.btn-lg.btn-block(type="submit") Добавить
-    #editEmployeeModal.modal.fade
-        .modal-dialog
-            .modal-content
-                form
-                    .modal-header
-                        h4.modal-title Edit Employee
-                        button.close(type='button' data-dismiss='modal' aria-hidden='true') &times;
-                    .modal-body
-                        .form-group
-                            label Name
-                            input.form-control(type='text' required='')
-                        .form-group
-                            label Email
-                            input.form-control(type='email' required='')
-                        .form-group
-                            label Address
-                            textarea.form-control(required='')
-                        .form-group
-                            label Phone
-                            input.form-control(type='text' required='')
-                    .modal-footer
-                        input.btn.btn-default(type='button' data-dismiss='modal' value='Cancel')
-                        input.btn.btn-info(type='submit' value='Save')
-
 
 
     link(rel='stylesheet' href='styles/extras.1.1.0.min.css')
