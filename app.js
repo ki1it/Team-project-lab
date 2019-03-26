@@ -173,14 +173,14 @@ const UrClient = require('./database/models/UrClient')
 
 app.use('/updateClient', async function (req, res) {
     await Client.update({
-        FirstName: req.body.inputName,
-        SecondName: req.body.inputSecondName,
-        Patronymic: req.body.inputPatronymic,
-        PhoneNumber: req.body.inputPhoneNumber,
-        Adress:req.body.inputAdress,
-        DLNumber: req.body.inputDLN,
-        Birthday: moment(req.body.inputBD, 'DD.MM.YYYY').startOf('day')
-    },{where:{DLNumber: req.query.OldDLN}}
+            FirstName: req.body.inputName,
+            SecondName: req.body.inputSecondName,
+            Patronymic: req.body.inputPatronymic,
+            PhoneNumber: req.body.inputPhoneNumber,
+            Adress: req.body.inputAdress,
+            DLNumber: req.body.inputDLN,
+            Birthday: moment(req.body.inputBD, 'DD.MM.YYYY').startOf('day')
+        }, {where: {DLNumber: req.query.OldDLN}}
     )
         .catch((err) => {
             console.log(err)
@@ -203,12 +203,11 @@ app.use('/updateUrClient', async function (req, res) {
 })
 
 
-
 app.use('/closeSL', async function (req, res) {
     await ServiceList.update({
-        Status: 2,
-        CloseDate: moment().format()
-        },{where:{id: req.body.id}}
+            Status: 2,
+            CloseDate: moment().format()
+        }, {where: {id: req.body.id}}
     )
         .catch((err) => {
             console.log(err)
@@ -217,43 +216,52 @@ app.use('/closeSL', async function (req, res) {
 })
 app.use('/checkClient', async function (req, res) {
     let cl = await Client.findOne({
-       where:{DLNumber:req.query.DLN}
+        where: {DLNumber: req.query.DLN}
     })
         .catch((err) => {
             console.log(err)
         })
     let result
-    if(cl === null || cl == undefined)
+    if (cl === null || cl == undefined)
         result = 'Клиент не найден'
     else
-        result = 'Клиент найден, '+cl.dataValues.FirstName
+        result = 'Клиент найден, ' + cl.dataValues.FirstName
     res.end(result)
+})
+
+app.use('/getBrand', async function (req, res) {
+    let brand = await Brand.findAll({attributes: ['Brand']})
+        .catch((err) => {
+            console.log(err)
+        })
+
+    res.end(JSON.stringify(brand))
 })
 
 app.use('/checkCar', async function (req, res) {
     let car = await Car.findOne({
-        where:{VIN:req.query.VIN},
-        include: [{ model: SprCar, include: [{model: Brand, as: 'Brand'}, {model: Model, as: 'Model'}], as: 'SprCar'}]
+        where: {VIN: req.query.VIN},
+        include: [{model: SprCar, include: [{model: Brand, as: 'Brand'}, {model: Model, as: 'Model'}], as: 'SprCar'}]
     })
         .catch((err) => {
             console.log(err)
         })
     let result
-    if(car === null || car === undefined)
+    if (car === null || car === undefined)
         result = 'Автомобиль не найден'
     else
-        result = 'Автомобиль найден, '+car.SprCar.Brand.dataValues.Brand + ' ' + car.SprCar.Model.dataValues.Model
+        result = 'Автомобиль найден, ' + car.SprCar.Brand.dataValues.Brand + ' ' + car.SprCar.Model.dataValues.Model
     res.end(result)
 })
 app.use('/addClient', async function (req, res) {
     await Client.create({
-      FirstName: req.body.inputName,
-      SecondName: req.body.inputSecondName,
-      Patronymic: req.body.inputPatronymic,
-      PhoneNumber: req.body.inputPhoneNumber,
-        Adress:req.body.inputAdress,
+        FirstName: req.body.inputName,
+        SecondName: req.body.inputSecondName,
+        Patronymic: req.body.inputPatronymic,
+        PhoneNumber: req.body.inputPhoneNumber,
+        Adress: req.body.inputAdress,
         DLNumber: req.body.inputDLN,
-      Birthday: moment(req.body.inputBD, 'DD.MM.YYYY').startOf('day')
+        Birthday: moment(req.body.inputBD, 'DD.MM.YYYY').startOf('day')
     })
         .catch((err) => {
             console.log(err)
@@ -267,7 +275,7 @@ app.use('/addUrClient', async function (req, res) {
         Name: req.body.inputName,
         INN: req.body.inputINN,
         PhoneNumber: req.body.inputPhoneNumber,
-        Adress:req.body.inputAdress
+        Adress: req.body.inputAdress
     })
         .catch((err) => {
             console.log(err)
@@ -281,7 +289,7 @@ app.use('/delclient', async function (req, res) {
         where: {
             DLNumber: req.body.DLN
         }
-    })  .catch((err) => {
+    }).catch((err) => {
         console.log(err)
     })
     res.redirect(req.headers.referer)
@@ -293,7 +301,7 @@ app.use('/delurclient', async function (req, res) {
         where: {
             INN: req.body.INN
         }
-    })  .catch((err) => {
+    }).catch((err) => {
         console.log(err)
     })
     res.redirect(req.headers.referer)
@@ -305,7 +313,7 @@ app.use('/delcar', async function (req, res) {
         where: {
             VIN: req.body.VIN
         }
-    })  .catch((err) => {
+    }).catch((err) => {
         console.log(err)
     })
     res.redirect(req.headers.referer)
