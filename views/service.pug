@@ -50,7 +50,7 @@ head
         .modal-dialog.modal-lg
             .modal-content
                 .modal-header
-                    h4.modal-title Добавление поломки
+                    h4.modal-title Добавление услуги
                     //.col-12.col-sm-4.text-center.text-sm-left.mb-0
                         .form-group
                             .custom-control.custom-toggle.custom-toggle-sm.mb-1
@@ -86,7 +86,7 @@ head
                                 .card-header.border-bottom
                                     h6.m-0 Добавление физического клиента
                     ul.list-group.list-group-flush
-                        form(action="/addBreakdown", method="post" class="form" id='addClient' enctype="application/json")
+                        form(action="/addService", method="post" class="form" id='addClient' enctype="application/json")
                             li.list-group-item.p-3
                                 .row
                                     .col-sm-12
@@ -107,7 +107,7 @@ head
                                     .col-lg-12.mb-4
                                         .row
                                             .col
-                                                a.nav-link(href='breakdown')
+                                                a.nav-link(href='service')
                                                     button.btn.btn-primary.btn-lg.btn-block(type="submit") Добавить
                         //#URclient.col-lg-12.mb-4
                             .card.card-small.mb-4
@@ -182,7 +182,7 @@ head
                         p.d-lg-none.d-md-block
                             | Some Actions
                     .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownMenuLink')
-                        a.dropdown-item(href='/breakdown' onclick="$.ajax({type: 'POST', url: '/delbreakdown', data: 'id=" + id + "', })") Удалить
+                        a.dropdown-item(href='/service' onclick="$.ajax({type: 'POST', url: '/delservice', data: 'id=" + id + "', })") Удалить
                         //a.dropdown-item(href='/editClient?DLN='+DLN ) Изменить
                         //a.edit(href='#editEmployeeModal' data-toggle='modal')
                         //    i.material-icons(data-toggle='tooltip' title='Edit') Изменить &#xE254;
@@ -332,7 +332,7 @@ head
                 .page-header.row.no-gutters.py-4
                     .col-12.col-sm-4.text-center.text-sm-left.mb-0
                         //span.text-uppercase.page-subtitle Overview
-                        h3.page-title Поломки
+                        h3.page-title Услуги
                 // End Page Header
                 // Default Light Table
                 .row
@@ -369,11 +369,11 @@ head
                                             th.border-0(scope='col') Тип
                                             th.border-0(scope='col') Десйствие
                                     tbody
-                                        -for (let i = 0; i < breakdown.length; i++)
-                                            +rowsTable(breakdown[i].dataValues.id,
-                                            breakdown[i].dataValues.Name,
-                                            breakdown[i].dataValues.Price,
-                                            breakdown[i].BreakdownType.dataValues.Name)
+                                        -for (let i = 0; i < service.length; i++)
+                                            +rowsTable(service[i].dataValues.id,
+                                            service[i].dataValues.Name,
+                                            service[i].dataValues.Price,
+                                            service[i].ServiceType.dataValues.Name)
                 //// End Default Light Table
                 //// Default Dark Table
                 //.row
