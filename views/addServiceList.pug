@@ -159,20 +159,14 @@ head
                             li.list-group-item.p-3
                                 .row
                                     .col-sm-12
-                                        strong.text-muted.d-block.mb-2 Автомобиль
-                                            .form-group
-                                                select.form-control(name="inputCar")
-                                                    option(selected='') Авто...
-                                                    option ...
-                                    .col-sm-12
                                         strong.text-muted.d-block.mb-2 Бренд
                                             .form-group
-                                                input#ajax1(type='text' list='json-datalist1' placeholder='e.g. datalist')
+                                                input#ajax1.form-control(type='text' list='json-datalist1' placeholder='e.g. datalist')
                                                 datalist#json-datalist1
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Модель
                                             .form-group
-                                                input#ajax2(type='text' list='json-datalist2' placeholder='e.g. datalist' onclick='getModels()')
+                                                input#ajax2.form-control(type='text' list='json-datalist2' placeholder='e.g. datalist' onclick='getModels()')
                                                 datalist#json-datalist2
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 VIN номер
@@ -361,14 +355,14 @@ head
                                             .col-sm-12.col
                                                 strong.text-muted.d-block.mb-2 Клиент
                                                     .row
-                                                        .col-sm-12.col-md-11
+                                                        .col-sm-12.col-md-10
                                                             .form-group
                                                                 //select.form-control(name="inputClient")
                                                                 //    option(selected='') Клиент...
                                                                 //    option ...
                                                                 #clientText
-                                                                input.form-control(class="uk-input" id='inputClient' name="inputClient" type="text"  )
-                                                        .col-sm-12.col-md-1
+                                                                input.form-control(class="uk-input" id='inputClient' name="inputClient" type="text"  placeholder="Введите номер ВУ")
+                                                        .col-sm-12.col-md-2
                                                             #checkCL.button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button' onclick='checkClient()') Проверить
                                                             button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button', data-toggle='modal', data-target='#myModal') +
                                                             //a.nav-link(href='addClient')
@@ -376,14 +370,14 @@ head
                                             .col-sm-12
                                                 strong.text-muted.d-block.mb-2 Машина
                                                     .row
-                                                        .col-sm-12.col-md-11
+                                                        .col-sm-12.col-md-10
                                                             .form-group
                                                                 //select.form-control(name="inputCar")
                                                                 //    option(selected='') Машиана...
                                                                 //    option ...
                                                                 #carText
-                                                                input.form-control(class="uk-input" id='inputCar' name="inputCar" type="text"  )
-                                                        .col-sm-12.col-md-1
+                                                                input.form-control(class="uk-input" id='inputCar' name="inputCar" type="text" placeholder="Введите VIN номер" )
+                                                        .col-sm-12.col-md-2
                                                             #checkCar.button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button' onclick='checkCar()') Проверить
                                                             button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button', data-toggle='modal', data-target='#myModal2') +
                                                             //a.nav-link(href='addCar')
@@ -465,21 +459,16 @@ head
                                             .col-lg-12.mb-4
                                                 .row
                                                     .col
+                                                        strong.text-muted.d-block.mb-2 Итоговая стоимость
+                                                            .form-group
+                                                                input.form-control(type='text' name="Price")
+                                            .col-lg-12.mb-4
+                                                .row
+                                                    .col
                                                         button.btn.btn-primary.btn-lg.btn-block(type="submit" href="/addservicelist" ) Добавить
 
                         // / Input & Button Groups
             footer.main-footer.d-flex.p-2.px-3.bg-white.border-top
-                //ul.nav
-                    li.nav-item
-                        a.nav-link(href='#') Home
-                    li.nav-item
-                        a.nav-link(href='#') Services
-                    li.nav-item
-                        a.nav-link(href='#') About
-                    li.nav-item
-                        a.nav-link(href='#') Products
-                    li.nav-item
-                        a.nav-link(href='#') Blog
                 span.copyright.ml-auto.my-auto.mr-2
                     | Copyright &copy; 2019 ki1it&ma-daria
 

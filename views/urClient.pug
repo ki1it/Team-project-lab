@@ -10,7 +10,7 @@ head
     link(href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet')
     link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin='anonymous')
     link#main-stylesheet(rel='stylesheet' data-version='1.1.0' href='styles/shards-dashboards.1.1.0.min.css')
-
+    link(href='/dist/css/datepicker.min.css', rel='stylesheet')
 
 
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
@@ -21,39 +21,9 @@ head
             .modal-content
                 .modal-header
                     h4.modal-title Добавление юридического клиента
-                    //.col-12.col-sm-4.text-center.text-sm-left.mb-0
-                        .form-group
-                            .custom-control.custom-toggle.custom-toggle-sm.mb-1
-                                input#showClient.custom-control-input(type='checkbox' name='customToggle1')
-                                label.custom-control-label(for='showClient') Юридическое лицо
                     button.close(type='button', data-dismiss='modal') ×
 
                 .modal-body
-                    //.col-12.col-sm-4.text-center.text-sm-left.mb-0
-                        .form-group
-                            .custom-control.custom-toggle.custom-toggle-sm.mb-1
-                                input#showClient.custom-control-input(type='checkbox' name='customToggle1')
-                                label.custom-control-label(for='showClient') Юридическое лицо
-                    //div
-                        form(action="/addSklad", method="post" class="form" id='addSklad' enctype="application/json")
-                            div
-                                input(type="text" name="name" placeholder="Название" class="form__input" required)
-                                br
-                                select( name='type' required=true)
-                                    option(value=''   hidden ) Выберите тип
-                                br
-                                input(type="text" name='col' placeholder="Количество" class="form__input" required)
-                                br
-                                input(type="text" name='price' placeholder="Цена" class="form__input" required)
-
-
-                            div
-                                input.btn.btn-default(type="submit" href="/sklad" class="uk-button uk-button-primary top-margin" value="Отправить")
-                    //.row
-                        #URclient.col-lg-12.mb-4
-                            .card.card-small.mb-4
-                                .card-header.border-bottom
-                                    h6.m-0 Добавление юридического клиента
                     ul.list-group.list-group-flush
                         form(action="/addUrClient", method="post" class="form" id='addUrClient' enctype="application/json")
                             li.list-group-item.p-3
@@ -126,45 +96,8 @@ head
                     .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownMenuLink')
                         a.dropdown-item(href='/urclient' onclick="$.ajax({type: 'POST', url: '/delurclient', data: 'INN=" + INN + "', })") Удалить
                         a.dropdown-item(href='/editUrClient?INN='+INN ) Изменить
-                        //a.edit(href='#editEmployeeModal' data-toggle='modal')
-                        //    i.material-icons(data-toggle='tooltip' title='Edit') Изменить &#xE254;
 
 
-//.color-switcher.animated
-    h5 Accent Color
-    ul.accent-colors
-        li.accent-primary.active(data-color='primary')
-            i.material-icons check
-        li.accent-secondary(data-color='secondary')
-            i.material-icons check
-        li.accent-success(data-color='success')
-            i.material-icons check
-        li.accent-info(data-color='info')
-            i.material-icons check
-        li.accent-warning(data-color='warning')
-            i.material-icons check
-        li.accent-danger(data-color='danger')
-            i.material-icons check
-    .actions.mb-4
-        a.mb-2.btn.btn-sm.btn-primary.w-100.d-table.mx-auto.extra-action(href='https://designrevision.com/downloads/shards-dashboard-lite/')
-            i.material-icons cloud
-            |  Download
-        a.mb-2.btn.btn-sm.btn-white.w-100.d-table.mx-auto.extra-action(href='https://designrevision.com/docs/shards-dashboard-lite')
-            i.material-icons book
-            |  Documentation
-    .social-wrapper
-        .social-actions
-            h5.my-2 Help us Grow
-            .inner-wrapper
-                a.github-button(href='https://github.com/DesignRevision/shards-dashboard' data-icon='octicon-star' data-show-count='true' aria-label='Star DesignRevision/shards-dashboard on GitHub') Star
-                // <iframe style="width: 91px; height: 21px;"src="https://yvoschaap.com/producthunt/counter.html#href=https%3A%2F%2Fwww.producthunt.com%2Fr%2Fp%2F112998&layout=wide" width="56" height="65" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-        #social-share(data-url='https://designrevision.com/downloads/shards-dashboard-lite/' data-text='🔥 Check out Shards Dashboard Lite, a free and beautiful Bootstrap 4 admin dashboard template!' data-title='share')
-        .loading-overlay
-            .spinner
-    .close
-        i.material-icons close
-//.color-switcher-toggle.animated.pulse.infinite
-    i.material-icons settings
 .container-fluid
     .row
         // Main Sidebar
@@ -252,15 +185,6 @@ head
                                 img.user-avatar.rounded-circle.mr-2(src='images/avatars/0.jpg' alt='User Avatar')
                                 span.d-none.d-md-inline-block Sierra Brooks
                             .dropdown-menu.dropdown-menu-small
-                                //a.dropdown-item(href='user-profile-lite.html')
-                                    i.material-icons &#xE7FD;
-                                    |  Profile
-                                //a.dropdown-item(href='components-blog-posts.html')
-                                    i.material-icons vertical_split
-                                    |  Blog Posts
-                                //a.dropdown-item(href='add-new-post.html')
-                                    i.material-icons note_add
-                                    |  Add New Post
                                 .dropdown-divider
                                 a.dropdown-item.text-danger(href='#')
                                     i.material-icons.text-danger &#xE879;
@@ -295,8 +219,6 @@ head
                                         .col-sm-12.col-md-11
                                             input.form-control(type='text' name='INN')
                                             button.btn.btn-primary(href='' type='submit') Найти
-                                        //.col-sm-12.col-md-1
-                                            button.btn.btn-primary(href='' type='submit') Найти
                                         .col-sm-12.col-md-1
                                             button.btn.btn-primary(type='button', data-toggle='modal', data-target='#myModal') +
 
@@ -318,80 +240,10 @@ head
                                             client[i].dataValues.INN,
                                             client[i].dataValues.PhoneNumber,
                                             client[i].dataValues.Adress)
-                //// End Default Light Table
-                //// Default Dark Table
-                //.row
-                //    .col
-                //        .card.card-small.overflow-hidden.mb-4
-                //            .card-header.bg-dark
-                //                h6.m-0.text-white Inactive Users
-                //            .card-body.p-0.pb-3.bg-dark.text-center
-                //                table.table.table-dark.mb-0
-                //                    thead.thead-dark
-                //                        tr
-                //                            th.border-bottom-0(scope='col') #
-                //                            th.border-bottom-0(scope='col') First Name
-                //                            th.border-bottom-0(scope='col') Last Name
-                //                            th.border-bottom-0(scope='col') Country
-                //                            th.border-bottom-0(scope='col') City
-                //                            th.border-bottom-0(scope='col') Phone
-                //                    tbody
-                //                        tr
-                //                            td 1
-                //                            td Graham
-                //                            td Brent
-                //                            td Benin
-                //                            td Ripabottoni
-                //                            td 1-512-760-9094
-                //                        tr
-                //                            td 2
-                //                            td Clark
-                //                            td Angela
-                //                            td Estonia
-                //                            td Borghetto di Vara
-                //                            td 1-660-850-1647
-                //                        tr
-                //                            td 3
-                //                            td Wylie
-                //                            td Joseph
-                //                            td Korea, North
-                //                            td Guelph
-                //                            td 325-4351
-                //                        tr
-                //                            td 4
-                //                            td Garth
-                //                            td Clementine
-                //                            td Indonesia
-                //                            td Narcao
-                //                            td 722-8264
-                //// End Default Dark Table
             footer.main-footer.d-flex.p-2.px-3.bg-white.border-top
-                //ul.nav
-                    li.nav-item
-                        a.nav-link(href='#') Home
-                    li.nav-item
-                        a.nav-link(href='#') Services
-                    li.nav-item
-                        a.nav-link(href='#') About
-                    li.nav-item
-                        a.nav-link(href='#') Products
-                    li.nav-item
-                        a.nav-link(href='#') Blog
                 span.copyright.ml-auto.my-auto.mr-2
                     Copyright &copy; 2019 ki1it&ma-daria
-//.promo-popup.animated
-    a.pp-cta.extra-action(href='http://bit.ly/shards-dashboard-pro')
-        img(src='https://dgc2qnsehk7ta.cloudfront.net/uploads/sd-blog-promo-2.jpg')
-    .pp-intro-bar
-        | Need More Templates?
-        span.close
-            i.material-icons close
-        span.up
-            i.material-icons keyboard_arrow_up
-    .pp-inner-content
-        h2 Shards Dashboard Pro
-        p A premium &amp; modern Bootstrap 4 admin dashboard template pack.
-        a.pp-cta.extra-action(href='http://bit.ly/shards-dashboard-pro') Download
+
 script(src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous')
 script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous')
@@ -400,3 +252,4 @@ script(src='https://unpkg.com/shards-ui@latest/dist/js/shards.min.js')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js')
 script(src='scripts/extras.1.1.0.min.js')
 script(src='scripts/shards-dashboards.1.1.0.min.js')
+script(src='/dist/js/datepicker.min.js')
