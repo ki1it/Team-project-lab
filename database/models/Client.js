@@ -24,6 +24,9 @@ const Client = sequelize.define('Client', {
   Adress:{
     type: Sequelize.TEXT,
   },
+  Adress_fias:{
+    type: Sequelize.TEXT,
+  },
 });
 
 module.exports = Client;

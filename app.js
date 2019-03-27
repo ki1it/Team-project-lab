@@ -288,7 +288,8 @@ app.use('/addClient', async function (req, res) {
         SecondName: req.body.inputSecondName,
         Patronymic: req.body.inputPatronymic,
         PhoneNumber: req.body.inputPhoneNumber,
-        Adress: req.body.inputAdress,
+        Adress_fias: req.body.inputAdress,
+        Adress: req.body.address,
         DLNumber: req.body.inputDLN,
         Birthday: moment(req.body.inputBD, 'DD.MM.YYYY').startOf('day')
     })
