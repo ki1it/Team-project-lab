@@ -7,18 +7,18 @@ const ServiceType = require('../database/models/ServiceType')
 const Sequelize = require('sequelize')
 /* GET users listing. */
 router.get('/', async function (req, res, next) {
-  let clients = await Client.findAll({
-
-  })
-    .catch((err) => {
-      console.log(err)
-    })
-  let clientlist = []
-  for (let i = 0; i<clients.length;i++) {
-    clientlist.push(clients[i].dataValues.FirstName + ' ' + clients[i].dataValues.SecondName + ' ' + clients[i].dataValues.DLNumber)
-  }
+  // let clients = await Client.findAll({
+  //
+  // })
+  //   .catch((err) => {
+  //     console.log(err)
+  //   })
+  // let clientlist = []
+  // for (let i = 0; i<clients.length;i++) {
+  //   clientlist.push(clients[i].dataValues.FirstName + ' ' + clients[i].dataValues.SecondName + ' ' + clients[i].dataValues.DLNumber)
+  // }
   res.render('addServiceList', {
-    clientlist:clientlist
+
   })
 })
 
