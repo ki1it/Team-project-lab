@@ -31,9 +31,12 @@ router.get('/', async function (req, res, next) {
               console.log(err)
           })
   }
+
+
+
   res.render('car', {
 
-    car: car,
+    car: car
   })
 })
 
