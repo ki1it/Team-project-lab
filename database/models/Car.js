@@ -3,6 +3,7 @@ const Sequelize = require('sequelize');
 const  Car = sequelize.define('Car', {
   VIN: {
     type: Sequelize.TEXT,
+    unique: true
   },
   SprCarFK: {
     type: Sequelize.INTEGER,
