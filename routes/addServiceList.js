@@ -5,6 +5,7 @@ const Client = require('../database/models/Client')
 const Service = require('../database/models/Service')
 const ServiceType = require('../database/models/ServiceType')
 const Sequelize = require('sequelize')
+const ServiceList_Status = require('../database/models/ServiceList_Status')
 /* GET users listing. */
 router.get('/', async function (req, res, next) {
   // let clients = await Client.findAll({
@@ -17,8 +18,15 @@ router.get('/', async function (req, res, next) {
   // for (let i = 0; i<clients.length;i++) {
   //   clientlist.push(clients[i].dataValues.FirstName + ' ' + clients[i].dataValues.SecondName + ' ' + clients[i].dataValues.DLNumber)
   // }
-  res.render('addServiceList', {
 
+    let SLStatus = await ServiceList_Status.findAll({
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+
+  res.render('addServiceList', {
+    SLStatus:SLStatus
   })
 })
 

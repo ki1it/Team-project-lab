@@ -347,9 +347,13 @@ head
                                                 strong.text-muted.d-block.mb-2 Статус
 
                                                     .form-group
-                                                        select.form-control(name="inputStatus")
+                                                        //select.form-control(name="inputStatus")
                                                             option(selected='') Статус...
                                                             option ...
+                                                        input.form-control(type='text' list='types' name="inputStatus")
+                                                        datalist#types
+                                                            -for (let i = 0; i < SLStatus.length; i++)
+                                                                option(value=SLStatus[i].dataValues.Name)
                                     li.list-group-item.p-3
                                         .row
                                             .col-sm-12.col

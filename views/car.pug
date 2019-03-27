@@ -13,7 +13,7 @@ head
     script(async='' defer='' src='https://buttons.github.io/buttons.js')
     script(async='' defer='' src='https://www.kryogenix.org/code/browser/sorttable/sorttable.js')
     - var i=0;
-        mixin rowsTable( VIN, Brand,  Year, Model, Owner, OwnerId)
+        mixin rowsTable( VIN, Brand,  Year, Model, Owner, OwnerId, fl)
             tr
 
                 //td #{id}
@@ -21,8 +21,10 @@ head
                 td #{Brand}
                 td #{Model}
                 td #{Year}
-                //td #{Owner}
-                td #[a(href="client?DLN=" + OwnerId) #{Owner}]
+                if (fl === null)
+                    td #[a(href="client?DLN=" + OwnerId) #{Owner}]
+                else
+                    td #[a(href="urclient?INN=" + OwnerId) #{Owner}]
                 td
                     a#navbarDropdownMenuLink.nav-link(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
                         i.material-icons menu
@@ -58,11 +60,15 @@ head
                             li.list-group-item.p-3
                                 .row
                                     .col-sm-12
-                                        strong.text-muted.d-block.mb-2 Автомобиль
+                                        strong.text-muted.d-block.mb-2 Бренд
                                             .form-group
-                                                select.form-control(name="inputCar")
-                                                    option(selected='') Авто...
-                                                    option ...
+                                                input#ajax1.form-control(type='text' list='json-datalist1' placeholder='e.g. datalist')
+                                                datalist#json-datalist1
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2 Модель
+                                            .form-group
+                                                input#ajax2.form-control(type='text' list='json-datalist2' placeholder='e.g. datalist' onclick='getModels()')
+                                                datalist#json-datalist2
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 VIN номер
                                             .form-group
@@ -73,13 +79,14 @@ head
                                                 .col-sm-12.col-md-3
                                                     .form-group
                                                         .custom-control.custom-toggle.custom-toggle-sm.mb-1
-                                                            input#customToggle12.custom-control-input(type='checkbox' name='customToggle1')
-                                                            label.custom-control-label(for='customToggle12') Юридическое лицо
+                                                            input#customToggle1.custom-control-input(type='checkbox' name='customToggle1')
+                                                            label.custom-control-label(for='customToggle1') Юридическое лицо
                                                 .col-sm-12.col-md-9
                                                     .form-group
                                                         select.form-control(name="inputClient")
                                                             option(selected='') Клиент...
                                                             option ...
+
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Год производства
                                             .form-group
@@ -91,41 +98,7 @@ head
                                                     button.btn.btn-primary.btn-lg.btn-block(type="button") Добавить
                                     //.modal-footer
                                         button.btn.btn-default(type='button', data-dismiss='modal') Close
-//.color-switcher.animated
-    h5 Accent Color
-    ul.accent-colors
-        li.accent-primary.active(data-color='primary')
-            i.material-icons check
-        li.accent-secondary(data-color='secondary')
-            i.material-icons check
-        li.accent-success(data-color='success')
-            i.material-icons check
-        li.accent-info(data-color='info')
-            i.material-icons check
-        li.accent-warning(data-color='warning')
-            i.material-icons check
-        li.accent-danger(data-color='danger')
-            i.material-icons check
-    .actions.mb-4
-        a.mb-2.btn.btn-sm.btn-primary.w-100.d-table.mx-auto.extra-action(href='https://designrevision.com/downloads/shards-dashboard-lite/')
-            i.material-icons cloud
-            |  Download
-        a.mb-2.btn.btn-sm.btn-white.w-100.d-table.mx-auto.extra-action(href='https://designrevision.com/docs/shards-dashboard-lite')
-            i.material-icons book
-            |  Documentation
-    .social-wrapper
-        .social-actions
-            h5.my-2 Help us Grow
-            .inner-wrapper
-                a.github-button(href='https://github.com/DesignRevision/shards-dashboard' data-icon='octicon-star' data-show-count='true' aria-label='Star DesignRevision/shards-dashboard on GitHub') Star
-                // <iframe style="width: 91px; height: 21px;"src="https://yvoschaap.com/producthunt/counter.html#href=https%3A%2F%2Fwww.producthunt.com%2Fr%2Fp%2F112998&layout=wide" width="56" height="65" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-        #social-share(data-url='https://designrevision.com/downloads/shards-dashboard-lite/' data-text='🔥 Check out Shards Dashboard Lite, a free and beautiful Bootstrap 4 admin dashboard template!' data-title='share')
-        .loading-overlay
-            .spinner
-    .close
-        i.material-icons close
-//.color-switcher-toggle.animated.pulse.infinite
-    i.material-icons settings
+
 .container-fluid
     .row
         // Main Sidebar
@@ -213,15 +186,6 @@ head
                                 img.user-avatar.rounded-circle.mr-2(src='images/avatars/0.jpg' alt='User Avatar')
                                 span.d-none.d-md-inline-block Sierra Brooks
                             .dropdown-menu.dropdown-menu-small
-                                //a.dropdown-item(href='user-profile-lite.html')
-                                    i.material-icons &#xE7FD;
-                                    |  Profile
-                                //a.dropdown-item(href='components-blog-posts.html')
-                                    i.material-icons vertical_split
-                                    |  Blog Posts
-                                //a.dropdown-item(href='add-new-post.html')
-                                    i.material-icons note_add
-                                    |  Add New Post
                                 .dropdown-divider
                                 a.dropdown-item.text-danger(href='#')
                                     i.material-icons.text-danger &#xE879;
@@ -285,89 +249,21 @@ head
                                                 car[i].dataValues.Year,
                                                 car[i].SprCar.Model.dataValues.Model,
                                                 car[i].Client.dataValues.FirstName + ' '+car[i].Client.dataValues.SecondName,
-                                                car[i].Client.dataValues.DLNumber)
+                                                car[i].Client.dataValues.DLNumber,
+                                                car[i].UrClient)
                                             else
                                                 +rowsTable(car[i].dataValues.VIN,
                                                 car[i].SprCar.Brand.dataValues.Brand,
                                                 car[i].dataValues.Year,
                                                 car[i].SprCar.Model.dataValues.Model,
-                                                car[i].UrClient.dataValues.Name )
+                                                car[i].UrClient.dataValues.Name,
+                                                car[i].UrClient.dataValues.INN,
+                                                car[i].UrClient)
 
 
-                //// End Default Light Table
-                //// Default Dark Table
-                //.row
-                //    .col
-                //        .card.card-small.overflow-hidden.mb-4
-                //            .card-header.bg-dark
-                //                h6.m-0.text-white Inactive Users
-                //            .card-body.p-0.pb-3.bg-dark.text-center
-                //                table.table.table-dark.mb-0
-                //                    thead.thead-dark
-                //                        tr
-                //                            th.border-bottom-0(scope='col') #
-                //                            th.border-bottom-0(scope='col') First Name
-                //                            th.border-bottom-0(scope='col') Last Name
-                //                            th.border-bottom-0(scope='col') Country
-                //                            th.border-bottom-0(scope='col') City
-                //                            th.border-bottom-0(scope='col') Phone
-                //                    tbody
-                //                        tr
-                //                            td 1
-                //                            td Graham
-                //                            td Brent
-                //                            td Benin
-                //                            td Ripabottoni
-                //                            td 1-512-760-9094
-                //                        tr
-                //                            td 2
-                //                            td Clark
-                //                            td Angela
-                //                            td Estonia
-                //                            td Borghetto di Vara
-                //                            td 1-660-850-1647
-                //                        tr
-                //                            td 3
-                //                            td Wylie
-                //                            td Joseph
-                //                            td Korea, North
-                //                            td Guelph
-                //                            td 325-4351
-                //                        tr
-                //                            td 4
-                //                            td Garth
-                //                            td Clementine
-                //                            td Indonesia
-                //                            td Narcao
-                //                            td 722-8264
-                //// End Default Dark Table
             footer.main-footer.d-flex.p-2.px-3.bg-white.border-top
-                //ul.nav
-                    li.nav-item
-                        a.nav-link(href='#') Home
-                    li.nav-item
-                        a.nav-link(href='#') Services
-                    li.nav-item
-                        a.nav-link(href='#') About
-                    li.nav-item
-                        a.nav-link(href='#') Products
-                    li.nav-item
-                        a.nav-link(href='#') Blog
                 span.copyright.ml-auto.my-auto.mr-2
                     Copyright &copy; 2019 ki1it&ma-daria
-//.promo-popup.animated
-    a.pp-cta.extra-action(href='http://bit.ly/shards-dashboard-pro')
-        img(src='https://dgc2qnsehk7ta.cloudfront.net/uploads/sd-blog-promo-2.jpg')
-    .pp-intro-bar
-        | Need More Templates?
-        span.close
-            i.material-icons close
-        span.up
-            i.material-icons keyboard_arrow_up
-    .pp-inner-content
-        h2 Shards Dashboard Pro
-        p A premium &amp; modern Bootstrap 4 admin dashboard template pack.
-        a.pp-cta.extra-action(href='http://bit.ly/shards-dashboard-pro') Download
 script(src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous')
 script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous')
@@ -376,3 +272,4 @@ script(src='https://unpkg.com/shards-ui@latest/dist/js/shards.min.js')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js')
 script(src='scripts/extras.1.1.0.min.js')
 script(src='scripts/shards-dashboards.1.1.0.min.js')
+script(src='scripts/checkCl&Car.js')
