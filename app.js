@@ -181,6 +181,7 @@ const BreakdownType = require('./database/models/BreakdownType')
 const Service = require('./database/models/Service')
 const ServiceType = require('./database/models/ServiceType')
 const Detail = require('./database/models/Detail')
+const EdIzmer = require('./database/models/EdIzmer')
 
 app.use('/updateClient', async function (req, res) {
     await Client.update({
@@ -368,6 +369,36 @@ app.use('/delService', async function (req, res) {
     })
     res.redirect(req.headers.referer)
 })
+
+app.use('/addDetail', async function (req, res) {
+    let type = await EdIzmer.findOne({
+        where:{Name:req.body.inputType}
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+    await Detail.create({
+        Name: req.body.inputName,
+        EdIzmerFK: type.dataValues.id,
+        Price: req.body.inputPrice
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+    res.redirect(req.headers.referer)
+})
+
+app.use('/delDetail', async function (req, res) {
+    await Detail.destroy({
+        where: {
+            id: req.body.id
+        }
+    }).catch((err) => {
+        console.log(err)
+    })
+    res.redirect(req.headers.referer)
+})
+
 
 app.use('/delclient', async function (req, res) {
     await Client.destroy({

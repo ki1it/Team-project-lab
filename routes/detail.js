@@ -8,6 +8,10 @@ const EdIzmer = require('../database/models/EdIzmer')
 const Sequelize = require('sequelize')
 /* GET users listing. */
 router.get('/', async function (req, res, next) {
+    let ediz = await EdIzmer.findAll({})
+        .catch((err) => {
+            console.log(err)
+        })
     let detail= await Detail.findAll({
         include: [{model: EdIzmer, as: 'EdIzmer'}]
     })
@@ -15,7 +19,8 @@ router.get('/', async function (req, res, next) {
             console.log(err)
         })
     res.render('detail', {
-        detail:detail
+        detail:detail,
+        ediz:ediz
     })
 })
 
