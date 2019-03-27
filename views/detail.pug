@@ -73,20 +73,16 @@ head
                                             .form-group
                                                 input.form-control(type='text' name="inputPrice")
                                     .col-sm-12
-                                        strong.text-muted.d-block.mb-2 Количество
-                                            .form-group
-                                                input.form-control(type='text' name="inputPrice")
-                                    .col-sm-12
                                         strong.text-muted.d-block.mb-2 Единица измерения
                                             .form-group
                                                 input.form-control(type='text' list='types' name="inputEdIz")
-                                                    datalist#types
-                                                        -for (let i = 0; i < ediz.length; i++)
+                                                datalist#types
+                                                    -for (let i = 0; i < ediz.length; i++)
                                                         option(value=ediz[i].dataValues.Name)
                                     .col-lg-12.mb-4
                                         .row
                                             .col
-                                                a.nav-link(href='detail')
+                                                a.nav-link(href='/detail')
                                                     button.btn.btn-primary.btn-lg.btn-block(type="submit") Добавить
 
     #editEmployeeModal.modal.fade

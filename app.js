@@ -372,7 +372,7 @@ app.use('/delService', async function (req, res) {
 
 app.use('/addDetail', async function (req, res) {
     let type = await EdIzmer.findOne({
-        where:{Name:req.body.inputType}
+        where:{Name:req.body.inputEdIz}
     })
         .catch((err) => {
             console.log(err)
