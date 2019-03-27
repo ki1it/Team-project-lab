@@ -183,6 +183,8 @@ const ServiceType = require('./database/models/ServiceType')
 const Detail = require('./database/models/Detail')
 const EdIzmer = require('./database/models/EdIzmer')
 
+
+//WORK WITH CLIENT
 app.use('/updateClient', async function (req, res) {
     await Client.update({
             FirstName: req.body.inputName,
@@ -199,6 +201,54 @@ app.use('/updateClient', async function (req, res) {
         })
     res.redirect('/client')
 })
+app.use('/addClient', async function (req, res) {
+    await Client.create({
+        FirstName: req.body.inputName,
+        SecondName: req.body.inputSecondName,
+        Patronymic: req.body.inputPatronymic,
+        PhoneNumber: req.body.inputPhoneNumber,
+        Adress_fias: req.body.inputAdress,
+        Adress: req.body.address,
+        DLNumber: req.body.inputDLN,
+        Birthday: moment(req.body.inputBD, 'DD.MM.YYYY').startOf('day')
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+    res.redirect(req.headers.referer)
+})
+
+
+app.use('/checkClient', async function (req, res) {
+    let cl = await Client.findOne({
+        where: {DLNumber: req.query.DLN}
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+    let result
+    if (cl === null || cl == undefined)
+        result = 'Клиент не найден'
+    else
+        result = 'Клиент найден, ' + cl.dataValues.FirstName
+    res.end(result)
+})
+
+app.use('/delclient', async function (req, res) {
+    await Client.destroy({
+        where: {
+            DLNumber: req.body.DLN
+        }
+    }).catch((err) => {
+        console.log(err)
+    })
+    res.redirect(req.headers.referer)
+})
+
+
+
+
+//WORK WITH URCLIENT
 
 app.use('/updateUrClient', async function (req, res) {
     await UrClient.update({
@@ -214,6 +264,32 @@ app.use('/updateUrClient', async function (req, res) {
     res.redirect('/urclient')
 })
 
+app.use('/delurclient', async function (req, res) {
+    await UrClient.destroy({
+        where: {
+            INN: req.body.INN
+        }
+    }).catch((err) => {
+        console.log(err)
+    })
+    res.redirect(req.headers.referer)
+})
+
+app.use('/addUrClient', async function (req, res) {
+    await UrClient.create({
+        Name: req.body.inputName,
+        INN: req.body.inputINN,
+        PhoneNumber: req.body.inputPhoneNumber,
+        Adress: req.body.inputAdress
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+    res.redirect(req.headers.referer)
+})
+
+
+//WORK WITH SERVICELIST
 
 app.use('/closeSL', async function (req, res) {
     await ServiceList.update({
@@ -226,20 +302,21 @@ app.use('/closeSL', async function (req, res) {
         })
     res.redirect('/servicelist')
 })
-app.use('/checkClient', async function (req, res) {
-    let cl = await Client.findOne({
-        where: {DLNumber: req.query.DLN}
+
+app.use('/addServiceList', async function (req, res) {
+    await ServiceList.create({
+        Description: req.body.description,
+        Status: req.body.status,
+        ClientFK: req.body.client,
+        WagonFK: req.body.wagon
     })
         .catch((err) => {
             console.log(err)
         })
-    let result
-    if (cl === null || cl == undefined)
-        result = 'Клиент не найден'
-    else
-        result = 'Клиент найден, ' + cl.dataValues.FirstName
-    res.end(result)
+    res.redirect(req.headers.referer)
 })
+
+//WORK WITH CAR
 
 app.use('/getBrand', async function (req, res) {
     let brand = await Brand.findAll({attributes: ['Brand']})
@@ -267,6 +344,18 @@ app.use('/getModel', async function (req, res) {
     res.end(JSON.stringify(model))
 })
 
+
+app.use('/delcar', async function (req, res) {
+    await Car.destroy({
+        where: {
+            VIN: req.body.VIN
+        }
+    }).catch((err) => {
+        console.log(err)
+    })
+    res.redirect(req.headers.referer)
+})
+
 app.use('/checkCar', async function (req, res) {
     let car = await Car.findOne({
         where: {VIN: req.query.VIN},
@@ -282,36 +371,9 @@ app.use('/checkCar', async function (req, res) {
         result = 'Автомобиль найден, ' + car.SprCar.Brand.dataValues.Brand + ' ' + car.SprCar.Model.dataValues.Model
     res.end(result)
 })
-app.use('/addClient', async function (req, res) {
-    await Client.create({
-        FirstName: req.body.inputName,
-        SecondName: req.body.inputSecondName,
-        Patronymic: req.body.inputPatronymic,
-        PhoneNumber: req.body.inputPhoneNumber,
-        Adress_fias: req.body.inputAdress,
-        Adress: req.body.address,
-        DLNumber: req.body.inputDLN,
-        Birthday: moment(req.body.inputBD, 'DD.MM.YYYY').startOf('day')
-    })
-        .catch((err) => {
-            console.log(err)
-        })
-    res.redirect(req.headers.referer)
-})
 
 
-app.use('/addUrClient', async function (req, res) {
-    await UrClient.create({
-        Name: req.body.inputName,
-        INN: req.body.inputINN,
-        PhoneNumber: req.body.inputPhoneNumber,
-        Adress: req.body.inputAdress
-    })
-        .catch((err) => {
-            console.log(err)
-        })
-    res.redirect(req.headers.referer)
-})
+//WORK WITH BREAKDOWN
 
 app.use('/addBreakdown', async function (req, res) {
     let type = await BreakdownType.findOne({
@@ -342,6 +404,9 @@ app.use('/delBreakdown', async function (req, res) {
     res.redirect(req.headers.referer)
 })
 
+
+//WORK WITH SERVICE
+
 app.use('/addService', async function (req, res) {
     let type = await ServiceType.findOne({
         where:{Name:req.body.inputType}
@@ -371,6 +436,8 @@ app.use('/delService', async function (req, res) {
     res.redirect(req.headers.referer)
 })
 
+//WORK WITH DETAIL
+
 app.use('/addDetail', async function (req, res) {
     let type = await EdIzmer.findOne({
         where:{Name:req.body.inputEdIz}
@@ -397,88 +464,6 @@ app.use('/delDetail', async function (req, res) {
     }).catch((err) => {
         console.log(err)
     })
-    res.redirect(req.headers.referer)
-})
-
-
-app.use('/delclient', async function (req, res) {
-    await Client.destroy({
-        where: {
-            DLNumber: req.body.DLN
-        }
-    }).catch((err) => {
-        console.log(err)
-    })
-    res.redirect(req.headers.referer)
-})
-
-
-app.use('/delurclient', async function (req, res) {
-    await UrClient.destroy({
-        where: {
-            INN: req.body.INN
-        }
-    }).catch((err) => {
-        console.log(err)
-    })
-    res.redirect(req.headers.referer)
-})
-
-
-app.use('/delcar', async function (req, res) {
-    await Car.destroy({
-        where: {
-            VIN: req.body.VIN
-        }
-    }).catch((err) => {
-        console.log(err)
-    })
-    res.redirect(req.headers.referer)
-})
-
-app.use('/delbreakdown', async function (req, res) {
-    await Breakdown.destroy({
-        where: {
-            id: req.body.id
-        }
-    }).catch((err) => {
-        console.log(err)
-    })
-    res.redirect(req.headers.referer)
-})
-
-app.use('/delservice', async function (req, res) {
-    await Service.destroy({
-        where: {
-            id: req.body.id
-        }
-    }).catch((err) => {
-        console.log(err)
-    })
-    res.redirect(req.headers.referer)
-})
-
-app.use('/deldetail', async function (req, res) {
-    await Detail.destroy({
-        where: {
-            id: req.body.id
-        }
-    }).catch((err) => {
-        console.log(err)
-    })
-    res.redirect(req.headers.referer)
-})
-
-app.use('/addServiceList', async function (req, res) {
-    await ServiceList.create({
-        Description: req.body.description,
-        Status: req.body.status,
-        ClientFK: req.body.client,
-        WagonFK: req.body.wagon
-    })
-        .catch((err) => {
-            console.log(err)
-        })
     res.redirect(req.headers.referer)
 })
 
