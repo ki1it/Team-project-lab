@@ -1,35 +1,4 @@
 head
-    script(type='text/javascript').
-        $(document).ready(function (e) {
-            $.ajax({
-                //Your ajax here...
-                success: function (response) {
-                    //Your code of showing inserted data in table....
-                    //get the inserted userid from response and set update button's ONCLICK attribute as mentioned below
-                    var userid = getuseridfromresponse;
-                    $("#updatebuttonid").attr("onclick", "updaterecord(" + userid + ")");
-                }
-            });
-        });
-        function updaterecord(userid) {
-            $.ajax({
-                //your ajax here you
-                //send all the details from php code using JSON or whatever you are using.
-                success: function (response) {
-                    //store all the data into js variables.
-                    var userid = response.userid;
-                    var fullname = response.fullname;
-                    // and so on..
-                    $("#fullname").val(fullname); //this will set the textbox value to fullname
-                    //and so on..
-                    $("#userid").val(userid); //this is a hidden input in inser form. by default it will be zero. you will need it while updating.
-                    $("#actionname").val("update"); //this is also hidden input in insert form. default value would be "insert"
-                    // you just need to check in php that which actionname you are getting.
-                    //if you will get actionname = insert Do insert code
-                    //if you will get actionname = update Do update code.
-                }
-            });
-        }
 
     meta(charset='utf-8')
     meta(http-equiv='x-ua-compatible' content='ie=edge')
