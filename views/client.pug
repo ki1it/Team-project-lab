@@ -43,6 +43,10 @@ head
 
 
 
+    //addresses
+
+    link(href='https://cdn.jsdelivr.net/npm/suggestions-jquery@18.11.1/dist/css/suggestions.min.css' rel='stylesheet')
+
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
 
@@ -121,7 +125,23 @@ head
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Адресс
                                             .form-group
-                                                input.form-control(type='text' name="inputAdress")
+                                                input#fias_id.form-control(type='text' name="inputAdress" hidden=true)
+                                                input#address(name='address' type='text')
+                                                script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+                                                link(href='https://cdn.jsdelivr.net/npm/suggestions-jquery@18.11.1/dist/css/suggestions.min.css' rel='stylesheet')
+                                                script(src='https://cdn.jsdelivr.net/npm/suggestions-jquery@18.11.1/dist/js/jquery.suggestions.min.js')
+
+
+                                                script.
+                                                        $("#address").suggestions({
+                                                        token: "850e91338b2f445b39993e521a3db7171b69936b",
+                                                        type: "ADDRESS",
+                                                        /* Вызывается, когда пользователь выбирает одну из подсказок */
+                                                        onSelect: function(suggestion) {
+
+                                                        fias_id.value = suggestion.data.fias_id
+                                                        }
+                                                        });
                                     .col-lg-12.mb-4
                                         .row
                                             .col
@@ -484,3 +504,7 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.
 script(src='scripts/extras.1.1.0.min.js')
 script(src='scripts/shards-dashboards.1.1.0.min.js')
 script( src='scripts/showClient.js')
+
+
+
+
