@@ -219,7 +219,11 @@ app.use('/addClient', async function (req, res) {
         .catch((err) => {
             console.log(err)
         })
-    res.redirect(req.headers.referer)
+    if (req.query.SLID === undefined)
+        res.redirect(req.headers.referer)
+    else
+        res.redirect('/addservicelist?ID='+req.query.SLID)
+
 })
 
 
@@ -289,7 +293,11 @@ app.use('/addUrClient', async function (req, res) {
         .catch((err) => {
             console.log(err)
         })
-    res.redirect(req.headers.referer)
+    if (req.query.SLID === undefined)
+        res.redirect(req.headers.referer)
+    else
+        res.redirect('/addservicelist?ID='+req.query.SLID)
+        res.redirect('/addservicelist?ID='+req.query.SLID)
 })
 
 
@@ -308,12 +316,20 @@ app.use('/closeSL', async function (req, res) {
 })
 
 app.use('/addSL', async function (req, res) {
-    let SLstatus = await ServiceList_Status.findOne({
-        where:{Name:req.body.inputStatus}
-    })
-        .catch((err) => {
-            console.log(err)
+
+    let status
+
+    if(req.body.inputStatus !== "") {
+        let SLstatus = await ServiceList_Status.findOne({
+            where: {Name: req.body.inputStatus}
         })
+            .catch((err) => {
+                console.log(err)
+            })
+        status = SLstatus.dataValues.id
+    }
+    else
+        status = null
 
     let car
     if (req.body.inputCar!=="") {
@@ -341,26 +357,26 @@ app.use('/addSL', async function (req, res) {
         }
         else
         {
-            let cli = await UrClient.findOne({
+            let cli = await Client.findOne({
                 where: {DLNumber: req.body.inputClient}
             })
                 .catch((err) => {
                     console.log(err)
                 })
-            urClient = cli.dataValues.id
-            client = null
+            client = cli.dataValues.id
+            urClient = null
         }
     }
     else
     {
-        let cli = await Client.findOne({
-            where: {DLNumber: req.body.inputClient}
+        let cli = await UrClient.findOne({
+            where: {INN: req.body.inputUrClient}
         })
             .catch((err) => {
                 console.log(err)
             })
-        client = cli.dataValues.id
-        urClient = null
+        urClient = cli.dataValues.id
+        client = null
     }
 
 
@@ -380,7 +396,7 @@ app.use('/addSL', async function (req, res) {
     await ServiceList.update({
         Description: req.body.inputDescription,
         Markup: req.body.inputMarkup,
-        Status: SLstatus.dataValues.id,
+        Status: status,
         ClientFK: client,
         UrClient: urClient,
         CarFK: car,

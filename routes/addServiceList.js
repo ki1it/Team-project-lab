@@ -23,27 +23,40 @@ router.get('/', async function (req, res, next) {
 
     let serviceList
 
-    if (req.query.ID == "")
-        serviceList  = await ServiceList.create({
-            include:[{model: ServiceList_Status , as: 'ServiceList_Status '},
-                    {model: Client, as: 'Client'},
-                    {model: UrClient, as: 'UrClient'},
-                    {model: Car, as: 'Car'}]
+    if (req.query.ID == "") {
+        serviceList = await ServiceList.create({
+            include: [{model: ServiceList_Status, as: 'ServiceList_Status'},
+                {model: Client, as: 'Client'},
+                {model: UrClient, as: 'UrClient'},
+                {model: Car, as: 'Car'}]
         })
             .catch((err) => {
                 console.log(err)
             })
-    else
+    }
+    else {
         serviceList = await ServiceList.findOne({
-            where: {id: req.query.ID},
-            include:[{model: ServiceList_Status , as: 'ServiceList_Status '}]
+
+            include: [{model: ServiceList_Status, as: 'ServiceList_Status'},
+                {model: Client, as: 'Client'},
+                {model: UrClient, as: 'UrClient'},
+                {model: Car, as: 'Car'}],
+            where: {id: req.query.ID}
         })
             .catch((err) => {
                 console.log(err)
-            });
+            })
+    }
 
     let SLStatus = await ServiceList_Status.findAll({
     })
+        .catch((err) => {
+            console.log(err)
+        })
+
+
+
+
         .catch((err) => {
             console.log(err)
         })

@@ -58,7 +58,7 @@ head
                                 .card-header.border-bottom
                                     h6.m-0 Добавление физического клиента
                                 ul.list-group.list-group-flush
-                                    form(action="/addClient", method="post" class="form" id='addClient' enctype="application/json")
+                                    form(action="/addClient?SLID="+serviceList.dataValues.id, method="post" class="form" id='addClient' enctype="application/json")
                                         li.list-group-item.p-3
                                             .row
                                                 .col-sm-12
@@ -104,7 +104,7 @@ head
                                 .card-header.border-bottom
                                     h6.m-0 Добавление юридического клиента
                                 ul.list-group.list-group-flush
-                                    form(action="/addUrClient", method="post" class="form" id='addUrClient' enctype="application/json")
+                                    form(action="/addUrClient?SLID="+serviceList.dataValues.id, method="post" class="form" id='addUrClient' enctype="application/json")
                                         li.list-group-item.p-3
                                             .row
                                                 .col-sm-12
@@ -155,7 +155,7 @@ head
                             div
                                 input.btn.btn-default(type="submit" href="/sklad" class="uk-button uk-button-primary top-margin" value="Отправить")
                     ul.list-group.list-group-flush
-                        form(action="/addCar", method="post" class="form" id='addCar' enctype="application/json")
+                        form(action="/addCar?SLID="+serviceList.dataValues.id, method="post" class="form" id='addCar' enctype="application/json")
                             li.list-group-item.p-3
                                 .row
                                     .col-sm-12
