@@ -185,6 +185,7 @@ const Service = require('./database/models/Service')
 const ServiceType = require('./database/models/ServiceType')
 const Detail = require('./database/models/Detail')
 const EdIzmer = require('./database/models/EdIzmer')
+const ServiceList_Status = require('./database/models/ServiceList_Status')
 
 
 //WORK WITH CLIENT
@@ -306,17 +307,91 @@ app.use('/closeSL', async function (req, res) {
     res.redirect('/servicelist')
 })
 
-app.use('/addServiceList', async function (req, res) {
-    await ServiceList.create({
-        Description: req.body.description,
-        Status: req.body.status,
-        ClientFK: req.body.client,
-        WagonFK: req.body.wagon
+app.use('/addSL', async function (req, res) {
+    let SLstatus = await ServiceList_Status.findOne({
+        where:{Name:req.body.inputStatus}
     })
         .catch((err) => {
             console.log(err)
         })
-    res.redirect(req.headers.referer)
+
+    let car
+    if (req.body.inputCar!=="") {
+        let carr = await Car.findOne({
+            where: {VIN: req.body.inputCar}
+        })
+            .catch((err) => {
+                console.log(err)
+            })
+
+        car = carr.dataValues.id
+    }
+    else
+        car = null
+
+
+    let client
+    let urClient
+    if (req.body.inputUrClient === undefined)
+    {
+        if (req.body.inputClient === "")
+        {
+            client=null
+            urClient=null
+        }
+        else
+        {
+            let cli = await UrClient.findOne({
+                where: {DLNumber: req.body.inputClient}
+            })
+                .catch((err) => {
+                    console.log(err)
+                })
+            urClient = cli.dataValues.id
+            client = null
+        }
+    }
+    else
+    {
+        let cli = await Client.findOne({
+            where: {DLNumber: req.body.inputClient}
+        })
+            .catch((err) => {
+                console.log(err)
+            })
+        client = cli.dataValues.id
+        urClient = null
+    }
+
+
+
+    let closeDate
+    if(req.body.inputDataClose.length === 4)
+        closeDate = null
+    else
+        closeDate =  moment(req.body.inputDataClose, 'DD.MM.YYYY').startOf('day')
+    let price
+    if(req.body.Price === '')
+        price = null
+    else
+        price =  req.body.Price
+
+
+    await ServiceList.update({
+        Description: req.body.inputDescription,
+        Markup: req.body.inputMarkup,
+        Status: SLstatus.dataValues.id,
+        ClientFK: client,
+        UrClient: urClient,
+        CarFK: car,
+        OpenDate: moment(req.body.inputDataOpen, 'DD.MM.YYYY'),
+        CloseDate: closeDate,
+        Price: price
+
+    }, {where: {id: req.query.OldID}})
+
+    if ( req.body.add !== undefined)
+        res.redirect('/servicelist')
 })
 
 //WORK WITH CAR

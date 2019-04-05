@@ -128,7 +128,7 @@ head
                                                     .row
                                                         .col
                                                             a.nav-link(href='addServiceList')
-                                                                button.btn.btn-primary.btn-lg.btn-block(type="button") Добавить
+                                                                button.btn.btn-primary.btn-lg.btn-block(type="submit") Добавить
                                                         //.modal-footer
                                         //button.btn.btn-default(type='button', data-dismiss='modal') Close
 
@@ -330,19 +330,25 @@ head
                                 h6.m-0 Основные поля
 
                             ul.list-group.list-group-flush
-                                form(action="/addSL", method="post" class="form" id='addSL' enctype="application/json")
+                                form(action="/addSL?OldID="+serviceList.dataValues.id, method="post" class="form" id='addSL' enctype="application/json")
                                     li.list-group-item.p-3
                                         .row
                                             .col-sm-12.col-md-4
                                                 strong.text-muted.d-block.mb-2 Дата открытия
                                                     .form-group
                                                         //input.form-control(type='text' name="inputDataOpen")
-                                                        input.form-control(class="uk-input" name="inputDataOpen" type="text",  class="datepicker-here")
+                                                        if(serviceList.dataValues.OpenDate == null)
+                                                            input.form-control(class="uk-input" name="inputDataOpen" type="text",  class="datepicker-here")
+                                                        else
+                                                            input.form-control(class="uk-input" name="inputDataOpen" type="text",  class="datepicker-here", value = serviceList.dataValues.OpenDate)
                                             .col-sm-12.col-md-4
                                                 strong.text-muted.d-block.mb-2 Дата закрытия
                                                     .form-group
                                                         //input.form-control(type='text' name="inputDataClose")
-                                                        input.form-control(class="uk-input" name="inputDataClose" type="text",  class="datepicker-here")
+                                                        if(serviceList.dataValues.CloseDate == null)
+                                                            input.form-control(class="uk-input" name="inputDataClose" type="text",  class="datepicker-here")
+                                                        else
+                                                            input.form-control(class="uk-input" name="inputDataClose" type="text",  class="datepicker-here", value = serviceList.dataValues.CloseDate)
                                             .col-sm-12.col-md-4
                                                 strong.text-muted.d-block.mb-2 Статус
 
@@ -350,7 +356,10 @@ head
                                                         //select.form-control(name="inputStatus")
                                                             option(selected='') Статус...
                                                             option ...
-                                                        input.form-control(type='text' list='types' name="inputStatus")
+                                                        if(serviceList.dataValues.Status == null)
+                                                            input.form-control(type='text' list='types' name="inputStatus")
+                                                        else
+                                                            input.form-control(type='text' list='types' name="inputStatus" value = serviceList.ServiceList_Status.dataValues.name)
                                                         datalist#types
                                                             -for (let i = 0; i < SLStatus.length; i++)
                                                                 option(value=SLStatus[i].dataValues.Name)
@@ -365,10 +374,17 @@ head
                                                                 //    option(selected='') Клиент...
                                                                 //    option ...
                                                                 #clientText
-                                                                input.form-control(class="uk-input" id='inputClient' name="inputClient" type="text"  placeholder="Введите номер ВУ")
+                                                                if (serviceList.dataValues.ClientFK == null)&&(serviceList.dataValues.UrClientFK == null)
+                                                                    input.form-control(class="uk-input" id='inputClient' name="inputClient" type="text"  placeholder="Введите номер ВУ")
+                                                                else
+                                                                    if (serviceList.dataValues.UrClientFK == null)
+                                                                        input.form-control(class="uk-input" id='inputClient' name="inputClient" type="text"  placeholder="Введите номер ВУ" value = serviceList.Client.dataValues.DLNumber)
+                                                                    else
+                                                                        input.form-control(class="uk-input" id='inputUrClient' name="inputClient" type="text"  placeholder="Введите номер ВУ" value = serviceList.UrClient.dataValues.INN)
+
                                                         .col-sm-12.col-md-2
                                                             #checkCL.button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button' onclick='checkClient()') Проверить
-                                                            button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button', data-toggle='modal', data-target='#myModal') +
+                                                            button.mb-2.btn.btn-sm.btn-primary.mr-1(type="submit", data-toggle='modal', data-target='#myModal') +
                                                             //a.nav-link(href='addClient')
                                                                 button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
                                             .col-sm-12
@@ -380,10 +396,13 @@ head
                                                                 //    option(selected='') Машиана...
                                                                 //    option ...
                                                                 #carText
-                                                                input.form-control(class="uk-input" id='inputCar' name="inputCar" type="text" placeholder="Введите VIN номер" )
+                                                                if (serviceList.dataValues.CarFK == null)
+                                                                    input.form-control(class="uk-input" id='inputCar' name="inputCar" type="text" placeholder="Введите VIN номер" )
+                                                                else
+                                                                    input.form-control(class="uk-input" id='inputCar' name="inputCar" type="text" placeholder="Введите VIN номер" value = serviceList.Car.dataValues.VIN )
                                                         .col-sm-12.col-md-2
                                                             #checkCar.button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button' onclick='checkCar()') Проверить
-                                                            button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button', data-toggle='modal', data-target='#myModal2') +
+                                                            button.mb-2.btn.btn-sm.btn-primary.mr-1(type="submit", data-toggle='modal', data-target='#myModal2') +
                                                             //a.nav-link(href='addCar')
                                                                 button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button', data-toggle='modal', data-target='#myModal') +
                                     li.list-group-item.p-3
@@ -397,7 +416,7 @@ head
                                                 strong.text-muted.d-block.mb-2 Заметки
 
                                                     .form-group
-                                                        textarea#inputMarkup.form-control(cols='103%')
+                                                        textarea#inputMarkup.form-control(cols='103%' name="inputMarkup")
                                     li.list-group-item.p-3
                                         .row
                                             .col-lg-12.mb-4
@@ -411,7 +430,7 @@ head
                                                                     .col-sm-12.col-md-3
                                                                         input.form-control(type='text' name="inputDataClose")
                                                                     .col-sm-12.col-md-1
-                                                                        button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
+                                                                        button.mb-2.btn.btn-sm.btn-primary.mr-1(type="submit") +
                                                             .card-body.p-0.pb-3.text-center
                                                                 table.table.mb-0
                                                                     thead.bg-light.text-primary
@@ -431,7 +450,7 @@ head
                                                                     .col-sm-12.col-md-3
                                                                         input.form-control(type='text' name="inputDataClose")
                                                                     .col-sm-12.col-md-1
-                                                                        button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
+                                                                        button.mb-2.btn.btn-sm.btn-primary.mr-1(type="submit") +
                                                             .card-body.p-0.pb-3.text-center
                                                                 table.table.mb-0
                                                                     thead.bg-light.text-primary
@@ -451,7 +470,7 @@ head
                                                                     .col-sm-12.col-md-3
                                                                         input.form-control(type='text' name="inputDataClose")
                                                                     .col-sm-12.col-md-1
-                                                                        button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
+                                                                        button.mb-2.btn.btn-sm.btn-primary.mr-1(type="submit") +
                                                             .card-body.p-0.pb-3.text-center
                                                                 table.table.mb-0
                                                                     thead.bg-light.text-primary
@@ -469,7 +488,7 @@ head
                                             .col-lg-12.mb-4
                                                 .row
                                                     .col
-                                                        button.btn.btn-primary.btn-lg.btn-block(type="submit" href="/addservicelist" ) Добавить
+                                                        button.btn.btn-primary.btn-lg.btn-block(type="submit" href="/addservicelist"  name="add") Добавить
 
                         // / Input & Button Groups
             footer.main-footer.d-flex.p-2.px-3.bg-white.border-top
