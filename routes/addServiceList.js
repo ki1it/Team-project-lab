@@ -1,7 +1,9 @@
 var express = require('express')
 var router = express.Router()
+const ServiceList = require('../database/models/ServiceList')
 const Car = require('../database/models/Car')
 const Client = require('../database/models/Client')
+const UrClient = require('../database/models/UrClient')
 const Service = require('../database/models/Service')
 const ServiceType = require('../database/models/ServiceType')
 const Sequelize = require('sequelize')
@@ -19,6 +21,27 @@ router.get('/', async function (req, res, next) {
   //   clientlist.push(clients[i].dataValues.FirstName + ' ' + clients[i].dataValues.SecondName + ' ' + clients[i].dataValues.DLNumber)
   // }
 
+    let serviceList
+
+    if (req.query.ID == "")
+        serviceList  = await ServiceList.create({
+            include:[{model: ServiceList_Status , as: 'ServiceList_Status '},
+                    {model: Client, as: 'Client'},
+                    {model: UrClient, as: 'UrClient'},
+                    {model: Car, as: 'Car'}]
+        })
+            .catch((err) => {
+                console.log(err)
+            })
+    else
+        serviceList = await ServiceList.findOne({
+            where: {id: req.query.ID},
+            include:[{model: ServiceList_Status , as: 'ServiceList_Status '}]
+        })
+            .catch((err) => {
+                console.log(err)
+            });
+
     let SLStatus = await ServiceList_Status.findAll({
     })
         .catch((err) => {
@@ -26,7 +49,8 @@ router.get('/', async function (req, res, next) {
         })
 
   res.render('addServiceList', {
-    SLStatus:SLStatus
+      serviceList:serviceList,
+      SLStatus:SLStatus
   })
 })
 
