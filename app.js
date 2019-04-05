@@ -1,10 +1,11 @@
 var createError = require('http-errors');
+require('dotenv').config()
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var moment = require('moment');
-require('dotenv').config()
+
 require('./database/lib/dbInit')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -18,9 +19,10 @@ var carRouter = require('./routes/car')
 var editClientRouter = require('./routes/editClient')
 var editUrClientRouter = require('./routes/editUrClient')
 var urClientRouter = require('./routes/urClient')
-var breakdownRoutre = require('./routes/breakdown')
-var serviceRoutre = require('./routes/service')
-var detailRoutre = require('./routes/detail')
+var breakdownRouter= require('./routes/breakdown')
+var serviceRouter = require('./routes/service')
+var detailRouter = require('./routes/detail')
+var ZNRouter = require('./routes/ZNPrint')
 var app = express();
 //auth part
 var bodyParser = require('body-parser');
@@ -164,9 +166,10 @@ app.use('/car', carRouter )
 app.use('/editClient', editClientRouter )
 app.use('/editUrClient', editUrClientRouter )
 app.use('/urclient', urClientRouter)
-app.use('/breakdown', breakdownRoutre)
-app.use('/service', serviceRoutre)
-app.use('/detail', detailRoutre)
+app.use('/breakdown', breakdownRouter)
+app.use('/service', serviceRouter)
+app.use('/detail', detailRouter)
+app.use('/ZN', ZNRouter)
 
 
 const Client = require('./database/models/Client')
