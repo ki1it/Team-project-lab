@@ -25,7 +25,7 @@ html
             tbody
                 tr
                     td(style='border-bottom: 1px solid #3d3d3d', height='32', align='left')
-                        font(size='5', face='Times New Roman') Заказ-наряд: zn
+                        font(size='5', face='Times New Roman') Заказ-наряд: ЗН-#{servicelist.dataValues.id}
                     td(style='border-bottom: 1px solid #3d3d3d', align='left')
                         font(size='5', face='Times New Roman')
                             br
@@ -43,7 +43,7 @@ html
                             br
                     td(colspan='3', align='right')
                         b
-                            font(size='5', face='Times New Roman') АВТОСЕРВИС
+                            font(size='5', face='Times New Roman') АВТОСЕРВИС "Техно"
                 tr
                     td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d', colspan='4', height='34', align='left') Заказчик:
                     td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', align='left') Телефон
@@ -52,28 +52,28 @@ html
                         img(src='images/avatars/zn.png', width='113', vspace='9', hspace='69', height='68')
                 tr
                     td(style='border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d', colspan='4', sdnum='1033;0;@', height='31', align='left')
-                        b Клиентов Иван Иванович
+                        b #{servicelist.Client.dataValues.FirstName+' '+servicelist.Client.dataValues.SecondName+' '+servicelist.Client.dataValues.Patronymic}
                     td(style='border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', sdnum='1033;0;@', align='left')
-                        b 8-923-923-00-??
+                        b #{servicelist.Client.dataValues.PhoneNumber}
                 tr
                     td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d', colspan='4', height='20', align='left') Автомобиль
-                    td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', align='left') Номер кузова
+                    td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', align='left') VIN
                 tr
                     td(style='border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d', colspan='4', sdnum='1033;0;@', height='17', align='left')
-                        b Honda,Logo
+                        b #{servicelist.Car.SprCar.Brand.dataValues.Brand+' '+servicelist.Car.SprCar.Model.dataValues.Model}
                     td(style='border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', sdnum='1033;0;@', align='left')
-                        b GA3-3303022
+                        b #{servicelist.Car.dataValues.VIN}
                     td(colspan='3', valign='middle', align='right') ООО "Техно"
-                tr
-                    td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d', colspan='4', height='17', align='left') Гос номер
-                    td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', align='left') Номер двигателя
-                    td(style='border-left: 1px solid #3d3d3d', colspan='3', rowspan='2', align='right')
-                        font(size='1') 630055, РОССИЯ, г. Новосибирск, ул. Зеленая Горка, д. 1\14
-                tr
-                    td(style='border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d', colspan='4', sdnum='1033;0;@', height='20', align='left')
-                        b Н???ХВ??
-                    td(style='border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', sdnum='1033;0;@', align='left')
-                        b D13B-6303537
+                //tr
+                //    td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d', colspan='4', height='17', align='left') Гос номер
+                //    td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', align='left') Номер двигателя
+                //    td(style='border-left: 1px solid #3d3d3d', colspan='3', rowspan='2', align='right')
+                //        font(size='1') 630055, РОССИЯ, г. Новосибирск, ул. Зеленая Горка, д. 1\14
+                //tr
+                //    td(style='border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d', colspan='4', sdnum='1033;0;@', height='20', align='left')
+                //        b Н???ХВ??
+                //    td(style='border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', sdnum='1033;0;@', align='left')
+                //        b D13B-6303537
                 tr
                     td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='4', sdnum='1033;0;@', height='17', align='left') Год выпуска
                     td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', align='left') Пробег
@@ -81,9 +81,9 @@ html
                         font(size='1') тел: 383-213-5549
                 tr
                     td(style='border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='4', sdnum='1033;0;@', height='20', align='left')
-                        b 2000
+                        b #{servicelist.Car.Year}
                     td(style='border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', sdnum='1033;0;@', align='left')
-                        b 133708
+                        b #{Math.floor(Math.random() * 1000000)}
                     td(valign='middle', align='right')
                         br
                     td(valign='middle', align='right')
@@ -132,7 +132,7 @@ html
                     td(sdnum='1033;0;@', align='left')
                         b
                             br
-                    td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', rowspan='3', sdnum='1033;0;@', align='left')
+                    td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', rowspan='2', sdnum='1033;0;@', align='left')
                         b Дата
                     td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d', sdnum='1033;0;@', align='left')
                         b оформления
@@ -163,24 +163,24 @@ html
                 tr
                     td(height='17', align='left')
                         b
-                            font(face='Times New Roman') 1. ВЫПОЛНЕННЫЕ РАБОТЫ И УСЛУГИ
-                    td(align='left')
-                        br
-                    td(sdnum='1033;0;@', align='left')
-                        b
-                            br
-                    td(sdnum='1033;0;@', align='left')
-                        b
-                            br
-                    td(sdnum='1033;0;@', align='left')
-                        b
-                            br
-                    td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d', sdnum='1033;0;@', align='left')
-                        b факт.исполнения
-                    td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', sdnum='1033;0;@', align='left')
-                        b
-                            br
-                    td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='2', sdnum='1033;0;@', align='left') 28.12.2011 20:00
+                            font(face='Times New Roman') 1.ВЫПОЛНЕННЫЕ РАБОТЫ И УСЛУГИ
+                    //td(align='left')
+                    //    br
+                    //td(sdnum='1033;0;@', align='left')
+                    //    b
+                    //        br
+                    //td(sdnum='1033;0;@', align='left')
+                    //    b
+                    //        br
+                    //td(sdnum='1033;0;@', align='left')
+                    //    b
+                    //        br
+                    //td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d', sdnum='1033;0;@', align='left')
+                    //    b факт.исполнения
+                    //td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', sdnum='1033;0;@', align='left')
+                    //    b
+                    //        br
+                    //td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='2', sdnum='1033;0;@', align='left') 28.12.2011 20:00
                 tr
                     td(height='20', align='left')
                         b
