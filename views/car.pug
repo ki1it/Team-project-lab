@@ -48,12 +48,12 @@ head
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Бренд
                                             .form-group
-                                                input#ajax1.form-control(type='text' list='json-datalist1' placeholder='e.g. datalist')
+                                                input#ajax1.form-control(type='text' list='json-datalist1' placeholder='e.g. datalist' name='inputBrand')
                                                 datalist#json-datalist1
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Модель
                                             .form-group
-                                                input#ajax2.form-control(type='text' list='json-datalist2' placeholder='e.g. datalist' onclick='getModels()')
+                                                input#ajax2.form-control(type='text' list='json-datalist2' placeholder='e.g. datalist' onclick='getModels()' name = 'inputModel')
                                                 datalist#json-datalist2
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 VIN номер
@@ -76,11 +76,18 @@ head
                                         strong.text-muted.d-block.mb-2 Год производства
                                             .form-group
                                                 input.form-control(type='text' name="inputYear")
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2 Гос номер
+                                            .form-group
+                                                input.form-control(type='text' name="inputGosNumber" )
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2 Номер двигателя
+                                            .form-group
+                                                input.form-control(type='text' name="inputEngineNumber" )
                                     .col-lg-12.mb-4
                                         .row
                                             .col
-                                                a.nav-link(href='addServiceList')
-                                                    button.btn.btn-primary.btn-lg.btn-block(type="button") Добавить
+                                                button.btn.btn-primary.btn-lg.btn-block(type="submit") Добавить
                                     //.modal-footer
                                         button.btn.btn-default(type='button', data-dismiss='modal') Close
 

@@ -477,7 +477,7 @@ app.use('/addCar', async function (req, res) {
         })
 
     let model = await Model.findOne({
-        where:{Brand:req.body.inputModel}
+        where:{Model:req.body.inputModel}
     })
         .catch((err) => {
             console.log(err)
@@ -526,12 +526,16 @@ app.use('/addCar', async function (req, res) {
     }
 
 
-    await Detail.create({
+    await Car.create({
         VIN: req.body.inputVIN,
         SprCarFK: sprCar.dataValues.id,
         Year: req.body.inputYear,
         OwnerFK: client,
-        OwnerUrFK: urClient
+        OwnerUrFK: urClient,
+        GosuNmber: req.body.inputGosNumber,
+        EngineNumber: req.body.inputEngineNumber
+
+
     })
         .catch((err) => {
             console.log(err)
