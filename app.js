@@ -297,7 +297,6 @@ app.use('/addUrClient', async function (req, res) {
         res.redirect(req.headers.referer)
     else
         res.redirect('/addservicelist?ID='+req.query.SLID)
-        res.redirect('/addservicelist?ID='+req.query.SLID)
 })
 
 
@@ -464,6 +463,81 @@ app.use('/checkCar', async function (req, res) {
     else
         result = 'Автомобиль найден, ' + car.SprCar.Brand.dataValues.Brand + ' ' + car.SprCar.Model.dataValues.Model
     res.end(result)
+})
+
+
+app.use('/addCar', async function (req, res) {
+    let brand = await Brand.findOne({
+        where:{Brand:req.body.inputBrand}
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+
+    let model = await Model.findOne({
+        where:{Brand:req.body.inputModel}
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+
+    let sprCar = await SprCar.findOne({
+        where:{BrandFK: brand.dataValues.id,
+                ModelFK: model.dataValues.id}
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+
+    let client
+    let urClient
+
+    if(( req.body.inputClient === "")&&( req.body.inputUrClient === ""))
+    {
+        client = null
+        urClient = null
+    }
+    else
+    {
+        if( req.body.inputUrClient === "")
+        {
+            let cl = await Client.findOne({
+                where:{DLNumber: req.body.inputClient}
+            })
+                .catch((err) => {
+                    console.log(err)
+                })
+            client = cl.dataValues.id
+            urClient = null
+        }
+        else
+        {
+            let cl = await UrClient.findOne({
+                where:{INN: req.body.inputClient}
+            })
+                .catch((err) => {
+                    console.log(err)
+                })
+            urClient = cl.dataValues.id
+            client = null
+        }
+    }
+
+
+    await Detail.create({
+        VIN: req.body.inputVIN,
+        SprCarFK: sprCar.dataValues.id,
+        Year: req.body.inputYear,
+        OwnerFK: client,
+        OwnerUrFK: urClient
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+    if (req.query.SLID === undefined)
+        res.redirect(req.headers.referer)
+    else
+        res.redirect('/addservicelist?ID='+req.query.SLID)
 })
 
 

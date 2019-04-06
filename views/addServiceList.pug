@@ -161,12 +161,12 @@ head
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Бренд
                                             .form-group
-                                                input#ajax1.form-control(type='text' list='json-datalist1' placeholder='e.g. datalist')
+                                                input#ajax1.form-control(type='text' list='json-datalist1' placeholder='e.g. datalist' name='inputBrand')
                                                 datalist#json-datalist1
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Модель
                                             .form-group
-                                                input#ajax2.form-control(type='text' list='json-datalist2' placeholder='e.g. datalist' onclick='getModels()')
+                                                input#ajax2.form-control(type='text' list='json-datalist2' placeholder='e.g. datalist' onclick='getModels()' name = 'inputModel')
                                                 datalist#json-datalist2
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 VIN номер
@@ -178,17 +178,16 @@ head
                                                 .col-sm-12.col-md-3
                                                     .form-group
                                                         .custom-control.custom-toggle.custom-toggle-sm.mb-1
-                                                            input#customToggle12.custom-control-input(type='checkbox' name='customToggle1')
+                                                            input#customToggle12.custom-control-input(type='checkbox' name='customToggle12')
                                                             label.custom-control-label(for='customToggle12') Юридическое лицо
                                                 .col-sm-12.col-md-9
                                                     .form-group
-                                                        select.form-control(name="inputClient")
-                                                            option(selected='') Клиент...
-                                                            option ...
+                                                        input#cl.form-control(type='text' name="inputClient" )
+                                                        input#ur.form-control(type='text' name="inputUrClient" )
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Год производства
                                             .form-group
-                                                input.form-control(type='text' name="inputYear")
+                                                input.form-control(type='text' name="inputYear" )
                                     .col-lg-12.mb-4
                                         .row
                                             .col
