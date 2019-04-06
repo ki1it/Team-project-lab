@@ -40,21 +40,7 @@ head
                     h4.modal-title Добавление автомобиля
                     button.close(type='button', data-dismiss='modal') ×
                 .modal-body
-                    //div
-                        form(action="/addSklad", method="post" class="form" id='addSklad' enctype="application/json")
-                            div
-                                input(type="text" name="name" placeholder="Название" class="form__input" required)
-                                br
-                                select( name='type' required=true)
-                                    option(value=''   hidden ) Выберите тип
-                                br
-                                input(type="text" name='col' placeholder="Количество" class="form__input" required)
-                                br
-                                input(type="text" name='price' placeholder="Цена" class="form__input" required)
 
-
-                            div
-                                input.btn.btn-default(type="submit" href="/sklad" class="uk-button uk-button-primary top-margin" value="Отправить")
                     ul.list-group.list-group-flush
                         form(action="/addCar", method="post" class="form" id='addCar' enctype="application/json")
                             li.list-group-item.p-3
@@ -79,13 +65,12 @@ head
                                                 .col-sm-12.col-md-3
                                                     .form-group
                                                         .custom-control.custom-toggle.custom-toggle-sm.mb-1
-                                                            input#customToggle1.custom-control-input(type='checkbox' name='customToggle1')
-                                                            label.custom-control-label(for='customToggle1') Юридическое лицо
+                                                            input#customToggle12.custom-control-input(type='checkbox' name='customTogglel2')
+                                                            label.custom-control-label(for='customToggle12') Юридическое лицо
                                                 .col-sm-12.col-md-9
                                                     .form-group
-                                                        select.form-control(name="inputClient")
-                                                            option(selected='') Клиент...
-                                                            option ...
+                                                        input#cl.form-control(type='text' name="inputClient" )
+                                                        input#ur.form-control(type='text' name="inputUrClient" )
 
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Год производства
@@ -273,3 +258,4 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.
 script(src='scripts/extras.1.1.0.min.js')
 script(src='scripts/shards-dashboards.1.1.0.min.js')
 script(src='scripts/checkCl&Car.js')
+script( src='scripts/showClient.js')
