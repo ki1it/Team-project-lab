@@ -8,6 +8,12 @@ const Service = require('../database/models/Service')
 const ServiceType = require('../database/models/ServiceType')
 const Sequelize = require('sequelize')
 const ServiceList_Status = require('../database/models/ServiceList_Status')
+const ServiceList_Service = require('../database/models/ServiceList_Service')
+const Breakdown = require('../database/models/Breakdown')
+const ServiceListBreakdown = require('../database/models/ServiceListBreakdown')
+const Detail = require('../database/models/Detail')
+const ServiceList_Detail = require('../database/models/ServiceList_Detail')
+
 /* GET users listing. */
 router.get('/', async function (req, res, next) {
   // let clients = await Client.findAll({
@@ -56,14 +62,34 @@ router.get('/', async function (req, res, next) {
 
 
 
-
+    let serviceList_Service = await ServiceList_Service.findAll({
+        include: [{model: Service, as: 'Service'}]
+    })
         .catch((err) => {
             console.log(err)
         })
 
-  res.render('addServiceList', {
+    let serviceListBreakdown = await ServiceListBreakdown.findAll({
+        include: [{model: Breakdown, as: 'Breakdown'}]
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+
+    let serviceList_Detail = await ServiceList_Detail.findAll({
+        include: [{model: Detail, as: 'Detail'}]
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+
+
+    res.render('addServiceList', {
       serviceList:serviceList,
-      SLStatus:SLStatus
+      SLStatus:SLStatus,
+      serviceList_Service:serviceList_Service,
+      serviceListBreakdown:serviceListBreakdown,
+      serviceList_Detail:serviceList_Detail
   })
 })
 

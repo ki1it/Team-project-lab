@@ -15,7 +15,12 @@ head
     script(async='' defer='' src='https://buttons.github.io/buttons.js')
     link(href='/dist/css/datepicker.min.css', rel='stylesheet')
 
-
+    mixin rowsTable(id, name, numb, sum)
+        tr
+            td #{id}
+            td #{name}
+            td #{numb}
+            td #{sum}
 
 
 .container-fluid
@@ -275,7 +280,7 @@ head
                     button.close(type='button', data-dismiss='modal') ×
                 .modal-body
                     ul.list-group.list-group-flush
-                        form(action="/addDetail?SLID=" + serviceList.dataValues.id, method="post" class="form" id='addDe' enctype="application/json")
+                        form(action="/addDetailSL?SLID=" + serviceList.dataValues.id, method="post" class="form" id='addDe' enctype="application/json")
                             li.list-group-item.p-3
                                 .row
                                     .col-sm-12
@@ -535,8 +540,14 @@ head
                                                                         tr
                                                                             th.border-0(scope='col') #
                                                                             th.border-0(scope='col') Название
-                                                                            th.border-0(scope='col') Тип
+                                                                            th.border-0(scope='col') Количество
                                                                             th.border-0(scope='col') Стоимость
+                                                                    tbody
+                                                                        -for (let i = 0; i < serviceList_Service.length; i++)
+                                                                            +rowsTable(serviceList_Service[i].dataValues.id,
+                                                                            serviceList_Service[i].Service.dataValues.Name,
+                                                                            serviceList_Service[i].dataValues.NumOfService,
+                                                                            serviceList_Service[i].Service.dataValues.Price* serviceList_Service[i].dataValues.NumOfService)
                                             .col-lg-12.mb-4
                                                 .row
                                                     .col
@@ -555,8 +566,15 @@ head
                                                                         tr
                                                                             th.border-0(scope='col') #
                                                                             th.border-0(scope='col') Название
-                                                                            th.border-0(scope='col') Тип
+                                                                            th.border-0(scope='col') Количество
                                                                             th.border-0(scope='col') Стоимость
+                                                                    tbody
+                                                                        -for (let i = 0; i < serviceListBreakdown.length; i++)
+                                                                            +rowsTable(serviceListBreakdown[i].dataValues.id,
+                                                                            serviceListBreakdown[i].Breakdown.dataValues.Name,
+                                                                            serviceListBreakdown[i].dataValues.NumOfService,
+                                                                            serviceListBreakdown[i].Breakdown.dataValues.Price * serviceListBreakdown[i].dataValues.NumOfService)
+
                                             .col-lg-12.mb-4
                                                 .row
                                                     .col
@@ -577,6 +595,12 @@ head
                                                                             th.border-0(scope='col') Название
                                                                             th.border-0(scope='col') количество
                                                                             th.border-0(scope='col') Стоимость
+                                                                    tbody
+                                                                        -for (let i = 0; i < serviceList_Detail.length; i++)
+                                                                            +rowsTable(serviceList_Detail[i].dataValues.id,
+                                                                            serviceList_Detail[i].Detail.dataValues.Name,
+                                                                            serviceList_Detail[i].dataValues.Amount,
+                                                                            serviceList_Detail[i].Detail.dataValues.Price * serviceList_Detail[i].dataValues.Amount)
                                             .col-lg-12.mb-4
                                                 .row
                                                     .col

@@ -581,7 +581,7 @@ app.use('/delBreakdown', async function (req, res) {
 
 app.use('/addBreakdownsSL', async function (req, res) {
     let breakdown= await Breakdown.findOne({
-        where:{Name:req.body.inputServis}
+        where:{Name:req.body.inputBreakdowns}
     })
         .catch((err) => {
             console.log(err)
@@ -692,7 +692,7 @@ app.use('/addDetailSL', async function (req, res) {
     await ServiceList_Detail.create({
         DetailFK: detail.dataValues.id,
         ServiceListFK: req.query.SLID,
-        Amount: req.body.inputNumb
+        Amount: req.body.inputNum
     })
         .catch((err) => {
             console.log(err)
