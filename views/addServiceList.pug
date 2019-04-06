@@ -204,7 +204,7 @@ head
                     button.close(type='button', data-dismiss='modal') ×
                 .modal-body
                     ul.list-group.list-group-flush
-                        form(action="/addServis?SLID=" + serviceList.dataValues.id, method="post" class="form" id='addSe' enctype="application/json")
+                        form(action="/addServiceSL?SLID=" + serviceList.dataValues.id, method="post" class="form" id='addSe' enctype="application/json")
                             li.list-group-item.p-3
                                 .row
                                     .col-sm-12
@@ -215,6 +215,10 @@ head
                                         strong.text-muted.d-block.mb-2 Услуга
                                             .form-group
                                                 input.form-control(type='text' name="inputServis")
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2 Количество
+                                            .form-group
+                                                input.form-control(type='text' name="inputNumb")
                                     .col-lg-12.mb-4
                                         .row
                                             .col
@@ -231,17 +235,21 @@ head
                     button.close(type='button', data-dismiss='modal') ×
                 .modal-body
                     ul.list-group.list-group-flush
-                        form(action="/addBreakdowns?SLID=" + serviceList.dataValues.id, method="post" class="form" id='addBr' enctype="application/json")
+                        form(action="/addBreakdownsSL?SLID=" + serviceList.dataValues.id, method="post" class="form" id='addBr' enctype="application/json")
                             li.list-group-item.p-3
                                 .row
                                     .col-sm-12
-                                        strong.text-muted.d-block.mb-2 Тип услуги
+                                        strong.text-muted.d-block.mb-2 Тип поломки
                                             .form-group
                                                 input.form-control(type='text' name="inputType")
                                     .col-sm-12
-                                        strong.text-muted.d-block.mb-2 Услуга
+                                        strong.text-muted.d-block.mb-2 поломка
                                             .form-group
                                                 input.form-control(type='text' name="inputBreakdowns")
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2 Количество
+                                            .form-group
+                                                input.form-control(type='text' name="inputNumb")
                                     .col-lg-12.mb-4
                                         .row
                                             .col

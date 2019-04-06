@@ -186,7 +186,9 @@ const ServiceType = require('./database/models/ServiceType')
 const Detail = require('./database/models/Detail')
 const EdIzmer = require('./database/models/EdIzmer')
 const ServiceList_Status = require('./database/models/ServiceList_Status')
-
+const ServiceList_Service = require('./database/models/ServiceList_Service')
+const ServiceListBreakdown = require('./database/models/ServiceListBreakdown')
+const ServiceList_Detail = require('./database/models/ServiceList_Detail')
 
 //WORK WITH CLIENT
 app.use('/updateClient', async function (req, res) {
@@ -573,6 +575,26 @@ app.use('/delBreakdown', async function (req, res) {
 })
 
 
+app.use('/addBreakdownsSL', async function (req, res) {
+    let breakdown= await Breakdown.findOne({
+        where:{Name:req.body.inputServis}
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+    await ServiceListBreakdown.create({
+        ServiceListBr: breakdown.dataValues.id,
+        ServiceListFK: req.query.SLID,
+        NumOfService: req.body.inputNumb
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+    //res.redirect(req.headers.referer)
+    res.redirect('/addservicelist?ID='+req.query.SLID)
+    //res.redirect('/indexAdmin')
+})
+
 //WORK WITH SERVICE
 
 app.use('/addService', async function (req, res) {
@@ -602,6 +624,27 @@ app.use('/delService', async function (req, res) {
         console.log(err)
     })
     res.redirect(req.headers.referer)
+})
+
+
+app.use('/addServiceSL', async function (req, res) {
+    let servis = await Service.findOne({
+        where:{Name:req.body.inputServis}
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+    await ServiceList_Service.create({
+        ServiceFK: servis.dataValues.id,
+        ServiceListFK: req.query.SLID,
+        NumOfService: req.body.inputNumb
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+    //res.redirect(req.headers.referer)
+    res.redirect('/addservicelist?ID='+req.query.SLID)
+    //res.redirect('/indexAdmin')
 })
 
 //WORK WITH DETAIL
@@ -635,6 +678,25 @@ app.use('/delDetail', async function (req, res) {
     res.redirect(req.headers.referer)
 })
 
+app.use('/addDetailSL', async function (req, res) {
+    let detail = await Detail.findOne({
+        where:{Name:req.body.inputDetail}
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+    await ServiceList_Detail.create({
+        DetailFK: detail.dataValues.id,
+        ServiceListFK: req.query.SLID,
+        Amount: req.body.inputNumb
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+    //res.redirect(req.headers.referer)
+    res.redirect('/addservicelist?ID='+req.query.SLID)
+    //res.redirect('/indexAdmin')
+})
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
