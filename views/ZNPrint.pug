@@ -64,16 +64,16 @@ html
                     td(style='border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', sdnum='1033;0;@', align='left')
                         b #{servicelist.Car.dataValues.VIN}
                     td(colspan='3', valign='middle', align='right') ООО "Техно"
-                //tr
-                //    td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d', colspan='4', height='17', align='left') Гос номер
-                //    td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', align='left') Номер двигателя
-                //    td(style='border-left: 1px solid #3d3d3d', colspan='3', rowspan='2', align='right')
-                //        font(size='1') 630055, РОССИЯ, г. Новосибирск, ул. Зеленая Горка, д. 1\14
-                //tr
-                //    td(style='border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d', colspan='4', sdnum='1033;0;@', height='20', align='left')
-                //        b Н???ХВ??
-                //    td(style='border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', sdnum='1033;0;@', align='left')
-                //        b D13B-6303537
+                tr
+                    td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d', colspan='4', height='17', align='left') Гос номер
+                    td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', align='left') Номер двигателя
+                    td(style='border-left: 1px solid #3d3d3d', colspan='3', rowspan='2', align='right')
+                        font(size='1') 630055, РОССИЯ, г. Родино, ул. Зеленая Горка, д. 1\14
+                tr
+                    td(style='border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d', colspan='4', sdnum='1033;0;@', height='20', align='left')
+                        b Н???ХВ??
+                    td(style='border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', sdnum='1033;0;@', align='left')
+                        b D13B-6303537
                 tr
                     td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='4', sdnum='1033;0;@', height='17', align='left') Год выпуска
                     td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', align='left') Пробег
@@ -139,7 +139,10 @@ html
                     td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', sdnum='1033;0;@', align='left')
                         b
                             br
-                    td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='2', sdnum='1033;0;@', align='left') 28.12.2011 10:00
+                    if(servicelist.dataValues.OpenDate !== null)
+                        td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='2', sdnum='1033;0;@', align='left') #{servicelist.dataValues.OpenDate.toLocaleDateString('en-GB')}
+                    else
+                        td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='2', sdnum='1033;0;@', align='left') #{servicelist.dataValues.OpenDate}
                 tr
                     td(height='20', align='left')
                         br
@@ -159,7 +162,13 @@ html
                     td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', sdnum='1033;0;@', align='left')
                         b
                             br
-                    td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='2', sdnum='1033;0;@', align='left') 28.12.2011 13:00
+                    if(servicelist.dataValues.CloseDate !== null)
+                        td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='2', sdnum='1033;0;@', align='left') #{servicelist.dataValues.CloseDate.toLocaleDateString('en-GB')}
+                    else
+                        td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='2', sdnum='1033;0;@', align='left') #{servicelist.dataValues.CloseDate}
+
+
+
                 tr
                     td(height='17', align='left')
                         b

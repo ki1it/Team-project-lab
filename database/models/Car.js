@@ -16,7 +16,13 @@ const  Car = sequelize.define('Car', {
   },
   OwnerUrFK:{
     type: Sequelize.INTEGER,
-  }
+  },
+  GosNumber: {
+    type: Sequelize.TEXT,
+  },
+  EngineNumber: {
+    type: Sequelize.TEXT,
+  },
 });
 
 module.exports = Car;
