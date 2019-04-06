@@ -84,13 +84,12 @@ head
     script(async='' defer='' src='https://buttons.github.io/buttons.js')
     script(async='' defer='' src='https://www.kryogenix.org/code/browser/sorttable/sorttable.js')
     - var i=0;
-        mixin rowsTable(id, Name, Price, Amount, EdIz)
+        mixin rowsTable(id, Name, Price,  EdIz)
             tr
 
                 //td #{id}
                 td #{Name}
                 td #{Price}
-                td #{Amount}
                 td #{EdIz}
                 td
                     a#navbarDropdownMenuLink.nav-link(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
@@ -282,7 +281,6 @@ head
                                             //th.border-0(scope='col') №
                                             th.border-0(scope='col') Название
                                             th.border-0(scope='col') Цена
-                                            th.border-0(scope='col') Количество
                                             th.border-0(scope='col') Едиинца измерения
                                             th.border-0(scope='col') Действие
                                     tbody
@@ -290,7 +288,6 @@ head
                                             +rowsTable(detail[i].dataValues.id,
                                             detail[i].dataValues.Name,
                                             detail[i].dataValues.Price,
-                                            detail[i].dataValues.Amount,
                                             detail[i].EdIzmer.dataValues.Name)
                 //// End Default Light Table
                 //// Default Dark Table
