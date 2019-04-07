@@ -160,7 +160,7 @@ head
                             div
                                 input.btn.btn-default(type="submit" href="/sklad" class="uk-button uk-button-primary top-margin" value="Отправить")
                     ul.list-group.list-group-flush
-                        form(action="/addCar?SLID="+serviceList.dataValues.id, method="post" class="form" id='addCar' enctype="application/json")
+                        form(action="/addCars?SLID="+serviceList.dataValues.id, method="post" class="form" id='addCar' enctype="application/json")
                             li.list-group-item.p-3
                                 .row
                                     .col-sm-12
@@ -628,7 +628,7 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.
 script(src='scripts/extras.1.1.0.min.js')
 script(src='scripts/shards-dashboards.1.1.0.min.js')
 script(src='scripts/app/app-components-overview.1.1.0.js')
-script( src='scripts/showClient.js')
+script(src='scripts/showClient.js')
 script(src='/dist/js/datepicker.min.js')
 script(src='scripts/checkCl&Car.js')
 script(src='scripts/SumPrice')

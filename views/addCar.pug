@@ -144,44 +144,61 @@ head
                 .col-lg-12.mb-4
                     .card.card-small.mb-4
                         .card-header.border-bottom
-                            h6.m-0 Добавление автомобиля
+                            h6.m-0 Изменение автомобиля
 
                         ul.list-group.list-group-flush
-                            form(action="/addCar", method="post" class="form" id='addClient' enctype="application/json")
+                            form(action="/editCar?OldID="+car.dataValues.id method="post" class="form" id='addCar' enctype="application/json")
                                 li.list-group-item.p-3
                                     .row
                                         .col-sm-12
-                                            strong.text-muted.d-block.mb-2 Автомобиль
+                                            strong.text-muted.d-block.mb-2 Бренд
                                                 .form-group
-                                                    select.form-control(name="inputCar")
-                                                        option(selected='') Авто...
-                                                        option ...
+                                                    input#ajax1.form-control(type='text' list='json-datalist1' placeholder='e.g. datalist' name='inputBrand' value=car.SprCar.Brand.dataValues.Brand)
+                                                    datalist#json-datalist1
+                                        .col-sm-12
+                                            strong.text-muted.d-block.mb-2 Модель
+                                                .form-group
+                                                    input#ajax2.form-control(type='text' list='json-datalist2' placeholder='e.g. datalist' onclick='getModels()' name = 'inputModel' value=car.SprCar.Model.dataValues.Model)
+                                                    datalist#json-datalist2
                                         .col-sm-12
                                             strong.text-muted.d-block.mb-2 VIN номер
                                                 .form-group
-                                                    input.form-control(type='text' name="inputVIN")
+                                                    input.form-control(type='text' name="inputVIN" value=car.dataValues.VIN)
                                         .col-sm-12
                                             strong.text-muted.d-block.mb-2 Владелец
                                                 .row
                                                     .col-sm-12.col-md-3
                                                         .form-group
                                                             .custom-control.custom-toggle.custom-toggle-sm.mb-1
-                                                                input#customToggle1.custom-control-input(type='checkbox' name='customToggle1')
-                                                                label.custom-control-label(for='customToggle1') Юридическое лицо
+                                                                if(car.UrClient===null)
+                                                                    input#customToggle12.custom-control-input(type='checkbox' name='customTogglel2')
+                                                                    label.custom-control-label(for='customToggle12') Юридическое лицо
+                                                                else
+                                                                    input#customToggle12.custom-control-input(type='checkbox' name='customTogglel2' checked='checked')
+                                                                    label.custom-control-label(for='customToggle12') Юридическое лицо
                                                     .col-sm-12.col-md-9
                                                         .form-group
-                                                            select.form-control(name="inputClient")
-                                                                option(selected='') Клиент...
-                                                                option ...
+                                                            if(car.UrClient===null)
+                                                                input#cl.form-control(type='text' name="inputClient" value=car.Client.dataValues.DLNumber )
+                                                            else
+                                                                input#ur.form-control(type='text' name="inputUrClient" value=car.UrClient.dataValues.INN)
+
                                         .col-sm-12
                                             strong.text-muted.d-block.mb-2 Год производства
                                                 .form-group
-                                                    input.form-control(type='text' name="inputYear")
+                                                    input.form-control(type='text' name="inputYear" value=car.dataValues.Year)
+                                        .col-sm-12
+                                            strong.text-muted.d-block.mb-2 Гос номер
+                                                .form-group
+                                                    input.form-control(type='text' name="inputGosNumber" value=car.dataValues.GosNumber)
+                                        .col-sm-12
+                                            strong.text-muted.d-block.mb-2 Номер двигателя
+                                                .form-group
+                                                    input.form-control(type='text' name="inputEngineNumber" value=car.dataValues.EngineNumber)
                                         .col-lg-12.mb-4
                                             .row
                                                 .col
-                                                    a.nav-link(href='addServiceList')
-                                                        button.btn.btn-primary.btn-lg.btn-block(type="button") Добавить
+                                                    button.btn.btn-primary.btn-lg.btn-block(type="submit") Добавить
 
 
                     // / Input & Button Groups
@@ -209,3 +226,5 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.
 script(src='scripts/extras.1.1.0.min.js')
 script(src='scripts/shards-dashboards.1.1.0.min.js')
 script(src='scripts/app/app-components-overview.1.1.0.js')
+script(src='scripts/checkCl&Car.js')
+script(src='scripts/showClient.js')

@@ -23,6 +23,7 @@ var breakdownRouter= require('./routes/breakdown')
 var serviceRouter = require('./routes/service')
 var detailRouter = require('./routes/detail')
 var ZNRouter = require('./routes/ZNPrint')
+var addCarRouter = require('./routes/addCar')
 var app = express();
 //auth part
 var bodyParser = require('body-parser');
@@ -170,7 +171,7 @@ app.use('/breakdown', breakdownRouter)
 app.use('/service', serviceRouter)
 app.use('/detail', detailRouter)
 app.use('/ZN', ZNRouter)
-
+app.use('/addCar', addCarRouter)
 
 const Client = require('./database/models/Client')
 const Car = require('./database/models/Car')
@@ -480,7 +481,7 @@ app.use('/checkCar', async function (req, res) {
 })
 
 
-app.use('/addCar', async function (req, res) {
+app.use('/addCars', async function (req, res) {
     let brand = await Brand.findOne({
         where:{Brand:req.body.inputBrand}
     })
@@ -544,7 +545,7 @@ app.use('/addCar', async function (req, res) {
         Year: req.body.inputYear,
         OwnerFK: client,
         OwnerUrFK: urClient,
-        GosuNmber: req.body.inputGosNumber,
+        GosNumber: req.body.inputGosNumber,
         EngineNumber: req.body.inputEngineNumber
 
 
@@ -556,6 +557,76 @@ app.use('/addCar', async function (req, res) {
         res.redirect(req.headers.referer)
     else
         res.redirect('/addservicelist?ID='+req.query.SLID)
+})
+
+app.use('/editCar', async function (req, res) {
+    let brand = await Brand.findOne({
+        where:{Brand:req.body.inputBrand}
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+
+    let model = await Model.findOne({
+        where:{Model:req.body.inputModel}
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+
+    let sprCar = await SprCar.findOne({
+        where:{BrandFK: brand.dataValues.id,
+            ModelFK: model.dataValues.id}
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+
+    let client
+    let urClient
+
+    if((( req.body.inputClient === "")&&( req.body.inputUrClient === undefined)) ||(( req.body.inputClient === undefined)&&( req.body.inputUrClient === "")))
+    {
+        client = null
+        urClient = null
+    }
+    else
+    {
+        if( req.body.inputUrClient === undefined)
+        {
+            let cl = await Client.findOne({
+                where:{DLNumber: req.body.inputClient}
+            })
+                .catch((err) => {
+                    console.log(err)
+                })
+            client = cl.dataValues.id
+            urClient = null
+        }
+        else
+        {
+            let cl = await UrClient.findOne({
+                where:{INN: req.body.inputClient}
+            })
+                .catch((err) => {
+                    console.log(err)
+                })
+            urClient = cl.dataValues.id
+            client = null
+        }
+    }
+
+
+    await Car.update({
+        VIN: req.body.inputVIN,
+        SprCarFK: sprCar.dataValues.id,
+        Year: req.body.inputYear,
+        OwnerFK: client,
+        OwnerUrFK: urClient,
+        GosNumber: req.body.inputGosNumber,
+        EngineNumber: req.body.inputEngineNumber
+    }, {where: {id: req.query.OldID}})
+    res.redirect('/car')
 })
 
 

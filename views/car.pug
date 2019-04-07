@@ -13,7 +13,7 @@ head
     script(async='' defer='' src='https://buttons.github.io/buttons.js')
     script(async='' defer='' src='https://www.kryogenix.org/code/browser/sorttable/sorttable.js')
     - var i=0;
-        mixin rowsTable( VIN, Brand,  Year, Model, Owner, OwnerId, fl)
+        mixin rowsTable( VIN, Brand,  Year, Model, Owner, OwnerId, fl , id)
             tr
 
                 //td #{id}
@@ -32,7 +32,7 @@ head
                             | Some Actions
                     .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownMenuLink')
                         a.dropdown-item(href='/car' onclick="$.ajax({type: 'POST', url: '/delcar', data: 'VIN=" + VIN + "', })") Удалить
-                        a.dropdown-item(href='#' onclick="$.ajax({type: 'POST', url: '/', data: 'id="+id+"', })" ) Изменить
+                        a.dropdown-item(href='/addCar?ID='+id ) Изменить
     #myModal2.modal.fade(role='dialog')
         .modal-dialog.modal-lg
             .modal-content
@@ -42,7 +42,7 @@ head
                 .modal-body
 
                     ul.list-group.list-group-flush
-                        form(action="/addCar", method="post" class="form" id='addCar' enctype="application/json")
+                        form(action="/addCars", method="post" class="form" id='addCar' enctype="application/json")
                             li.list-group-item.p-3
                                 .row
                                     .col-sm-12
@@ -242,7 +242,8 @@ head
                                                 car[i].SprCar.Model.dataValues.Model,
                                                 car[i].Client.dataValues.FirstName + ' '+car[i].Client.dataValues.SecondName,
                                                 car[i].Client.dataValues.DLNumber,
-                                                car[i].UrClient)
+                                                car[i].UrClient,
+                                                car[i].dataValues.id)
                                             else
                                                 +rowsTable(car[i].dataValues.VIN,
                                                 car[i].SprCar.Brand.dataValues.Brand,
@@ -250,7 +251,8 @@ head
                                                 car[i].SprCar.Model.dataValues.Model,
                                                 car[i].UrClient.dataValues.Name,
                                                 car[i].UrClient.dataValues.INN,
-                                                car[i].UrClient)
+                                                car[i].UrClient,
+                                                car[i].dataValues.id)
 
 
             footer.main-footer.d-flex.p-2.px-3.bg-white.border-top
