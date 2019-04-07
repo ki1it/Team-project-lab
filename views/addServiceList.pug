@@ -535,7 +535,7 @@ head
                                                                     .col-sm-12.col-md-1
                                                                         button.mb-2.btn.btn-sm.btn-primary.mr-1(type="submit", data-toggle='modal', data-target='#myModal3') +
                                                             .card-body.p-0.pb-3.text-center
-                                                                table.table.mb-0
+                                                                table#tab1.table.mb-0
                                                                     thead.bg-light.text-primary
                                                                         tr
                                                                             th.border-0(scope='col') #
@@ -561,7 +561,7 @@ head
                                                                     .col-sm-12.col-md-1
                                                                         button.mb-2.btn.btn-sm.btn-primary.mr-1(type="submit", data-toggle='modal', data-target='#myModal4') +
                                                             .card-body.p-0.pb-3.text-center
-                                                                table.table.mb-0
+                                                                table#tab2.table.mb-0
                                                                     thead.bg-light.text-primary
                                                                         tr
                                                                             th.border-0(scope='col') #
@@ -588,7 +588,7 @@ head
                                                                     .col-sm-12.col-md-1
                                                                         button.mb-2.btn.btn-sm.btn-primary.mr-1(type="submit", data-toggle='modal', data-target='#myModal5') +
                                                             .card-body.p-0.pb-3.text-center
-                                                                table.table.mb-0
+                                                                table#tab3.table.mb-0
                                                                     thead.bg-light.text-primary
                                                                         tr
                                                                             th.border-0(scope='col') #
@@ -606,7 +606,9 @@ head
                                                     .col
                                                         strong.text-muted.d-block.mb-2 Итоговая стоимость
                                                             .form-group
-                                                                input.form-control(type='text' name="Price")
+                                                                sum()
+                                                                input#pr.form-control(type='text' name="Price" )
+                                                                //button.btn.btn-primary.btn-lg.btn-block(type="button" onclick="sum()") sum
                                             .col-lg-12.mb-4
                                                 .row
                                                     .col
@@ -629,3 +631,4 @@ script(src='scripts/app/app-components-overview.1.1.0.js')
 script( src='scripts/showClient.js')
 script(src='/dist/js/datepicker.min.js')
 script(src='scripts/checkCl&Car.js')
+script(src='scripts/SumPrice')

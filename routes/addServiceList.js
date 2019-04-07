@@ -63,21 +63,24 @@ router.get('/', async function (req, res, next) {
 
 
     let serviceList_Service = await ServiceList_Service.findAll({
-        include: [{model: Service, as: 'Service'}]
+        include: [{model: Service, as: 'Service'}],
+        where: {ServiceListFK: req.query.ID}
     })
         .catch((err) => {
             console.log(err)
         })
 
     let serviceListBreakdown = await ServiceListBreakdown.findAll({
-        include: [{model: Breakdown, as: 'Breakdown'}]
+        include: [{model: Breakdown, as: 'Breakdown'}],
+        where: {ServiceListFK: req.query.ID}
     })
         .catch((err) => {
             console.log(err)
         })
 
     let serviceList_Detail = await ServiceList_Detail.findAll({
-        include: [{model: Detail, as: 'Detail'}]
+        include: [{model: Detail, as: 'Detail'}],
+        where: {ServiceListFK: req.query.ID}
     })
         .catch((err) => {
             console.log(err)
