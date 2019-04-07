@@ -41,7 +41,7 @@ head
                         a.dropdown-item(href='/servicelist' onclick="$.ajax({type: 'POST', url: '/closeSL', data: 'id=" + id + "', })") Закрыть
                         a.dropdown-item(href='addservicelist?ID='+id  ) Изменить
                         a.dropdown-item(href='/servicelist' onclick="$.ajax({type: 'POST', url: '/delSL', data: 'id=" + id + "', })") Удалить
-                        a.dropdown-item(href='/ZN?id='+id  ) Распечатать
+                        a.dropdown-item(href='#' onclick='window.open(\'http://localhost:3000/ZN?id='+id+'\', \'_blank\')') Распечатать
 
 
 //.color-switcher.animated
