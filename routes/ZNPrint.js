@@ -23,8 +23,8 @@ router.get('/',async function (req, res, next) {
       {model: UrClient, as: 'UrClient'},
       {model: Car, as: 'Car', include: [{ model: SprCar, include: [{model: Brand, as: 'Brand'}, {model: Model, as: 'Model'}], as: 'SprCar'}]},
       {model: ServiceList_Status, as: 'ServiceList_Status'},
-      {model: ServiceList_Service, include: {model: Service, as: 'Service'}, as: 'ServiceList_Service'},
-      {model: ServiceList_Detail, include: {model: Detail, include: {model: EdIzmer, as: 'EdIzmer'}, as: 'Detail'}, as: 'ServiceList_Detail'},
+      {model: ServiceList_Service, include: {model: Service, as: 'Service'}, as: 'ServiceList_Services'},
+      {model: ServiceList_Detail, include: {model: Detail, include: {model: EdIzmer, as: 'EdIzmer'}, as: 'Detail'}, as: 'ServiceList_Details'},
     ],
     where:{id:req.query.id}
   })

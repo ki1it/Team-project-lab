@@ -15,7 +15,11 @@ const Detail = sequelize.define('Detail', {
   },
   Price:{
     type: Sequelize.INTEGER,
-  }
+  },
+  Code:{
+    type: Sequelize.TEXT,
+    unique:true
+  },
 });
 
 module.exports = Detail;
