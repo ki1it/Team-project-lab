@@ -201,10 +201,14 @@ head
                                         h6.m-0 Заказ-наряд
                                     .col-sm-12.col-md-12
                                         .input-group.input-group-seamless
-                                            .input-group-prepend
-                                                .input-group-text
-                                                    i.fas.fa-search
-                                            input.navbar-search.form-control(type='text' placeholder='поиск' aria-label='Search')
+                                            //.input-group-prepend
+                                            //    .input-group-text
+                                            //        i.fas.fa-search
+                                            //input.navbar-search.form-control(type='text' placeholder='поиск' aria-label='Search')
+                                            form.form-inline.col-sm-12.col-md-12(action="/servicelist")
+                                                .col-sm-12.col-md-11
+                                                    input.form-control(type='text' name='searchid')
+                                                    button.btn.btn-primary(href='' type='submit') Найти
                             //.input-group.input-group-seamless.ml-3
                                 .input-group-prepend
                                     .input-group-text
