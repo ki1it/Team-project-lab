@@ -42,7 +42,7 @@ ServiceList_Service.belongsTo(Service, { foreignKey: 'ServiceFK', targetKey: 'id
 ServiceList.hasMany(ServiceList_Service, { foreignKey: 'ServiceListFK', sourceKey: 'id', onDelete: 'cascade', onUpdate: 'restrict'})
 ServiceList_Service.belongsTo(ServiceList, { foreignKey: 'ServiceListFK', targetKey: 'id', onDelete: 'cascade', onUpdate: 'restrict' })
 
-ServiceList.hasMany(ServiceList_Detail, { foreignKey: 'ServiceListFK', sourceKey: 'id', onDelete: 'cascade', onUpdate: 'restrict'})
+ServiceList.hasMany(ServiceList_Detail, { foreignKey: 'ServiceListFK', sourceKey: 'id', onDelete: 'cascade', onUpdate: 'restrict', as:"ServiceList_Details"})
 ServiceList_Detail.belongsTo(ServiceList, { foreignKey: 'ServiceListFK', targetKey: 'id', onDelete: 'cascade', onUpdate: 'restrict' })
 
 ServiceList.hasMany(ServiceList_Worker, { foreignKey: 'ServiceListFK', sourceKey: 'id', onDelete: 'cascade', onUpdate: 'restrict'})
