@@ -443,7 +443,7 @@ head
                                                         if(serviceList.dataValues.OpenDate == null)
                                                             input.form-control(class="uk-input" name="inputDataOpen" type="text",  class="datepicker-here")
                                                         else
-                                                            input.form-control(class="uk-input" name="inputDataOpen" type="text",  class="datepicker-here", value = serviceList.dataValues.OpenDate)
+                                                            input.form-control(class="uk-input" name="inputDataOpen" type="text",  class="datepicker-here", value = serviceList.dataValues.OpenDate.toLocaleDateString('en-GB'))
                                             .col-sm-12.col-md-4
                                                 strong.text-muted.d-block.mb-2 Дата закрытия
                                                     .form-group
@@ -451,7 +451,7 @@ head
                                                         if(serviceList.dataValues.CloseDate == null)
                                                             input.form-control(class="uk-input" name="inputDataClose" type="text",  class="datepicker-here")
                                                         else
-                                                            input.form-control(class="uk-input" name="inputDataClose" type="text",  class="datepicker-here", value = serviceList.dataValues.CloseDate)
+                                                            input.form-control(class="uk-input" name="inputDataClose" type="text",  class="datepicker-here", value = serviceList.dataValues.CloseDate.toLocaleDateString('en-GB'))
                                             .col-sm-12.col-md-4
                                                 strong.text-muted.d-block.mb-2 Статус
 
@@ -462,7 +462,7 @@ head
                                                         if(serviceList.dataValues.Status == null)
                                                             input.form-control(type='text' list='types' name="inputStatus")
                                                         else
-                                                            input.form-control(type='text' list='types' name="inputStatus" value = serviceList.ServiceList_Status.dataValues.name)
+                                                            input.form-control(type='text' list='types' name="inputStatus" value = serviceList.ServiceList_Status.dataValues.Name)
                                                         datalist#types
                                                             -for (let i = 0; i < SLStatus.length; i++)
                                                                 option(value=SLStatus[i].dataValues.Name)

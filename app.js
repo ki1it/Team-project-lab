@@ -411,6 +411,18 @@ app.use('/addSL', async function (req, res) {
         res.redirect('/servicelist')
 })
 
+
+app.use('/delSL', async function (req, res) {
+    await ServiceList.destroy({
+        where: {
+            id: req.body.id
+        }
+    }).catch((err) => {
+        console.log(err)
+    })
+    res.redirect(req.headers.referer)
+})
+
 //WORK WITH CAR
 
 app.use('/getBrand', async function (req, res) {
