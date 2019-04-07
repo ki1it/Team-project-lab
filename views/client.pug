@@ -33,32 +33,7 @@ head
                     button.close(type='button', data-dismiss='modal') ×
 
                 .modal-body
-                    //.col-12.col-sm-4.text-center.text-sm-left.mb-0
-                    //.col-12.col-sm-4.text-center.text-sm-left.mb-0
-                        .form-group
-                            .custom-control.custom-toggle.custom-toggle-sm.mb-1
-                                input#showClient.custom-control-input(type='checkbox' name='customToggle1')
-                                label.custom-control-label(for='showClient') Юридическое лицо
-                    //div
-                        form(action="/addSklad", method="post" class="form" id='addSklad' enctype="application/json")
-                            div
-                                input(type="text" name="name" placeholder="Название" class="form__input" required)
-                                br
-                                select( name='type' required=true)
-                                    option(value=''   hidden ) Выберите тип
-                                br
-                                input(type="text" name='col' placeholder="Количество" class="form__input" required)
-                                br
-                                input(type="text" name='price' placeholder="Цена" class="form__input" required)
 
-
-                            div
-                                input.btn.btn-default(type="submit" href="/sklad" class="uk-button uk-button-primary top-margin" value="Отправить")
-                    //.row
-                        #client.col-lg-12.mb-4
-                            .card.card-small.mb-4
-                                .card-header.border-bottom
-                                    h6.m-0 Добавление физического клиента
                     ul.list-group.list-group-flush
                         form(action="/addClient", method="post" class="form" id='addClient' enctype="application/json")
                             li.list-group-item.p-3
@@ -117,36 +92,7 @@ head
                                             .col
                                                 a.nav-link(href='client')
                                                     button.btn.btn-primary.btn-lg.btn-block(type="submit") Добавить
-                        //#URclient.col-lg-12.mb-4
-                            .card.card-small.mb-4
-                                .card-header.border-bottom
-                                    h6.m-0 Добавление юридического клиента
-                                ul.list-group.list-group-flush
-                                    form(action="/addUrClient", method="post" class="form" id='addUrClient' enctype="application/json")
-                                        li.list-group-item.p-3
-                                            .row
-                                                .col-sm-12
-                                                    strong.text-muted.d-block.mb-2 Название
-                                                        .form-group
-                                                            input.form-control(type='text' name="inputName")
-                                                .col-sm-12
-                                                    strong.text-muted.d-block.mb-2 ИНН
-                                                        .form-group
-                                                            input.form-control(type='text' name="inputINN")
-                                                .col-sm-12
-                                                    strong.text-muted.d-block.mb-2 Номер телефона
-                                                        .form-group
-                                                            input.form-control(type='text' name="inputPhoneNumber")
 
-                                                .col-sm-12
-                                                    strong.text-muted.d-block.mb-2 Адресс
-                                                        .form-group
-                                                            input.form-control(type='text' name="inputAdress")
-                                                .col-lg-12.mb-4
-                                                    .row
-                                                        .col
-                                                            a.nav-link(href='client')
-                                                                button.btn.btn-primary.btn-lg.btn-block(type="submit") Добавить
     #editEmployeeModal.modal.fade
         .modal-dialog
             .modal-content
@@ -183,7 +129,7 @@ head
                 //td #{id}
                 td #{Name}
                 if(Birthday !== null)
-                    td #{Birthday.toLocaleDateString('en-GB')}
+                    td #{formatDate(Birthday)}
                 else
                     td #{Birthday}
                 td #{Tel}
@@ -391,53 +337,7 @@ head
                                             client[i].dataValues.PhoneNumber,
                                             client[i].dataValues.DLNumber,
                                             client[i].dataValues.Adress)
-                //// End Default Light Table
-                //// Default Dark Table
-                //.row
-                //    .col
-                //        .card.card-small.overflow-hidden.mb-4
-                //            .card-header.bg-dark
-                //                h6.m-0.text-white Inactive Users
-                //            .card-body.p-0.pb-3.bg-dark.text-center
-                //                table.table.table-dark.mb-0
-                //                    thead.thead-dark
-                //                        tr
-                //                            th.border-bottom-0(scope='col') #
-                //                            th.border-bottom-0(scope='col') First Name
-                //                            th.border-bottom-0(scope='col') Last Name
-                //                            th.border-bottom-0(scope='col') Country
-                //                            th.border-bottom-0(scope='col') City
-                //                            th.border-bottom-0(scope='col') Phone
-                //                    tbody
-                //                        tr
-                //                            td 1
-                //                            td Graham
-                //                            td Brent
-                //                            td Benin
-                //                            td Ripabottoni
-                //                            td 1-512-760-9094
-                //                        tr
-                //                            td 2
-                //                            td Clark
-                //                            td Angela
-                //                            td Estonia
-                //                            td Borghetto di Vara
-                //                            td 1-660-850-1647
-                //                        tr
-                //                            td 3
-                //                            td Wylie
-                //                            td Joseph
-                //                            td Korea, North
-                //                            td Guelph
-                //                            td 325-4351
-                //                        tr
-                //                            td 4
-                //                            td Garth
-                //                            td Clementine
-                //                            td Indonesia
-                //                            td Narcao
-                //                            td 722-8264
-                //// End Default Dark Table
+
             footer.main-footer.d-flex.p-2.px-3.bg-white.border-top
                 //ul.nav
                     li.nav-item
@@ -475,6 +375,6 @@ script(src='scripts/extras.1.1.0.min.js')
 script(src='scripts/shards-dashboards.1.1.0.min.js')
 script( src='scripts/showClient.js')
 script(src='/dist/js/datepicker.min.js')
-
+- function formatDate(date) {var dd = date.getDate(); if (dd < 10) dd = '0' + dd; var mm = date.getMonth() + 1; if (mm < 10) mm = '0' + mm; var yyyy = date.getFullYear() ; return dd + '.' + mm + '.' + yyyy;}
 
 

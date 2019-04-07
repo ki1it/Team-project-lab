@@ -443,7 +443,7 @@ head
                                                         if(serviceList.dataValues.OpenDate == null)
                                                             input.form-control(class="uk-input" name="inputDataOpen" type="text",  class="datepicker-here")
                                                         else
-                                                            input.form-control(class="uk-input" name="inputDataOpen" type="text",  class="datepicker-here", value = serviceList.dataValues.OpenDate.toLocaleDateString('en-GB'))
+                                                            input.form-control(class="uk-input" name="inputDataOpen" type="text",  class="datepicker-here", value = formatDate(serviceList.dataValues.OpenDate))
                                             .col-sm-12.col-md-4
                                                 strong.text-muted.d-block.mb-2 Дата закрытия
                                                     .form-group
@@ -451,7 +451,7 @@ head
                                                         if(serviceList.dataValues.CloseDate == null)
                                                             input.form-control(class="uk-input" name="inputDataClose" type="text",  class="datepicker-here")
                                                         else
-                                                            input.form-control(class="uk-input" name="inputDataClose" type="text",  class="datepicker-here", value = serviceList.dataValues.CloseDate.toLocaleDateString('en-GB'))
+                                                            input.form-control(class="uk-input" name="inputDataClose" type="text",  class="datepicker-here", value = formatDate(serviceList.dataValues.CloseDate))
                                             .col-sm-12.col-md-4
                                                 strong.text-muted.d-block.mb-2 Статус
 
@@ -632,3 +632,4 @@ script(src='scripts/showClient.js')
 script(src='/dist/js/datepicker.min.js')
 script(src='scripts/checkCl&Car.js')
 script(src='scripts/SumPrice')
+- function formatDate(date) {var dd = date.getDate(); if (dd < 10) dd = '0' + dd; var mm = date.getMonth() + 1; if (mm < 10) mm = '0' + mm; var yyyy = date.getFullYear() ; return dd + '.' + mm + '.' + yyyy;}
