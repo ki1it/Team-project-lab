@@ -14,7 +14,7 @@ head
     script(async='' defer='' src='https://www.kryogenix.org/code/browser/sorttable/sorttable.js')
 
     - var i=0;
-        mixin rowsTable(id, client, odate, cdate,  car, status, clientID, carVIN, fl)
+        mixin rowsTable(id, client, odate, cdate,  car, status, clientID, fl)
             tr
 
                 - var options = { year: 'numeric', month: 'long', day: 'numeric'};
@@ -238,7 +238,6 @@ head
                                                 servicelist[i].Client.dataValues.DLNumber,
                                                 servicelist[i].UrClient)
                                             else
-                                                -console.log(i)
                                                 +rowsTable(servicelist[i].dataValues.id,
                                                 servicelist[i].UrClient.dataValues.Name,
                                                 servicelist[i].dataValues.OpenDate,
