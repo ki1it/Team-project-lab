@@ -38,7 +38,7 @@ head
                         i.material-icons edit
                         span Главная
                 li.nav-item
-                    a.nav-link.active(href='servicelist'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                    a.nav-link(href='servicelist'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
                         i.material-icons vertical_split
                             span Заказ-наряд
                         .dropdown-menu(aria-labelledby='dropdownMenuLink')
@@ -47,12 +47,12 @@ head
                             a.dropdown-item(href='#') Что-то еще
 
                 li.nav-item
-                    a.nav-link.dropdown-toggle(href='servicelist'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                    a.nav-link.active.dropdown-toggle(href='servicelist'  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
                         i.material-icons note_add
                             span Справочники
                         .dropdown-menu(aria-labelledby='dropdownMenuLink')
                             a.dropdown-item(href='client') Физические клиенты
-                            a.dropdown-item(href='urclient') Юридические клиенты
+                            a.active.dropdown-item(href='urclient') Юридические клиенты
                             a.dropdown-item(href='cars') Автомобили
                             a.dropdown-item(href='breakdowns') Поломки
                             a.dropdown-item(href='services') Услуги
@@ -62,7 +62,7 @@ head
                         i.material-icons view_module
                         span Формы
                 li.nav-item
-                    a.nav-link(href='tables.html')
+                    a.nav-link(href='about')
                         i.material-icons table_chart
                         span О сайте
                 //li.nav-item

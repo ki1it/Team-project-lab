@@ -276,7 +276,7 @@ head
         .modal-dialog.modal-lg
             .modal-content
                 .modal-header
-                    h4.modal-title Добавление детали
+                    h4.modal-title Добавление запчасти
                     button.close(type='button', data-dismiss='modal') ×
                 .modal-body
                     ul.list-group.list-group-flush
@@ -328,7 +328,7 @@ head
                             span Заказ-наряд
                         .dropdown-menu(aria-labelledby='dropdownMenuLink')
                             a.dropdown-item(href='servicelist') Посмотреть
-                            a.dropdown-item(href='addservicelist?ID=') Создать
+                            a.active.dropdown-item(href='addservicelist?ID=') Создать
                             a.dropdown-item(href='#') Что-то еще
 
                 li.nav-item
@@ -582,7 +582,7 @@ head
                                                             .card-header.border-bottom
                                                                 .row
                                                                     .col-sm-12.col-md-8
-                                                                        h6.m-0 Детали
+                                                                        h6.m-0 Запчасти
                                                                     .col-sm-12.col-md-3
                                                                         input.form-control(type='text' name="inputDataClose")
                                                                     .col-sm-12.col-md-1
