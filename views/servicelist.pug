@@ -16,15 +16,16 @@ head
         mixin rowsTable(id, client, odate, cdate,  car, status, clientID, carVIN, fl)
             tr
 
+                - var options = { year: 'numeric', month: 'long', day: 'numeric'};
                 td #{id}
                 //td #{client}
                 if(fl === null)
                     td #[a(href="client?DLN=" + clientID) #{client}]
                 else
                     td #[a(href="urclient?INN=" + clientID) #{client}]
-                td #{odate.toLocaleDateString('en-GB')}
+                td #{odate.toLocaleDateString('ru',options)}
                 if(cdate !== null)
-                    td #{cdate.toLocaleDateString('en-GB')}
+                    td #{cdate.toLocaleDateString('ru',options)}
                 else
                     td #{cdate}
                 //td #{car}

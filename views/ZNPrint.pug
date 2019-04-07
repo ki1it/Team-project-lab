@@ -71,9 +71,9 @@ html
                         font(size='1') 630055, РОССИЯ, г. Родино, ул. Зеленая Горка, д. 1\14
                 tr
                     td(style='border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d', colspan='4', sdnum='1033;0;@', height='20', align='left')
-                        b Н???ХВ??
+                        b #{servicelist.Car.GosNumber}
                     td(style='border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', sdnum='1033;0;@', align='left')
-                        b D13B-6303537
+                        b #{servicelist.Car.EngineNumber}
                 tr
                     td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='4', sdnum='1033;0;@', height='17', align='left') Год выпуска
                     td(style='border-top: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', align='left') Пробег
@@ -246,12 +246,13 @@ html
                     td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', valign='middle', align='left')
                         b
                             br
-                tr
-                    td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='4', sdnum='1033;0;@', valign='middle', height='20', align='left') Замена жидкости в тормозной системе
-                    td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', sdval='1', sdnum='1033;0;0', align='right') 1
-                    td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', sdval='400', sdnum='1033;0;#,##0.00"р."', align='right') 400.00р.
-                    td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', sdval='400', sdnum='1033;0;#,##0.00"р."', align='right') 400.00р.
-                    td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', sdnum='1033;0;@', align='left') Механиков Иван Иванович
+                -for (let i = 0; i < servicelist.ServiceList_Service; i++)
+                    tr
+                        td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='4', sdnum='1033;0;@', valign='middle', height='20', align='left') Замена жидкости в тормозной системе
+                        td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', sdval='1', sdnum='1033;0;0', align='right') 1
+                        td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', sdval='400', sdnum='1033;0;#,##0.00"р."', align='right') 400.00р.
+                        td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', sdval='400', sdnum='1033;0;#,##0.00"р."', align='right') 400.00р.
+                        td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='3', sdnum='1033;0;@', align='left') Механиков Иван Иванович
                 tr
                     td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', colspan='4', sdnum='1033;0;@', valign='middle', height='30', align='left') Промывка дроссельной заслонки
                     td(style='border-top: 1px solid #3d3d3d; border-bottom: 1px solid #3d3d3d; border-left: 1px solid #3d3d3d; border-right: 1px solid #3d3d3d', sdval='1', sdnum='1033;0;0', align='right') 1
@@ -800,7 +801,7 @@ html
                 tr
                     td(colspan='10', valign='top', height='117', bgcolor='#C0C0C0', align='left')
                         b
-                            | Гарантийные обязательства при соблюдении правил эксплуатации Honda и рекомендаций ООО "Техно":
+                            | Гарантийные обязательства при соблюдении правил эксплуатации и рекомендаций ООО "Техно":
                             br
                             | а) на агрегаты, подвергавшиеся разборке, сборке и замене деталей - 6 месяцев, но не более 10 тысяч км пробега;
                             br
