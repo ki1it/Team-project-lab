@@ -179,7 +179,7 @@ head
                                                 .form-group
                                                     //input.form-control(type='text' name="inputBD")
                                                     if(client[0].dataValues.Birthday !== null)
-                                                        input.form-control.datepicker-here(name="inputBD" type="text" value=client[0].dataValues.Birthday.toLocaleDateString('en-GB'))
+                                                        input.form-control.datepicker-here(name="inputBD" type="text" value=formatDate(client[0].dataValues.Birthday))
                                                     else
                                                         input.form-control.datepicker-here(name="inputBD" type="text")
                                         .col-sm-12
@@ -219,3 +219,4 @@ script(src='scripts/extras.1.1.0.min.js')
 script(src='scripts/shards-dashboards.1.1.0.min.js')
 script(src='scripts/app/app-components-overview.1.1.0.js')
 script(src='/dist/js/datepicker.min.js')
+- function formatDate(date) {var dd = date.getDate(); if (dd < 10) dd = '0' + dd; var mm = date.getMonth() + 1; if (mm < 10) mm = '0' + mm; var yyyy = date.getFullYear() ; return dd + '.' + mm + '.' + yyyy;}
