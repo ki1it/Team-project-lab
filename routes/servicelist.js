@@ -83,6 +83,22 @@ router.get('/', async function (req, res, next) {
                     console.log(err)
                 })
         }
+        if(servicelist === undefined)
+        {
+            servicelist = await ServiceList.findAll({
+                //where:{Car.sequelize.literal('Car.VIN'):req.query.searchid},
+                //include: [{ model: Breakdown, include: { model: BreakdownType, as: 'BreakdownType' },  as: 'Breakdown' }]
+
+                include: [{model: Client,where:{SecondName :req.query.searchid}, as: 'Client'},
+                    {model: UrClient, as: 'UrClient'},
+                    {model: Car,  as: 'Car'},
+                    {model: ServiceList_Status, as: 'ServiceList_Status'},
+                ]
+            })
+                .catch((err) => {
+                    console.log(err)
+                })
+        }
 
     }
     res.render('servicelist', {
