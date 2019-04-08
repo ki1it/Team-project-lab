@@ -515,12 +515,13 @@ head
                                                 strong.text-muted.d-block.mb-2 Описание
 
                                                         .form-group
-                                                            textarea.form-control(cols='103%' name="inputDescription" value = serviceList.dataValues.Description )
+                                                            textarea.form-control(cols='103%' name="inputDescription"   ) #{serviceList.dataValues.Description}
                                             .col-sm-12
                                                 strong.text-muted.d-block.mb-2 Заметки
 
                                                     .form-group
-                                                        textarea#inputMarkup.form-control(cols='103%' name="inputMarkup")
+
+                                                        textarea#inputMarkup.form-control(cols='103%' name="inputMarkup") #{serviceList.dataValues.Markup}
                                     li.list-group-item.p-3
                                         .row
                                             .col-lg-12.mb-4
