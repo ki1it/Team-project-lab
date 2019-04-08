@@ -382,15 +382,22 @@ app.use('/addSL', async function (req, res) {
 
 
     let closeDate
-    if(req.body.inputDataClose.length === 4)
-        closeDate = null
+    if (req.body.inputDataClose !== undefined) {
+        if ((req.body.inputDataClose.length === 4) ||(req.body.inputDataClose === ""))
+            closeDate = null
+        else
+            closeDate = moment(req.body.inputDataClose, 'DD.MM.YYYY').startOf('day')
+    }
     else
-        closeDate =  moment(req.body.inputDataClose, 'DD.MM.YYYY').startOf('day')
+        closeDate = null
+
     let price
-    if(req.body.Price === '')
+    if (req.body.Price === '')
         price = null
     else
-        price =  req.body.Price
+        price = req.body.Price
+
+
 
 
     await ServiceList.update({

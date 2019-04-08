@@ -31,14 +31,24 @@ router.get('/', async function (req, res, next) {
 
     if (req.query.ID == "") {
         serviceList = await ServiceList.create({
-            include: [{model: ServiceList_Status, as: 'ServiceList_Status'},
-                {model: Client, as: 'Client'},
-                {model: UrClient, as: 'UrClient'},
-                {model: Car, as: 'Car'}]
+            Status: 4
         })
             .catch((err) => {
                 console.log(err)
             })
+        let id = serviceList.dataValues.id
+        serviceList = await ServiceList.findOne({
+
+            include: [{model: ServiceList_Status, as: 'ServiceList_Status'},
+                {model: Client, as: 'Client'},
+                {model: UrClient, as: 'UrClient'},
+                {model: Car, as: 'Car'}],
+            where: {id: id}
+        })
+            .catch((err) => {
+                console.log(err)
+            })
+
     }
     else {
         serviceList = await ServiceList.findOne({

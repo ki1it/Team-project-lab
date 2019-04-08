@@ -444,7 +444,8 @@ head
                                                             input.form-control(class="uk-input" name="inputDataOpen" type="text",  class="datepicker-here")
                                                         else
                                                             input.form-control(class="uk-input" name="inputDataOpen" type="text",  class="datepicker-here", value = formatDate(serviceList.dataValues.OpenDate))
-                                            .col-sm-12.col-md-4
+                                            #nol.col-sm-12.col-md-4
+                                            #dataCl.col-sm-12.col-md-4
                                                 strong.text-muted.d-block.mb-2 Дата закрытия
                                                     .form-group
                                                         //input.form-control(type='text' name="inputDataClose")
@@ -460,9 +461,9 @@ head
                                                             option(selected='') Статус...
                                                             option ...
                                                         if(serviceList.dataValues.Status == null)
-                                                            input.form-control(type='text' list='types' name="inputStatus")
+                                                            input#st.form-control(type='text' list='types' name="inputStatus")
                                                         else
-                                                            input.form-control(type='text' list='types' name="inputStatus" value = serviceList.ServiceList_Status.dataValues.Name)
+                                                            input#st.form-control(type='text' list='types' name="inputStatus" value = serviceList.ServiceList_Status.dataValues.Name)
                                                         datalist#types
                                                             -for (let i = 0; i < SLStatus.length; i++)
                                                                 option(value=SLStatus[i].dataValues.Name)
@@ -514,7 +515,7 @@ head
                                                 strong.text-muted.d-block.mb-2 Описание
 
                                                         .form-group
-                                                            textarea.form-control(cols='103%' name="inputDescription")
+                                                            textarea.form-control(cols='103%' name="inputDescription" value = serviceList.dataValues.Description )
                                             .col-sm-12
                                                 strong.text-muted.d-block.mb-2 Заметки
 
@@ -528,10 +529,8 @@ head
                                                         .card.card-small.mb-4
                                                             .card-header.border-bottom
                                                                 .row
-                                                                    .col-sm-12.col-md-8
+                                                                    .col-sm-12.col-md-11
                                                                         h6.m-0 Услуги
-                                                                    .col-sm-12.col-md-3
-                                                                        input.form-control(type='text' name="inputDataClose")
                                                                     .col-sm-12.col-md-1
                                                                         button.mb-2.btn.btn-sm.btn-primary.mr-1(type="submit", data-toggle='modal', data-target='#myModal3') +
                                                             .card-body.p-0.pb-3.text-center
@@ -543,21 +542,20 @@ head
                                                                             th.border-0(scope='col') Количество
                                                                             th.border-0(scope='col') Стоимость
                                                                     tbody
-                                                                        -for (let i = 0; i < serviceList_Service.length; i++)
-                                                                            +rowsTable(serviceList_Service[i].dataValues.id,
-                                                                            serviceList_Service[i].Service.dataValues.Name,
-                                                                            serviceList_Service[i].dataValues.NumOfService,
-                                                                            serviceList_Service[i].Service.dataValues.Price* serviceList_Service[i].dataValues.NumOfService)
-                                            .col-lg-12.mb-4
+                                                                        if(serviceList_Service !== undefined)
+                                                                            -for (let i = 0; i < serviceList_Service.length; i++)
+                                                                                +rowsTable(serviceList_Service[i].dataValues.id,
+                                                                                serviceList_Service[i].Service.dataValues.Name,
+                                                                                serviceList_Service[i].dataValues.NumOfService,
+                                                                                serviceList_Service[i].Service.dataValues.Price* serviceList_Service[i].dataValues.NumOfService)
+                                            #br.col-lg-12.mb-4
                                                 .row
                                                     .col
                                                         .card.card-small.mb-4
                                                             .card-header.border-bottom
                                                                 .row
-                                                                    .col-sm-12.col-md-8
+                                                                    .col-sm-12.col-md-11
                                                                         h6.m-0 Поломки
-                                                                    .col-sm-12.col-md-3
-                                                                        input.form-control(type='text' name="inputDataClose")
                                                                     .col-sm-12.col-md-1
                                                                         button.mb-2.btn.btn-sm.btn-primary.mr-1(type="submit", data-toggle='modal', data-target='#myModal4') +
                                                             .card-body.p-0.pb-3.text-center
@@ -569,22 +567,21 @@ head
                                                                             th.border-0(scope='col') Количество
                                                                             th.border-0(scope='col') Стоимость
                                                                     tbody
-                                                                        -for (let i = 0; i < serviceListBreakdown.length; i++)
-                                                                            +rowsTable(serviceListBreakdown[i].dataValues.id,
-                                                                            serviceListBreakdown[i].Breakdown.dataValues.Name,
-                                                                            serviceListBreakdown[i].dataValues.NumOfService,
-                                                                            serviceListBreakdown[i].Breakdown.dataValues.Price * serviceListBreakdown[i].dataValues.NumOfService)
+                                                                        if (serviceListBreakdown !== undefined)
+                                                                            -for (let i = 0; i < serviceListBreakdown.length; i++)
+                                                                                +rowsTable(serviceListBreakdown[i].dataValues.id,
+                                                                                serviceListBreakdown[i].Breakdown.dataValues.Name,
+                                                                                serviceListBreakdown[i].dataValues.NumOfService,
+                                                                                serviceListBreakdown[i].Breakdown.dataValues.Price * serviceListBreakdown[i].dataValues.NumOfService)
 
-                                            .col-lg-12.mb-4
+                                            #det.col-lg-12.mb-4
                                                 .row
                                                     .col
                                                         .card.card-small.mb-4
                                                             .card-header.border-bottom
                                                                 .row
-                                                                    .col-sm-12.col-md-8
+                                                                    .col-sm-12.col-md-11
                                                                         h6.m-0 Запчасти
-                                                                    .col-sm-12.col-md-3
-                                                                        input.form-control(type='text' name="inputDataClose")
                                                                     .col-sm-12.col-md-1
                                                                         button.mb-2.btn.btn-sm.btn-primary.mr-1(type="submit", data-toggle='modal', data-target='#myModal5') +
                                                             .card-body.p-0.pb-3.text-center
@@ -596,11 +593,12 @@ head
                                                                             th.border-0(scope='col') количество
                                                                             th.border-0(scope='col') Стоимость
                                                                     tbody
-                                                                        -for (let i = 0; i < serviceList_Detail.length; i++)
-                                                                            +rowsTable(serviceList_Detail[i].dataValues.id,
-                                                                            serviceList_Detail[i].Detail.dataValues.Name,
-                                                                            serviceList_Detail[i].dataValues.Amount,
-                                                                            serviceList_Detail[i].Detail.dataValues.Price * serviceList_Detail[i].dataValues.Amount)
+                                                                        if (serviceList_Detail !== undefined)
+                                                                            -for (let i = 0; i < serviceList_Detail.length; i++)
+                                                                                +rowsTable(serviceList_Detail[i].dataValues.id,
+                                                                                serviceList_Detail[i].Detail.dataValues.Name,
+                                                                                serviceList_Detail[i].dataValues.Amount,
+                                                                                serviceList_Detail[i].Detail.dataValues.Price * serviceList_Detail[i].dataValues.Amount)
                                             .col-lg-12.mb-4
                                                 .row
                                                     .col
@@ -632,4 +630,5 @@ script(src='scripts/showClient.js')
 script(src='/dist/js/datepicker.min.js')
 script(src='scripts/checkCl&Car.js')
 script(src='scripts/SumPrice')
+script(src='scripts/status.js')
 - function formatDate(date) {var dd = date.getDate(); if (dd < 10) dd = '0' + dd; var mm = date.getMonth() + 1; if (mm < 10) mm = '0' + mm; var yyyy = date.getFullYear() ; return dd + '.' + mm + '.' + yyyy;}
