@@ -75,7 +75,7 @@ head
               i.material-icons vertical_split
                 span Заказ-наряд
               .dropdown-menu(aria-labelledby='dropdownMenuLink')
-                a.dropdown-item(href='servicelist') Посмотреть
+                a.dropdown-item(href='servicelist') Поиск
                 a.dropdown-item(href='addservicelist?ID=') Создать
                 a.dropdown-item(href='#') Что-то еще
 
@@ -217,20 +217,26 @@ head
         // End Small Stats Blocks
         .row
           .col-lg-6
-            img(src='images/add.png' alt='User Avatar' width='100' height='100')
-            h2 Добавление заказ наряда
+            a(href='/addServiceList')
+              img(src='images/add.png' alt='User Avatar' width='100' height='100')
+              h2 Добавление заказ наряда
             p
-              | Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.
+              | Добавление заказ-наряда с возможностью выборо существующего клиента и автомобиля, а также добавления нового.
             p
-              a.btn.btn-secondary(href='/service' role='button') View details &raquo;
+            a(href='/addServiceList')
+              button.btn.btn-primary.btn-lg.btn-block(type="button") Добавить
+              //a.btn.btn-secondary(href='/servicelist' role='button') View details &raquo;
           // /.col-lg-4
           .col-lg-6
-            img(src='images/search.png' alt='User Avatar' width='100' height='100')
-            h2 Поиск по заказ-нарядам
+            a(href='/servicelist')
+              img(src='images/search.png' alt='User Avatar' width='100' height='100')
+              h2 Поиск по заказ-нарядам
             p
-              | Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.
+              | Поиск осуществляется по VIN, по гос номеру, номеру ВУ(для физ клиентов), по фамили, INN(для юр клиентов), по названию.
             p
-              a.btn.btn-secondary(href='/addServiceList' role='button') View details &raquo;
+            a(href='/servicelist')
+              button.btn.btn-primary.btn-lg.btn-block(type="button") Найти
+              //a.btn.btn-secondary(href='/addServiceList' role='button') View details &raquo;
           // /.col-lg-4
           //.col-lg-4
             svg.bd-placeholder-img.rounded-circle(width='140' height='140' xmlns='http://www.w3.org/2000/svg' preserveaspectratio='xMidYMid slice' focusable='false' role='img' aria-label='Placeholder: 140x140')
