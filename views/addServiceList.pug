@@ -478,10 +478,10 @@ head
                                                                 //    option(selected='') Клиент...
                                                                 //    option ...
                                                                 #clientText
-                                                                if (serviceList.dataValues.ClientFK == null)&&(serviceList.dataValues.UrClientFK == null)
+                                                                if (serviceList.dataValues.ClientFK === null)&&(serviceList.dataValues.UrClientFK === null)
                                                                     input.form-control(class="uk-input" id='inputClient' name="inputClient" type="text"  placeholder="Введите номер ВУ")
                                                                 else
-                                                                    if (serviceList.dataValues.UrClientFK == null)
+                                                                    if (serviceList.dataValues.UrClientFK === null)
                                                                         input.form-control(class="uk-input" id='inputClient' name="inputClient" type="text"  placeholder="Введите номер ВУ" value = serviceList.Client.dataValues.DLNumber)
                                                                     else
                                                                         input.form-control(class="uk-input" id='inputUrClient' name="inputClient" type="text"  placeholder="Введите номер ВУ" value = serviceList.UrClient.dataValues.INN)
@@ -500,7 +500,7 @@ head
                                                                 //    option(selected='') Машиана...
                                                                 //    option ...
                                                                 #carText
-                                                                if (serviceList.dataValues.CarFK == null)
+                                                                if (serviceList.dataValues.CarFK === null)
                                                                     input.form-control(class="uk-input" id='inputCar' name="inputCar" type="text" placeholder="Введите VIN номер" )
                                                                 else
                                                                     input.form-control(class="uk-input" id='inputCar' name="inputCar" type="text" placeholder="Введите VIN номер" value = serviceList.Car.dataValues.VIN )
@@ -515,13 +515,18 @@ head
                                                 strong.text-muted.d-block.mb-2 Описание
 
                                                         .form-group
-                                                            textarea.form-control(cols='103%' name="inputDescription"   ) #{serviceList.dataValues.Description}
+                                                            if (serviceList.dataValues.Description == null)
+                                                                textarea.form-control(cols='103%' name="inputDescription"   )
+                                                            else
+                                                                textarea.form-control(cols='103%' name="inputDescription"   ) #{serviceList.dataValues.Description}
                                             .col-sm-12
                                                 strong.text-muted.d-block.mb-2 Заметки
 
                                                     .form-group
-
-                                                        textarea#inputMarkup.form-control(cols='103%' name="inputMarkup") #{serviceList.dataValues.Markup}
+                                                        if (serviceList.dataValues.Markup == null)
+                                                            textarea#inputMarkup.form-control(cols='103%' name="inputMarkup")
+                                                        else
+                                                            textarea#inputMarkup.form-control(cols='103%' name="inputMarkup") #{serviceList.dataValues.Markup}
                                     li.list-group-item.p-3
                                         .row
                                             .col-lg-12.mb-4
