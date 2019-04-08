@@ -54,17 +54,17 @@ head
     // Custom styles for this template
     link(href='styles/signin.css', rel='stylesheet')
 body.text-center
-    form.form-signin
+    form.form-signin(action='/login', method='post')
         img.mb-4(src='../images/avatars/logo.jpg', alt='', width='72', height='72' style='vertical-align: middle;')
         h1.h3.mb-3.font-weight-normal Войдите
-        label.sr-only(for='username') Логин
-        input#username.form-control(type='email', placeholder='Введите логин', required='', autofocus='')
-        label.sr-only(for='password') Пароль
-        input#password.form-control(type='password', placeholder='Введита пароль', required='')
+        label Логин
+        input.form-control(placeholder='Введите логин', name='username', required='', autofocus='')
+        label Пароль
+        input.form-control(type='password', name='password', placeholder='Введита пароль', required='')
         .checkbox.mb-3
             label
                 input(type='checkbox', value='запомнить меня')
-                |  Remember me
+                |  Запомнить меня
         button.btn.btn-lg.btn-primary.btn-block(type='submit') Войти
         p.mt-5.mb-3.text-muted &copy; 2019 ki1it&ma-daria
 
