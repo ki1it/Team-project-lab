@@ -80,7 +80,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', sessionChecker, (req, res) => {
-    res.redirect('/index');
+    res.redirect('/login');
 })
 // route for user signup
 app.route('/signup')
@@ -117,7 +117,7 @@ app.route('/login')
         User.findOne({where: {username: username}}).then(function (user) {
             if (!user) {
                 res.redirect('/login');
-            } else if (!user.validPassword(password)) {
+            } else if (user.dataValues.password!==password) {
                 res.redirect('/login');
             } else {
                 req.session.user = user.dataValues;
@@ -125,11 +125,11 @@ app.route('/login')
                     res.redirect('/signup')
                 }
                 if (user.dataValues.role === 'administrator') {
-                    res.redirect('/servicelist')
+                    res.redirect('/index')
                 }
-                if (user.dataValues.role === 'worker') {
-                    res.redirect('/zadForWorker?id=' + user.dataValues.worker_id)
-                }
+                // if (user.dataValues.role === 'worker') {
+                //     res.redirect('/zadForWorker?id=' + user.dataValues.worker_id)
+                // }
             }
         });
     });
