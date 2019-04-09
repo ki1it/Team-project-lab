@@ -332,7 +332,7 @@ head
                                     tbody
                                         -for (let i = 0; i < client.length; i++)
                                             +rowsTable(client[i].dataValues.id,
-                                            client[i].dataValues.FirstName+' '+ client[i].dataValues.SecondName+' '+ client[i].dataValues.Patronymic,
+                                            client[i].dataValues.SecondName+' '+ client[i].dataValues.FirstName+' '+  client[i].dataValues.Patronymic,
                                             client[i].dataValues.Birthday,
                                             client[i].dataValues.PhoneNumber,
                                             client[i].dataValues.DLNumber,
