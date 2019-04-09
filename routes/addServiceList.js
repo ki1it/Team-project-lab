@@ -29,7 +29,7 @@ router.get('/', async function (req, res, next) {
 
     let serviceList
 
-    if (req.query.ID == "") {
+    if (req.query.ID === "") {
         serviceList = await ServiceList.create({
             Status: 4
         })
