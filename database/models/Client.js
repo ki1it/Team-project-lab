@@ -15,7 +15,7 @@ const Client = sequelize.define('Client', {
     type: Sequelize.DATE,
   },
   PhoneNumber: {
-    type: Sequelize.STRING(12),
+    type: Sequelize.TEXT,
   },
   DLNumber:{
     type: Sequelize.INTEGER,
