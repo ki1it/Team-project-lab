@@ -8,7 +8,7 @@ const UrClient = require('../database/models/UrClient')
 const Client = require('../database/models/Client')
 router.get('/', async function (req, res, next) {
   let car
-  if (req.query.VIN === undefined) {
+  if (req.query.GosN === undefined) {
       car = await Car.findAll({
           // where:{ServiceListFK:req.query.id},
           include: [{ model: SprCar, include: [{model: Brand, as: 'Brand'}, {model: Model, as: 'Model'}], as: 'SprCar'},
@@ -25,7 +25,7 @@ router.get('/', async function (req, res, next) {
           include: [{ model: SprCar, include: [{model: Brand, as: 'Brand'}, {model: Model, as: 'Model'}], as: 'SprCar'},
               {model: Client, as: 'Client'},
               {model: UrClient, as: 'UrClient'}],
-          where:{VIN :req.query.VIN}
+          where:{GosNumber :req.query.GosN}
       })
           .catch((err) => {
               console.log(err)

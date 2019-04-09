@@ -30,7 +30,7 @@ head
                 else
                     td #{cdate}
                 //td #{car}
-                td #[a(href="car?VIN=" + car) #{car}]
+                td #[a(href="car?GosN=" + car) #{car}]
                 td #{status}
                 td
                     a#navbarDropdownMenuLink.nav-link(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
@@ -233,7 +233,7 @@ head
                                                 servicelist[i].Client.dataValues.FirstName + ' '+servicelist[i].Client.dataValues.SecondName,
                                                 servicelist[i].dataValues.OpenDate,
                                                 servicelist[i].dataValues.CloseDate,
-                                                servicelist[i].Car.dataValues.VIN,
+                                                servicelist[i].Car.dataValues.GosNumber,
                                                 servicelist[i].ServiceList_Status.dataValues.Name,
                                                 servicelist[i].Client.dataValues.DLNumber,
                                                 servicelist[i].UrClient)
@@ -242,7 +242,7 @@ head
                                                 servicelist[i].UrClient.dataValues.Name,
                                                 servicelist[i].dataValues.OpenDate,
                                                 servicelist[i].dataValues.CloseDate,
-                                                servicelist[i].Car.dataValues.VIN,
+                                                servicelist[i].Car.dataValues.GosNumber,
                                                 servicelist[i].ServiceList_Status.dataValues.Name,
                                                 servicelist[i].UrClient.dataValues.INN,
                                                 servicelist[i].UrClient)

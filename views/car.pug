@@ -204,7 +204,7 @@ head
                                     form.form-inline.col-sm-12.col-md-12(action="/car")
                                         .col-sm-12.col-md-11
                                             input.form-control(type='text' name='VIN')
-                                            button.btn.btn-primary(href='' type='submit') Search
+                                            button.btn.btn-primary(href='' type='submit') Поиск
                                         //.col-sm-12.col-md-1
                                             button.btn.btn-primary(href='' type='submit') Search
                                         .col-sm-12.col-md-1
@@ -227,6 +227,7 @@ head
                                     thead.bg-light.text-primary
                                         tr
                                             //th.border-0(scope='col') №
+                                            th.border-0(scope='col') Гос номер
                                             th.border-0(scope='col') VIN
                                             th.border-0(scope='col') Марка
                                             th.border-0(scope='col') Модель
@@ -236,7 +237,9 @@ head
                                     tbody
                                         -for (let i = 0; i < car.length; i++)
                                             if(car[i].UrClient===null)
-                                                +rowsTable(car[i].dataValues.VIN,
+                                                +rowsTable(
+                                                car[i].dataValues.GosNumber,
+                                                car[i].dataValues.VIN,
                                                 car[i].SprCar.Brand.dataValues.Brand,
                                                 car[i].dataValues.Year,
                                                 car[i].SprCar.Model.dataValues.Model,
@@ -245,7 +248,9 @@ head
                                                 car[i].UrClient,
                                                 car[i].dataValues.id)
                                             else
-                                                +rowsTable(car[i].dataValues.VIN,
+                                                +rowsTable(
+                                                car[i].dataValues.GosNumber,
+                                                car[i].dataValues.VIN,
                                                 car[i].SprCar.Brand.dataValues.Brand,
                                                 car[i].dataValues.Year,
                                                 car[i].SprCar.Model.dataValues.Model,
