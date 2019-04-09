@@ -41,8 +41,8 @@ head
                         i.material-icons vertical_split
                             span Заказ-наряд
                         .dropdown-menu(aria-labelledby='dropdownMenuLink')
-                            a.dropdown-item(href='servicelist') Поиск
-                            a.dropdown-item(href='addservicelist?ID=') Добавить
+                            a.dropdown-item(href='servicelist') Посмотреть
+                            a.dropdown-item(href='addservicelist?ID=') Создать
                             a.dropdown-item(href='#') Что-то еще
 
                 li.nav-item
@@ -170,6 +170,7 @@ head
                                                     .col-sm-12.col-md-3
                                                         .form-group
                                                             .custom-control.custom-toggle.custom-toggle-sm.mb-1
+
                                                                 if(car.UrClient===null)
                                                                     input#customToggle12.custom-control-input(type='checkbox' name='customTogglel2')
                                                                     label.custom-control-label(for='customToggle12') Юридическое лицо
@@ -178,11 +179,13 @@ head
                                                                     label.custom-control-label(for='customToggle12') Юридическое лицо
                                                     .col-sm-12.col-md-9
                                                         .form-group
-                                                            if(car.UrClient===null)
-                                                                input#cl.form-control(type='text' name="inputClient" value=car.Client.dataValues.DLNumber )
-                                                            else
+                                                            if(car.UrClient!==null)
                                                                 input#ur.form-control(type='text' name="inputUrClient" value=car.UrClient.dataValues.INN)
-
+                                                            else
+                                                                -var val = ''
+                                                                if(car.Client!==null)
+                                                                    val = car.Client.dataValues.DLNumber
+                                                                input#cl.form-control(type='text' name="inputClient" value=val )
                                         .col-sm-12
                                             strong.text-muted.d-block.mb-2 Год производства
                                                 .form-group
