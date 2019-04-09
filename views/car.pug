@@ -13,18 +13,15 @@ head
     script(async='' defer='' src='https://buttons.github.io/buttons.js')
     script(async='' defer='' src='https://www.kryogenix.org/code/browser/sorttable/sorttable.js')
     - var i=0;
-        mixin rowsTable( VIN, Brand,  Year, Model, Owner, OwnerId, fl , id)
+        mixin rowsTable(Gos, VIN, Brand,  Year, Model , id)
             tr
 
                 //td #{id}
+                td #{Gos}
                 td #{VIN}
                 td #{Brand}
                 td #{Model}
                 td #{Year}
-                if (fl === null)
-                    td #[a(href="client?DLN=" + OwnerId) #{Owner}]
-                else
-                    td #[a(href="urclient?INN=" + OwnerId) #{Owner}]
                 td
                     a#navbarDropdownMenuLink.nav-link(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
                         i.material-icons menu
@@ -232,7 +229,6 @@ head
                                             th.border-0(scope='col') Марка
                                             th.border-0(scope='col') Модель
                                             th.border-0(scope='col') Год
-                                            th.border-0(scope='col') Владелец
                                             th.border-0(scope='col') Действия
                                     tbody
                                         -for (let i = 0; i < car.length; i++)
@@ -243,9 +239,6 @@ head
                                                 car[i].SprCar.Brand.dataValues.Brand,
                                                 car[i].dataValues.Year,
                                                 car[i].SprCar.Model.dataValues.Model,
-                                                car[i].Client.dataValues.FirstName + ' '+car[i].Client.dataValues.SecondName,
-                                                car[i].Client.dataValues.DLNumber,
-                                                car[i].UrClient,
                                                 car[i].dataValues.id)
                                             else
                                                 +rowsTable(
@@ -254,9 +247,6 @@ head
                                                 car[i].SprCar.Brand.dataValues.Brand,
                                                 car[i].dataValues.Year,
                                                 car[i].SprCar.Model.dataValues.Model,
-                                                car[i].UrClient.dataValues.Name,
-                                                car[i].UrClient.dataValues.INN,
-                                                car[i].UrClient,
                                                 car[i].dataValues.id)
 
 
