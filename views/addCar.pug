@@ -153,17 +153,17 @@ head
                                         .col-sm-12
                                             strong.text-muted.d-block.mb-2 Бренд
                                                 .form-group
-                                                    input#ajax1.form-control(type='text' list='json-datalist1' placeholder='e.g. datalist' name='inputBrand' value=car.SprCar.Brand.dataValues.Brand)
+                                                    input#ajax1.form-control(type='text' list='json-datalist1' placeholder='e.g. datalist' name='inputBrand' value=car.SprCar.Brand.dataValues.Brand required=true)
                                                     datalist#json-datalist1
                                         .col-sm-12
                                             strong.text-muted.d-block.mb-2 Модель
                                                 .form-group
-                                                    input#ajax2.form-control(type='text' list='json-datalist2' placeholder='e.g. datalist' onclick='getModels()' name = 'inputModel' value=car.SprCar.Model.dataValues.Model)
+                                                    input#ajax2.form-control(type='text' list='json-datalist2' placeholder='e.g. datalist' onclick='getModels()' name = 'inputModel' value=car.SprCar.Model.dataValues.Model required=true)
                                                     datalist#json-datalist2
                                         .col-sm-12
                                             strong.text-muted.d-block.mb-2 VIN номер
                                                 .form-group
-                                                    input.form-control(type='text' name="inputVIN" value=car.dataValues.VIN)
+                                                    input.form-control(type='text' name="inputVIN" value=car.dataValues.VIN )
                                         .col-sm-12
                                             strong.text-muted.d-block.mb-2 Владелец
                                                 .row
@@ -180,20 +180,20 @@ head
                                                     .col-sm-12.col-md-9
                                                         .form-group
                                                             if(car.UrClient!==null)
-                                                                input#ur.form-control(type='text' name="inputUrClient" value=car.UrClient.dataValues.INN)
+                                                                input#ur.form-control(type='text' name="inputUrClient" value=car.UrClient.dataValues.INN required=true)
                                                             else
                                                                 -var val = ''
                                                                 if(car.Client!==null)
                                                                     val = car.Client.dataValues.DLNumber
-                                                                input#cl.form-control(type='text' name="inputClient" value=val )
+                                                                input#cl.form-control(type='text' name="inputClient" value=val required=true)
                                         .col-sm-12
                                             strong.text-muted.d-block.mb-2 Год производства
                                                 .form-group
-                                                    input.form-control(type='text' name="inputYear" value=car.dataValues.Year)
+                                                    input.form-control(type='text' name="inputYear" value=car.dataValues.Year required=true)
                                         .col-sm-12
                                             strong.text-muted.d-block.mb-2 Гос номер
                                                 .form-group
-                                                    input.form-control(type='text' name="inputGosNumber" value=car.dataValues.GosNumber)
+                                                    input.form-control(type='text' name="inputGosNumber" value=car.dataValues.GosNumber required=true)
                                         .col-sm-12
                                             strong.text-muted.d-block.mb-2 Номер двигателя
                                                 .form-group
