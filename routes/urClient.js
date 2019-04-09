@@ -10,6 +10,7 @@ router.get('/', async function (req, res, next) {
     let client
     if (req.query.INN === undefined){
         client = await Client.findAll({
+            limit: 30
         })
             .catch((err) => {
                 console.log(err)

@@ -10,6 +10,7 @@ router.get('/', async function (req, res, next) {
   let car
   if (req.query.GosN === undefined) {
       car = await Car.findAll({
+          limit: 30,
           // where:{ServiceListFK:req.query.id},
           include: [{ model: SprCar, include: [{model: Brand, as: 'Brand'}, {model: Model, as: 'Model'}], as: 'SprCar'},
               {model: Client, as: 'Client'},
