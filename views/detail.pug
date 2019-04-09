@@ -36,15 +36,15 @@ head
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Название
                                             .form-group
-                                                input.form-control(type='text' name="inputName")
+                                                input.form-control(type='text' name="inputName" required=true)
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Цена
                                             .form-group
-                                                input.form-control(type='text' name="inputPrice")
+                                                input.form-control(type='text' name="inputPrice" required=true)
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Единица измерения
                                             .form-group
-                                                input.form-control(type='text' list='types' name="inputEdIz")
+                                                input.form-control(type='text' list='types' name="inputEdIz" required=true)
                                                 datalist#types
                                                     -for (let i = 0; i < ediz.length; i++)
                                                         option(value=ediz[i].dataValues.Name)
@@ -53,31 +53,6 @@ head
                                             .col
                                                 a.nav-link(href='/detail')
                                                     button.btn.btn-primary.btn-lg.btn-block(type="submit") Добавить
-
-    #editEmployeeModal.modal.fade
-        .modal-dialog
-            .modal-content
-                form
-                    .modal-header
-                        h4.modal-title Edit Employee
-                        button.close(type='button' data-dismiss='modal' aria-hidden='true') &times;
-                    .modal-body
-                        .form-group
-                            label Name
-                            input.form-control(type='text' required='')
-                        .form-group
-                            label Email
-                            input.form-control(type='email' required='')
-                        .form-group
-                            label Address
-                            textarea.form-control(required='')
-                        .form-group
-                            label Phone
-                            input.form-control(type='text' required='')
-                    .modal-footer
-                        input.btn.btn-default(type='button' data-dismiss='modal' value='Cancel')
-                        input.btn.btn-info(type='submit' value='Save')
-
 
 
     link(rel='stylesheet' href='styles/extras.1.1.0.min.css')

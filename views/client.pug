@@ -92,31 +92,6 @@ head
                                                 a.nav-link(href='client')
                                                     button.btn.btn-primary.btn-lg.btn-block(type="submit") Добавить
 
-    #editEmployeeModal.modal.fade
-        .modal-dialog
-            .modal-content
-                form
-                    .modal-header
-                        h4.modal-title Edit Employee
-                        button.close(type='button' data-dismiss='modal' aria-hidden='true') &times;
-                    .modal-body
-                        .form-group
-                            label Name
-                            input.form-control(type='text' required='')
-                        .form-group
-                            label Email
-                            input.form-control(type='email' required='')
-                        .form-group
-                            label Address
-                            textarea.form-control(required='')
-                        .form-group
-                            label Phone
-                            input.form-control(type='text' required='')
-                    .modal-footer
-                        input.btn.btn-default(type='button' data-dismiss='modal' value='Cancel')
-                        input.btn.btn-info(type='submit' value='Save')
-
-
 
     link(rel='stylesheet' href='styles/extras.1.1.0.min.css')
     script(async='' defer='' src='https://buttons.github.io/buttons.js')

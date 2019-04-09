@@ -182,12 +182,12 @@ head
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Бренд
                                             .form-group
-                                                input#ajax1.form-control(type='text' list='json-datalist1' placeholder='e.g. datalist' name='inputBrand')
+                                                input#ajax1.form-control(type='text' list='json-datalist1' placeholder='e.g. datalist' name='inputBrand' required=true)
                                                 datalist#json-datalist1
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Модель
                                             .form-group
-                                                input#ajax2.form-control(type='text' list='json-datalist2' placeholder='e.g. datalist' onclick='getModels()' name = 'inputModel')
+                                                input#ajax2.form-control(type='text' list='json-datalist2' placeholder='e.g. datalist' onclick='getModels()' name = 'inputModel' required=true)
                                                 datalist#json-datalist2
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 VIN номер
@@ -208,11 +208,11 @@ head
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Год производства
                                             .form-group
-                                                input.form-control(type='text' name="inputYear" )
+                                                input.form-control(type='text' name="inputYear" required=true)
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Гос номер
                                             .form-group
-                                                input.form-control(type='text' name="inputGosNumber" )
+                                                input.form-control(type='text' name="inputGosNumber" required=true)
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Номер двигателя
                                             .form-group
@@ -239,15 +239,15 @@ head
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Тип услуги
                                             .form-group
-                                                input.form-control(type='text' name="inputType")
+                                                input.form-control(type='text' name="inputType" required=true)
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Услуга
                                             .form-group
-                                                input.form-control(type='text' name="inputServis")
+                                                input.form-control(type='text' name="inputServis" required=true)
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Количество
                                             .form-group
-                                                input.form-control(type='text' name="inputNumb")
+                                                input.form-control(type='text' name="inputNumb" )
                                     .col-lg-12.mb-4
                                         .row
                                             .col

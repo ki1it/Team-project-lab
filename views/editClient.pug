@@ -156,23 +156,23 @@ head
                                                     .col-sm-12.col-md-4
                                                         strong.text-muted.d-block.mb-2 Имя
                                                             .form-group
-                                                                input.form-control(type='text' name="inputName" value=client[0].dataValues.FirstName)
+                                                                input.form-control(type='text' name="inputName" value=client[0].dataValues.FirstName required=true)
                                                     .col-sm-12.col-md-4
                                                         strong.text-muted.d-block.mb-2 Фамилия
                                                             .form-group
-                                                                input.form-control(type='text' name="inputSecondName" value=client[0].dataValues.SecondName)
+                                                                input.form-control(type='text' name="inputSecondName" value=client[0].dataValues.SecondName required=true)
                                                     .col-sm-12.col-md-4
                                                         strong.text-muted.d-block.mb-2 Отчество
                                                             .form-group
-                                                                input.form-control(type='text' name="inputPatronymic" value=client[0].dataValues.Patronymic)
+                                                                input.form-control(type='text' name="inputPatronymic" value=client[0].dataValues.Patronymic required=true)
                                         .col-sm-12
                                             strong.text-muted.d-block.mb-2 DLN номер
                                                 .form-group
-                                                    input.form-control(type='text' name="inputDLN" value=client[0].dataValues.DLNumber)
+                                                    input.form-control(type='text' name="inputDLN" value=client[0].dataValues.DLNumber required=true)
                                         .col-sm-12
                                             strong.text-muted.d-block.mb-2 Номер телефона
                                                 .form-group
-                                                    input.form-control(type='text' name="inputPhoneNumber" value=client[0].dataValues.PhoneNumber)
+                                                    input.form-control(type='text' name="inputPhoneNumber" value=client[0].dataValues.PhoneNumber required=true)
                                         .col-sm-12
 
                                             strong.text-muted.d-block.mb-2 Дата рождения

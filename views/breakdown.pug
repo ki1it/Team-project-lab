@@ -36,15 +36,15 @@ head
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Название
                                             .form-group
-                                                input.form-control(type='text' name="inputName")
+                                                input.form-control(type='text' name="inputName" required=true)
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Цена
                                             .form-group
-                                                input.form-control(type='text' name="inputPrice")
+                                                input.form-control(type='text' name="inputPrice" required=true)
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Тип
                                             .form-group
-                                                input.form-control(type='text' list='types' name="inputType")
+                                                input.form-control(type='text' list='types' name="inputType" required=true)
                                                 datalist#types
                                                     -for (let i = 0; i < breakdowntype.length; i++)
                                                         option(value=breakdowntype[i].dataValues.Name)
