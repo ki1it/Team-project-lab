@@ -182,10 +182,11 @@ head
                                                             if(car.UrClient!==null)
                                                                 input#ur.form-control(type='text' name="inputUrClient" value=car.UrClient.dataValues.INN required=true)
                                                             else
-                                                                -var val = ''
                                                                 if(car.Client!==null)
-                                                                    val = car.Client.dataValues.DLNumber
-                                                                input#cl.form-control(type='text' name="inputClient" value=val required=true)
+                                                                    input#cl.form-control(type='text' name="inputClient" value=car.Client.dataValues.DLNumber required=true)
+                                                                else
+                                                                    input#cl.form-control(type='text' name="inputClient"  required=true)
+
                                         .col-sm-12
                                             strong.text-muted.d-block.mb-2 Год производства
                                                 .form-group
