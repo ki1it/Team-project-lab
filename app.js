@@ -207,7 +207,7 @@ app.use('/updateClient', async function (req, res) {
     res.redirect('/client')
 })
 app.use('/addClient', async function (req, res) {
-    await Client.create({
+    let cl = await Client.create({
         FirstName: req.body.inputName,
         SecondName: req.body.inputSecondName,
         Patronymic: req.body.inputPatronymic,
@@ -220,10 +220,21 @@ app.use('/addClient', async function (req, res) {
         .catch((err) => {
             console.log(err)
         })
-    if (req.query.SLID === undefined)
+
+
+
+    if (req.query.SLID === undefined) {
         res.redirect(req.headers.referer)
-    else
-        res.redirect('/addservicelist?ID='+req.query.SLID)
+    }
+    else {
+        let sl = await ServiceList.update({
+            ClientFK: cl.dataValues.id
+        }, {where: {id: req.query.SLID}})
+            .catch((err) => {
+                console.log(err)
+            })
+        res.redirect('/addservicelist?ID=' + req.query.SLID)
+    }
 
 })
 

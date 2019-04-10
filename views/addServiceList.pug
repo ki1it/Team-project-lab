@@ -503,7 +503,7 @@ head
                                                                     if (serviceList.dataValues.UrClientFK === null)
                                                                         input.form-control(class="uk-input" id='inputClient' name="inputClient" type="text"  placeholder="Введите номер ВУ" value = serviceList.Client.dataValues.DLNumber)
                                                                     else
-                                                                        input.form-control(class="uk-input" id='inputUrClient' name="inputClient" type="text"  placeholder="Введите номер ВУ" value = serviceList.UrClient.dataValues.INN)
+                                                                        input.form-control(class="uk-input" id='inputUrClient' name="inputClient" type="text"  placeholder="Введите ИНН" value = serviceList.UrClient.dataValues.INN)
 
                                                         .col-sm-12.col-md-2
                                                             #checkCL.button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button' onclick='checkClient()') Проверить
@@ -630,12 +630,12 @@ head
                                                         strong.text-muted.d-block.mb-2 Итоговая стоимость
                                                             .form-group
                                                                 sum()
-                                                                input#pr.form-control(type='text' name="Price" )
+                                                                input#pr.form-control(type='text' name="Price" disabled='true' )
                                                                 //button.btn.btn-primary.btn-lg.btn-block(type="button" onclick="sum()") sum
                                             .col-lg-12.mb-4
                                                 .row
                                                     .col
-                                                        button.btn.btn-primary.btn-lg.btn-block(type="submit" href="/addservicelist"  name="add") Добавить
+                                                        button.btn.btn-primary.btn-lg.btn-block(type="submit" href="/addservicelist"   name="add") Добавить
 
                         // / Input & Button Groups
             footer.main-footer.d-flex.p-2.px-3.bg-white.border-top
