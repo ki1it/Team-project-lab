@@ -447,7 +447,7 @@ app.use('/getModel', async function (req, res) {
         })
     let model = await SprCar.findAll(
         {
-    where:{BrandFK:brand.dataValues.id},
+            where:{BrandFK:brand.dataValues.id},
             include: [{model: Model, as: 'Model'}]
         })
         .catch((err) => {
@@ -802,6 +802,33 @@ app.use('/addDetailSL', async function (req, res) {
     res.redirect('/addservicelist?ID='+req.query.SLID)
     //res.redirect('/indexAdmin')
 })
+
+
+app.use('/getServiceType', async function (req, res) {
+    let Type = await ServiceType.findAll({attributes: ['Name']})
+        .catch((err) => {
+            console.log(err)
+        })
+
+    res.end(JSON.stringify(Type))
+})
+
+app.use('/getService', async function (req, res) {
+    let brand = await ServiceType.findOne({where: {Name: req.query.Type}})
+        .catch((err) => {
+            console.log(err)
+        })
+    let model = await Service.findAll(
+        {
+            where:{Type:brand.dataValues.id},
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+
+    res.end(JSON.stringify(model))
+})
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

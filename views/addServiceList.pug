@@ -182,12 +182,12 @@ head
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Бренд
                                             .form-group
-                                                input#ajax1.form-control(type='text' list='json-datalist1' placeholder='e.g. datalist' name='inputBrand' required=true)
+                                                input#ajax1.form-control(type='text' list='json-datalist1' placeholder='Начните вводить' name='inputBrand' required=true)
                                                 datalist#json-datalist1
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Модель
                                             .form-group
-                                                input#ajax2.form-control(type='text' list='json-datalist2' placeholder='e.g. datalist' onclick='getModels()' name = 'inputModel' required=true)
+                                                input#ajax2.form-control(type='text' list='json-datalist2' placeholder='Начните вводить' onclick='getModels()' name = 'inputModel' required=true)
                                                 datalist#json-datalist2
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 VIN номер
@@ -239,11 +239,14 @@ head
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Тип услуги
                                             .form-group
-                                                input.form-control(type='text' name="inputType" required=true)
+                                                input#inpSerType.form-control(type='text' list='json-datalistUslType' placeholder='Начните вводить' onclick='getServices()' name="inputType" required=true)
+                                                datalist#json-datalistUslType
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Услуга
                                             .form-group
-                                                input.form-control(type='text' name="inputServis" required=true)
+                                                //input.form-control(type='text' name="inputServis"  required=true)
+                                                input#inpSer.form-control(type='text' list='json-datalistUsl' placeholder='Начните вводить' name="inputServis" required=true)
+                                                datalist#json-datalistUsl
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Количество
                                             .form-group
