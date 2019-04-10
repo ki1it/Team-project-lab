@@ -457,16 +457,16 @@ head
                                                     .form-group
                                                         //input.form-control(type='text' name="inputDataOpen")
                                                         if(serviceList.dataValues.OpenDate == null)
-                                                            input.form-control(class="uk-input" name="inputDataOpen" type="text",  class="datepicker-here")
+                                                            input.form-control(class="uk-input" name="inputDataOpen" type="text",  class="datepicker-here" required=true)
                                                         else
-                                                            input.form-control(class="uk-input" name="inputDataOpen" type="text",  class="datepicker-here", value = formatDate(serviceList.dataValues.OpenDate))
+                                                            input.form-control(class="uk-input" name="inputDataOpen" type="text",  class="datepicker-here", ,value = formatDate(serviceList.dataValues.OpenDate))
                                             #nol.col-sm-12.col-md-4
                                             #dataCl.col-sm-12.col-md-4
                                                 strong.text-muted.d-block.mb-2 Дата закрытия
                                                     .form-group
                                                         //input.form-control(type='text' name="inputDataClose")
                                                         if(serviceList.dataValues.CloseDate == null)
-                                                            input.form-control(class="uk-input" name="inputDataClose" type="text",  class="datepicker-here")
+                                                            input.form-control(class="uk-input" name="inputDataClose" type="text",  class="datepicker-here" required=true)
                                                         else
                                                             input.form-control(class="uk-input" name="inputDataClose" type="text",  class="datepicker-here", value = formatDate(serviceList.dataValues.CloseDate))
                                             .col-sm-12.col-md-4
@@ -477,7 +477,7 @@ head
                                                             option(selected='') Статус...
                                                             option ...
                                                         if(serviceList.dataValues.Status == null)
-                                                            input#st.form-control(type='text' list='types' name="inputStatus")
+                                                            input#st.form-control(type='text' list='types' name="inputStatus" required=true)
                                                         else
                                                             input#st.form-control(type='text' list='types' name="inputStatus" value = serviceList.ServiceList_Status.dataValues.Name)
                                                         datalist#types
@@ -495,7 +495,7 @@ head
                                                                 //    option ...
                                                                 #clientText
                                                                 if (serviceList.dataValues.ClientFK === null)&&(serviceList.dataValues.UrClientFK === null)
-                                                                    input.form-control(class="uk-input" id='inputClient' name="inputClient" type="text"  placeholder="Введите номер ВУ")
+                                                                    input.form-control(class="uk-input" id='inputClient' name="inputClient" type="text"  placeholder="Введите номер ВУ" required=true)
                                                                 else
                                                                     if (serviceList.dataValues.UrClientFK === null)
                                                                         input.form-control(class="uk-input" id='inputClient' name="inputClient" type="text"  placeholder="Введите номер ВУ" value = serviceList.Client.dataValues.DLNumber)
@@ -517,7 +517,7 @@ head
                                                                 //    option ...
                                                                 #carText
                                                                 if (serviceList.dataValues.CarFK === null)
-                                                                    input.form-control(class="uk-input" id='inputCar' name="inputCar" type="text" placeholder="Введите VIN номер" )
+                                                                    input.form-control(class="uk-input" id='inputCar' name="inputCar" type="text" placeholder="Введите VIN номер" required=true)
                                                                 else
                                                                     input.form-control(class="uk-input" id='inputCar' name="inputCar" type="text" placeholder="Введите VIN номер" value = serviceList.Car.dataValues.VIN )
                                                         .col-sm-12.col-md-2
