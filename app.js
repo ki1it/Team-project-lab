@@ -296,7 +296,7 @@ app.use('/delurclient', async function (req, res) {
 })
 
 app.use('/addUrClient', async function (req, res) {
-    await UrClient.create({
+    let cl = await UrClient.create({
         Name: req.body.inputName,
         INN: req.body.inputINN,
         PhoneNumber: req.body.inputPhoneNumber,
@@ -307,8 +307,15 @@ app.use('/addUrClient', async function (req, res) {
         })
     if (req.query.SLID === undefined)
         res.redirect(req.headers.referer)
-    else
-        res.redirect('/addservicelist?ID='+req.query.SLID)
+    else {
+        let sl = await ServiceList.update({
+            UrClientFK: cl.dataValues.id
+        }, {where: {id: req.query.SLID}})
+            .catch((err) => {
+                console.log(err)
+            })
+        res.redirect('/addservicelist?ID=' + req.query.SLID)
+    }
 })
 
 
