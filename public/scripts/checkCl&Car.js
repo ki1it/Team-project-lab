@@ -193,6 +193,61 @@ function getServices() {
 
 $("#ajax2").change(function() {
     //alert('ddddd');
+    chekMod();
+});
+
+
+function chekMod() {
+    var brend = document.getElementById('ajax1');
+    var model = document.getElementById('ajax2');
+    var request = new XMLHttpRequest();
+    request.open('GET', 'getYear?model='+model.value, true);
+    request.send();
+    request.onreadystatechange = function (response) {
+
+
+
+        if (request.readyState === 4) {
+            if (request.status === 200) {
+                if ( request.responseText == "null"){
+                    alert('Такой модели не существует. Введите другую');
+                    model.value = " ";
+                }
+                else {
+                    // Parse the JSON
+                    var jsonOptions = JSON.parse(request.responseText)
+
+                    if (jsonOptions.Brand.Brand === brend.value) {
+
+                        var year = document.getElementById('inputYear');
+                        year.min = jsonOptions.StartYear;
+                        if (jsonOptions.finishYear !== null)
+                            year.max = jsonOptions.finishYear;
+                        else
+                            year.max = 2019
+                    }
+                    else {
+                        alert('Такой модели не существует. Введите другую');
+                        model.value = " ";
+                    }
+                }
+
+                // Update the placeholder text.
+                //input.placeholder = "Начните вводить";
+            } else {
+                alert('Такой модели не существует. Введите другую');
+                model.value = " ";
+                // An error occured :(
+                //input.placeholder = "Ошибка"
+            }
+
+
+        }
+    };
+}
+
+
+function chekYear() {
     var model = document.getElementById('ajax2');
     var request = new XMLHttpRequest();
     request.open('GET', 'getYar?model='+model.value, true);
@@ -219,4 +274,4 @@ $("#ajax2").change(function() {
             }
         }
     };
-});
+}

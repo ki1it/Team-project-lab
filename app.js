@@ -459,15 +459,19 @@ app.use('/getModel', async function (req, res) {
 
 
 
-app.use('/getYar', async function (req, res) {
+app.use('/getYear', async function (req, res) {
     let mod = await SprCar.findOne({
         include:[
-            {model: Model, where: {Model: req.query.model}, as: 'Model'}
+            {model: Model, where: {Model: req.query.model}, as: 'Model'},
+            {model: Brand, as: 'Brand'}
         ]
 
     })
-    let year = mod.dataValues.StartYear
-    res.end(JSON.stringify(mod))
+    //let year = mod.dataValues.StartYear
+    if (mod !== null)
+        res.end(JSON.stringify(mod))
+    else
+        res.end("null")
 })
 
 
