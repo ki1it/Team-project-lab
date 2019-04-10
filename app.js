@@ -474,6 +474,87 @@ app.use('/getYear', async function (req, res) {
         res.end("null")
 })
 
+app.use('/getBr', async function (req, res) {
+    let mod = await Brand.findOne({
+        where: {Brand: req.query.brand}
+
+    })
+    //let year = mod.dataValues.StartYear
+    if (mod !== null)
+        res.end("ok")
+    else
+        res.end("null")
+})
+
+app.use('/getEI', async function (req, res) {
+    let mod = await EdIzmer.findOne({
+        where: {Name: req.query.text}
+
+    })
+    if (mod !== null)
+        res.end("ok")
+    else
+        res.end("null")
+})
+
+app.use('/getTIB', async function (req, res) {
+    let mod = await BreakdownType.findOne({
+        where: {Name: req.query.text}
+
+    })
+    if (mod !== null)
+        res.end("ok")
+    else
+        res.end("null")
+})
+
+
+app.use('/getTIS', async function (req, res) {
+    let mod = await ServiceType.findOne({
+        where: {Name: req.query.text}
+
+    })
+    if (mod !== null)
+        res.end("ok")
+    else
+        res.end("null")
+})
+
+app.use('/getDetail', async function (req, res) {
+    let mod = await Detail.findOne({
+        where: {Name: req.query.text}
+
+    })
+    if (mod !== null)
+        res.end("ok")
+    else
+        res.end("null")
+})
+
+app.use('/getBre', async function (req, res) {
+    let mod = await Breakdown.findOne({
+        where: {Name: req.query.text},
+        include: {model: BreakdownType, as: 'BreakdownType'}
+
+    })
+    if (mod !== null)
+        res.end(JSON.stringify(mod))
+    else
+        res.end("null")
+})
+
+app.use('/getSe', async function (req, res) {
+    let mod = await Service.findOne({
+        where: {Name: req.query.text},
+        include: {model: ServiceType, as: 'ServiceType'}
+
+    })
+    if (mod !== null)
+        res.end(JSON.stringify(mod))
+    else
+        res.end("null")
+})
+
 
 app.use('/delcar', async function (req, res) {
     await Car.destroy({

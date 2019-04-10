@@ -34,20 +34,21 @@ head
                             li.list-group-item.p-3
                                 .row
                                     .col-sm-12
+                                        strong.text-muted.d-block.mb-2 Тип
+                                            .form-group
+                                                input#inpSerType.form-control(type='text' list='types' name="inputType" required=true)
+                                                datalist#types
+                                                    -for (let i = 0; i < servicetype.length; i++)
+                                                        option(value=servicetype[i].dataValues.Name)
+                                    .col-sm-12
                                         strong.text-muted.d-block.mb-2 Название
                                             .form-group
                                                 input.form-control(type='text' name="inputName" required=true)
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Цена
                                             .form-group
-                                                input.form-control(type='text' name="inputPrice" required=true)
-                                    .col-sm-12
-                                        strong.text-muted.d-block.mb-2 Тип
-                                            .form-group
-                                                input.form-control(type='text' list='types' name="inputType" required=true)
-                                                datalist#types
-                                                    -for (let i = 0; i < servicetype.length; i++)
-                                                        option(value=servicetype[i].dataValues.Name)
+                                                input.form-control(type='number' step="any" name="inputPrice" required=true)
+
                                     .col-lg-12.mb-4
                                         .row
                                             .col
@@ -348,3 +349,4 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.
 script(src='scripts/extras.1.1.0.min.js')
 script(src='scripts/shards-dashboards.1.1.0.min.js')
 script( src='scripts/showClient.js')
+script( src='scripts/check.js')

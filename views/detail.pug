@@ -38,16 +38,17 @@ head
                                             .form-group
                                                 input.form-control(type='text' name="inputName" required=true)
                                     .col-sm-12
-                                        strong.text-muted.d-block.mb-2 Цена
-                                            .form-group
-                                                input.form-control(type='text' name="inputPrice" required=true)
-                                    .col-sm-12
                                         strong.text-muted.d-block.mb-2 Единица измерения
                                             .form-group
-                                                input.form-control(type='text' list='types' name="inputEdIz" required=true)
+                                                input#ei.form-control(type='text' list='types' name="inputEdIz" required=true)
                                                 datalist#types
                                                     -for (let i = 0; i < ediz.length; i++)
                                                         option(value=ediz[i].dataValues.Name)
+                                    .col-sm-12
+                                        strong.text-muted.d-block.mb-2 Цена
+                                            .form-group
+                                                input.form-control(type='number' step="any" name="inputPrice" required=true)
+
                                     .col-lg-12.mb-4
                                         .row
                                             .col
@@ -347,3 +348,4 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.
 script(src='scripts/extras.1.1.0.min.js')
 script(src='scripts/shards-dashboards.1.1.0.min.js')
 script( src='scripts/showClient.js')
+script( src='scripts/check.js')

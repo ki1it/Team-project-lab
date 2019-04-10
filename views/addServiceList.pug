@@ -250,7 +250,7 @@ head
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Количество
                                             .form-group
-                                                input.form-control(type='text' name="inputNumb" )
+                                                input.form-control(type='number' name="inputNumb" min = 1)
                                     .col-lg-12.mb-4
                                         .row
                                             .col
@@ -273,15 +273,15 @@ head
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Тип поломки
                                             .form-group
-                                                input.form-control(type='text' name="inputType")
+                                                input#tiB.form-control(type='text' name="inputType")
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 поломка
                                             .form-group
-                                                input.form-control(type='text' name="inputBreakdowns")
+                                                input#bre.form-control(type='text' name="inputBreakdowns")
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Количество
                                             .form-group
-                                                input.form-control(type='text' name="inputNumb")
+                                                input.form-control(type='number' name="inputNumb" min = 1)
                                     .col-lg-12.mb-4
                                         .row
                                             .col
@@ -305,11 +305,11 @@ head
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Детали
                                             .form-group
-                                                input.form-control(type='text' name="inputDetail")
+                                                input#detail.form-control(type='text' name="inputDetail")
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Количество
                                             .form-group
-                                                input.form-control(type='text' name="inputNum")
+                                                input.form-control(type='number' name="inputNum" min=1)
                                     .col-lg-12.mb-4
                                         .row
                                             .col
@@ -656,4 +656,5 @@ script(src='/dist/js/datepicker.min.js')
 script(src='scripts/checkCl&Car.js')
 script(src='scripts/SumPrice')
 script(src='scripts/status.js')
+script( src='scripts/check.js')
 - function formatDate(date) {var dd = date.getDate(); if (dd < 10) dd = '0' + dd; var mm = date.getMonth() + 1; if (mm < 10) mm = '0' + mm; var yyyy = date.getFullYear() ; return dd + '.' + mm + '.' + yyyy;}

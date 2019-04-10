@@ -211,7 +211,7 @@ function chekMod() {
             if (request.status === 200) {
                 if ( request.responseText == "null"){
                     alert('Такой модели не существует. Введите другую');
-                    model.value = " ";
+                    model.value = "";
                 }
                 else {
                     // Parse the JSON
@@ -228,7 +228,7 @@ function chekMod() {
                     }
                     else {
                         alert('Такой модели не существует. Введите другую');
-                        model.value = " ";
+                        model.value = "";
                     }
                 }
 
@@ -236,7 +236,7 @@ function chekMod() {
                 //input.placeholder = "Начните вводить";
             } else {
                 alert('Такой модели не существует. Введите другую');
-                model.value = " ";
+                model.value = "";
                 // An error occured :(
                 //input.placeholder = "Ошибка"
             }
@@ -274,4 +274,23 @@ function chekYear() {
             }
         }
     };
+}
+
+$("#ajax1").change(function() {
+    //alert('ddddd');
+    chekBr();
+});
+
+function chekBr()
+{
+    var brend = document.getElementById('ajax1');
+    var request = new XMLHttpRequest();
+    request.open('GET', 'getBr?brand='+brend.value, true);
+    request.send();
+    request.onreadystatechange = function (response) {
+        if ( request.responseText == "null"){
+            alert('Такого бренда не существует. Введите другой');
+            brend.value = "";
+        }
+    }
 }
