@@ -660,7 +660,7 @@ app.use('/addCars', async function (req, res) {
     }*/
 
 
-    await Car.create({
+    let ca = await Car.create({
         VIN: req.body.inputVIN,
         SprCarFK: sprCar.dataValues.id,
         Year: req.body.inputYear,
@@ -676,8 +676,16 @@ app.use('/addCars', async function (req, res) {
         })
     if (req.query.SLID === undefined)
         res.redirect(req.headers.referer)
-    else
-        res.redirect('/addservicelist?ID='+req.query.SLID)
+    else {
+        let sl = await ServiceList.update({
+            CarFK: ca.dataValues.id
+        }, {where: {id: req.query.SLID}})
+            .catch((err) => {
+                console.log(err)
+            })
+
+        res.redirect('/addservicelist?ID=' + req.query.SLID)
+    }
 })
 
 app.use('/editCar', async function (req, res) {
