@@ -458,6 +458,19 @@ app.use('/getModel', async function (req, res) {
 })
 
 
+
+app.use('/getYar', async function (req, res) {
+    let mod = await SprCar.findOne({
+        include:[
+            {model: Model, where: {Model: req.query.model}, as: 'Model'}
+        ]
+
+    })
+    let year = mod.dataValues.StartYear
+    res.end(JSON.stringify(mod))
+})
+
+
 app.use('/delcar', async function (req, res) {
     await Car.destroy({
         where: {

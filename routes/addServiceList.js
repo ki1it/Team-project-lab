@@ -1,5 +1,6 @@
 var express = require('express')
 var router = express.Router()
+var moment = require('moment');
 const ServiceList = require('../database/models/ServiceList')
 const Car = require('../database/models/Car')
 const Client = require('../database/models/Client')
@@ -31,7 +32,8 @@ router.get('/', async function (req, res, next) {
 
     if (req.query.ID === "") {
         serviceList = await ServiceList.create({
-            Status: 4
+            Status: 4,
+            OpenDate: moment().format()
         })
             .catch((err) => {
                 console.log(err)

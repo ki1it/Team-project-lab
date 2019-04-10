@@ -189,7 +189,7 @@ head
                                         .col-sm-12
                                             strong.text-muted.d-block.mb-2 Год производства
                                                 .form-group
-                                                    input.form-control(type='text' name="inputYear" value=car.dataValues.Year required=true)
+                                                    input#inputYear.form-control(type='number' name="inputYear" required=true min=car.SprCar.dataValues.StartYear  max="2019" value=car.dataValues.Year)
                                         .col-sm-12
                                             strong.text-muted.d-block.mb-2 Гос номер
                                                 .form-group

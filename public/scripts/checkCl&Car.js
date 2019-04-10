@@ -119,3 +119,34 @@ function getModels() {
         }
     };
 }
+
+
+$("#ajax2").change(function() {
+    //alert('ddddd');
+    var model = document.getElementById('ajax2');
+    var request = new XMLHttpRequest();
+    request.open('GET', 'getYar?model='+model.value, true);
+    request.send();
+
+// Handle state changes for the request.
+    request.onreadystatechange = function (response) {
+        if (request.readyState === 4) {
+            if (request.status === 200) {
+                // Parse the JSON
+                var jsonOptions = JSON.parse(request.responseText)
+                var year = document.getElementById('inputYear');
+                year.min = jsonOptions.StartYear;
+                if (jsonOptions.finishYear !== null)
+                    year.max = jsonOptions.finishYear;
+                else
+                    year.max = 2019
+
+                // Update the placeholder text.
+                //input.placeholder = "Начните вводить";
+            } else {
+                // An error occured :(
+                //input.placeholder = "Ошибка"
+            }
+        }
+    };
+});
