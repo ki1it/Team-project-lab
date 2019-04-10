@@ -92,7 +92,7 @@ $("#detail").change(function() {
     request.send();
     request.onreadystatechange = function (response) {
         if ( request.responseText == "null"){
-            alert('Такого типа не существует. Введите другой');
+            alert('Такого запчасти не существует. Введите другую');
             ob.value = "";
         }
     }

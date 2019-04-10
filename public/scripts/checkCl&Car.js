@@ -62,13 +62,17 @@ request.onreadystatechange = function (response) {
 };
 
 
+$("#inputClient").change(function() {
+    checkClient()
+});
 
 // Set up and make the request.
 function checkClient() {
     // checkCL.innerHTML = ' ... ';
-
+    const cli = document.getElementById('inputClient');
+    const txt = document.getElementById('clientText');
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'checkClient?DLN='+inputClient.value, true);
+    xhr.open('GET', 'checkClient?DLN='+cli.value, true);
 
     xhr.onreadystatechange = function() {
         if (xhr.readyState != 4) return;
@@ -80,18 +84,31 @@ function checkClient() {
         }
         if(xhr.response)
         // обработать результат
-        clientText.innerHTML = xhr.responseText;
+        txt.innerHTML = xhr.responseText;
+
+        if (xhr.responseText === "Клиент не найден" )
+            cli.dataValues = '';
     }
 
     xhr.send(null);
 
 }
+
+$("#inputCar").change(function() {
+    checkCar()
+});
+
+
+
 function checkCar() {
     // checkCL.innerHTML = ' ... ';
 
+    const car = document.getElementById('inputCar');
+    const txt = document.getElementById('carText');
+
     var xhr = new XMLHttpRequest();
 
-    xhr.open('GET', 'checkCar?VIN='+inputCar.value, true);
+    xhr.open('GET', 'checkCar?NUM='+car.value, true);
 
     xhr.onreadystatechange = function() {
         if (xhr.readyState != 4) return;
@@ -103,7 +120,9 @@ function checkCar() {
         }
         if(xhr.response)
         // обработать результат
-            carText.innerHTML = xhr.responseText;
+            txt.innerHTML = xhr.responseText;
+        if (xhr.responseText === "Автомобиль не найден" )
+            car.dataValues = '';
     }
 
     xhr.send(null);

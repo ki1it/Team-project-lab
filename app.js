@@ -587,7 +587,7 @@ app.use('/delcar', async function (req, res) {
 
 app.use('/checkCar', async function (req, res) {
     let car = await Car.findOne({
-        where: {VIN: req.query.VIN},
+        where: {GosNumber: req.query.NUM},
         include: [{model: SprCar, include: [{model: Brand, as: 'Brand'}, {model: Model, as: 'Model'}], as: 'SprCar'}]
     })
         .catch((err) => {

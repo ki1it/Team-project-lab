@@ -491,40 +491,36 @@ head
                                             .col-sm-12.col
                                                 strong.text-muted.d-block.mb-2 Клиент
                                                     .row
-                                                        .col-sm-12.col-md-10
+                                                        .col-sm-12.col-md-12
+                                                            #clientText
+                                                        .col-sm-12.col-md-11
                                                             .form-group
-                                                                //select.form-control(name="inputClient")
-                                                                //    option(selected='') Клиент...
-                                                                //    option ...
-                                                                #clientText
                                                                 if (serviceList.dataValues.ClientFK === null)&&(serviceList.dataValues.UrClientFK === null)
-                                                                    input.form-control(class="uk-input" id='inputClient' name="inputClient" type="text"  placeholder="Введите номер ВУ" required=true)
+                                                                    input#inputClient.form-control(class="uk-input"  name="inputClient" type="text"  placeholder="Введите номер ВУ" required=true)
                                                                 else
                                                                     if (serviceList.dataValues.UrClientFK === null)
                                                                         input.form-control(class="uk-input" id='inputClient' name="inputClient" type="text"  placeholder="Введите номер ВУ" value = serviceList.Client.dataValues.DLNumber)
                                                                     else
                                                                         input.form-control(class="uk-input" id='inputUrClient' name="inputClient" type="text"  placeholder="Введите ИНН" value = serviceList.UrClient.dataValues.INN)
 
-                                                        .col-sm-12.col-md-2
-                                                            #checkCL.button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button' onclick='checkClient()') Проверить
+                                                        .col-sm-12.col-md-1
+                                                            //#checkCL.button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button' onclick='checkClient()') Проверить
                                                             button.mb-2.btn.btn-sm.btn-primary.mr-1(type="submit", data-toggle='modal', data-target='#myModal') +
                                                             //a.nav-link(href='addClient')
                                                                 button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button') +
                                             .col-sm-12
                                                 strong.text-muted.d-block.mb-2 Машина
                                                     .row
-                                                        .col-sm-12.col-md-10
+                                                        .col-sm-12.col-md-12
+                                                            #carText
+                                                        .col-sm-12.col-md-11
                                                             .form-group
-                                                                //select.form-control(name="inputCar")
-                                                                //    option(selected='') Машиана...
-                                                                //    option ...
-                                                                #carText
                                                                 if (serviceList.dataValues.CarFK === null)
-                                                                    input.form-control(class="uk-input" id='inputCar' name="inputCar" type="text" placeholder="Введите VIN номер" required=true)
+                                                                    input#inputCar.form-control(class="uk-input" name="inputCar" type="text" placeholder="Введите гос номер" required=true)
                                                                 else
-                                                                    input.form-control(class="uk-input" id='inputCar' name="inputCar" type="text" placeholder="Введите VIN номер" value = serviceList.Car.dataValues.VIN )
-                                                        .col-sm-12.col-md-2
-                                                            #checkCar.button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button' onclick='checkCar()') Проверить
+                                                                    input#inputCar.form-control(class="uk-input" name="inputCar" type="text" placeholder="Введите гос номер" value = serviceList.Car.dataValues.VIN )
+                                                        .col-sm-12.col-md-1
+                                                            //#checkCar.button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button' onclick='checkCar()') Проверить
                                                             button.mb-2.btn.btn-sm.btn-primary.mr-1(type="submit", data-toggle='modal', data-target='#myModal2') +
                                                             //a.nav-link(href='addCar')
                                                                 button.mb-2.btn.btn-sm.btn-primary.mr-1(type='button', data-toggle='modal', data-target='#myModal') +
