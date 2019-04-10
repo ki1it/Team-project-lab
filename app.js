@@ -607,7 +607,7 @@ app.use('/addCars', async function (req, res) {
             console.log(err)
         })
 
-    let client
+    /*let client
     let urClient
 
     if(( req.body.inputClient === "")&&( req.body.inputUrClient === ""))
@@ -639,15 +639,15 @@ app.use('/addCars', async function (req, res) {
             urClient = cl.dataValues.id
             client = null
         }
-    }
+    }*/
 
 
     await Car.create({
         VIN: req.body.inputVIN,
         SprCarFK: sprCar.dataValues.id,
         Year: req.body.inputYear,
-        OwnerFK: client,
-        OwnerUrFK: urClient,
+        //OwnerFK: client,
+        //OwnerUrFK: urClient,
         GosNumber: req.body.inputGosNumber,
         EngineNumber: req.body.inputEngineNumber
 
@@ -685,7 +685,7 @@ app.use('/editCar', async function (req, res) {
             console.log(err)
         })
 
-    let client
+    /*let client
     let urClient
 
     if((( req.body.inputClient === "")&&( req.body.inputUrClient === undefined)) ||(( req.body.inputClient === undefined)&&( req.body.inputUrClient === "")))
@@ -717,15 +717,15 @@ app.use('/editCar', async function (req, res) {
             urClient = cl.dataValues.id
             client = null
         }
-    }
+    }*/
 
 
     await Car.update({
         VIN: req.body.inputVIN,
         SprCarFK: sprCar.dataValues.id,
         Year: req.body.inputYear,
-        OwnerFK: client,
-        OwnerUrFK: urClient,
+        //OwnerFK: client,
+        //OwnerUrFK: urClient,
         GosNumber: req.body.inputGosNumber,
         EngineNumber: req.body.inputEngineNumber
     }, {where: {id: req.query.OldID}})
