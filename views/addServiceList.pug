@@ -673,7 +673,8 @@ head
                                             .col-lg-4.mb-4
                                                 .row
                                                     .col
-                                                        button.btn.btn-primary.btn-lg.btn-block(type="button" onclick='Cancel()' name="cancel") Отменить
+                                                        a(href="/addservicelist?ID="+serviceList.dataValues.id)
+                                                            button.btn.btn-primary.btn-lg.btn-block(type="button" name="cancel") Отменить
                                             .col-lg-4.mb-4
                                                 .row
                                                     .col
