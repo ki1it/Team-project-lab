@@ -670,10 +670,18 @@ head
                                                                 sum()
                                                                 input#pr.form-control(type='text' name="Price" disabled='true' )
                                                                 //button.btn.btn-primary.btn-lg.btn-block(type="button" onclick="sum()") sum
-                                            .col-lg-12.mb-4
+                                            .col-lg-4.mb-4
                                                 .row
                                                     .col
-                                                        button.btn.btn-primary.btn-lg.btn-block(type="submit" href="/addservicelist"   name="add") Добавить
+                                                        button.btn.btn-primary.btn-lg.btn-block(type="button" name="add") Отменить
+                                            .col-lg-4.mb-4
+                                                .row
+                                                    .col
+                                                        button.btn.btn-primary.btn-lg.btn-block(type="submit" href="/addservicelist"   name="add") Сохранить
+                                            .col-lg-4.mb-4
+                                                .row
+                                                    .col
+                                                        button.btn.btn-primary.btn-lg.btn-block(type="button" name="add") Сохранить и добавить
 
                         // / Input & Button Groups
             footer.main-footer.d-flex.p-2.px-3.bg-white.border-top
