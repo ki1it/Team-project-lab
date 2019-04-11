@@ -66,7 +66,7 @@ $("#inpSer").change(function() {
     var ob = document.getElementById('inpSer');
     var Tob = document.getElementById('inpSerType');
     var request = new XMLHttpRequest();
-    request.open('GET', 'getService?text='+ob.value, true);
+    request.open('GET', 'getSer?text='+ob.value, true);
     request.send();
     request.onreadystatechange = function (response) {
         if ( request.responseText == "null"){

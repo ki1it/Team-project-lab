@@ -576,7 +576,7 @@ app.use('/getBreakdown', async function (req, res) {
         res.end("null")
 })
 
-app.use('/getService', async function (req, res) {
+app.use('/getSer', async function (req, res) {
     let mod = await Service.findOne({
         where: {Name: req.query.text},
         include: {model: ServiceType, as: 'ServiceType'}
