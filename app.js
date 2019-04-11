@@ -367,7 +367,7 @@ app.use('/addSL', async function (req, res) {
     let car
     if (req.body.inputCar!=="") {
         let carr = await Car.findOne({
-            where: {VIN: req.body.inputCar}
+            where: {GosNumber: req.body.inputCar}
         })
             .catch((err) => {
                 console.log(err)
@@ -381,7 +381,7 @@ app.use('/addSL', async function (req, res) {
 
     let client
     let urClient
-    if (req.body.inputUrClient === undefined)
+    if ((req.body.inputUrClient === undefined) ||(req.body.inputUrClient === ''))
     {
         if (req.body.inputClient === "")
         {
@@ -448,7 +448,12 @@ app.use('/addSL', async function (req, res) {
 
     if ( req.body.add !== undefined)
         res.redirect('/servicelist')
+    else
+        if ( req.body.addNew !== undefined)
+            res.redirect('/addServiceList?ID=')
+
 })
+
 
 
 app.use('/delSL', async function (req, res) {
