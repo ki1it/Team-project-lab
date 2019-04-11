@@ -955,6 +955,16 @@ app.use('/getService', async function (req, res) {
     res.end(JSON.stringify(model))
 })
 
+app.use('/getDet', async function (req, res) {
+
+    let model = await Detail.findAll()
+        .catch((err) => {
+            console.log(err)
+        })
+
+    res.end(JSON.stringify(model))
+})
+
 app.use('/getBreakType', async function (req, res) {
     let Type = await BreakdownType.findAll({attributes: ['Name']})
         .catch((err) => {

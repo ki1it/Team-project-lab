@@ -94,6 +94,36 @@ request2.onreadystatechange = function (response) {
         }
     }
 };
+//Получить детали
+request3 = new XMLHttpRequest();
+request3.open('GET', 'getDet', true);
+request3.send();
+let dataListDT = document.getElementById('json-datalistdetail');
+var inputDT = document.getElementById('detail');
+// Handle state changes for the request.
+request3.onreadystatechange = function (response) {
+    if (request3.readyState === 4) {
+        if (request3.status === 200) {
+            // Parse the JSON
+            var jsonOptions = JSON.parse(request3.responseText)
+            // Loop over the JSON array.
+            jsonOptions.forEach(function (item) {
+                // Create a new <option> element.
+                var option = document.createElement('option')
+                // Set the value using the item in the JSON array.
+                option.value = item.Name;
+                // Add the <option> element to the <datalist>.
+                dataListDT.appendChild(option);
+            });
+
+            // Update the placeholder text.
+            inputDT.placeholder = "Начните вводить";
+        } else {
+            // An error occured :(
+            inputDT.placeholder = "Ошибка"
+        }
+    }
+};
 
 //Проверка Физ клиента
 $("#inputClient").change(function() {

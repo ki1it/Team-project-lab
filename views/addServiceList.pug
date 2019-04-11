@@ -239,7 +239,7 @@ head
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Тип услуги
                                             .form-group
-                                                input#inpSerType.form-control(type='text' list='json-datalistUslType' placeholder='Начните вводить' onclick='getServices()' name="inputType" required=true)
+                                                input#inpSerType.form-control(type='text' list='json-datalistUslType' placeholder='Начните вводить' onchange='getServices()' name="inputType" required=true)
                                                 datalist#json-datalistUslType
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Услуга
@@ -274,7 +274,7 @@ head
                                         strong.text-muted.d-block.mb-2 Тип поломки
                                             .form-group
                                                 //input#tiB.form-control(type='text' name="inputType")
-                                                input#tiB.form-control(type='text' list='json-datalisttiB' placeholder='Начните вводить' onclick='getBreaks()' name="inputType" required=true)
+                                                input#tiB.form-control(type='text' list='json-datalisttiB' placeholder='Начните вводить' onchange='getBreaks()'  name="inputType" required=true)
                                                 datalist#json-datalisttiB
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 поломка
@@ -287,7 +287,7 @@ head
                                             .form-group
                                                 input.form-control(type='number' name="inputNumb" min = 1)
                                     .col-lg-12.mb-4
-                                        .row
+                                        .row1
                                             .col
                                                 a.nav-link(href='addServiceList')
                                                     button.btn.btn-primary.btn-lg.btn-block(type="submit") Добавить
@@ -309,7 +309,9 @@ head
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Детали
                                             .form-group
-                                                input#detail.form-control(type='text' name="inputDetail")
+                                                //input#detail.form-control(type='text' name="inputDetail")
+                                                input#detail.form-control(type='text' list='json-datalistdetail' placeholder='Начните вводить' name="inputDetail" required=true)
+                                                datalist#json-datalistdetail
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Количество
                                             .form-group
