@@ -20,8 +20,5 @@
     "request": "^2.88.0",
     "sequelize": "^4.42.0",
     "xlsx": "^0.14.1"
-  },
-  "devDependencies": {
-    "bcrypt": "^3.0.4"
   }
 }
