@@ -9,15 +9,15 @@ $('#showClient').change(function() {
         $("#URclient").hide();
     }
 });
-$("#ur").hide();
+$("#inputUrClient").hide();
 $('#customToggle12').change(function() {
     if(this.checked === true){
-        $("#cl").hide();
-        $("#ur").show();
+        $("#inputClient").hide();
+        $("#inputUrClient").show();
     }
     else{
-        $("#cl").show();
-        $("#ur").hide();
+        $("#inputClient").show();
+        $("#inputUrClient").hide();
     }
 });
 

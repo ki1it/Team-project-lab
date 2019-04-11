@@ -31,6 +31,8 @@ request.onreadystatechange = function (response) {
         }
     }
 };
+
+//Получить типы услуг
 request = new XMLHttpRequest();
 request.open('GET', 'getServiceType', true);
 request.send();
@@ -61,7 +63,7 @@ request.onreadystatechange = function (response) {
     }
 };
 
-
+//Проверка Физ клиента
 $("#inputClient").change(function() {
     checkClient()
 });
@@ -93,7 +95,40 @@ function checkClient() {
     xhr.send(null);
 
 }
+//Проверка Юр клиента
+$("#inputUrClient").change(function() {
+    checkUrClient()
+});
 
+// Set up and make the request.
+function checkUrClient() {
+    // checkCL.innerHTML = ' ... ';
+    const cli = document.getElementById('inputUrClient');
+    const txt = document.getElementById('clientText');
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'checkUrClient?INN='+cli.value, true);
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState != 4) return;
+
+        if (xhr.status != 200) {
+            // обработать ошибку
+            alert('Ошибка ' + xhr.status + ': ' + xhr.statusText);
+            return;
+        }
+        if(xhr.response)
+        // обработать результат
+            txt.innerHTML = xhr.responseText;
+
+        if (xhr.responseText === "Клиент не найден" )
+            cli.dataValues = '';
+    }
+
+    xhr.send(null);
+
+}
+
+//Проверка атомобиля
 $("#inputCar").change(function() {
     checkCar()
 });

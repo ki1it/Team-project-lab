@@ -254,6 +254,21 @@ app.use('/checkClient', async function (req, res) {
     res.end(result)
 })
 
+app.use('/checkUrClient', async function (req, res) {
+    let cl = await UrClient.findOne({
+        where: {INN: req.query.INN}
+    })
+        .catch((err) => {
+            console.log(err)
+        })
+    let result
+    if (cl === null || cl == undefined)
+        result = 'Клиент не найден'
+    else
+        result = 'Клиент найден, ' + cl.dataValues.Name
+    res.end(result)
+})
+
 app.use('/delclient', async function (req, res) {
     await Client.destroy({
         where: {
@@ -504,7 +519,7 @@ app.use('/getBr', async function (req, res) {
         res.end("null")
 })
 
-app.use('/getEI', async function (req, res) {
+app.use('/getEdIzm', async function (req, res) {
     let mod = await EdIzmer.findOne({
         where: {Name: req.query.text}
 
@@ -549,7 +564,7 @@ app.use('/getDetail', async function (req, res) {
         res.end("null")
 })
 
-app.use('/getBre', async function (req, res) {
+app.use('/getBreakdown', async function (req, res) {
     let mod = await Breakdown.findOne({
         where: {Name: req.query.text},
         include: {model: BreakdownType, as: 'BreakdownType'}
@@ -561,7 +576,7 @@ app.use('/getBre', async function (req, res) {
         res.end("null")
 })
 
-app.use('/getSe', async function (req, res) {
+app.use('/getService', async function (req, res) {
     let mod = await Service.findOne({
         where: {Name: req.query.text},
         include: {model: ServiceType, as: 'ServiceType'}

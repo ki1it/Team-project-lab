@@ -1,7 +1,7 @@
 $("#ei").change(function() {
     var ob = document.getElementById('ei');
     var request = new XMLHttpRequest();
-    request.open('GET', 'getEI?text='+ob.value, true);
+    request.open('GET', 'getEdIzm?text='+ob.value, true);
     request.send();
     request.onreadystatechange = function (response) {
         if ( request.responseText == "null"){
@@ -29,7 +29,7 @@ $("#bre").change(function() {
     var ob = document.getElementById('bre');
     var Tob = document.getElementById('tiB');
     var request = new XMLHttpRequest();
-    request.open('GET', 'getBre?text='+ob.value, true);
+    request.open('GET', 'getBreakdown?text='+ob.value, true);
     request.send();
     request.onreadystatechange = function (response) {
         if ( request.responseText == "null"){
@@ -66,7 +66,7 @@ $("#inpSer").change(function() {
     var ob = document.getElementById('inpSer');
     var Tob = document.getElementById('inpSerType');
     var request = new XMLHttpRequest();
-    request.open('GET', 'getSe?text='+ob.value, true);
+    request.open('GET', 'getService?text='+ob.value, true);
     request.send();
     request.onreadystatechange = function (response) {
         if ( request.responseText == "null"){
