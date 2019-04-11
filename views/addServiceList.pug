@@ -475,7 +475,7 @@ head
                                                     .form-group
                                                         //input.form-control(type='text' name="inputDataClose")
                                                         if(serviceList.dataValues.CloseDate == null)
-                                                            input.form-control(class="uk-input" name="inputDataClose" type="text",  class="datepicker-here" required=true)
+                                                            input.form-control(class="uk-input" name="inputDataClose" type="text",  class="datepicker-here" )
                                                         else
                                                             input.form-control(class="uk-input" name="inputDataClose" type="text",  class="datepicker-here", value = formatDate(serviceList.dataValues.CloseDate))
                                             .col-sm-12.col-md-4
@@ -507,7 +507,7 @@ head
                                                                         label.custom-control-label(for='customToggle12') Юридическое лицо
                                                             .col-sm-12.col-md-8
                                                                 .form-group
-                                                                    input#inputClient.form-control(class="uk-input"  name="inputClient" type="text"  placeholder="Введите номер ВУ" required=true)
+                                                                    input#inputClient.form-control(class="uk-input"  name="inputClient" type="text"  placeholder="Введите номер ВУ" )
                                                                     input#inputUrClient.form-control(class="uk-input" name="inputUrClient" type="text"  placeholder="Введите ИНН")
                                                         else
                                                             if (serviceList.dataValues.UrClientFK === null)
@@ -528,7 +528,7 @@ head
                                                                             label.custom-control-label(for='customToggle12') Юридическое лицо
                                                                 .col-sm-12.col-md-8
                                                                     .form-group
-                                                                        input#inputClient.form-control(class="uk-input"  name="inputClient" type="text"  placeholder="Введите номер ВУ" required=true)
+                                                                        input#inputClient.form-control(class="uk-input"  name="inputClient" type="text"  placeholder="Введите номер ВУ" )
                                                                         input#inputUrClient.form-control(class="uk-input"  name="inputUrClient" type="text"  placeholder="Введите ИНН" value = serviceList.UrClient.dataValues.INN)
 
                                                         //.col-sm-12.col-md-11
@@ -673,7 +673,7 @@ head
                                             .col-lg-4.mb-4
                                                 .row
                                                     .col
-                                                        button.btn.btn-primary.btn-lg.btn-block(type="button" name="add") Отменить
+                                                        button.btn.btn-primary.btn-lg.btn-block(type="button" onclick='Cancel()' name="cancel") Отменить
                                             .col-lg-4.mb-4
                                                 .row
                                                     .col
