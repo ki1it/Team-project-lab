@@ -33,9 +33,6 @@ request.onreadystatechange = function (response) {
 };
 
 //Получить типы услуг
-request = new XMLHttpRequest();
-request.open('GET', 'getServiceType', true);
-request.send();
 let request1 = new XMLHttpRequest();
 request1.open('GET', 'getServiceType', true);
 request1.send();
@@ -43,8 +40,8 @@ let dataListST = document.getElementById('json-datalistUslType');
 var inputST = document.getElementById('inpSerType');
 // Handle state changes for the request.
 request1.onreadystatechange = function (response) {
-    if (request.readyState === 4) {
-        if (request.status === 200) {
+    if (request1.readyState === 4) {
+        if (request1.status === 200) {
 
             // Parse the JSON
             var jsonOptions = JSON.parse(request1.responseText)
