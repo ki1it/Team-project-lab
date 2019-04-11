@@ -36,14 +36,18 @@ request.onreadystatechange = function (response) {
 request = new XMLHttpRequest();
 request.open('GET', 'getServiceType', true);
 request.send();
+let request1 = new XMLHttpRequest();
+request1.open('GET', 'getServiceType', true);
+request1.send();
 let dataListST = document.getElementById('json-datalistUslType');
 var inputST = document.getElementById('inpSerType');
 // Handle state changes for the request.
-request.onreadystatechange = function (response) {
+request1.onreadystatechange = function (response) {
     if (request.readyState === 4) {
         if (request.status === 200) {
+
             // Parse the JSON
-            var jsonOptions = JSON.parse(request.responseText)
+            var jsonOptions = JSON.parse(request1.responseText)
             // Loop over the JSON array.
             jsonOptions.forEach(function (item) {
                 // Create a new <option> element.
