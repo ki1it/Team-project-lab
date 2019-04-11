@@ -63,18 +63,19 @@ request1.onreadystatechange = function (response) {
         }
     }
 };
+
 //Получить типы поломок
-request = new XMLHttpRequest();
-request.open('GET', 'getBreakType', true);
-request.send();
+request2 = new XMLHttpRequest();
+request2.open('GET', 'getBreakType', true);
+request2.send();
 let dataListBT = document.getElementById('json-datalisttiB');
 var inputBT = document.getElementById('tiB');
 // Handle state changes for the request.
-request.onreadystatechange = function (response) {
-    if (request.readyState === 4) {
-        if (request.status === 200) {
+request2.onreadystatechange = function (response) {
+    if (request2.readyState === 4) {
+        if (request2.status === 200) {
             // Parse the JSON
-            var jsonOptions = JSON.parse(request.responseText)
+            var jsonOptions = JSON.parse(request2.responseText)
             // Loop over the JSON array.
             jsonOptions.forEach(function (item) {
                 // Create a new <option> element.
