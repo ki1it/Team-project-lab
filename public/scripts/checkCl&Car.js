@@ -62,6 +62,36 @@ request.onreadystatechange = function (response) {
         }
     }
 };
+//Получить типы поломок
+request = new XMLHttpRequest();
+request.open('GET', 'getBreakType', true);
+request.send();
+let dataListBT = document.getElementById('json-datalisttiB');
+var inputBT = document.getElementById('tiB');
+// Handle state changes for the request.
+request.onreadystatechange = function (response) {
+    if (request.readyState === 4) {
+        if (request.status === 200) {
+            // Parse the JSON
+            var jsonOptions = JSON.parse(request.responseText)
+            // Loop over the JSON array.
+            jsonOptions.forEach(function (item) {
+                // Create a new <option> element.
+                var option = document.createElement('option')
+                // Set the value using the item in the JSON array.
+                option.value = item.Name;
+                // Add the <option> element to the <datalist>.
+                dataListBT.appendChild(option);
+            });
+
+            // Update the placeholder text.
+            inputBT.placeholder = "Начните вводить";
+        } else {
+            // An error occured :(
+            inputBT.placeholder = "Ошибка"
+        }
+    }
+};
 
 //Проверка Физ клиента
 $("#inputClient").change(function() {
@@ -244,6 +274,48 @@ function getServices() {
         }
     };
 }
+
+function getBreaks() {
+
+    const dataList = document.getElementById('json-datalistbre');
+    const input = document.getElementById('bre');
+
+// Create a new XMLHttpRequest.
+    const request = new XMLHttpRequest();
+    request.open('GET', 'getBreak?Type='+tiB.value, true);
+    request.send();
+
+// Handle state changes for the request.
+    request.onreadystatechange = function (response) {
+        if (request.readyState === 4) {
+            if (request.status === 200) {
+                // Parse the JSON
+                var jsonOptions = JSON.parse(request.responseText)
+                // dataList.options.length = 0;
+                while (dataList.firstChild){
+                    dataList.removeChild(dataList.firstChild)
+                }
+                // Loop over the JSON array.
+                jsonOptions.forEach(function (item) {
+
+                    // Create a new <option> element.
+                    var option = document.createElement('option')
+                    // Set the value using the item in the JSON array.
+                    option.value = item.Name;
+                    // Add the <option> element to the <datalist>.
+                    dataList.appendChild(option);
+                });
+
+                // Update the placeholder text.
+                input.placeholder = "Начните вводить";
+            } else {
+                // An error occured :(
+                input.placeholder = "Ошибка"
+            }
+        }
+    };
+}
+
 
 $("#ajax2").change(function() {
     //alert('ddddd');

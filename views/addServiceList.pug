@@ -274,12 +274,14 @@ head
                                         strong.text-muted.d-block.mb-2 Тип поломки
                                             .form-group
                                                 //input#tiB.form-control(type='text' name="inputType")
-                                                input#tiB.form-control(type='text' list='json-datalisttiB' placeholder='Начните вводить' onclick='getServices()' name="inputType" required=true)
+                                                input#tiB.form-control(type='text' list='json-datalisttiB' placeholder='Начните вводить' onclick='getBreaks()' name="inputType" required=true)
                                                 datalist#json-datalisttiB
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 поломка
                                             .form-group
-                                                input#bre.form-control(type='text' name="inputBreakdowns")
+                                                //input#bre.form-control(type='text' name="inputBreakdowns")
+                                                input#bre.form-control(type='text' list='json-datalistbre' placeholder='Начните вводить' name="inputBreakdowns" required=true)
+                                                datalist#json-datalistbre
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Количество
                                             .form-group

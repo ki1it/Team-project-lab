@@ -955,6 +955,30 @@ app.use('/getService', async function (req, res) {
     res.end(JSON.stringify(model))
 })
 
+app.use('/getBreakType', async function (req, res) {
+    let Type = await BreakdownType.findAll({attributes: ['Name']})
+        .catch((err) => {
+            console.log(err)
+        })
+
+    res.end(JSON.stringify(Type))
+})
+
+app.use('/getBreak', async function (req, res) {
+    let brand = await BreakdownType.findOne({where: {Name: req.query.Type}})
+        .catch((err) => {
+            console.log(err)
+        })
+    let model = await Breakdown.findAll(
+        {
+            where:{Type:brand.dataValues.id},
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+
+    res.end(JSON.stringify(model))
+})
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
