@@ -1,5 +1,3 @@
-import bcrypt from "bcrypt";
-
 const sequelize = require('../lib/pgbaseConnector');
 const Sequelize = require('sequelize');
 const User = sequelize.define('User', {
@@ -25,16 +23,6 @@ const User = sequelize.define('User', {
     type: Sequelize.INTEGER,
     unique: true
   }
-}, {
-  hooks: {
-    beforeCreate: (user) => {
-      const salt = bcrypt.genSaltSync();
-      user.password = bcrypt.hashSync(user.password, salt);
-    }
-  }
-});
-User.prototype.validPassword = function(password) {
-  return bcrypt.compareSync(password, this.password);
-}
+})
 
 module.exports = User;
