@@ -1,6 +1,7 @@
+import bcrypt from "bcrypt";
+
 const sequelize = require('../lib/pgbaseConnector');
 const Sequelize = require('sequelize');
-var bcrypt = require('bcrypt');
 const User = sequelize.define('User', {
   username: {
     type: Sequelize.STRING,
