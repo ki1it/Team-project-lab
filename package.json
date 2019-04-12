@@ -22,6 +22,6 @@
     "xlsx": "^0.14.1"
   },
   "devDependencies": {
-    "bcrypt": "^3.0.5"
+    "bcrypt-as-promised-pumpitup": "^3.0.5"
   }
 }
