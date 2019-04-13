@@ -100,6 +100,7 @@ router.get('/', async function (req, res, next) {
 
 
     res.render('addServiceList', {
+        ID:req.query.ID,
       serviceList:serviceList,
       SLStatus:SLStatus,
       serviceList_Service:serviceList_Service,
