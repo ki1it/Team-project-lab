@@ -3,7 +3,7 @@ doctype html
 head
     meta(charset='utf-8')
     meta(http-equiv='x-ua-compatible' content='ie=edge')
-    title СТО
+    title Add
     meta(name='description' content='A high-quality & free Bootstrap admin dashboard template pack that comes with lots of templates and components.')
     meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
     link(href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet')
@@ -239,7 +239,7 @@ head
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Тип услуги
                                             .form-group
-                                                input#inpSerType.form-control(type='text' list='json-datalistUslType' placeholder='Начните вводить' onchange='getServices()' name="inputType" required=true)
+                                                input#inpSerType.form-control(type='text' list='json-datalistUslType' placeholder='Начните вводить' onchange='getServices()'  name="inputType" required=true)
                                                 datalist#json-datalistUslType
                                     .col-sm-12
                                         strong.text-muted.d-block.mb-2 Услуга
@@ -255,7 +255,7 @@ head
                                         .row
                                             .col
                                                 a.nav-link(href='addServiceList')
-                                                    button.btn.btn-primary.btn-lg.btn-block(type="submit") Добавить
+                                                    button.btn.btn-primary.btn-lg.btn-block(id='AddService' type="submit") Добавить
                                     //.modal-footer
                                         button.btn.btn-default(type='button', data-dismiss='modal') Close
 
@@ -448,7 +448,8 @@ head
                 // Page Header
                 .page-header.row.no-gutters.py-4.mb-3.border-bottom
                     .col-12.col-sm-4.text-center.text-sm-left.mb-0
-                        h3.page-title Добавление заказ-наряда
+                        h3.page-title Добавление заказ-наряда №-#{serviceList.dataValues.id}
+                        input(id='ZNid' value=serviceList.dataValues.id )
                 // End Page Header
 
                 .row
@@ -595,7 +596,7 @@ head
                                                                     .col-sm-12.col-md-11
                                                                         h6.m-0 Услуги
                                                                     .col-sm-12.col-md-1
-                                                                        button.mb-2.btn.btn-sm.btn-primary.mr-1(type="submit", data-toggle='modal', data-target='#myModal3') +
+                                                                        button.mb-2.btn.btn-sm.btn-primary.mr-1(id="createNewService" type="submit", data-toggle='modal', data-target='#myModal3') +
                                                             .card-body.p-0.pb-3.text-center
                                                                 table#tab1.table.mb-0
                                                                     thead.bg-light.text-primary

@@ -2,7 +2,7 @@
 head
     meta(charset='utf-8')
     meta(http-equiv='x-ua-compatible' content='ie=edge')
-    title СТО
+    title List
     meta(name='description' content='A high-quality & free Bootstrap admin dashboard template pack that comes with lots of templates and components.')
     meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
     link(href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet')
@@ -15,7 +15,7 @@ head
 
     - var i=0;
         mixin rowsTable(id, client, odate, cdate,  car, status, clientID, fl)
-            tr
+            tr(id=id)
 
                 - var options = { year: 'numeric', month: 'long', day: 'numeric'};
                 td #{id}
